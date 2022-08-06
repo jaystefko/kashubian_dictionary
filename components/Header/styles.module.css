@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  padding: 0 2rem;
+  position: sticky;
+  width: 100%;
+  background-color: var(--background-color);
+  top: 0;
+  font-size: 1.2rem;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.navList {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.navList > li {
+  height: 100%;
+}
+
+.navList > li > a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+.navList > li > a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: var(--max-width-tablet)) and (min-width: calc(var(--max-width-mobile) + 1)) {
+}
+
+@media screen and (max-width: var(--max-width-mobile)) {
+}
