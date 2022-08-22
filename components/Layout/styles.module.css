@@ -1,0 +1,4 @@
+.main {
+  background: url('/images/background-griffon.png') center center no-repeat var(--background-color);
+  height: calc(100vh - 160px);
+}

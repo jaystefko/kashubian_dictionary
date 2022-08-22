@@ -1,7 +1,7 @@
-import type { AppProps } from 'next/app'
-import Layout from '../components/Layout'
-import '../styles/global.css'
-import Head from 'next/head'
+import type { AppProps } from 'next/app';
+import Layout from '../components/Layout';
+import '../styles/global.css';
+import Head from 'next/head';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -10,6 +10,7 @@ function App({ Component, pageProps }: AppProps) {
         <title>Sloworz - Słownik języka kaszubskiego</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         <link rel='icon' href='/favicon.ico' />
+        <link rel='manifest' href='/manifest.json' />
         <meta name='author' content='JStefko Jakub Stefko' />
         <meta name='description' content='Sloworz - internetowy słownik języka kaszubskiego' />
         <meta property='og:image' content='/favicon.ico' />
@@ -20,7 +21,7 @@ function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </Layout>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

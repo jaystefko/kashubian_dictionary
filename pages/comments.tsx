@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
+import WorkInProgress from '../components/WorkInProgress'
 
 const CommentsScreen: NextPage = () => {
-  return <h1>Comments screen here</h1>
+  return <WorkInProgress />
 }
 
 export default CommentsScreen

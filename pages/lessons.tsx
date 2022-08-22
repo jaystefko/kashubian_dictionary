@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
+import WorkInProgress from '../components/WorkInProgress'
 
 const LessonsScreen: NextPage = () => {
-  return <h1>Lessons screen here</h1>
+  return <WorkInProgress />
 }
 
 export default LessonsScreen

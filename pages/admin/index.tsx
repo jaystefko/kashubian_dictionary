@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
+import LoginBox from '../../components/LoginBox'
 
 const AdminScreen: NextPage = () => {
-  return <h1>Admin screen here</h1>
+  return <LoginBox />
 }
 
 export default AdminScreen

@@ -2,12 +2,16 @@
   display: flex;
   justify-content: space-between;
   height: 90px;
-  padding: 0 2rem;
   position: sticky;
   width: 100%;
-  background-color: var(--background-color);
   top: 0;
   font-size: 1.2rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.header > div {
+  display: flex;
 }
 
 .header img {
@@ -34,6 +38,29 @@
 }
 
 .navList > li > a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.iconList {
+  max-height: 100%;
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+.icon {
+  width: 90px;
+  height: 90px;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.icon:hover,
+.icon:active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 

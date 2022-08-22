@@ -1,7 +1,7 @@
 :root {
-  --background-color: white;
-  --font-color: black;
-  --link-color: blue;
+  --background-color: #404040;
+  --font-color: #fdcd01;
+  --link-color: #fdcd01;
 
   --max-width-tablet: 750px;
   --max-width-mobile: 500px;
@@ -16,6 +16,7 @@ body {
   line-height: 1.6;
   font-size: 18px;
   color: var(--font-color);
+  background-color: var(--background-color);
 }
 
 * {
@@ -29,7 +30,7 @@ a {
 
 a:hover,
 a:focus {
-  text-decoration: underline;
+  text-decoration: none;
   outline: 0;
 }
 
