@@ -1,10 +1,10 @@
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 const WorkInProgress = ({ is404 = false }) => {
-  const header = is404 ? 'Nie znaleziono strony' : 'Strona w budowie'
+  const header = is404 ? 'Nie znaleziono strony' : 'Strona w budowie';
   const main = is404
     ? 'Nie odnaleźliśmy strony której szukasz.'
-    : 'Przepraszamy za niedogodności. Strona w tym momencie jest w budowie.'
+    : 'Przepraszamy za niedogodności. Strona w tym momencie jest w budowie.';
 
   return (
     <div className={styles.wholePage}>
@@ -17,7 +17,7 @@ const WorkInProgress = ({ is404 = false }) => {
         </main>
       </article>
     </div>
-  )
-}
+  );
+};
 
-export default WorkInProgress
+export default WorkInProgress;

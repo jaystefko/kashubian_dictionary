@@ -1,15 +1,18 @@
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-import LoginBox from '../../components/LoginBox';
+import { Table, TextField, Button } from '@mui/material';
+import { Add, Search } from '@mui/icons-material';
 import { getWordList } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { BasicAuth } from '../../utils/types';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setter } from '../../utils/utilities';
 
 const AdminScreen: NextPage = () => {
   const [auth, setAuth] = useState<BasicAuth>();
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     let data = localStorage.getItem('auth');
@@ -39,7 +42,26 @@ const AdminScreen: NextPage = () => {
   return (
     <>
       <ToastContainer theme='colored' />
-      <LoginBox />
+      <div className='whole-page'>
+        <article>
+          <section>
+            <TextField
+              value={search}
+              placeholder='Wyszukaj...'
+              onChange={setter.bind(this, setSearch)}
+            />
+            <Button>
+              <Search />
+            </Button>
+            <Button>
+              <Add />
+            </Button>
+          </section>
+          <section>
+            <Table />
+          </section>
+        </article>
+      </div>
     </>
   );
 };
