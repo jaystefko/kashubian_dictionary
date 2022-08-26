@@ -18,7 +18,26 @@ async function getWordList() {
           pages,
           select {
             id,
+            word,
+            normalizedWord(orderBy: ASC),
+          }
+        }
+      }
+    `,
+  });
+}
+
+async function getWordListByString(partial: string) {
+  return axios.post(`${url}graphql`, {
+    query: `
+      {
+        SearchKashubianEntries(page: {start: 1, limit: 100}, where: {normalizedWord: {LIKE: "${partial}"}}) {
+          total
+          pages
+          select {
+            id
             word(orderBy: ASC)
+            normalizedWord
           }
         }
       }
@@ -48,15 +67,23 @@ async function getWordOfADay() {
 }
 
 async function createWord(word: Word, auth: BasicAuth) {
-  axios.post(`${url}kashubian-entry`, word, getAxiosRequestConfig(auth));
+  return axios.post(`${url}kashubian-entry`, word, getAxiosRequestConfig(auth));
 }
 
 async function updateWord(word: Word, id: number, auth: BasicAuth) {
-  axios.put(`${url}kashubian-entry/${id}`, word, getAxiosRequestConfig(auth));
+  return axios.put(`${url}kashubian-entry/${id}`, word, getAxiosRequestConfig(auth));
 }
 
 async function deleteWord(id: number, auth: BasicAuth) {
-  axios.delete(`${url}kashubian-entry/${id}`, getAxiosRequestConfig(auth));
+  return axios.delete(`${url}kashubian-entry/${id}`, getAxiosRequestConfig(auth));
 }
 
-export { getWordList, getLastAddedWordList, getWordOfADay, createWord, updateWord, deleteWord };
+export {
+  getWordList,
+  getWordListByString,
+  getLastAddedWordList,
+  getWordOfADay,
+  createWord,
+  updateWord,
+  deleteWord,
+};

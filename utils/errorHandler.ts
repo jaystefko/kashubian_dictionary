@@ -3,9 +3,7 @@ import { toast } from 'react-toastify';
 import { ToastFunction } from './types';
 
 function notify(message: string, type: ToastFunction = ToastFunction.ERROR) {
-  // toast[type](message, { theme: 'colored' });
-  console.log('here');
-  toast.error(message);
+  toast[type](message);
 }
 
 function errorHandler(error: unknown) {

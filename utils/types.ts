@@ -10,6 +10,7 @@ type WordOfADay = {
 };
 
 type Word = {
+  id: number;
   meanings: [
     {
       antonyms: Array<{
