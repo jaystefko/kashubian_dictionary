@@ -11,6 +11,7 @@ import {
   TableBody,
   Paper,
   Modal,
+  CircularProgress,
 } from '@mui/material';
 import { Add, Delete, Edit, Search } from '@mui/icons-material';
 import { deleteWord, getWordList, getWordListByString } from '../../utils/api';
@@ -29,6 +30,7 @@ const AdminScreen: NextPage = () => {
   const [data, setData] = useState<Array<Partial<Word>>>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [wordId, setWordId] = useState(-1);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let data = localStorage.getItem('auth');
@@ -46,10 +48,13 @@ const AdminScreen: NextPage = () => {
       if (!auth) return;
       try {
         localStorage.setItem('auth', JSON.stringify(auth));
+        setIsLoading(true);
         const response = await getWordList();
         setData(response.data?.data?.SearchKashubianEntries?.select);
       } catch (error) {
         errorHandler(error);
+      } finally {
+        setIsLoading(false);
       }
     })();
   }, [auth]);
@@ -59,9 +64,11 @@ const AdminScreen: NextPage = () => {
     if (confirm(`Czy jesteś pewien że chcesz usunąć "${word}"`)) {
       try {
         await deleteWord(id, auth!);
+        toast.success(`Słowo "${word}" zostało usunięte`);
+        setIsLoading(true);
         const response = await getWordList();
         setData(response.data?.data?.SearchKashubianEntries?.select);
-        toast.success(`Słowo "${word}" zostało usunięte`);
+        setIsLoading(false);
       } catch (error) {
         errorHandler(error);
       }
@@ -76,10 +83,15 @@ const AdminScreen: NextPage = () => {
 
   async function searchForWords(searchBy: string) {
     try {
+      setIsLoading(true);
       const response = await getWordListByString(searchBy);
       setData(response.data?.data?.SearchKashubianEntries?.select);
+      if (!response.data?.data?.SearchKashubianEntries?.select?.length)
+        toast.info('Nie znaleziono odpowiednich słów');
     } catch (error) {
       errorHandler(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -93,56 +105,78 @@ const AdminScreen: NextPage = () => {
         </div>
       </Modal>
       <div className='whole-page'>
-        <article>
-          <section>
-            <TextField
-              value={search}
-              placeholder='Wyszukaj...'
-              onChange={setter.bind(this, setSearch)}
-            />
-            <Button onClick={searchForWords.bind(this, search)}>
-              <Search />
-            </Button>
-            <Button>
-              <Add onClick={setIsModalOpen.bind(this, true)} />
-            </Button>
-          </section>
-          <section>
-            <TableContainer component={Paper} className={styles.table}>
-              <Table stickyHeader aria-label='Tablica słów'>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Słowo</TableCell>
-                    <TableCell align='right'>Edycja</TableCell>
-                    <TableCell align='right'>Usunięcie</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {data.map((row) => (
-                    <TableRow
-                      key={row.id}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                      <TableCell component='th' scope='row'>
-                        {row.word}
-                      </TableCell>
-                      <TableCell align='right'>
-                        <Button onClick={openModalEditHandler.bind(this, row.id || -1)}>
-                          <Edit />
-                        </Button>
-                      </TableCell>
-                      <TableCell align='right'>
-                        <Button onClick={deleteHandler.bind(this, row.id || -1, row.word || '')}>
-                          <Delete />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </section>
-        </article>
+        {isLoading ? (
+          <CircularProgress color='warning' />
+        ) : (
+          <article className={styles.article}>
+            <section className={styles.bar}>
+              <TextField
+                sx={{
+                  '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#fdcd01 !important',
+                  },
+                }}
+                className={styles.input}
+                value={search}
+                placeholder='Wyszukaj...'
+                onChange={setter.bind(this, setSearch)}
+              />
+              <Button onClick={searchForWords.bind(this, search)} className={styles.button}>
+                <Search className={styles.icon} />
+              </Button>
+              <Button onClick={setIsModalOpen.bind(this, true)} className={styles.button}>
+                <Add className={styles.icon} />
+              </Button>
+            </section>
+            <section>
+              {data.length ? (
+                <TableContainer component={Paper} className={styles.table}>
+                  <Table stickyHeader aria-label='Tablica słów'>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell className={styles.headerCell}>Słowo</TableCell>
+                        <TableCell className={styles.headerCell} align='right'>
+                          Edycja
+                        </TableCell>
+                        <TableCell className={styles.headerCell} align='right'>
+                          Usunięcie
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {data.map((row) => (
+                        <TableRow
+                          key={row.id}
+                          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                          <TableCell className={styles.cell} component='th' scope='row'>
+                            {row.word}
+                          </TableCell>
+                          <TableCell className={styles.cell} align='right'>
+                            <Button
+                              onClick={openModalEditHandler.bind(this, row.id || -1)}
+                              className={styles.button}
+                            >
+                              <Edit className={styles.icon} />
+                            </Button>
+                          </TableCell>
+                          <TableCell className={styles.cell} align='right'>
+                            <Button
+                              onClick={deleteHandler.bind(this, row.id || -1, row.word || '')}
+                              className={styles.button}
+                            >
+                              <Delete className={styles.icon} />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              ) : null}
+            </section>
+          </article>
+        )}
       </div>
     </>
   );

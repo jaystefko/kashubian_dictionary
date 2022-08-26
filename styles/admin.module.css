@@ -2,3 +2,47 @@
   width: 60vw;
   height: 60vh;
 }
+
+.article {
+  width: 60vw;
+}
+
+.bar {
+  display: flex;
+  margin: 0 0 1rem;
+}
+
+.icon {
+  color: var(--font-color);
+}
+
+.article .bar .input *,
+.article .bar .input *::placeholder {
+  color: var(--font-color);
+}
+
+.article .bar .input div:focus {
+  border-color: var(--font-color);
+}
+
+.article .button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.article .table {
+  background: transparent;
+}
+
+.article .cell {
+  color: var(--font-color);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.article .headerCell {
+  background-color: var(--font-color);
+  border-color: var(--font-color);
+}
+
+.article ::-webkit-scrollbar {
+  width: 0;
+}
