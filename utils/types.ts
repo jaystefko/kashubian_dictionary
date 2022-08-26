@@ -80,6 +80,642 @@ type Word = {
   word: string;
 };
 
+type subPartPerPart = {
+  [PartOfSpeech.NOUN]: [
+    PartOfSpeechSubType.NEUTER,
+    PartOfSpeechSubType.MASCULINE,
+    PartOfSpeechSubType.FEMININE,
+    PartOfSpeechSubType.PLURAL_MASCULINE,
+    PartOfSpeechSubType.NON_MASCULINE
+  ];
+  [PartOfSpeech.VERB]: [
+    PartOfSpeechSubType.CONJUGATION_I,
+    PartOfSpeechSubType.CONJUGATION_II,
+    PartOfSpeechSubType.CONJUGATION_III,
+    PartOfSpeechSubType.CONJUGATION_IV
+  ];
+  [PartOfSpeech.ADJECTIVE]: [
+    PartOfSpeechSubType.INFLECTIV_ADJECTIVE,
+    PartOfSpeechSubType.UNINFLECTIV_ADJECTIVE
+  ];
+  [PartOfSpeech.NUMERAL]: [
+    PartOfSpeechSubType.INFLECTIV_NUMERAL,
+    PartOfSpeechSubType.UNINFLECTIV_NUMERAL
+  ];
+  [PartOfSpeech.PRONOUN]: [
+    PartOfSpeechSubType.NOUN_PRONOUN,
+    PartOfSpeechSubType.ADJECTIVE_PRONOUN,
+    PartOfSpeechSubType.NUMERAL_PRONOUN,
+    PartOfSpeechSubType.ADVERB_PRONOUN
+  ];
+  [PartOfSpeech.ADVERB]: [PartOfSpeechSubType.ADVERB];
+  [PartOfSpeech.PREPOSITION]: [PartOfSpeechSubType.PREPOSITION];
+  [PartOfSpeech.CONJUNCTION]: [PartOfSpeechSubType.CONJUNCTION];
+  [PartOfSpeech.INTERJECTION]: [PartOfSpeechSubType.INTERJECTION];
+  [PartOfSpeech.PARTICIPLE]: [PartOfSpeechSubType.PARTICIPLE];
+};
+
+type ConjugationVartation = {
+  presentVariations: {
+    firstPersonSingular: string;
+    firstPersonPluralFirst: string;
+    firstPersonPluralSecond: string;
+    secondPersonSingular: string;
+    secondPersonPluralFirst: string;
+    secondPersonPluralSecond: string;
+    thirdPersonSingular: string;
+    thirdPersonPlural: string;
+  };
+  pastVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  archaicPastVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  descriptivePresentVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralMasculineSecond: string;
+    firstPersonNonMasculineSecond: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonSingular: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  pastSecondVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  prePastFirstVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  prePastSecondVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  prePastThirdVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  prePastImpersonal: string;
+  futureSimpleVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralMasculineSecond: string;
+    firstPersonNonMasculineSecond: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonSingular: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  futureComplexVariationsFirst: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  futureComplexVariationsSecond: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  imperativeModeVariations: {
+    firstPersonSingular: string;
+    firstPersonPluralFirst: string;
+    firstPersonPluralSecond: string;
+    secondPersonSingular: string;
+    secondPersonPluralFirst: string;
+    secondPersonPluralSecond: string;
+    thirdPersonSingular: string;
+    thirdPersonPlural: string;
+  };
+  conditionalModeVariations: {
+    firstPersonMasculine: string;
+    firstPersonFeminine: string;
+    firstPersonNeuter: string;
+    firstPersonPluralMasculineFirst: string;
+    firstPersonNonMasculineFirst: string;
+    firstPersonPluralSecondMasculine: string;
+    firstPersonPluralSecondNonMasculine: string;
+    secondPersonMasculine: string;
+    secondPersonFeminine: string;
+    secondPersonNeuter: string;
+    secondPersonPluralMasculineSecond: string;
+    secondPersonNonMasculineSecond: string;
+    secondPersonPluralMasculineFirst: string;
+    secondPersonNonMasculineFirst: string;
+    secondPersonPluralMasculineThird: string;
+    secondPersonNonMasculineThird: string;
+    thirdPersonMasculine: string;
+    thirdPersonFeminine: string;
+    thirdPersonNeuter: string;
+    thirdPersonPluralMasculine: string;
+    thirdPersonNonMasculine: string;
+  };
+  conditionalModeImpersonal: string;
+  infinitive: string;
+  aspectEquivalent: string;
+  contemporaryAdverbialParticiple: string;
+  priorAdverbialParticiple: string;
+  gerundium: string;
+  gerundiumGrammaticalType: string;
+  gerundiumVariations: {
+    nominative: string;
+    genitive: string;
+    dative: string;
+    accusative: string;
+    instrumental: string;
+    locative: string;
+    vocative: string;
+    nominativePlural: string;
+    genitivePlural: string;
+    dativePlural: string;
+    accusativePlural: string;
+    instrumentalPlural: string;
+    locativePlural: string;
+    vocativePlural: string;
+  };
+  activeAdjectivalParticiple: string;
+  activeAdjectivalParticipleVariations: {
+    nominativeMasculine: string;
+    nominativeFeminine: string;
+    nominativeNeuter: string;
+    genitiveMasculine: string;
+    genitiveFeminine: string;
+    genitiveNeuter: string;
+    dativeMasculine: string;
+    dativeFeminine: string;
+    dativeNeuter: string;
+    accusativeMasculine: string;
+    accusativeFeminine: string;
+    accusativeNeuter: string;
+    instrumentalMasculine: string;
+    instrumentalFeminine: string;
+    instrumentalNeuter: string;
+    locativeMasculine: string;
+    locativeFeminine: string;
+    locativeNeuter: string;
+    vocativeMasculine: string;
+    vocativeFeminine: string;
+    vocativeNeuter: string;
+    nominativePluralMasculine: string;
+    nominativeNonMasculine: string;
+    genitivePluralMasculine: string;
+    genitiveNonMasculine: string;
+    dativePluralMasculine: string;
+    dativeNonMasculine: string;
+    accusativePluralMasculine: string;
+    accusativeNonMasculine: string;
+    instrumentalPluralMasculine: string;
+    instrumentalNonMasculine: string;
+    locativePluralMasculine: string;
+    locativeNonMasculine: string;
+    vocativePluralMasculine: string;
+    vocativeNonMasculine: string;
+  };
+  passiveAdjectiveParticipleFirst: string;
+  passiveAdjectiveParticipleVariationsFirst: {
+    nominativeMasculine: string;
+    nominativeFeminine: string;
+    nominativeNeuter: string;
+    genitiveMasculine: string;
+    genitiveFeminine: string;
+    genitiveNeuter: string;
+    dativeMasculine: string;
+    dativeFeminine: string;
+    dativeNeuter: string;
+    accusativeMasculine: string;
+    accusativeFeminine: string;
+    accusativeNeuter: string;
+    instrumentalMasculine: string;
+    instrumentalFeminine: string;
+    instrumentalNeuter: string;
+    locativeMasculine: string;
+    locativeFeminine: string;
+    locativeNeuter: string;
+    vocativeMasculine: string;
+    vocativeFeminine: string;
+    vocativeNeuter: string;
+    nominativePluralMasculine: string;
+    nominativeNonMasculine: string;
+    genitivePluralMasculine: string;
+    genitiveNonMasculine: string;
+    dativePluralMasculine: string;
+    dativeNonMasculine: string;
+    accusativePluralMasculine: string;
+    accusativeNonMasculine: string;
+    instrumentalPluralMasculine: string;
+    instrumentalNonMasculine: string;
+    locativePluralMasculine: string;
+    locativeNonMasculine: string;
+    vocativePluralMasculine: string;
+    vocativeNonMasculine: string;
+  };
+  passiveAdjectiveParticipleSecond: string;
+  passiveAdjectiveParticipleVariationsSecond: {
+    nominativeMasculine: string;
+    nominativeFeminine: string;
+    nominativeNeuter: string;
+    genitiveMasculine: string;
+    genitiveFeminine: string;
+    genitiveNeuter: string;
+    dativeMasculine: string;
+    dativeFeminine: string;
+    dativeNeuter: string;
+    accusativeMasculine: string;
+    accusativeFeminine: string;
+    accusativeNeuter: string;
+    instrumentalMasculine: string;
+    instrumentalFeminine: string;
+    instrumentalNeuter: string;
+    locativeMasculine: string;
+    locativeFeminine: string;
+    locativeNeuter: string;
+    vocativeMasculine: string;
+    vocativeFeminine: string;
+    vocativeNeuter: string;
+    nominativePluralMasculine: string;
+    nominativeNonMasculine: string;
+    genitivePluralMasculine: string;
+    genitiveNonMasculine: string;
+    dativePluralMasculine: string;
+    dativeNonMasculine: string;
+    accusativePluralMasculine: string;
+    accusativeNonMasculine: string;
+    instrumentalPluralMasculine: string;
+    instrumentalNonMasculine: string;
+    locativePluralMasculine: string;
+    locativeNonMasculine: string;
+    vocativePluralMasculine: string;
+    vocativeNonMasculine: string;
+  };
+};
+
+type NounVariation = {
+  nounVariation: {
+    nominative: string;
+    genitive: string;
+    dative: string;
+    accusative: string;
+    instrumental: string;
+    locative: string;
+    vocative: string;
+    nominativePlural: string;
+    genitivePlural: string;
+    dativePlural: string;
+    accusativePlural: string;
+    instrumentalPlural: string;
+    locativePlural: string;
+    vocativePlural: string;
+  };
+};
+
+type NumeralVariation = {
+  numeralVariation: {
+    nominativeMasculine: string;
+    nominativeFeminine: string;
+    nominativeNeuter: string;
+    genitiveMasculine: string;
+    genitiveFeminine: string;
+    genitiveNeuter: string;
+    dativeMasculine: string;
+    dativeFeminine: string;
+    dativeNeuter: string;
+    accusativeMasculine: string;
+    accusativeFeminine: string;
+    accusativeNeuter: string;
+    instrumentalMasculine: string;
+    instrumentalFeminine: string;
+    instrumentalNeuter: string;
+    locativeMasculine: string;
+    locativeFeminine: string;
+    locativeNeuter: string;
+    vocativeMasculine: string;
+    vocativeFeminine: string;
+    vocativeNeuter: string;
+    nominativePluralMasculine: string;
+    nominativeNonMasculine: string;
+    genitivePluralMasculine: string;
+    genitiveNonMasculine: string;
+    dativePluralMasculine: string;
+    dativeNonMasculine: string;
+    accusativePluralMasculine: string;
+    accusativeNonMasculine: string;
+    instrumentalPluralMasculine: string;
+    instrumentalNonMasculine: string;
+    locativePluralMasculine: string;
+    locativeNonMasculine: string;
+    vocativePluralMasculine: string;
+    vocativeNonMasculine: string;
+  };
+  inAssemblies: string;
+  base: string;
+  comparative: string;
+  superlative: string;
+};
+
+type AdjectiveVariation = {
+  adjectiveVariation: {
+    nominativeMasculine: string;
+    nominativeFeminine: string;
+    nominativeNeuter: string;
+    genitiveMasculine: string;
+    genitiveFeminine: string;
+    genitiveNeuter: string;
+    dativeMasculine: string;
+    dativeFeminine: string;
+    dativeNeuter: string;
+    accusativeMasculine: string;
+    accusativeFeminine: string;
+    accusativeNeuter: string;
+    instrumentalMasculine: string;
+    instrumentalFeminine: string;
+    instrumentalNeuter: string;
+    locativeMasculine: string;
+    locativeFeminine: string;
+    locativeNeuter: string;
+    vocativeMasculine: string;
+    vocativeFeminine: string;
+    vocativeNeuter: string;
+    nominativePluralMasculine: string;
+    nominativeNonMasculine: string;
+    genitivePluralMasculine: string;
+    genitiveNonMasculine: string;
+    dativePluralMasculine: string;
+    dativeNonMasculine: string;
+    accusativePluralMasculine: string;
+    accusativeNonMasculine: string;
+    instrumentalPluralMasculine: string;
+    instrumentalNonMasculine: string;
+    locativePluralMasculine: string;
+    locativeNonMasculine: string;
+    vocativePluralMasculine: string;
+    vocativeNonMasculine: string;
+  };
+  inAssemblies: string;
+  base: string;
+  comparative: string;
+  superlative: string;
+};
+
+type variationPerSubPart = {
+  [PartOfSpeechSubType.ADJECTIVE_PRONOUN]: {
+    adjectivePronounVariation: {
+      nominativeMasculine: string;
+      nominativeFeminine: string;
+      nominativeNeuter: string;
+      genitiveMasculine: string;
+      genitiveFeminine: string;
+      genitiveNeuter: string;
+      dativeMasculine: string;
+      dativeFeminine: string;
+      dativeNeuter: string;
+      accusativeMasculine: string;
+      accusativeFeminine: string;
+      accusativeNeuter: string;
+      instrumentalMasculine: string;
+      instrumentalFeminine: string;
+      instrumentalNeuter: string;
+      locativeMasculine: string;
+      locativeFeminine: string;
+      locativeNeuter: string;
+      vocativeMasculine: string;
+      vocativeFeminine: string;
+      vocativeNeuter: string;
+      nominativePluralMasculine: string;
+      nominativeNonMasculine: string;
+      genitivePluralMasculine: string;
+      genitiveNonMasculine: string;
+      dativePluralMasculine: string;
+      dativeNonMasculine: string;
+      accusativePluralMasculine: string;
+      accusativeNonMasculine: string;
+      instrumentalPluralMasculine: string;
+      instrumentalNonMasculine: string;
+      locativePluralMasculine: string;
+      locativeNonMasculine: string;
+      vocativePluralMasculine: string;
+      vocativeNonMasculine: string;
+    };
+  };
+  [PartOfSpeechSubType.ADVERB]: {
+    base: string;
+    comparative: string;
+    superlative: string;
+  };
+  [PartOfSpeechSubType.ADVERB_PRONOUN]: {};
+  [PartOfSpeechSubType.CONJUGATION_I]: ConjugationVartation;
+  [PartOfSpeechSubType.CONJUGATION_II]: ConjugationVartation;
+  [PartOfSpeechSubType.CONJUGATION_III]: ConjugationVartation;
+  [PartOfSpeechSubType.CONJUGATION_IV]: ConjugationVartation;
+  [PartOfSpeechSubType.CONJUNCTION]: {};
+  [PartOfSpeechSubType.FEMININE]: NounVariation;
+  [PartOfSpeechSubType.INFLECTIV_ADJECTIVE]: AdjectiveVariation;
+  [PartOfSpeechSubType.INFLECTIV_NUMERAL]: NumeralVariation;
+  [PartOfSpeechSubType.INTERJECTION]: {};
+  [PartOfSpeechSubType.MASCULINE]: NounVariation;
+  [PartOfSpeechSubType.NEUTER]: NounVariation;
+  [PartOfSpeechSubType.NON_MASCULINE]: NounVariation;
+  [PartOfSpeechSubType.NOUN_PRONOUN]: {
+    nounPronounVariation: {
+      nominative: string;
+      genitive: string;
+      dative: string;
+      accusative: string;
+      instrumental: string;
+      locative: string;
+      vocative: string;
+      nominativePlural: string;
+      genitivePlural: string;
+      dativePlural: string;
+      accusativePlural: string;
+      instrumentalPlural: string;
+      locativePlural: string;
+      vocativePlural: string;
+    };
+  };
+  [PartOfSpeechSubType.NUMERAL_PRONOUN]: {};
+  [PartOfSpeechSubType.PARTICIPLE]: {};
+  [PartOfSpeechSubType.PLURAL_MASCULINE]: NounVariation;
+  [PartOfSpeechSubType.PREPOSITION]: {};
+  [PartOfSpeechSubType.UNINFLECTIV_ADJECTIVE]: AdjectiveVariation;
+  [PartOfSpeechSubType.UNINFLECTIV_NUMERAL]: NumeralVariation;
+};
+
 enum PartOfSpeech {
   ADJECTIVE = 'ADJECTIVE',
   ADVERB = 'ADVERB',
@@ -98,7 +734,7 @@ enum PartOfSpeechSubType {
   ADVERB = 'ADVERB',
   ADVERB_PRONOUN = 'ADVERB_PRONOUN',
   CONJUGATION_I = 'CONJUGATION_I',
-  CONJUGATION_II = 'CONJUGATION_II',
+  CONJUGATION_II = 'CONJUGATIOCONJUGATION_IIN_II',
   CONJUGATION_III = 'CONJUGATION_III',
   CONJUGATION_IV = 'CONJUGATION_IV',
   CONJUNCTION = 'CONJUNCTION',
@@ -125,4 +761,4 @@ enum ToastFunction {
 }
 
 export { PartOfSpeech, PartOfSpeechSubType, ToastFunction };
-export type { Word, BasicAuth, WordOfADay };
+export type { Word, BasicAuth, WordOfADay, subPartPerPart, variationPerSubPart };

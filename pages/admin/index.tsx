@@ -89,7 +89,7 @@ const AdminScreen: NextPage = () => {
       <Modal open={isModalOpen}>
         <div>
           <p>{wordId}</p>
-          <Button onClick={setIsModalOpen.bind(this, !isModalOpen)}>Close modal</Button>
+          <Button onClick={setIsModalOpen.bind(this, false)}>Close modal</Button>
         </div>
       </Modal>
       <div className='whole-page'>
@@ -104,7 +104,7 @@ const AdminScreen: NextPage = () => {
               <Search />
             </Button>
             <Button>
-              <Add onClick={setIsModalOpen.bind(this, !isModalOpen)} />
+              <Add onClick={setIsModalOpen.bind(this, true)} />
             </Button>
           </section>
           <section>
