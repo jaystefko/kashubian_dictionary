@@ -1,18 +1,17 @@
-import type { NextPage } from 'next'
-import DictionaryPanel from '../components/DictionaryPanel'
-import RightHomePanel from '../components/RightHomePanel'
-import styles from '../styles/home.module.css'
+import type { NextPage } from 'next';
+import DictionaryPanel from '../components/DictionaryPanel';
+import RightHomePanel from '../components/RightHomePanel';
 
 const HomeScreen: NextPage = () => {
   return (
-    <div className={styles.main}>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <DictionaryPanel />
-      <article className={styles.mainPanel}>
+      <article style={{ display: 'flex', alignItems: 'center' }}>
         <section>Search for a word</section>
       </article>
       <RightHomePanel />
     </div>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;

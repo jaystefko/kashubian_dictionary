@@ -1,0 +1,21 @@
+.bar {
+  display: flex;
+  margin: 0 0 1rem;
+}
+
+.icon {
+  color: var(--font-color);
+}
+
+.bar .input *,
+.bar .input *::placeholder {
+  color: var(--font-color);
+}
+
+.bar .input div:focus {
+  border-color: var(--font-color);
+}
+
+.bar .button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

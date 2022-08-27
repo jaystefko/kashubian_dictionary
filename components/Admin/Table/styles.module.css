@@ -3,7 +3,7 @@
   height: 60vh;
 }
 
-.article {
+.section {
   width: 60vw;
 }
 
@@ -16,33 +16,33 @@
   color: var(--font-color);
 }
 
-.article .bar .input *,
-.article .bar .input *::placeholder {
+.section .bar .input *,
+.section .bar .input *::placeholder {
   color: var(--font-color);
 }
 
-.article .bar .input div:focus {
+.section .bar .input div:focus {
   border-color: var(--font-color);
 }
 
-.article .button:hover {
+.section .button:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.article .table {
+.section .table {
   background: transparent;
 }
 
-.article .cell {
+.section .cell {
   color: var(--font-color);
   border-color: rgba(0, 0, 0, 0.3);
 }
 
-.article .headerCell {
+.section .headerCell {
   background-color: var(--font-color);
   border-color: var(--font-color);
 }
 
-.article ::-webkit-scrollbar {
+.section ::-webkit-scrollbar {
   width: 0;
 }
