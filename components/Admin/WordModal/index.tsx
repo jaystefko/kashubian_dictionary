@@ -1,31 +1,25 @@
 import { Button, Modal } from '@mui/material';
-import { Dispatch, SetStateAction, useEffect } from 'react';
-import errorHandler from '../../../utils/errorHandler';
+import { useEffect } from 'react';
+import { BasicAuth, Word } from '../../../utils/types';
 
 type WordModalProps = {
   isModalOpen: boolean;
   wordId: number;
-  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  closeHandler: () => void;
+  word?: Partial<Word>;
+  saveHandler: (word: Partial<Word>, id: number, authorisation: BasicAuth) => void;
 };
 
-const WordModal = ({ isModalOpen, wordId, setIsModalOpen }: WordModalProps) => {
+const WordModal = ({ isModalOpen, wordId, closeHandler, word }: WordModalProps) => {
   useEffect(() => {
-    if (wordId === -1) return;
-    (async () => {
-      try {
-        const response = await fetch('');
-        console.log(response);
-      } catch (error) {
-        errorHandler(error);
-      }
-    })();
-  }, [wordId]);
+    if (word) console.log(word); // #TODO
+  }, [word]);
 
   return (
     <Modal open={isModalOpen}>
       <div>
         <p>{wordId}</p>
-        <Button onClick={setIsModalOpen.bind(this, false)}>Close modal</Button>
+        <Button onClick={closeHandler.bind(this)}>Close modal</Button>
       </div>
     </Modal>
   );

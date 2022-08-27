@@ -1,7 +1,14 @@
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { CircularProgress } from '@mui/material';
-import { deleteWord, getWordList, getWordListByString } from '../../utils/api';
+import {
+  createWord,
+  deleteWord,
+  getWord,
+  getWordList,
+  getWordListByString,
+  updateWord,
+} from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { BasicAuth, Word } from '../../utils/types';
 
@@ -18,6 +25,7 @@ const AdminScreen: NextPage = () => {
   const [data, setData] = useState<Array<Partial<Word>>>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [wordId, setWordId] = useState(-1);
+  const [word, setWord] = useState<Partial<Word>>();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -63,10 +71,17 @@ const AdminScreen: NextPage = () => {
     }
   }
 
-  function openModalEditHandler(id: number) {
+  async function openModalEditHandler(id: number) {
     if (id === -1) return;
     setWordId(id);
-    setIsModalOpen(true);
+    try {
+      const response = await getWord(wordId);
+      setWordId(id);
+      setWord(response.data); // #TODO
+      setIsModalOpen(true);
+    } catch (error) {
+      errorHandler(error);
+    }
   }
 
   async function searchForWords(searchBy: string) {
@@ -83,20 +98,38 @@ const AdminScreen: NextPage = () => {
     }
   }
 
-  // async function getWord(wordId: number) {
-  //   if (wordId === -1) return
-  //   try {
-  //     const response = await fetch("");
-  //     console.log(response)
-  //   } catch(error) {
-  //     errorHandler(error)
-  //   }
-  // }
+  async function saveHandler(word: Partial<Word>, id = wordId, authorisation = auth) {
+    try {
+      if (id === -1) {
+        await createWord(word, authorisation!);
+        toast.success('Słowo stworzone');
+      } else {
+        await updateWord(word, id, authorisation!);
+        toast.success('Słowo zmienione');
+      }
+    } catch (error) {
+      errorHandler(error);
+    }
+  }
+
+  function closeHandler() {
+    if (wordId !== -1) {
+      setWord(undefined);
+      setWordId(-1);
+    }
+    setIsModalOpen(false);
+  }
 
   return (
     <>
       <ToastContainer theme='colored' />
-      <WordModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} wordId={wordId} />
+      <WordModal
+        isModalOpen={isModalOpen}
+        closeHandler={closeHandler}
+        wordId={wordId}
+        word={word}
+        saveHandler={saveHandler}
+      />
       <div className='whole-page'>
         {isLoading ? (
           <CircularProgress color='warning' />
