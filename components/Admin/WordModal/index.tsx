@@ -13,9 +13,9 @@ import {
   TextField,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { boxSX, buttonSX, inputSX } from '../../../styles/sx';
 import {
-  BasicAuth,
   PartOfSpeech,
   PartOfSpeechSubType,
   Word,
@@ -32,10 +32,10 @@ type WordModalProps = {
   wordId: number;
   closeHandler: () => void;
   word?: Partial<Word>;
-  saveHandler: (word: Partial<Word>, id: number, authorisation: BasicAuth) => void;
+  saveHandler: (word: Partial<Word>, id: number) => void;
 };
 
-const WordModal = ({ isModalOpen, wordId, closeHandler, word }: WordModalProps) => {
+const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: WordModalProps) => {
   const [header, setHeader] = useState('Dodaj słowo');
   const [wordString, setWordString] = useState('');
   const [priority, setPriority] = useState(true);
@@ -69,8 +69,31 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word }: WordModalProps) 
     setVariations(JSON.stringify(variationPerSubPart[subPartOfSpeech as PartOfSpeechSubType]));
   }, [subPartOfSpeech]); // eslint-disable-line
 
-  function logState() {
-    console.log(base, others);
+  function onSave() {
+    try {
+      if (!wordString) {
+        toast.error('Proszę podać słowo kaszubskie');
+        return;
+      }
+
+      const wordObject: Partial<Word> = {
+        word: wordString,
+        priority: priority,
+        partOfSpeech: partOfSpeech,
+        partOfSpeechSubType: subPartOfSpeech,
+        variation: variations.length ? JSON.parse(variations) : undefined,
+        note: note.length ? note : undefined,
+        others: others?.map((x) => ({ entryId: x.id || -1, note: x.word || '' })).filter((x) => x),
+        base: base?.id,
+      };
+
+      console.log(wordObject);
+
+      saveHandler(wordObject, wordId);
+    } catch (error) {
+      toast.error('Formatowanie podanych wariacji są niepoprawne');
+      return;
+    }
   }
 
   return (
@@ -147,10 +170,10 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word }: WordModalProps) 
                 fullWidth
                 sx={inputSX}
                 value={variations}
+                disabled={variations.length < 3}
                 placeholder='Odmiana...'
                 label='Odmiana'
                 onChange={setter.bind(this, setVariations)}
-                required
               />
             </Grid>
             <Grid item xs={12}>
@@ -161,7 +184,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word }: WordModalProps) 
                 placeholder='Notatka...'
                 label='Notatka'
                 onChange={setter.bind(this, setNote)}
-                required
               />
             </Grid>
             <Grid item xs={12}>
@@ -184,10 +206,10 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word }: WordModalProps) 
           </Grid>
         </main>
         <footer className={styles.footer}>
-          <Button sx={buttonSX} onClick={closeHandler.bind(this)}>
+          <Button sx={buttonSX} onClick={closeHandler}>
             Zamknij
           </Button>
-          <Button sx={buttonSX} onClick={logState}>
+          <Button sx={buttonSX} onClick={onSave}>
             Zapisz
           </Button>
         </footer>

@@ -18,13 +18,13 @@ type WordOfADay = {
 
 type Word = {
   id: number;
+  base: number;
   meanings: [
     {
       antonyms: Array<{
         meaningId: number;
         note: string;
       }>;
-      base: number;
       definition: string;
       examples: Array<{
         example: string;
