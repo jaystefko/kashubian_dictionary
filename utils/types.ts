@@ -16,46 +16,46 @@ type WordOfADay = {
   definitions: Array<string>;
 };
 
+type Meaning = {
+  antonyms: Array<{
+    meaningId: number;
+    note: string;
+  }>;
+  definition: string;
+  examples: Array<{
+    example: string;
+    note: string;
+  }>;
+  hyperonym: number;
+  origin: string;
+  phrasalVerbs: Array<{
+    note: string;
+    phrasalVerb: string;
+  }>;
+  proverbs: Array<{
+    note: string;
+    proverb: string;
+  }>;
+  quotes: Array<{
+    note: string;
+    quote: string;
+  }>;
+  synonyms: Array<{
+    meaningId: number;
+    note: string;
+  }>;
+  translation: {
+    english: string;
+    german: string;
+    polish: string;
+    ukrainian: string;
+  };
+};
+
 type Word = {
   id: number;
   base: number;
-  meanings: [
-    {
-      antonyms: Array<{
-        meaningId: number;
-        note: string;
-      }>;
-      definition: string;
-      examples: Array<{
-        example: string;
-        note: string;
-      }>;
-      hyperonym: number;
-      origin: string;
-      phrasalVerbs: Array<{
-        note: string;
-        phrasalVerb: string;
-      }>;
-      proverbs: Array<{
-        note: string;
-        proverb: string;
-      }>;
-      quotes: Array<{
-        note: string;
-        quote: string;
-      }>;
-      synonyms: Array<{
-        meaningId: number;
-        note: string;
-      }>;
-      translation: {
-        english: string;
-        german: string;
-        polish: string;
-        ukrainian: string;
-      };
-    }
-  ];
+  meanings: Array<Partial<Meaning>>;
   note: string;
   others: Array<{
     entryId: number;
@@ -84,6 +84,46 @@ type Word = {
       };
     };
   };
+  word: string;
+};
+
+type GatheredWord = {
+  id: number;
+  base: number;
+  meanings: Array<Partial<Meaning>>;
+  note: string;
+  others: Array<{
+    id: number;
+    kashubianEntry: {
+      normalizedWord: string;
+      word: string;
+    };
+  }>;
+  partOfSpeech: PartOfSpeech;
+  partOfSpeechSubType: PartOfSpeechSubType;
+  priority: boolean;
+  variation: [
+    {
+      variation: {
+        nounVariation: {
+          accusative: string;
+          accusativePlural: string;
+          dative: string;
+          dativePlural: string;
+          genitive: string;
+          genitivePlural: string;
+          instrumental: string;
+          instrumentalPlural: string;
+          locative: string;
+          locativePlural: string;
+          nominative: string;
+          nominativePlural: string;
+          vocative: string;
+          vocativePlural: string;
+        };
+      };
+    }
+  ];
   word: string;
 };
 
@@ -265,4 +305,4 @@ export {
   subPartPerPart,
   variationPerSubPart,
 };
-export type { Word, BasicAuth, WordOfADay };
+export type { Word, BasicAuth, WordOfADay, Meaning, GatheredWord };

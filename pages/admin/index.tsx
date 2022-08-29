@@ -10,7 +10,7 @@ import {
   updateWord,
 } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
-import { BasicAuth, Word } from '../../utils/types';
+import { BasicAuth, GatheredWord, Word } from '../../utils/types';
 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,7 +25,7 @@ const AdminScreen: NextPage = () => {
   const [data, setData] = useState<Array<Partial<Word>>>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [wordId, setWordId] = useState(-1);
-  const [word, setWord] = useState<Partial<Word>>();
+  const [word, setWord] = useState<Partial<GatheredWord>>();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -73,11 +73,10 @@ const AdminScreen: NextPage = () => {
 
   async function openModalEditHandler(id: number) {
     if (id === -1) return;
-    setWordId(id);
     try {
-      const response = await getWord(wordId);
+      const response = await getWord(id);
       setWordId(id);
-      setWord(response.data); // #TODO
+      setWord(response.data?.data?.SearchKashubianEntry);
       setIsModalOpen(true);
     } catch (error) {
       errorHandler(error);
@@ -107,6 +106,7 @@ const AdminScreen: NextPage = () => {
         await updateWord(word, id, authorisation!);
         toast.success('Słowo zmienione');
       }
+      setIsModalOpen(false);
     } catch (error) {
       errorHandler(error);
     }

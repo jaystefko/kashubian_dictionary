@@ -14,8 +14,6 @@ async function getWordList(pageLimit = 100) {
     query: `
       {
         SearchKashubianEntries(page: { start: 1, limit: ${pageLimit} }) {
-          total,
-          pages,
           select {
             id,
             word,
@@ -32,8 +30,6 @@ async function getWordListByString(partial: string, pageLimit = 100) {
     query: `
       {
         SearchKashubianEntries(page: { start: 1, limit: ${pageLimit} }, where: { normalizedWord: { LIKE: "${partial}" } }) {
-          total
-          pages
           select {
             id
             word(orderBy: ASC)
@@ -63,14 +59,27 @@ async function getLastAddedWordList() {
 }
 
 async function getWord(id: number) {
-  // #TODO
   return axios.post(`${url}graphql`, {
     query: `
       {
-        SearchKashubianEntries(page: { start: 1, limit: 1 }, where: { id: { LIKE: "${id}" } }) {
-          select {
-            id(orderBy: DESC),
-            word
+        SearchKashubianEntry(id: ${id}) {
+          word,
+          priority,
+          partOfSpeech,
+          partOfSpeechSubType,
+          variation { variation },
+          note,
+          others {  id, kashubianEntry { word, normalizedWord } },
+          meanings {
+            id,
+            definition,
+            origin,
+            translation {
+              german,
+              english,
+              polish,
+              ukrainian
+            }
           }
         }
       }
