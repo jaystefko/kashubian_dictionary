@@ -1,0 +1,17 @@
+.header {
+  padding: 0 1rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}

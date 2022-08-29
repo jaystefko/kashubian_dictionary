@@ -9,11 +9,11 @@ function getAxiosRequestConfig(auth: BasicAuth): AxiosRequestConfig {
   };
 }
 
-async function getWordList() {
+async function getWordList(pageLimit = 100) {
   return axios.post(`${url}graphql`, {
     query: `
       {
-        SearchKashubianEntries(page: { start: 1, limit: 100 }) {
+        SearchKashubianEntries(page: { start: 1, limit: ${pageLimit} }) {
           total,
           pages,
           select {
@@ -27,11 +27,11 @@ async function getWordList() {
   });
 }
 
-async function getWordListByString(partial: string) {
+async function getWordListByString(partial: string, pageLimit = 100) {
   return axios.post(`${url}graphql`, {
     query: `
       {
-        SearchKashubianEntries(page: { start: 1, limit: 100 }, where: { normalizedWord: { LIKE: "${partial}" } }) {
+        SearchKashubianEntries(page: { start: 1, limit: ${pageLimit} }, where: { normalizedWord: { LIKE: "${partial}" } }) {
           total
           pages
           select {
