@@ -103,8 +103,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     setBase(word.base || null);
     setOthers(otherList || []);
     setMeanings(meaningList);
-
-    console.log('word, otherList, meaningList: ', word, otherList, meaningList);
   }, [word]);
 
   useEffect(() => {
