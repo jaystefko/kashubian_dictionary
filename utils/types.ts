@@ -102,26 +102,29 @@ type Word = {
   partOfSpeech: PartOfSpeech;
   partOfSpeechSubType: PartOfSpeechSubType;
   priority: boolean;
-  variation: {
-    variation: {
-      nounVariation: {
-        accusative: string;
-        accusativePlural: string;
-        dative: string;
-        dativePlural: string;
-        genitive: string;
-        genitivePlural: string;
-        instrumental: string;
-        instrumentalPlural: string;
-        locative: string;
-        locativePlural: string;
-        nominative: string;
-        nominativePlural: string;
-        vocative: string;
-        vocativePlural: string;
-      };
-    };
-  };
+  variation:
+    | {
+        variation: {
+          nounVariation: {
+            accusative: string;
+            accusativePlural: string;
+            dative: string;
+            dativePlural: string;
+            genitive: string;
+            genitivePlural: string;
+            instrumental: string;
+            instrumentalPlural: string;
+            locative: string;
+            locativePlural: string;
+            nominative: string;
+            nominativePlural: string;
+            vocative: string;
+            vocativePlural: string;
+          };
+        };
+      }
+    | null
+    | undefined;
   word: string;
 };
 

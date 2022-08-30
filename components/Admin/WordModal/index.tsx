@@ -99,7 +99,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     setPriority(Boolean(word.priority));
     setPartOfSpeech(word?.partOfSpeech || '');
     setSubPartOfSpeech(word?.partOfSpeechSubType || '');
-    setVariations(word?.variation?.length ? JSON.stringify(word.variation[0].variation) : '');
+    setVariations(word?.variation?.length ? JSON.stringify(word.variation[0].variation) : '{}');
     setNote(word?.note || '');
     setBase(word?.base || null);
     setOthers(otherList || []);
@@ -128,7 +128,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
         priority: priority,
         partOfSpeech: partOfSpeech as PartOfSpeech,
         partOfSpeechSubType: subPartOfSpeech as PartOfSpeechSubType,
-        variation: variations.length ? { variation: JSON.parse(variations) } : undefined,
+        variation: variations.length > 2 ? { variation: JSON.parse(variations) } : null,
         note: note.length ? note : undefined,
         others: others
           ?.map((x) => ({ entryId: x?.id || -1, note: x?.word || '' }))

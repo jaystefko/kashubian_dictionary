@@ -117,6 +117,8 @@ const AdminScreen: NextPage = () => {
         toast.success('Słowo zmienione');
       }
       setIsModalOpen(false);
+      const response = await getWordList();
+      setData(response.data?.data?.SearchKashubianEntries?.select);
     } catch (error) {
       errorHandler(error);
     }
