@@ -52,6 +52,44 @@ type Meaning = {
   };
 };
 
+type GatheredMeaning = {
+  antonyms: Array<{
+    meaningId: number;
+    note: string;
+  }>;
+  definition: string;
+  examples: Array<{
+    example: string;
+    note: string;
+  }>;
+  hyperonym: number;
+  origin: string;
+  phrasalVerbs: Array<{
+    note: string;
+    phrasalVerb: string;
+  }>;
+  proverbs: Array<{
+    note: string;
+    proverb: string;
+  }>;
+  quotes: Array<{
+    note: string;
+    quote: string;
+  }>;
+  synonyms: Array<{
+    meaningId: number;
+    note: string;
+  }>;
+  translation: [
+    {
+      english: string;
+      german: string;
+      polish: string;
+      ukrainian: string;
+    }
+  ];
+};
+
 type Word = {
   id: number;
   base: number;
@@ -94,11 +132,11 @@ type GatheredWord = {
     word: string;
     normalizedWord: string;
   };
-  meanings: Array<Partial<Meaning>>;
+  meanings: Array<Partial<GatheredMeaning>>;
   note: string;
   others: Array<{
-    id: number;
-    kashubianEntry: {
+    other: {
+      id: number;
       normalizedWord: string;
       word: string;
     };

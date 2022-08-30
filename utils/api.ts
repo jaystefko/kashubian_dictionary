@@ -69,7 +69,7 @@ async function getWord(id: number) {
           partOfSpeechSubType,
           variation { variation },
           note,
-          others {  id, kashubianEntry { word, normalizedWord } },
+          others { other { id, word, normalizedWord } },
           meanings {
             id,
             definition,

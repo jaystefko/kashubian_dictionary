@@ -80,35 +80,39 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     if (!word) return;
 
     const otherList = word?.others?.map((o) => ({
-      id: o.id,
-      word: o.kashubianEntry.word,
-      normalizedWord: o.kashubianEntry.normalizedWord,
+      id: o.other.id,
+      word: o.other.word,
+      normalizedWord: o.other.normalizedWord,
     }));
-    const meaningList = word!.meanings!.map((m) => ({
-      definition: m.definition,
-      origin: m.origin,
-      translationEN: m.translation?.english,
-      translationGE: m.translation?.german,
-      translationPL: m.translation?.polish,
-      translationUK: m.translation?.ukrainian,
+
+    const meaningList = word?.meanings?.map((m) => ({
+      definition: m.definition || '',
+      origin: m.origin || '',
+      translationEN: m?.translation?.length ? m?.translation[0].english : '' || '',
+      translationGE: m?.translation?.length ? m?.translation[0].german : '' || '',
+      translationPL: m?.translation?.length ? m?.translation[0].polish : '' || '',
+      translationUK: m?.translation?.length ? m?.translation[0].ukrainian : '' || '',
     }));
 
     setHeader('Edytuj słowo');
     setWordString(word.word!);
     setPriority(Boolean(word.priority));
-    setPartOfSpeech(word.partOfSpeech || '');
-    setSubPartOfSpeech(word.partOfSpeechSubType || '');
-    setVariations(word!.variation?.length ? JSON.stringify(word?.variation[0].variation) : '');
-    setNote(word.note || '');
-    setBase(word.base || null);
+    setPartOfSpeech(word?.partOfSpeech || '');
+    setSubPartOfSpeech(word?.partOfSpeechSubType || '');
+    setVariations(word?.variation?.length ? JSON.stringify(word.variation[0].variation) : '');
+    setNote(word?.note || '');
+    setBase(word?.base || null);
     setOthers(otherList || []);
-    setMeanings(meaningList);
+    setMeanings(meaningList || []);
   }, [word]);
 
   useEffect(() => {
     if (!partOfSpeech) return;
     const optionList = subPartPerPart[partOfSpeech as PartOfSpeech];
-    if (optionList.length === 1) setSubPartOfSpeech(optionList[0]);
+    if (optionList.length === 1) {
+      setSubPartOfSpeech(optionList[0]);
+      setVariations(JSON.stringify(variationPerSubPart[optionList[0]]));
+    }
     setSubPartOfSpeechOptionList(optionList);
   }, [partOfSpeech]); // eslint-disable-line
 
