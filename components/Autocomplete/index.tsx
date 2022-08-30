@@ -19,6 +19,7 @@ type ACProps = {
   isMultiple?: boolean;
   onChangeSingle?: Dispatch<SetStateAction<Option | null>>;
   onChangeMultiple?: Dispatch<SetStateAction<Array<Option | null>>>;
+  value: any;
 };
 
 const AC = ({
@@ -28,6 +29,7 @@ const AC = ({
   isMultiple = false,
   onChangeSingle,
   onChangeMultiple,
+  value,
 }: ACProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [optionList, setOptionList] = useState<Array<Partial<Word>>>([]);
@@ -68,10 +70,11 @@ const AC = ({
           onChangeSingle((value as Option) || null);
         }
       }}
-      isOptionEqualToValue={(option, value) => option.id === value.id}
-      getOptionLabel={(option) => option.word || ''}
+      value={value}
+      isOptionEqualToValue={(option, value) => option?.id === value?.id}
+      getOptionLabel={(option) => option?.word || ''}
       onInputChange={(e, value) => {
-        e.preventDefault();
+        e?.preventDefault();
         setSearch(value);
         if (value) searchForWords(`${value}`);
       }}

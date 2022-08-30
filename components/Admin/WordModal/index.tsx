@@ -256,6 +256,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                 label='Słowo podstawowe'
                 placeholder='Wyszukaj słowo podstawowe...'
                 onChangeSingle={setBase}
+                value={base}
               />
             </Grid>
             <Grid item xs={12}>
@@ -265,6 +266,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                 placeholder='Wyszukaj słowa powiązane...'
                 isMultiple
                 onChangeMultiple={setOthers}
+                value={others}
               />
             </Grid>
             <Grid item xs={12}>
