@@ -46,3 +46,7 @@ img {
   justify-content: center;
   align-items: center;
 }
+
+.MuiFormLabel-colorPrimary {
+  color: var(--font-color) !important;
+}

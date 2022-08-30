@@ -8,6 +8,7 @@ import {
   getWordList,
   getWordListByString,
   updateWord,
+  getBasesAndDerivatives,
 } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { BasicAuth, GatheredWord, Word } from '../../utils/types';
@@ -75,8 +76,17 @@ const AdminScreen: NextPage = () => {
     if (id === -1) return;
     try {
       const response = await getWord(id);
+      const base = await getBasesAndDerivatives(id);
+      let newWord: Partial<GatheredWord> = response.data?.data?.SearchKashubianEntry!;
+      if (base.data.bases.length) {
+        newWord.base = {
+          id: base.data.bases[0].entryId,
+          word: base.data.bases[0].word,
+          normalizedWord: base.data.bases[0].normalizedWord,
+        };
+      }
       setWordId(id);
-      setWord(response.data?.data?.SearchKashubianEntry);
+      setWord(newWord);
       setIsModalOpen(true);
     } catch (error) {
       errorHandler(error);

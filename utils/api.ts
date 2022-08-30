@@ -103,6 +103,10 @@ async function deleteWord(id: number, auth: BasicAuth) {
   return axios.delete(`${url}kashubian-entry/${id}`, getAxiosRequestConfig(auth));
 }
 
+async function getBasesAndDerivatives(id: number) {
+  return axios.get(`${url}custom-query/bases-and-derivatives/${id}`);
+}
+
 export {
   getWordList,
   getWordListByString,
@@ -112,4 +116,5 @@ export {
   createWord,
   updateWord,
   deleteWord,
+  getBasesAndDerivatives,
 };

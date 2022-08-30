@@ -89,7 +89,11 @@ type Word = {
 
 type GatheredWord = {
   id: number;
-  base: number;
+  base: {
+    id: number;
+    word: string;
+    normalizedWord: string;
+  };
   meanings: Array<Partial<Meaning>>;
   note: string;
   others: Array<{
@@ -292,6 +296,7 @@ const subPartPerPart = {
 
 enum COLORS {
   YELLOW = '#fdcd01',
+  DISABLED_YELLOW = 'orange',
   GRAY = '#404040',
   BLACK01 = 'rgba(0, 0, 0, 0.1)',
   BLACK03 = 'rgba(0, 0, 0, 0.3)',

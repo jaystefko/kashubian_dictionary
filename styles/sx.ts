@@ -28,6 +28,13 @@ const iconSX: SxProps = {
   color: COLORS.YELLOW,
 };
 
+const checkboxSX: SxProps = {
+  fill: COLORS.YELLOW,
+  ' *': {
+    fill: COLORS.YELLOW,
+  },
+};
+
 const inputSX: SxProps = {
   color: `${COLORS.YELLOW} !important`,
   '::placeholder': {
@@ -46,6 +53,24 @@ const inputSX: SxProps = {
     borderColor: `${COLORS.YELLOW} !important`,
     color: `${COLORS.YELLOW} !important`,
   },
+  ':disabled': {
+    color: `${COLORS.DISABLED_YELLOW} !important`,
+  },
+  ' *': {
+    color: `${COLORS.YELLOW} !important`,
+    '::-webkit-input-placeholder': {
+      color: COLORS.YELLOW,
+    },
+    '::-ms-input-placeholder': {
+      color: COLORS.YELLOW,
+    },
+    '::-moz-placeholder': {
+      color: COLORS.YELLOW,
+    },
+    ':disabled': {
+      color: `${COLORS.DISABLED_YELLOW} !important`,
+    },
+  },
 };
 
 const tableCellSX: SxProps = {
@@ -60,13 +85,33 @@ const tableHeaderCellSX: SxProps = {
 
 const tableSX: SxProps = {
   background: 'transparent',
-  scrollbarWidth: 0,
   height: '100%',
 };
 
 const paperSX: SxProps = {
   height: '100%',
   background: 'transparent',
+  overflowY: 'hidden',
 };
 
-export { buttonSX, boxSX, iconSX, inputSX, tableCellSX, tableHeaderCellSX, tableSX, paperSX };
+const tableContainerSX: SxProps = {
+  '::-webkit-scrollbar': {
+    display: 'none',
+  },
+  height: '100%',
+  scrollbarWidth: 'none',
+  '-ms-overflow-style': 'none',
+};
+
+export {
+  buttonSX,
+  boxSX,
+  iconSX,
+  inputSX,
+  tableCellSX,
+  tableHeaderCellSX,
+  tableSX,
+  paperSX,
+  checkboxSX,
+  tableContainerSX,
+};

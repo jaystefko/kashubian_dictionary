@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { boxSX, buttonSX, inputSX } from '../../../styles/sx';
+import { boxSX, buttonSX, checkboxSX, inputSX } from '../../../styles/sx';
 import {
   PartOfSpeech,
   PartOfSpeechSubType,
@@ -24,6 +24,7 @@ import {
   subPartPerPart,
   variationPerSubPart,
   GatheredWord,
+  COLORS,
 } from '../../../utils/types';
 import { setter } from '../../../utils/utilities';
 import AC from '../../Autocomplete';
@@ -39,19 +40,25 @@ type WordModalProps = {
   saveHandler: (word: Partial<Word>, id: number) => void;
 };
 
+type Option = {
+  id: number;
+  word: string;
+  normalizedWord: string;
+};
+
 const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: WordModalProps) => {
   const [header, setHeader] = useState('Dodaj słowo');
   const [wordString, setWordString] = useState('');
   const [priority, setPriority] = useState(true);
-  const [partOfSpeech, setPartOfSpeech] = useState<PartOfSpeech>();
-  const [subPartOfSpeech, setSubPartOfSpeech] = useState<PartOfSpeechSubType>();
+  const [partOfSpeech, setPartOfSpeech] = useState('');
+  const [subPartOfSpeech, setSubPartOfSpeech] = useState('');
   const [subPartOfSpeechOptionList, setSubPartOfSpeechOptionList] = useState<
     Array<PartOfSpeechSubType>
   >([]);
   const [variations, setVariations] = useState('');
   const [note, setNote] = useState('');
-  const [base, setBase] = useState<Partial<Word>>();
-  const [others, setOthers] = useState<Array<Partial<Word>>>();
+  const [base, setBase] = useState<Option | null>(null);
+  const [others, setOthers] = useState<Array<Option | null>>([]);
   const [meanings, setMeanings] = useState<Array<Partial<MeaningCopy>>>([{ ...defaultMeaning }]);
 
   useEffect(() => {
@@ -59,12 +66,12 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
       setHeader('Dodaj słowo');
       setWordString('');
       setPriority(true);
-      setPartOfSpeech(undefined);
-      setSubPartOfSpeech(undefined);
+      setPartOfSpeech('');
+      setSubPartOfSpeech('');
       setVariations('');
       setNote('');
-      setBase(undefined);
-      setOthers(undefined);
+      setBase(null);
+      setOthers([]);
       setMeanings([{ ...defaultMeaning }]);
     }
   }, [isModalOpen]); // eslint-disable-line
@@ -72,46 +79,40 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   useEffect(() => {
     if (!word) return;
 
-    console.log('word: ', word);
+    const otherList = word?.others?.map((o) => ({
+      id: o.id,
+      word: o.kashubianEntry.word,
+      normalizedWord: o.kashubianEntry.normalizedWord,
+    }));
+    const meaningList = word!.meanings!.map((m) => ({
+      definition: m.definition,
+      origin: m.origin,
+      translationEN: m.translation?.english,
+      translationGE: m.translation?.german,
+      translationPL: m.translation?.polish,
+      translationUK: m.translation?.ukrainian,
+    }));
 
     setHeader('Edytuj słowo');
     setWordString(word.word!);
     setPriority(Boolean(word.priority));
-    setPartOfSpeech(word.partOfSpeech);
-    setSubPartOfSpeech(word.partOfSpeechSubType);
+    setPartOfSpeech(word.partOfSpeech || '');
+    setSubPartOfSpeech(word.partOfSpeechSubType || '');
     setVariations(word!.variation?.length ? JSON.stringify(word?.variation[0].variation) : '');
     setNote(word.note || '');
-    // setBase() // API call for word ID
-    setOthers(
-      word?.others?.map((o) => ({
-        id: o.id,
-        word: o.kashubianEntry.word,
-        normalizedWord: o.kashubianEntry.normalizedWord,
-      }))
-    );
-    setMeanings(
-      word!.meanings!.map((m) => ({
-        definition: m.definition,
-        origin: m.origin,
-        translationEN: m.translation?.english,
-        translationGE: m.translation?.german,
-        translationPL: m.translation?.polish,
-        translationUK: m.translation?.ukrainian,
-      }))
-    );
+    setBase(word.base || null);
+    setOthers(otherList || []);
+    setMeanings(meaningList);
+
+    console.log('word, otherList, meaningList: ', word, otherList, meaningList);
   }, [word]);
 
   useEffect(() => {
     if (!partOfSpeech) return;
-    const optionList = subPartPerPart[partOfSpeech];
+    const optionList = subPartPerPart[partOfSpeech as PartOfSpeech];
     if (optionList.length === 1) setSubPartOfSpeech(optionList[0]);
     setSubPartOfSpeechOptionList(optionList);
   }, [partOfSpeech]); // eslint-disable-line
-
-  useEffect(() => {
-    if (!subPartOfSpeech) return;
-    setVariations(JSON.stringify(variationPerSubPart[subPartOfSpeech as PartOfSpeechSubType]));
-  }, [subPartOfSpeech]); // eslint-disable-line
 
   function onSave() {
     try {
@@ -123,11 +124,13 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
       let wordObject: Partial<Word> = {
         word: wordString,
         priority: priority,
-        partOfSpeech: partOfSpeech,
-        partOfSpeechSubType: subPartOfSpeech,
+        partOfSpeech: partOfSpeech as PartOfSpeech,
+        partOfSpeechSubType: subPartOfSpeech as PartOfSpeechSubType,
         variation: variations.length ? { variation: JSON.parse(variations) } : undefined,
         note: note.length ? note : undefined,
-        others: others?.map((x) => ({ entryId: x.id || -1, note: x.word || '' })).filter((x) => x),
+        others: others
+          ?.map((x) => ({ entryId: x?.id || -1, note: x?.word || '' }))
+          .filter((x) => x),
         base: base?.id,
         meanings: meanings.map((m) => ({
           definition: m.definition || '',
@@ -140,10 +143,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
           },
         })),
       };
-
-      if (!wordObject.base && word?.base) {
-        wordObject.base = word.base;
-      }
 
       saveHandler(wordObject, wordId);
     } catch (error) {
@@ -174,7 +173,11 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               <FormGroup>
                 <FormControlLabel
                   control={
-                    <Checkbox checked={priority} onChange={setPriority.bind(this, !priority)} />
+                    <Checkbox
+                      sx={checkboxSX}
+                      checked={priority}
+                      onChange={setPriority.bind(this, !priority)}
+                    />
                   }
                   label='Może być słowem dnia'
                 />
@@ -190,7 +193,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   label='Część mowy'
                   onChange={(e) => {
                     setVariations('');
-                    setSubPartOfSpeech(undefined);
+                    setSubPartOfSpeech('');
                     setPartOfSpeech(e.target.value as PartOfSpeech);
                   }}
                 >
@@ -212,6 +215,9 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   disabled={!subPartOfSpeechOptionList.length}
                   label='Pod część mowy'
                   onChange={(e) => {
+                    setVariations(
+                      JSON.stringify(variationPerSubPart[e.target.value as PartOfSpeechSubType])
+                    );
                     setSubPartOfSpeech(e.target.value as PartOfSpeechSubType);
                   }}
                 >
@@ -265,8 +271,17 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               <h2>Znaczenia</h2>
 
               {meanings.map((m, index) => (
-                <Paper elevation={3} key={index}>
+                <Paper
+                  elevation={3}
+                  key={index}
+                  sx={{ background: 'transparent', margin: '2rem 0' }}
+                >
                   <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <p style={{ margin: '0 1rem', color: COLORS.YELLOW, fontWeight: 'bold' }}>
+                        Znaczenie {index + 1}
+                      </p>
+                    </Grid>
                     <Grid item xs={12}>
                       <TextField
                         fullWidth
@@ -370,6 +385,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                     <Grid item xs={12}>
                       <Button
                         disabled={index === 0}
+                        sx={buttonSX}
                         onClick={() => {
                           if (index !== 0) {
                             const copy = meanings.filter((m, i) => i !== index);
@@ -380,7 +396,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         }}
                       >
                         <Remove />
-                        Remove meaning
+                        Usuń znaczenie
                       </Button>
                     </Grid>
                   </Grid>

@@ -6,13 +6,19 @@ import { Word } from '../../utils/types';
 import Autocomplete from '@mui/material/Autocomplete';
 import { inputSX } from '../../styles/sx';
 
+type Option = {
+  id: number;
+  word: string;
+  normalizedWord: string;
+};
+
 type ACProps = {
   isFullWidth?: boolean;
   label?: string;
   placeholder?: string;
   isMultiple?: boolean;
-  onChangeSingle?: Dispatch<SetStateAction<Partial<Word> | undefined>>;
-  onChangeMultiple?: Dispatch<SetStateAction<Partial<Word>[] | undefined>>;
+  onChangeSingle?: Dispatch<SetStateAction<Option | null>>;
+  onChangeMultiple?: Dispatch<SetStateAction<Array<Option | null>>>;
 };
 
 const AC = ({
@@ -57,9 +63,9 @@ const AC = ({
       }}
       onChange={(e, value) => {
         if (isMultiple && onChangeMultiple) {
-          onChangeMultiple((value as Array<Partial<Word>>) || undefined);
+          onChangeMultiple((value as Array<Option>) || null);
         } else if (!isMultiple && onChangeSingle) {
-          onChangeSingle((value as Partial<Word>) || undefined);
+          onChangeSingle((value as Option) || null);
         }
       }}
       isOptionEqualToValue={(option, value) => option.id === value.id}

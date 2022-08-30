@@ -17,6 +17,7 @@ const SearchBar = ({ setSearch, search, searchForWords, setIsModalOpen }: Search
       <TextField
         sx={inputSX}
         value={search}
+        label='Wyszukaj'
         placeholder='Wyszukaj...'
         onChange={setter.bind(this, setSearch)}
       />

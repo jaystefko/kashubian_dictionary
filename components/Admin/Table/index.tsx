@@ -14,6 +14,7 @@ import {
   iconSX,
   paperSX,
   tableCellSX,
+  tableContainerSX,
   tableHeaderCellSX,
   tableSX,
 } from '../../../styles/sx';
@@ -30,7 +31,7 @@ const AdminTable = ({ data, openModalEditHandler, deleteHandler }: AdminTablePro
     <section style={{ width: '60vw', height: '60vh' }}>
       {data.length ? (
         <Paper sx={paperSX}>
-          <TableContainer>
+          <TableContainer sx={tableContainerSX}>
             <Table sx={tableSX} stickyHeader aria-label='Tablica słów'>
               <TableHead>
                 <TableRow>
