@@ -15,8 +15,6 @@ const WordScreen = ({ word, isKashebian = false }: Props) => {
   const pos = intl.formatMessage({ id: `PARTS_OF_SPEECH.${word.partOfSpeech}` });
   const spos = intl.formatMessage({ id: `SUB_PARTS_OF_SPEECH.${word.partOfSpeechSubType}` });
 
-  console.log('word: ', word);
-
   return (
     <article style={{ scrollbarWidth: 'none', width: '60vw' }}>
       <header>
