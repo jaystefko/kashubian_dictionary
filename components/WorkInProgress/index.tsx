@@ -1,10 +1,11 @@
+import { useIntl } from 'react-intl';
 import styles from './styles.module.css';
 
 const WorkInProgress = ({ is404 = false }) => {
-  const header = is404 ? 'Nie znaleziono strony' : 'Strona w budowie';
-  const main = is404
-    ? 'Nie odnaleźliśmy strony której szukasz.'
-    : 'Przepraszamy za niedogodności. Strona w tym momencie jest w budowie.';
+  const intl = useIntl();
+
+  const header = intl.formatMessage({ id: `wip.${is404 ? '404' : 'not404'}.header` });
+  const main = intl.formatMessage({ id: `wip.${is404 ? '404' : 'not404'}.message` });
 
   return (
     <div className={styles.wholePage}>

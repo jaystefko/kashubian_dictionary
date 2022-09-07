@@ -1,12 +1,34 @@
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import '../styles/global.css';
 import Head from 'next/head';
+import { IntlProvider } from 'react-intl';
+
+import pl from '../lang/pl.json';
+import ka from '../lang/pl.json';
+import en from '../lang/pl.json';
+import de from '../lang/pl.json';
+import uk from '../lang/pl.json';
+
+import { LOCALES } from '../utils/types';
+
+const messages = {
+  pl,
+  ka,
+  en,
+  de,
+  uk,
+};
 
 function App({ Component, pageProps }: AppProps) {
+  let { locale } = useRouter();
+  if (!locale) locale = LOCALES.pl;
+
   return (
-    <>
+    <IntlProvider locale={locale} messages={messages[locale as LOCALES] as Record<any, any>}>
       <Head>
+        <title>lol</title>
         <title>Sloworz - Słownik języka kaszubskiego</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         <link rel='icon' href='/favicon.ico' />
@@ -20,7 +42,7 @@ function App({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </IntlProvider>
   );
 }
 

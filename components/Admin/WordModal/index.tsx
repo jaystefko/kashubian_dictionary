@@ -18,8 +18,8 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { boxSX, buttonSX, checkboxSX, inputSX } from '../../../styles/sx';
 import {
-  PartOfSpeech,
-  PartOfSpeechSubType,
+  PARTS_OF_SPEECH,
+  SUB_PARTS_OF_SPEECH,
   Word,
   subPartPerPart,
   variationPerSubPart,
@@ -53,7 +53,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   const [partOfSpeech, setPartOfSpeech] = useState('');
   const [subPartOfSpeech, setSubPartOfSpeech] = useState('');
   const [subPartOfSpeechOptionList, setSubPartOfSpeechOptionList] = useState<
-    Array<PartOfSpeechSubType>
+    Array<SUB_PARTS_OF_SPEECH>
   >([]);
   const [variations, setVariations] = useState('');
   const [note, setNote] = useState('');
@@ -108,7 +108,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
 
   useEffect(() => {
     if (!partOfSpeech) return;
-    const optionList = subPartPerPart[partOfSpeech as PartOfSpeech];
+    const optionList = subPartPerPart[partOfSpeech as PARTS_OF_SPEECH];
     if (optionList.length === 1) {
       setSubPartOfSpeech(optionList[0]);
       setVariations(JSON.stringify(variationPerSubPart[optionList[0]]));
@@ -126,8 +126,8 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
       let wordObject: Partial<Word> = {
         word: wordString,
         priority: priority,
-        partOfSpeech: partOfSpeech as PartOfSpeech,
-        partOfSpeechSubType: subPartOfSpeech as PartOfSpeechSubType,
+        partOfSpeech: partOfSpeech as PARTS_OF_SPEECH,
+        partOfSpeechSubType: subPartOfSpeech as SUB_PARTS_OF_SPEECH,
         variation: variations.length > 2 ? { variation: JSON.parse(variations) } : null,
         note: note.length ? note : undefined,
         others: others
@@ -196,14 +196,16 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   onChange={(e) => {
                     setVariations('');
                     setSubPartOfSpeech('');
-                    setPartOfSpeech(e.target.value as PartOfSpeech);
+                    setPartOfSpeech(e.target.value as PARTS_OF_SPEECH);
                   }}
                 >
-                  {(Object.keys(PartOfSpeech) as Array<keyof typeof PartOfSpeech>).map((p) => (
-                    <MenuItem key={p} value={p}>
-                      {p}
-                    </MenuItem>
-                  ))}
+                  {(Object.keys(PARTS_OF_SPEECH) as Array<keyof typeof PARTS_OF_SPEECH>).map(
+                    (p) => (
+                      <MenuItem key={p} value={p}>
+                        {p}
+                      </MenuItem>
+                    )
+                  )}
                 </Select>
               </FormControl>
             </Grid>
@@ -218,9 +220,9 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   label='Pod część mowy'
                   onChange={(e) => {
                     setVariations(
-                      JSON.stringify(variationPerSubPart[e.target.value as PartOfSpeechSubType])
+                      JSON.stringify(variationPerSubPart[e.target.value as SUB_PARTS_OF_SPEECH])
                     );
-                    setSubPartOfSpeech(e.target.value as PartOfSpeechSubType);
+                    setSubPartOfSpeech(e.target.value as SUB_PARTS_OF_SPEECH);
                   }}
                 >
                   {subPartOfSpeechOptionList.map((p) => (

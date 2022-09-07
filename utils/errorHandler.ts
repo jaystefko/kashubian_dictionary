@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { ToastFunction } from './types';
+import { TOAST_FUNCTIONS } from './types';
 
-function notify(message: string, type: ToastFunction = ToastFunction.ERROR) {
+function notify(message: string, type: TOAST_FUNCTIONS = TOAST_FUNCTIONS.ERROR) {
   toast[type](message);
 }
 
