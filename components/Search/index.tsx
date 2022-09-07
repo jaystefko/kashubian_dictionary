@@ -21,7 +21,7 @@ const Search = () => {
   }, [value]); // eslint-disable-line
 
   return (
-    <section>
+    <section style={{ width: '100%' }}>
       <AC
         isFullWidth
         label='Wyszukaj'

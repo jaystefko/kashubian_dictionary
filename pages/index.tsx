@@ -7,7 +7,7 @@ const HomeScreen: NextPage = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <DictionaryPanel />
-      <article style={{ display: 'flex', alignItems: 'center' }}>
+      <article style={{ display: 'flex', alignItems: 'center', width: '30vw' }}>
         <Search />
       </article>
       <RightHomePanel />
