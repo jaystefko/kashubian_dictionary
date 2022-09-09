@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getWord } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
-import { Word } from '../../utils/types';
+import { GatheredWord } from '../../utils/types';
 import WorkInProgress from '../WorkInProgress';
 import WordScreen from './Word';
 
@@ -12,7 +12,7 @@ export default function WordScreenWrapper() {
   const id = router.query.id as string;
 
   const [isLoading, setIsLoading] = useState(true);
-  const [word, setWord] = useState<Partial<Word> | null>(null);
+  const [word, setWord] = useState<Partial<GatheredWord> | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -34,7 +34,7 @@ export default function WordScreenWrapper() {
       {isLoading ? (
         <CircularProgress color='warning' />
       ) : word ? (
-        <WordScreen word={word} isKashebian={router.pathname.includes('kashebian')} />
+        <WordScreen word={word} />
       ) : (
         <WorkInProgress is404 />
       )}

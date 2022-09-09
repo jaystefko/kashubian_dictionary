@@ -1,16 +1,11 @@
-import { LOCALES, Word } from '../../utils/types';
+import { GatheredWord } from '../../utils/types';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { useRouter } from 'next/router';
 
 type Props = {
-  word: Partial<Word>;
-  isKashebian?: boolean;
+  word: Partial<GatheredWord>;
 };
 
-const WordScreen = ({ word, isKashebian = false }: Props) => {
-  let { locale } = useRouter();
-  if (!locale) locale = LOCALES.pl;
-
+const WordScreen = ({ word }: Props) => {
   const intl = useIntl();
   const pos = intl.formatMessage({ id: `PARTS_OF_SPEECH.${word.partOfSpeech}` });
   const spos = intl.formatMessage({ id: `SUB_PARTS_OF_SPEECH.${word.partOfSpeechSubType}` });
@@ -24,6 +19,16 @@ const WordScreen = ({ word, isKashebian = false }: Props) => {
           {`${pos} - ${spos}`}
         </p>
       </header>
+      <main>
+        <h3>{intl.formatMessage({ id: 'meanings' })}</h3>
+        {word.meanings?.map((meaning, index) => (
+          <p key={index}>
+            <b>{meaning.translation?.[0].polish}</b> - <span>{meaning.definition}</span>
+          </p>
+        ))}
+        <h3>{intl.formatMessage({ id: 'notes' })}</h3>
+        <p>{word.note}</p>
+      </main>
     </article>
   );
 };

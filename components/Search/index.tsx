@@ -16,7 +16,7 @@ const Search = () => {
 
   useEffect(() => {
     if (value) {
-      router.push(`/word/${isChecked ? 'kashebian/' : ''}${value.id}`);
+      router.push(`/word/${value.id}`);
     }
   }, [value]); // eslint-disable-line
 
@@ -28,10 +28,17 @@ const Search = () => {
         placeholder='Wyszukaj...'
         onChangeSingle={setValue}
         value={null}
+        isKashebian={isChecked}
       />
       <FormGroup>
         <FormControlLabel
-          control={<Switch checked={isChecked} onChange={setIsChecked.bind(this, !isChecked)} />}
+          control={
+            <Switch
+              checked={isChecked}
+              color='warning'
+              onChange={setIsChecked.bind(this, !isChecked)}
+            />
+          }
           label='Wyszukaj po kaszubsku'
         />
       </FormGroup>

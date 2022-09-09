@@ -29,6 +29,7 @@ import {
 import { setter } from '../../../utils/utilities';
 import AC from '../../Autocomplete';
 import defaultMeaning, { MeaningCopy } from './meaning';
+import { FormattedMessage } from 'react-intl';
 
 import styles from './styles.module.css';
 
@@ -202,7 +203,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   {(Object.keys(PARTS_OF_SPEECH) as Array<keyof typeof PARTS_OF_SPEECH>).map(
                     (p) => (
                       <MenuItem key={p} value={p}>
-                        {p}
+                        <FormattedMessage id={p} />
                       </MenuItem>
                     )
                   )}
@@ -227,7 +228,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                 >
                   {subPartOfSpeechOptionList.map((p) => (
                     <MenuItem key={p} value={p}>
-                      {p}
+                      <FormattedMessage id={p} />
                     </MenuItem>
                   ))}
                 </Select>

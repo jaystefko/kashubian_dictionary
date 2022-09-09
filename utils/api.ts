@@ -41,6 +41,25 @@ async function getWordListByString(partial: string, pageLimit = 100) {
   });
 }
 
+async function getTranslatedWordListByString(partial: string, pageLimit = 10) {
+  return axios.post(`${url}graphql`, {
+    query: `
+      {
+        SearchTranslations(page: {start: 1, limit: ${pageLimit}} where: {normalizedPolish : {LIKE : "${partial}"}}) {
+          select{
+            polish(orderBy: ASC)
+            meaning{
+              kashubianEntry{
+                id
+              }
+            }
+          }
+        }
+      }
+    `,
+  });
+}
+
 async function getLastAddedWordList() {
   return axios.post(`${url}graphql`, {
     query: `
@@ -117,4 +136,5 @@ export {
   updateWord,
   deleteWord,
   getBasesAndDerivatives,
+  getTranslatedWordListByString,
 };

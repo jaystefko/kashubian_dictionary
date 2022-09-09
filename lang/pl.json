@@ -34,5 +34,7 @@
   "SUB_PARTS_OF_SPEECH.PLURAL_MASCULINE": "męskoosobowy",
   "SUB_PARTS_OF_SPEECH.PREPOSITION": "przyimek",
   "SUB_PARTS_OF_SPEECH.UNINFLECTIV_ADJECTIVE": "nieodmienialny",
-  "SUB_PARTS_OF_SPEECH.UNINFLECTIV_NUMERAL": "nieodmienialny"
+  "SUB_PARTS_OF_SPEECH.UNINFLECTIV_NUMERAL": "nieodmienialny",
+  "meanings": "Znaczenia",
+  "notes": "Notatki"
 }
