@@ -23,7 +23,7 @@ const WordScreen = ({ word }: Props) => {
         <h3>{intl.formatMessage({ id: 'meanings' })}</h3>
         {word.meanings?.map((meaning, index) => (
           <p key={index}>
-            <b>{meaning.translation?.[0].polish}</b> - <span>{meaning.definition}</span>
+            <b>{meaning.translation?.[0]?.polish}</b> - <span>{meaning?.definition}</span>
           </p>
         ))}
         <h3>{intl.formatMessage({ id: 'notes' })}</h3>

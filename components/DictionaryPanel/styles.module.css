@@ -1,4 +1,14 @@
 .article {
   height: calc(100vh - 160px);
-  width: 15vw;
+  width: 237px;
+  overflow-y: auto;
+}
+
+.article::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.article::-webkit-scrollbar-thumb {
+  background: var(--font-color);
+  border-radius: 2px;
 }

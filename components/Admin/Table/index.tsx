@@ -15,10 +15,9 @@ import {
   paperSX,
   tableCellSX,
   tableContainerSX,
-  tableHeaderCellSX,
   tableSX,
 } from '../../../styles/sx';
-import { Word } from '../../../utils/types';
+import { COLORS, Word } from '../../../utils/types';
 
 type AdminTableProps = {
   data: Array<Partial<Word>>;
@@ -35,11 +34,11 @@ const AdminTable = ({ data, openModalEditHandler, deleteHandler }: AdminTablePro
             <Table sx={tableSX} stickyHeader aria-label='Tablica słów'>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={tableHeaderCellSX}>Słowo</TableCell>
-                  <TableCell sx={tableHeaderCellSX} align='right'>
+                  <TableCell style={{ color: 'black', background: COLORS.YELLOW }}>Słowo</TableCell>
+                  <TableCell align='right' style={{ color: 'black', background: COLORS.YELLOW }}>
                     Edycja
                   </TableCell>
-                  <TableCell sx={tableHeaderCellSX} align='right'>
+                  <TableCell align='right' style={{ color: 'black', background: COLORS.YELLOW }}>
                     Usunięcie
                   </TableCell>
                 </TableRow>

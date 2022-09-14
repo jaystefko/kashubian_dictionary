@@ -28,7 +28,6 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <IntlProvider locale={locale} messages={messages[locale as LOCALES] as Record<any, any>}>
       <Head>
-        <title>lol</title>
         <title>Sloworz - Słownik języka kaszubskiego</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         <link rel='icon' href='/favicon.ico' />

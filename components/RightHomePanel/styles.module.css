@@ -1,7 +1,13 @@
 .article {
   height: calc(100vh - 160px);
-  width: 15vw;
+  width: 21vw;
+  min-width: 247px;
+  margin: 0 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.link {
+  cursor: pointer;
 }
