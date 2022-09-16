@@ -38,5 +38,14 @@
   "meanings": "Znaczenia",
   "notes": "Notatki",
   "lastAddedWords": "Ostatnio dodane słowa",
-  "wordOfADay": "Słowo dnia"
+  "wordOfADay": "Słowo dnia",
+  "topMenu.about": "O słowniku",
+  "topMenu.foundation": "Fundacja Kaszuby",
+  "topMenu.lessons": "Lekcje",
+  "topMenu.comments": "Zgłoś uwagi",
+  "topMenu.fb": "Facebook fundacji",
+  "topMenu.instagram": "Instagram fundacji",
+  "topMenu.tweeter": "Tweeter fundacji",
+  "topMenu.howTo": "Zasady serwisu",
+  "topMenu.startPage": "Strona główna"
 }
