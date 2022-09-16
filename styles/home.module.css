@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 500px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 550px) {
+  .searchContainer {
+    max-width: 90%;
+  }
+}

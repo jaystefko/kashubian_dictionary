@@ -1,29 +1,27 @@
 import { createTheme } from '@mui/material/styles';
-
-const kashebianYellow = '#fdcd01';
-const backgroundGray = '#404040';
+import { COLORS } from '../utils/types';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: kashebianYellow,
+      main: COLORS.YELLOW,
       contrastText: 'white',
     },
     secondary: {
-      main: backgroundGray,
+      main: COLORS.GRAY,
       contrastText: 'black',
     },
     background: {
       default: 'transparent',
-      paper: backgroundGray,
+      paper: COLORS.GRAY,
     },
     text: {
-      primary: kashebianYellow,
+      primary: COLORS.YELLOW,
       secondary: '#ffbf00',
       disabled: 'lightgray',
     },
     warning: {
-      main: kashebianYellow,
+      main: COLORS.YELLOW,
       contrastText: 'white',
     },
   },

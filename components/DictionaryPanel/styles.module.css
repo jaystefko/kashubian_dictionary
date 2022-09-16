@@ -12,3 +12,9 @@
   background: var(--font-color);
   border-radius: 2px;
 }
+
+@media (max-width: 1200px) {
+  .article {
+    display: none;
+  }
+}

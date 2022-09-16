@@ -2,12 +2,13 @@ import type { NextPage } from 'next';
 import DictionaryPanel from '../components/DictionaryPanel';
 import RightHomePanel from '../components/RightHomePanel';
 import Search from '../components/Search';
+import styles from '../styles/home.module.css';
 
 const HomeScreen: NextPage = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div className={styles.container}>
       <DictionaryPanel />
-      <article style={{ display: 'flex', alignItems: 'center', width: '30vw' }}>
+      <article className={styles.searchContainer}>
         <Search />
       </article>
       <RightHomePanel />
