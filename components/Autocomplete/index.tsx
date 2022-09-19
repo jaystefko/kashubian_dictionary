@@ -55,13 +55,13 @@ const AC = ({
             word: translation.polish,
             id: translation.meaning.kashubianEntry.id,
             key: translation.meaning.kashubianEntry.id,
-          }))
+          })) || []
         );
       } else {
         response = searchBy
           ? await getWordListByString(searchBy, pageLimit)
           : await getWordList(pageLimit);
-        setOptionList(response.data?.data?.SearchKashubianEntries?.select);
+        setOptionList(response.data?.data?.SearchKashubianEntries?.select || []);
       }
     } catch (error) {
       errorHandler(error);

@@ -47,7 +47,7 @@ const AdminScreen: NextPage = () => {
         localStorage.setItem('auth', JSON.stringify(auth));
         setIsLoading(true);
         const response = await getWordList();
-        setData(response.data?.data?.SearchKashubianEntries?.select);
+        setData(response.data?.data?.SearchKashubianEntries?.select || []);
       } catch (error) {
         errorHandler(error);
       } finally {
@@ -64,7 +64,7 @@ const AdminScreen: NextPage = () => {
         toast.success(`Słowo "${word}" zostało usunięte`);
         setIsLoading(true);
         const response = await getWordList();
-        setData(response.data?.data?.SearchKashubianEntries?.select);
+        setData(response.data?.data?.SearchKashubianEntries?.select || []);
         setIsLoading(false);
       } catch (error) {
         errorHandler(error);
@@ -77,7 +77,8 @@ const AdminScreen: NextPage = () => {
     try {
       const response = await getWord(id);
       const base = await getBasesAndDerivatives(id);
-      let newWord: Partial<GatheredWord> = response.data?.data?.SearchKashubianEntry!;
+      let newWord: Partial<GatheredWord> = response.data?.data?.SearchKashubianEntry;
+      if (!newWord) return;
       if (base.data.bases.length) {
         newWord.base = {
           id: base.data.bases[0].entryId,
@@ -97,9 +98,9 @@ const AdminScreen: NextPage = () => {
     try {
       setIsLoading(true);
       const response = await getWordListByString(searchBy);
-      setData(response.data?.data?.SearchKashubianEntries?.select);
-      if (!response.data?.data?.SearchKashubianEntries?.select?.length)
-        toast.info('Nie znaleziono odpowiednich słów');
+      const newData = response.data?.data?.SearchKashubianEntries?.select || [];
+      setData(newData);
+      if (!newData.length) toast.info('Nie znaleziono odpowiednich słów');
     } catch (error) {
       errorHandler(error);
     } finally {
@@ -118,7 +119,7 @@ const AdminScreen: NextPage = () => {
       }
       setIsModalOpen(false);
       const response = await getWordList();
-      setData(response.data?.data?.SearchKashubianEntries?.select);
+      setData(response.data?.data?.SearchKashubianEntries?.select || []);
     } catch (error) {
       errorHandler(error);
     }

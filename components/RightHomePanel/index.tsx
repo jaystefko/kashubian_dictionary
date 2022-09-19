@@ -20,7 +20,7 @@ const RightHomePanel = () => {
       try {
         const wordOfADayResponse = await getWordOfADay();
         const lastAddedWordListResponse = await getLastAddedWordList();
-        setLastWordList(lastAddedWordListResponse.data.data.SearchKashubianEntries.select);
+        setLastWordList(lastAddedWordListResponse.data.data.SearchKashubianEntries?.select || []);
         setWordOfADay(wordOfADayResponse.data);
       } catch (error) {
         errorHandler(error);
