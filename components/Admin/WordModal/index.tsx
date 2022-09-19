@@ -108,7 +108,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   }, [word]);
 
   useEffect(() => {
-    if (!partOfSpeech || word) return;
+    if (!partOfSpeech) return;
     const optionList = subPartPerPart[partOfSpeech as PARTS_OF_SPEECH];
     if (optionList.length === 1) {
       setSubPartOfSpeech(optionList[0]);
