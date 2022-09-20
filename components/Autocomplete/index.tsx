@@ -61,7 +61,7 @@ const AC = ({
         response = searchBy
           ? await getWordListByString(searchBy, pageLimit)
           : await getWordList(pageLimit);
-        setOptionList(response.data?.data?.SearchKashubianEntries?.select || []);
+        setOptionList(response.data?.data?.findAllKashubianEntries?.select || []);
       }
     } catch (error) {
       errorHandler(error);

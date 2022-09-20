@@ -47,7 +47,7 @@ const AdminScreen: NextPage = () => {
         localStorage.setItem('auth', JSON.stringify(auth));
         setIsLoading(true);
         const response = await getWordList();
-        setData(response.data?.data?.SearchKashubianEntries?.select || []);
+        setData(response.data?.data?.findAllKashubianEntries?.select || []);
       } catch (error) {
         errorHandler(error);
       } finally {
@@ -64,7 +64,7 @@ const AdminScreen: NextPage = () => {
         toast.success(`Słowo "${word}" zostało usunięte`);
         setIsLoading(true);
         const response = await getWordList();
-        setData(response.data?.data?.SearchKashubianEntries?.select || []);
+        setData(response.data?.data?.findAllKashubianEntries?.select || []);
         setIsLoading(false);
       } catch (error) {
         errorHandler(error);
@@ -98,7 +98,7 @@ const AdminScreen: NextPage = () => {
     try {
       setIsLoading(true);
       const response = await getWordListByString(searchBy);
-      const newData = response.data?.data?.SearchKashubianEntries?.select || [];
+      const newData = response.data?.data?.findAllKashubianEntries?.select || [];
       setData(newData);
       if (!newData.length) toast.info('Nie znaleziono odpowiednich słów');
     } catch (error) {
@@ -119,7 +119,7 @@ const AdminScreen: NextPage = () => {
       }
       setIsModalOpen(false);
       const response = await getWordList();
-      setData(response.data?.data?.SearchKashubianEntries?.select || []);
+      setData(response.data?.data?.findAllKashubianEntries?.select || []);
     } catch (error) {
       errorHandler(error);
     }

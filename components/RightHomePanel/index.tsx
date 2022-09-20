@@ -20,7 +20,9 @@ const RightHomePanel = () => {
       try {
         const wordOfADayResponse = await getWordOfADay();
         const lastAddedWordListResponse = await getLastAddedWordList();
-        setLastWordList(lastAddedWordListResponse.data.data.SearchKashubianEntries?.select || []);
+        setLastWordList(
+          lastAddedWordListResponse.data?.data?.findAllKashubianEntries?.select || []
+        );
         setWordOfADay(wordOfADayResponse.data);
       } catch (error) {
         errorHandler(error);
@@ -82,19 +84,23 @@ const RightHomePanel = () => {
         </Menu>
       </section>
       <section>
-        <Link href={`word/${wordOfADay?.entryId}`} className={styles.link}>
-          <Card>
-            <CardContent>
-              <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
-                <FormattedMessage id='wordOfADay' />
-              </Typography>
-              <Typography variant='h5' component='div'>
-                {wordOfADay?.word}
-              </Typography>
-              <Typography variant='body2'>{wordOfADay?.definitions[0] || ''}</Typography>
-            </CardContent>
-          </Card>
-        </Link>
+        {wordOfADay ? (
+          <Link href={`word/${wordOfADay?.entryId}`} className={styles.link}>
+            <Card>
+              <CardContent>
+                <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
+                  <FormattedMessage id='wordOfADay' />
+                </Typography>
+                <Typography variant='h5' component='div'>
+                  {wordOfADay?.word}
+                </Typography>
+                <Typography variant='body2'>{wordOfADay?.definitions[0] || ''}</Typography>
+              </CardContent>
+            </Card>
+          </Link>
+        ) : (
+          ''
+        )}
       </section>
     </article>
   );

@@ -13,7 +13,7 @@ const DictionaryPanel = () => {
     (async () => {
       try {
         const response = await getWordList(1000);
-        setWordList(response.data?.data?.SearchKashubianEntries?.select || []);
+        setWordList(response.data?.data?.findAllKashubianEntries?.select || []);
       } catch (error) {
         errorHandler(error);
       }
