@@ -17,10 +17,10 @@ import {
   tableContainerSX,
   tableSX,
 } from '../../../styles/sx';
-import { COLORS, Word } from '../../../utils/types';
+import { COLORS, GatheredWord } from '../../../utils/types';
 
 type AdminTableProps = {
-  data: Array<Partial<Word>>;
+  data: Array<Partial<GatheredWord>>;
   openModalEditHandler: (id: number) => void;
   deleteHandler: (id: number, word: string) => void;
 };

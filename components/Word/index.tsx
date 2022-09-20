@@ -19,7 +19,7 @@ export default function WordScreenWrapper() {
       if (id) {
         try {
           const response = await getWord(Number(id));
-          setWord(response.data.data.SearchKashubianEntry);
+          setWord(response.data.data.findKashubianEntry);
         } catch (error) {
           errorHandler(error);
         } finally {

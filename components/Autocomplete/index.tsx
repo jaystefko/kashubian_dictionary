@@ -51,10 +51,10 @@ const AC = ({
           ? await getTranslatedWordListByString(searchBy, pageLimit)
           : await getTranslatedWordListByString('', pageLimit);
         setOptionList(
-          response.data?.data?.SearchTranslations?.select?.map((translation: any) => ({
-            word: translation.polish,
-            id: translation.meaning.kashubianEntry.id,
-            key: translation.meaning.kashubianEntry.id,
+          response.data?.data?.findAllKashubianEntries?.select?.map((translation: any) => ({
+            word: translation.word,
+            id: translation.id,
+            key: translation.id,
           })) || []
         );
       } else {

@@ -129,7 +129,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
         priority: priority,
         partOfSpeech: partOfSpeech as PARTS_OF_SPEECH,
         partOfSpeechSubType: subPartOfSpeech as SUB_PARTS_OF_SPEECH,
-        variation: variations.length > 2 ? { variation: JSON.parse(variations) } : null,
+        variation: variations.length > 2 ? JSON.parse(variations) : null,
         note: note.length ? note : undefined,
         others: others
           ?.map((x) => ({ entryId: x?.id || -1, note: x?.word || '' }))
@@ -188,12 +188,13 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
-                <InputLabel id='partOfSpeech'>Część mowy</InputLabel>
+                <InputLabel id='partOfSpeech'>Część mowy *</InputLabel>
                 <Select
                   labelId='partOfSpeech'
                   sx={inputSX}
                   value={partOfSpeech}
                   label='Część mowy'
+                  required
                   onChange={(e) => {
                     setVariations('');
                     setSubPartOfSpeech('');
@@ -212,12 +213,13 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
-                <InputLabel id='subPartOfSpeech'>Pod część mowy</InputLabel>
+                <InputLabel id='subPartOfSpeech'>Pod część mowy *</InputLabel>
                 <Select
                   labelId='subPartOfSpeech'
                   sx={inputSX}
                   value={subPartOfSpeech}
                   disabled={!subPartOfSpeechOptionList.length}
+                  required
                   label='Pod część mowy'
                   onChange={(e) => {
                     setVariations(

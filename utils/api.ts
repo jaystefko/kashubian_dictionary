@@ -13,7 +13,7 @@ async function getWordList(pageLimit = 100) {
   return axios.post(`${url}graphql`, {
     query: `
       {
-        findAllKashubianEntries(page: { start: 1, limit: ${pageLimit} }) {
+        findAllKashubianEntries(page: { start: 0, limit: ${pageLimit} }) {
           select {
             id,
             word,
@@ -30,7 +30,7 @@ async function getWordListByString(partial: string, pageLimit = 100) {
     query: `
     {
       findAllKashubianEntries(
-        page: {start: 1, limit: ${pageLimit}}
+        page: {start: 0, limit: ${pageLimit}}
         where: {normalizedWord: {BY_NORMALIZED: "${partial}"}}
       ) {
         select {
@@ -49,7 +49,7 @@ async function getTranslatedWordListByString(partial: string, pageLimit = 10) {
     query: `
     {
       findAllKashubianEntries(
-        page: {start: 1, limit: ${pageLimit}}
+        page: {start: 0, limit: ${pageLimit}}
         where: {meanings: {translation: {normalizedPolish: {BY_NORMALIZED: "${partial}"}}}}
       ) {
         select {
@@ -67,7 +67,7 @@ async function getLastAddedWordList() {
   return axios.post(`${url}graphql`, {
     query: `
       {
-        findAllKashubianEntries(page: { start: 1, limit: 5 }) {
+        findAllKashubianEntries(page: { start: 0, limit: 5 }) {
           total,
           pages,
           select {
@@ -91,6 +91,9 @@ async function getWord(id: number) {
           partOfSpeechSubType,
           variation,
           note,
+          base {
+            id, word
+          }
           others { other { id, word } },
           meanings {
             id,
@@ -125,10 +128,6 @@ async function deleteWord(id: number, auth: BasicAuth) {
   return axios.delete(`${url}kashubian-entry/${id}`, getAxiosRequestConfig(auth));
 }
 
-async function getBasesAndDerivatives(id: number) {
-  return axios.get(`${url}custom-query/bases-and-derivatives/${id}`);
-}
-
 export {
   getWordList,
   getWordListByString,
@@ -138,6 +137,5 @@ export {
   createWord,
   updateWord,
   deleteWord,
-  getBasesAndDerivatives,
   getTranslatedWordListByString,
 };

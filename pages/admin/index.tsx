@@ -8,7 +8,6 @@ import {
   getWordList,
   getWordListByString,
   updateWord,
-  getBasesAndDerivatives,
 } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { BasicAuth, GatheredWord, Word } from '../../utils/types';
@@ -23,7 +22,7 @@ import AdminTable from '../../components/Admin/Table';
 const AdminScreen: NextPage = () => {
   const [auth, setAuth] = useState<BasicAuth>();
   const [search, setSearch] = useState('');
-  const [data, setData] = useState<Array<Partial<Word>>>([]);
+  const [data, setData] = useState<Array<Partial<GatheredWord>>>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [wordId, setWordId] = useState(-1);
   const [word, setWord] = useState<Partial<GatheredWord>>();
@@ -76,16 +75,8 @@ const AdminScreen: NextPage = () => {
     if (id === -1) return;
     try {
       const response = await getWord(id);
-      const base = await getBasesAndDerivatives(id);
-      let newWord: Partial<GatheredWord> = response.data?.data?.SearchKashubianEntry;
+      let newWord: Partial<GatheredWord> = response.data?.data?.findKashubianEntry;
       if (!newWord) return;
-      if (base.data.bases.length) {
-        newWord.base = {
-          id: base.data.bases[0].entryId,
-          word: base.data.bases[0].word,
-          normalizedWord: base.data.bases[0].normalizedWord,
-        };
-      }
       setWordId(id);
       setWord(newWord);
       setIsModalOpen(true);

@@ -7,7 +7,6 @@ type WordOfADay = {
 };
 
 type Word = {
-  id: number;
   base: number;
   meanings: Array<Partial<Meaning>>;
   note: string;
@@ -18,41 +17,21 @@ type Word = {
   partOfSpeech: PARTS_OF_SPEECH;
   partOfSpeechSubType: SUB_PARTS_OF_SPEECH;
   priority: boolean;
-  variation:
-    | {
-        variation: {
-          nounVariation: {
-            accusative: string;
-            accusativePlural: string;
-            dative: string;
-            dativePlural: string;
-            genitive: string;
-            genitivePlural: string;
-            instrumental: string;
-            instrumentalPlural: string;
-            locative: string;
-            locativePlural: string;
-            nominative: string;
-            nominativePlural: string;
-            vocative: string;
-            vocativePlural: string;
-          };
-        };
-      }
-    | null
-    | undefined;
+  variation: any;
   word: string;
 };
 
 type GatheredWord = {
   id: number;
+  note: string;
+  word: string;
+  normalizedWord: string;
+  variation: any;
   base: {
     id: number;
     word: string;
     normalizedWord: string;
   };
-  meanings: Array<Partial<GatheredMeaning>>;
-  note: string;
   others: Array<{
     other: {
       id: number;
@@ -60,32 +39,10 @@ type GatheredWord = {
       word: string;
     };
   }>;
+  meanings: Array<Partial<GatheredMeaning>>;
   partOfSpeech: PARTS_OF_SPEECH;
   partOfSpeechSubType: SUB_PARTS_OF_SPEECH;
   priority: boolean;
-  variation: [
-    {
-      variation: {
-        nounVariation: {
-          accusative: string;
-          accusativePlural: string;
-          dative: string;
-          dativePlural: string;
-          genitive: string;
-          genitivePlural: string;
-          instrumental: string;
-          instrumentalPlural: string;
-          locative: string;
-          locativePlural: string;
-          nominative: string;
-          nominativePlural: string;
-          vocative: string;
-          vocativePlural: string;
-        };
-      };
-    }
-  ];
-  word: string;
 };
 
 export type { Word, GatheredWord, WordOfADay };
