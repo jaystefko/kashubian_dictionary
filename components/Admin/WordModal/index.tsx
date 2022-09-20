@@ -12,6 +12,7 @@ import {
   Modal,
   Paper,
   Select,
+  SelectChangeEvent,
   TextField,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -98,24 +99,15 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     setHeader('Edytuj słowo');
     setWordString(word.word!);
     setPriority(Boolean(word.priority));
-    setPartOfSpeech(word?.partOfSpeech || '');
-    setSubPartOfSpeech(word?.partOfSpeechSubType || '');
+    setPartOfSpeech(word.partOfSpeech!);
+    setSubPartOfSpeech(word.partOfSpeechSubType!);
     setVariations(word?.variation ? JSON.stringify(word.variation) : '{}');
     setNote(word?.note || '');
     setBase(word?.base || null);
     setOthers(otherList || []);
     setMeanings(meaningList || []);
+    setSPOSOptionList(word.partOfSpeech!, false);
   }, [word]);
-
-  useEffect(() => {
-    if (!partOfSpeech) return;
-    const optionList = subPartPerPart[partOfSpeech as PARTS_OF_SPEECH];
-    if (optionList.length === 1) {
-      setSubPartOfSpeech(optionList[0]);
-      setVariations(JSON.stringify(variationPerSubPart[optionList[0]]));
-    }
-    setSubPartOfSpeechOptionList(optionList);
-  }, [partOfSpeech]); // eslint-disable-line
 
   function onSave() {
     try {
@@ -165,6 +157,25 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     }
   }
 
+  function setSPOSOptionList(pos: PARTS_OF_SPEECH, isVariationsIncluded = true) {
+    const optionList = subPartPerPart[pos];
+
+    if (optionList.length === 1) {
+      setSubPartOfSpeech(optionList[0]);
+      if (isVariationsIncluded) setVariations(JSON.stringify(variationPerSubPart[optionList[0]]));
+    } else if (isVariationsIncluded) {
+      setVariations('{}');
+      setSubPartOfSpeech('');
+    }
+
+    setSubPartOfSpeechOptionList(optionList);
+  }
+
+  function partOfSpeechChangeHandler(e: SelectChangeEvent<string>) {
+    setPartOfSpeech(e.target.value as PARTS_OF_SPEECH);
+    setSPOSOptionList(e.target.value as PARTS_OF_SPEECH);
+  }
+
   return (
     <Modal open={isModalOpen}>
       <Box sx={boxSX}>
@@ -206,16 +217,12 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   value={partOfSpeech}
                   label='Część mowy'
                   required
-                  onChange={(e) => {
-                    setVariations('');
-                    setSubPartOfSpeech('');
-                    setPartOfSpeech(e.target.value as PARTS_OF_SPEECH);
-                  }}
+                  onChange={partOfSpeechChangeHandler}
                 >
                   {(Object.keys(PARTS_OF_SPEECH) as Array<keyof typeof PARTS_OF_SPEECH>).map(
                     (p) => (
                       <MenuItem key={p} value={p}>
-                        <FormattedMessage id={p} />
+                        <FormattedMessage id={`PARTS_OF_SPEECH.${p}`} />
                       </MenuItem>
                     )
                   )}
@@ -241,7 +248,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                 >
                   {subPartOfSpeechOptionList.map((p) => (
                     <MenuItem key={p} value={p}>
-                      <FormattedMessage id={p} />
+                      <FormattedMessage id={`SUB_PARTS_OF_SPEECH.${p}`} />
                     </MenuItem>
                   ))}
                 </Select>
