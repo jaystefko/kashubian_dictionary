@@ -94,7 +94,7 @@ async function getWord(id: number) {
           base {
             id, word
           }
-          others { other { id, word } },
+          others { id, note, other { id, word }},
           meanings {
             id,
             definition,

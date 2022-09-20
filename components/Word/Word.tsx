@@ -1,5 +1,5 @@
 import { GatheredWord } from '../../utils/types';
-import { useIntl, FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 type Props = {
   word: Partial<GatheredWord>;
@@ -14,16 +14,13 @@ const WordScreen = ({ word }: Props) => {
     <article style={{ scrollbarWidth: 'none', width: '60vw' }}>
       <header>
         <h1>{word.word}</h1>
-        <p>
-          <FormattedMessage id={`PARTS_OF_SPEECH.${word.partOfSpeech}`} />
-          {`${pos} - ${spos}`}
-        </p>
+        <p>{`${pos} - ${spos}`}</p>
       </header>
       <main>
         <h3>{intl.formatMessage({ id: 'meanings' })}</h3>
         {word.meanings?.map((meaning, index) => (
           <p key={index}>
-            <b>{meaning.translation?.[0]?.polish}</b> - <span>{meaning?.definition}</span>
+            <b>{meaning.translation?.polish}</b> - <span>{meaning?.definition}</span>
           </p>
         ))}
         <h3>{intl.formatMessage({ id: 'notes' })}</h3>

@@ -83,16 +83,16 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     const otherList = word?.others?.map((o) => ({
       id: o.other.id,
       word: o.other.word,
-      normalizedWord: o.other.normalizedWord,
+      normalizedWord: o.note,
     }));
 
     const meaningList = word?.meanings?.map((m) => ({
       definition: m.definition || '',
       origin: m.origin || '',
-      translationEN: m?.translation?.length ? m?.translation[0].english : '' || '',
-      translationGE: m?.translation?.length ? m?.translation[0].german : '' || '',
-      translationPL: m?.translation?.length ? m?.translation[0].polish : '' || '',
-      translationUK: m?.translation?.length ? m?.translation[0].ukrainian : '' || '',
+      translationEN: m?.translation?.english || '',
+      translationGE: m?.translation?.german || '',
+      translationPL: m?.translation?.polish || '',
+      translationUK: m?.translation?.ukrainian || '',
     }));
 
     setHeader('Edytuj słowo');
@@ -100,7 +100,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     setPriority(Boolean(word.priority));
     setPartOfSpeech(word?.partOfSpeech || '');
     setSubPartOfSpeech(word?.partOfSpeechSubType || '');
-    setVariations(word?.variation?.length ? JSON.stringify(word.variation[0].variation) : '{}');
+    setVariations(word?.variation ? JSON.stringify(word.variation) : '{}');
     setNote(word?.note || '');
     setBase(word?.base || null);
     setOthers(otherList || []);
@@ -119,8 +119,19 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
 
   function onSave() {
     try {
+      const meaningCheck = meanings.filter((m) => m.definition && m.translationPL);
       if (!wordString) {
         toast.error('Proszę podać słowo kaszubskie');
+        return;
+      }
+      if (!(partOfSpeech && subPartOfSpeech)) {
+        toast.error('Proszę wpisać część i pod część mowy');
+        return;
+      }
+      if (!meaningCheck.length) {
+        toast.error(
+          'Słowo musi posiadać przynajmniej 1 znaczenie z wypełnioną definicją i tłumaczeniem PL'
+        );
         return;
       }
 
@@ -134,10 +145,10 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
         others: others
           ?.map((x) => ({ entryId: x?.id || -1, note: x?.word || '' }))
           .filter((x) => x),
-        base: base?.id,
+        base: base?.id ? Number(base?.id) : undefined,
         meanings: meanings.map((m) => ({
           definition: m.definition || '',
-          origin: m.origin || '',
+          origin: m.origin,
           translation: {
             english: m.translationEN || '',
             german: m.translationGE || '',
@@ -149,7 +160,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
 
       saveHandler(wordObject, wordId);
     } catch (error) {
-      toast.error('Formatowanie podanych wariacji są niepoprawne');
+      toast.error('Formatowanie podanych wariacji jest niepoprawne');
       return;
     }
   }

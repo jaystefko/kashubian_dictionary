@@ -1,4 +1,10 @@
-interface MeaningOG {
+interface Meaning {
+  translation: {
+    english: string;
+    german: string;
+    polish: string;
+    ukrainian: string;
+  };
   antonyms: Array<{
     meaningId: number;
     note: string;
@@ -28,24 +34,4 @@ interface MeaningOG {
   }>;
 }
 
-interface Meaning extends MeaningOG {
-  translation: {
-    english: string;
-    german: string;
-    polish: string;
-    ukrainian: string;
-  };
-}
-
-interface GatheredMeaning extends MeaningOG {
-  translation: [
-    {
-      english: string;
-      german: string;
-      polish: string;
-      ukrainian: string;
-    }
-  ];
-}
-
-export type { Meaning, GatheredMeaning };
+export type { Meaning };
