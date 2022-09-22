@@ -152,6 +152,8 @@
   "passiveAdjectiveParticipleVariationsFirst": "Odmiana imiesłowu przymiotnikowego biernego (1)",
   "passiveAdjectiveParticipleSecond": "Imiesłów przymiotnikowy bierny (2)",
   "passiveAdjectiveParticipleVariationsSecond": "Odmiana imiesłowu przymiotnikowego biernego (2)",
+  "PERFECT": "dokonany",
+  "IMPERFECTIVE": "niedokonany",
   "meanings": "Znaczenia",
   "notes": "Notatki",
   "lastAddedWords": "Ostatnio dodane słowa",

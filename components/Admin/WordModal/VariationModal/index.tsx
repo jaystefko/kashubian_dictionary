@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Modal, TextField } from '@mui/material';
+import { Box, Button, Grid, MenuItem, Modal, Select, TextField } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { boxSX, inputSX } from '../../../../styles/sx';
@@ -31,6 +31,29 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
             {Object.keys(v).map((key, index) => {
               // @ts-ignore
               if (typeof v[key] === 'string') {
+                if (key === 'gerundiumGrammaticalType') {
+                  return (
+                    <Grid item xs={12} key={index}>
+                      <Select
+                        fullWidth
+                        sx={inputSX}
+                        // @ts-ignore
+                        value={v[key]}
+                        label={intl.formatMessage({ id: key })}
+                        required
+                        // @ts-ignore
+                        onChange={(e) => setV({ ...v, [key]: e.target.value })}
+                      >
+                        <MenuItem value={'PERFECT'}>
+                          {intl.formatMessage({ id: 'PERFECT' })}
+                        </MenuItem>
+                        <MenuItem value={'IMPERFECTIVE'}>
+                          {intl.formatMessage({ id: 'IMPERFECTIVE' })}
+                        </MenuItem>
+                      </Select>
+                    </Grid>
+                  );
+                }
                 return (
                   <Grid item xs={12} key={index}>
                     <TextField

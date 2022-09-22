@@ -275,7 +275,7 @@ export const ConjugationVartation = {
   contemporaryAdverbialParticiple: '',
   priorAdverbialParticiple: '',
   gerundium: '',
-  gerundiumGrammaticalType: '',
+  gerundiumGrammaticalType: 'PERFECT',
   gerundiumVariations: {
     nominative: '',
     genitive: '',
