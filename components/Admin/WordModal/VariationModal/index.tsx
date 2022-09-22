@@ -82,6 +82,7 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
                   childList.push(
                     <Grid item xs={6} key={`${index}.${i}`}>
                       <TextField
+                        fullWidth
                         sx={inputSX}
                         // @ts-ignore
                         value={v[key][k]}
