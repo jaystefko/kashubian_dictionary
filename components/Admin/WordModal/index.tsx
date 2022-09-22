@@ -33,6 +33,7 @@ import defaultMeaning, { MeaningCopy } from './meaning';
 import { FormattedMessage } from 'react-intl';
 
 import styles from './styles.module.css';
+import VariationModal from './VariationModal';
 
 type WordModalProps = {
   isModalOpen: boolean;
@@ -57,11 +58,12 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   const [subPartOfSpeechOptionList, setSubPartOfSpeechOptionList] = useState<
     Array<SUB_PARTS_OF_SPEECH>
   >([]);
-  const [variations, setVariations] = useState('');
+  const [variations, setVariations] = useState<Object | null>(null);
   const [note, setNote] = useState('');
   const [base, setBase] = useState<Option | null>(null);
   const [others, setOthers] = useState<Array<Option | null>>([]);
   const [meanings, setMeanings] = useState<Array<Partial<MeaningCopy>>>([{ ...defaultMeaning }]);
+  const [isVariationModalOpen, setIsVariationModalOpen] = useState(false);
 
   useEffect(() => {
     if (!isModalOpen) {
@@ -70,7 +72,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
       setPriority(true);
       setPartOfSpeech('');
       setSubPartOfSpeech('');
-      setVariations('');
+      setVariations(null);
       setNote('');
       setBase(null);
       setOthers([]);
@@ -101,7 +103,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     setPriority(Boolean(word.priority));
     setPartOfSpeech(word.partOfSpeech!);
     setSubPartOfSpeech(word.partOfSpeechSubType!);
-    setVariations(word?.variation ? JSON.stringify(word.variation) : '{}');
+    setVariations(word?.variation || null);
     setNote(word?.note || '');
     setBase(word?.base || null);
     setOthers(otherList || []);
@@ -132,7 +134,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
         priority: priority,
         partOfSpeech: partOfSpeech as PARTS_OF_SPEECH,
         partOfSpeechSubType: subPartOfSpeech as SUB_PARTS_OF_SPEECH,
-        variation: variations.length > 2 ? JSON.parse(variations) : null,
+        variation: variations,
         note: note.length ? note : undefined,
         others: others
           ?.map((x) => ({ entryId: x?.id || -1, note: x?.word || '' }))
@@ -162,13 +164,18 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
 
     if (optionList.length === 1) {
       setSubPartOfSpeech(optionList[0]);
-      if (isVariationsIncluded) setVariations(JSON.stringify(variationPerSubPart[optionList[0]]));
+      if (isVariationsIncluded) setVariations(variationPerSubPart[optionList[0]]);
     } else if (isVariationsIncluded) {
-      setVariations('{}');
+      setVariations(null);
       setSubPartOfSpeech('');
     }
 
     setSubPartOfSpeechOptionList(optionList);
+  }
+
+  function variationSaveHandler(v: Object | null) {
+    setVariations(v);
+    setIsVariationModalOpen(false);
   }
 
   function partOfSpeechChangeHandler(e: SelectChangeEvent<string>) {
@@ -240,9 +247,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   required
                   label='Pod część mowy'
                   onChange={(e) => {
-                    setVariations(
-                      JSON.stringify(variationPerSubPart[e.target.value as SUB_PARTS_OF_SPEECH])
-                    );
+                    setVariations(variationPerSubPart[e.target.value as SUB_PARTS_OF_SPEECH]);
                     setSubPartOfSpeech(e.target.value as SUB_PARTS_OF_SPEECH);
                   }}
                 >
@@ -255,14 +260,14 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                fullWidth
-                sx={inputSX}
-                value={variations}
-                disabled={variations.length < 3}
-                placeholder='Odmiana...'
-                label='Odmiana'
-                onChange={setter.bind(this, setVariations)}
+              <Button disabled={!variations} onClick={setIsVariationModalOpen.bind(this, true)}>
+                <FormattedMessage id='variation' />
+              </Button>
+              <VariationModal
+                isOpen={isVariationModalOpen}
+                save={variationSaveHandler}
+                setIsOpen={setIsVariationModalOpen}
+                variation={variations}
               />
             </Grid>
             <Grid item xs={12}>
