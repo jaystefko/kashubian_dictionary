@@ -38,8 +38,8 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
                       sx={inputSX}
                       // @ts-ignore
                       value={v[key]}
-                      placeholder={`${key}...`}
-                      label={key}
+                      placeholder={`${intl.formatMessage({ id: key })}...`}
+                      label={intl.formatMessage({ id: key })}
                       // @ts-ignore
                       onChange={(e) => setV({ ...v, [key]: e.target.value })}
                     />
@@ -50,7 +50,7 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
 
                 childList.push(
                   <Grid item xs={12} key={index}>
-                    <p>{key}</p>
+                    <p>{intl.formatMessage({ id: key })}</p>
                   </Grid>
                 );
 
@@ -62,8 +62,8 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
                         sx={inputSX}
                         // @ts-ignore
                         value={v[key][k]}
-                        placeholder={`${k}...`}
-                        label={k}
+                        placeholder={`${intl.formatMessage({ id: k })}...`}
+                        label={intl.formatMessage({ id: k })}
                         // @ts-ignore
                         onChange={(e) => setV({ ...v, [key]: { ...v[key], [k]: e.target.value } })}
                       />
