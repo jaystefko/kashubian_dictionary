@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-.header > div {
+.desktopContainer {
   display: flex;
 }
 
@@ -64,8 +64,16 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: var(--max-width-tablet)) and (min-width: calc(var(--max-width-mobile) + 1)) {
+.mobileContainer {
+  display: none;
 }
 
-@media screen and (max-width: var(--max-width-mobile)) {
+@media screen and (max-width: 1200px) {
+  .mobileContainer {
+    display: flex;
+  }
+
+  .desktopContainer {
+    display: none;
+  }
 }
