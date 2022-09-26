@@ -257,12 +257,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               <Button disabled={!variations} onClick={setIsVariationModalOpen.bind(this, true)}>
                 <FormattedMessage id='variation' />
               </Button>
-              <VariationModal
-                isOpen={isVariationModalOpen}
-                save={variationSaveHandler}
-                setIsOpen={setIsVariationModalOpen}
-                variation={variations}
-              />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -433,6 +427,12 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
           setIsOpen={setIsMeaningModalOpen}
           meaning={meanings[meaningIndex]}
           meaningListIndex={meaningIndex}
+        />
+        <VariationModal
+          isOpen={isVariationModalOpen}
+          save={variationSaveHandler}
+          setIsOpen={setIsVariationModalOpen}
+          variation={variations}
         />
       </Box>
     </Modal>
