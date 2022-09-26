@@ -72,7 +72,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
 
   useEffect(() => {
     if (!isModalOpen) {
-      setHeader('Dodaj słowo');
+      setHeader(intl.formatMessage({ id: 'addWord' }));
       setWordString('');
       setPriority(true);
       setPartOfSpeech('');
@@ -94,7 +94,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
       normalizedWord: o.note,
     }));
 
-    setHeader('Edytuj słowo');
+    setHeader(intl.formatMessage({ id: 'editWord' }));
     setWordString(word.word!);
     setPriority(Boolean(word.priority));
     setPartOfSpeech(word.partOfSpeech!);
@@ -105,23 +105,21 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     setOthers(otherList || []);
     setMeanings(word.meanings || []);
     setSPOSOptionList(word.partOfSpeech!, false);
-  }, [word]);
+  }, [word]); // eslint-disable-line
 
   function onSave() {
     try {
       const meaningCheck = meanings.filter((m) => m.definition && m.translation.polish);
       if (!wordString) {
-        toast.error('Proszę podać słowo kaszubskie');
+        toast.error(intl.formatMessage({ id: 'error.noKashebianWord' }));
         return;
       }
       if (!(partOfSpeech && subPartOfSpeech)) {
-        toast.error('Proszę wpisać część i pod część mowy');
+        toast.error(intl.formatMessage({ id: 'error.noPartSubPart' }));
         return;
       }
       if (!meaningCheck.length) {
-        toast.error(
-          'Słowo musi posiadać przynajmniej 1 znaczenie z wypełnioną definicją i tłumaczeniem PL'
-        );
+        toast.error(intl.formatMessage({ id: 'error.meaningLength' }));
         return;
       }
 
@@ -141,7 +139,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
 
       saveHandler(wordObject, wordId);
     } catch (error) {
-      toast.error('Formatowanie podanych wariacji jest niepoprawne');
+      toast.error(intl.formatMessage({ id: 'error.invalidVariationFormat' }));
       return;
     }
   }
@@ -189,8 +187,8 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               <TextField
                 sx={inputSX}
                 value={wordString}
-                placeholder='Podaj słowo...'
-                label='Kaszubskie słowo'
+                placeholder={`${intl.formatMessage({ id: 'word.kashebian' })}...`}
+                label={intl.formatMessage({ id: 'word.kashebian' })}
                 onChange={setter.bind(this, setWordString)}
                 required
               />
@@ -205,18 +203,20 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                       onChange={setPriority.bind(this, !priority)}
                     />
                   }
-                  label='Może być słowem dnia'
+                  label={intl.formatMessage({ id: 'isPriority' })}
                 />
               </FormGroup>
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
-                <InputLabel id='partOfSpeech'>Część mowy *</InputLabel>
+                <InputLabel id='partOfSpeech'>
+                  {intl.formatMessage({ id: 'partOfSpeech' })} *
+                </InputLabel>
                 <Select
                   labelId='partOfSpeech'
                   sx={inputSX}
                   value={partOfSpeech}
-                  label='Część mowy'
+                  label={intl.formatMessage({ id: 'partOfSpeech' })}
                   required
                   onChange={partOfSpeechChangeHandler}
                 >
@@ -232,14 +232,16 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
             </Grid>
             <Grid item xs={6}>
               <FormControl fullWidth>
-                <InputLabel id='subPartOfSpeech'>Pod część mowy *</InputLabel>
+                <InputLabel id='subPartOfSpeech'>
+                  {intl.formatMessage({ id: 'subPartOfSpeech' })} *
+                </InputLabel>
                 <Select
                   labelId='subPartOfSpeech'
                   sx={inputSX}
                   value={subPartOfSpeech}
                   disabled={!subPartOfSpeechOptionList.length}
                   required
-                  label='Pod część mowy'
+                  label={intl.formatMessage({ id: 'subPartOfSpeech' })}
                   onChange={(e) => {
                     setVariations(variationPerSubPart[e.target.value as SUB_PARTS_OF_SPEECH]);
                     setSubPartOfSpeech(e.target.value as SUB_PARTS_OF_SPEECH);
@@ -263,16 +265,16 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                 fullWidth
                 sx={inputSX}
                 value={note}
-                placeholder='Notatka...'
-                label='Notatka'
+                placeholder={`${intl.formatMessage({ id: 'note' })}...`}
+                label={intl.formatMessage({ id: 'note' })}
                 onChange={setter.bind(this, setNote)}
               />
             </Grid>
             <Grid item xs={12}>
               <AC
                 isFullWidth
-                label='Słowo podstawowe'
-                placeholder='Wyszukaj słowo podstawowe...'
+                placeholder={`${intl.formatMessage({ id: 'word.base' })}...`}
+                label={intl.formatMessage({ id: 'word.base' })}
                 onChangeSingle={setBase}
                 value={base}
               />
@@ -280,15 +282,15 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
             <Grid item xs={12}>
               <AC
                 isFullWidth
-                label='Słowa powiązane'
-                placeholder='Wyszukaj słowa powiązane...'
+                placeholder={`${intl.formatMessage({ id: 'word.others' })}...`}
+                label={intl.formatMessage({ id: 'word.others' })}
                 isMultiple
                 onChangeMultiple={setOthers}
                 value={others}
               />
             </Grid>
             <Grid item xs={12}>
-              <h2>Znaczenia</h2>
+              <h2>{intl.formatMessage({ id: 'meanings' })}</h2>
 
               {meanings.map((m, index) => (
                 <Paper
@@ -299,7 +301,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
                       <p style={{ margin: '0 1rem', color: COLORS.YELLOW, fontWeight: 'bold' }}>
-                        Znaczenie {index + 1}
+                        {intl.formatMessage({ id: 'meaning' })} {index + 1}
                       </p>
                     </Grid>
                     <Grid item xs={12}>
@@ -308,8 +310,8 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         sx={inputSX}
                         value={meanings[index].definition}
                         required
-                        placeholder='Definicja...'
-                        label='Definicja'
+                        placeholder={`${intl.formatMessage({ id: 'definition' })}...`}
+                        label={intl.formatMessage({ id: 'definition' })}
                         onChange={(e) => {
                           const copy = [...meanings];
                           copy[index].definition = e.target.value;
@@ -323,8 +325,8 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         sx={inputSX}
                         value={meanings[index].translation?.polish || ''}
                         required
-                        placeholder='Tłumaczenie PL...'
-                        label='Tłumaczenie PL'
+                        placeholder={`${intl.formatMessage({ id: 'translation.polish' })}...`}
+                        label={intl.formatMessage({ id: 'translation.polish' })}
                         onChange={(e) => {
                           const copy = [...meanings];
                           copy[index].translation.polish = e.target.value;
@@ -337,8 +339,8 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         fullWidth
                         sx={inputSX}
                         value={meanings[index].translation?.english || ''}
-                        placeholder='Tłumaczenie EN...'
-                        label='Tłumaczenie EN'
+                        placeholder={`${intl.formatMessage({ id: 'translation.english' })}...`}
+                        label={intl.formatMessage({ id: 'translation.english' })}
                         onChange={(e) => {
                           const copy = [...meanings];
                           copy[index].translation.english = e.target.value;
@@ -351,8 +353,8 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         fullWidth
                         sx={inputSX}
                         value={meanings[index].translation?.german || ''}
-                        placeholder='Tłumaczenie GE...'
-                        label='Tłumaczenie GE'
+                        placeholder={`${intl.formatMessage({ id: 'translation.german' })}...`}
+                        label={intl.formatMessage({ id: 'translation.german' })}
                         onChange={(e) => {
                           const copy = [...meanings];
                           copy[index].translation.german = e.target.value;
@@ -365,8 +367,8 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         fullWidth
                         sx={inputSX}
                         value={meanings[index].translation?.ukrainian || ''}
-                        placeholder='Tłumaczenie UK...'
-                        label='Tłumaczenie UK'
+                        placeholder={`${intl.formatMessage({ id: 'translation.ukrainian' })}...`}
+                        label={intl.formatMessage({ id: 'translation.ukrainian' })}
                         onChange={(e) => {
                           const copy = [...meanings];
                           copy[index].translation.ukrainian = e.target.value;
@@ -385,8 +387,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                           }
                         }}
                       >
-                        <Remove />
-                        Usuń znaczenie
+                        <Remove /> {intl.formatMessage({ id: 'deleteMeaning' })}
                       </Button>
                       <Button
                         sx={buttonSX}
@@ -395,7 +396,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                           setIsMeaningModalOpen(true);
                         }}
                       >
-                        Zcharakretyzuj znaczenie
+                        {intl.formatMessage({ id: 'characteriseMeaning' })}
                       </Button>
                     </Grid>
                   </Grid>
@@ -408,7 +409,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                   setMeanings([...meanings, { ...defaultMeaning }]);
                 }}
               >
-                <Add /> Dodaj znaczenie
+                <Add /> {intl.formatMessage({ id: 'addMeaning' })}
               </Button>
             </Grid>
           </Grid>
