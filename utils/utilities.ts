@@ -20,3 +20,7 @@ export const getSearchBy = (locale: LOCALES) => {
       return 'normalizedPolish';
   }
 };
+
+export function isEmpty(object: Object) {
+  return Object.keys(object).length === 0;
+}

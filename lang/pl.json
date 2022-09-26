@@ -155,6 +155,7 @@
   "PERFECT": "dokonany",
   "IMPERFECTIVE": "niedokonany",
   "meanings": "Znaczenia",
+  "origin": "Pochodzenie",
   "notes": "Notatki",
   "lastAddedWords": "Ostatnio dodane słowa",
   "wordOfADay": "Słowo dnia",
@@ -167,5 +168,7 @@
   "topMenu.tweeter": "Tweeter fundacji",
   "topMenu.howTo": "Zasady serwisu",
   "topMenu.startPage": "Strona główna",
-  "variation": "Odmiana"
+  "variation": "Odmiana",
+  "save": "Zapisz",
+  "close": "Zamknij"
 }

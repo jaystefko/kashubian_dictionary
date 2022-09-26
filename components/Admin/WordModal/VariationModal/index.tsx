@@ -101,8 +101,10 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
           </Grid>
         </main>
         <footer className={styles.footer}>
-          <Button onClick={setIsOpen.bind(this, false)}>Zamknij</Button>
-          <Button onClick={save.bind(this, v)}>Zapisz</Button>
+          <Button onClick={setIsOpen.bind(this, false)}>
+            {intl.formatMessage({ id: 'close' })}
+          </Button>
+          <Button onClick={save.bind(this, v)}>{intl.formatMessage({ id: 'save' })}</Button>
         </footer>
       </Box>
     </Modal>

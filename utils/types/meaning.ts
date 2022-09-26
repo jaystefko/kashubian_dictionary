@@ -5,30 +5,30 @@ interface Meaning {
     polish: string;
     ukrainian: string;
   };
-  antonyms: Array<{
+  antonyms?: Array<{
     meaningId: number;
     note: string;
   }>;
   definition: string;
-  examples: Array<{
+  examples?: Array<{
     example: string;
     note: string;
   }>;
-  hyperonym: number;
-  origin: string;
-  phrasalVerbs: Array<{
+  hyperonym?: number;
+  origin?: string;
+  phrasalVerbs?: Array<{
     note: string;
     phrasalVerb: string;
   }>;
-  proverbs: Array<{
+  proverbs?: Array<{
     note: string;
     proverb: string;
   }>;
-  quotes: Array<{
+  quotes?: Array<{
     note: string;
     quote: string;
   }>;
-  synonyms: Array<{
+  synonyms?: Array<{
     meaningId: number;
     note: string;
   }>;

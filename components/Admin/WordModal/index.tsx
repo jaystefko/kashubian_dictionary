@@ -26,14 +26,16 @@ import {
   variationPerSubPart,
   GatheredWord,
   COLORS,
+  Meaning,
 } from '../../../utils/types';
-import { setter } from '../../../utils/utilities';
+import { isEmpty, setter } from '../../../utils/utilities';
 import AC from '../../Autocomplete';
-import defaultMeaning, { MeaningCopy } from './meaning';
-import { FormattedMessage } from 'react-intl';
+import defaultMeaning from './meaning';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import styles from './styles.module.css';
 import VariationModal from './VariationModal';
+import MeaningModal from './MeaningModal';
 
 type WordModalProps = {
   isModalOpen: boolean;
@@ -50,7 +52,8 @@ type Option = {
 };
 
 const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: WordModalProps) => {
-  const [header, setHeader] = useState('Dodaj słowo');
+  const intl = useIntl();
+  const [header, setHeader] = useState('');
   const [wordString, setWordString] = useState('');
   const [priority, setPriority] = useState(true);
   const [partOfSpeech, setPartOfSpeech] = useState('');
@@ -62,8 +65,10 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   const [note, setNote] = useState('');
   const [base, setBase] = useState<Option | null>(null);
   const [others, setOthers] = useState<Array<Option | null>>([]);
-  const [meanings, setMeanings] = useState<Array<Partial<MeaningCopy>>>([{ ...defaultMeaning }]);
+  const [meanings, setMeanings] = useState<Array<Meaning>>([{ ...defaultMeaning }]);
   const [isVariationModalOpen, setIsVariationModalOpen] = useState(false);
+  const [isMeaningModalOpen, setIsMeaningModalOpen] = useState(false);
+  const [meaningIndex, setMeaningIndex] = useState(-1);
 
   useEffect(() => {
     if (!isModalOpen) {
@@ -89,31 +94,22 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
       normalizedWord: o.note,
     }));
 
-    const meaningList = word?.meanings?.map((m) => ({
-      definition: m.definition || '',
-      origin: m.origin || '',
-      translationEN: m?.translation?.english || '',
-      translationGE: m?.translation?.german || '',
-      translationPL: m?.translation?.polish || '',
-      translationUK: m?.translation?.ukrainian || '',
-    }));
-
     setHeader('Edytuj słowo');
     setWordString(word.word!);
     setPriority(Boolean(word.priority));
     setPartOfSpeech(word.partOfSpeech!);
     setSubPartOfSpeech(word.partOfSpeechSubType!);
-    setVariations(word?.variation || null);
+    setVariations(word.variation && !isEmpty(word.variation) ? word.variation : null);
     setNote(word?.note || '');
     setBase(word?.base || null);
     setOthers(otherList || []);
-    setMeanings(meaningList || []);
+    setMeanings(word.meanings || []);
     setSPOSOptionList(word.partOfSpeech!, false);
   }, [word]);
 
   function onSave() {
     try {
-      const meaningCheck = meanings.filter((m) => m.definition && m.translationPL);
+      const meaningCheck = meanings.filter((m) => m.definition && m.translation.polish);
       if (!wordString) {
         toast.error('Proszę podać słowo kaszubskie');
         return;
@@ -140,16 +136,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
           ?.map((x) => ({ entryId: x?.id || -1, note: x?.word || '' }))
           .filter((x) => x),
         base: base?.id ? Number(base?.id) : undefined,
-        meanings: meanings.map((m) => ({
-          definition: m.definition || '',
-          origin: m.origin,
-          translation: {
-            english: m.translationEN || '',
-            german: m.translationGE || '',
-            polish: m.translationPL || '',
-            ukrainian: m.translationUK || '',
-          },
-        })),
+        meanings: meanings,
       };
 
       saveHandler(wordObject, wordId);
@@ -176,6 +163,13 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   function variationSaveHandler(v: Object | null) {
     setVariations(v);
     setIsVariationModalOpen(false);
+  }
+
+  function meaningSaveHandler(meaning: Meaning, index: number) {
+    const copy = meanings;
+    copy[index] = meaning;
+    setMeanings(copy);
+    setIsMeaningModalOpen(false);
   }
 
   function partOfSpeechChangeHandler(e: SelectChangeEvent<string>) {
@@ -329,73 +323,59 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
                       <TextField
                         fullWidth
                         sx={inputSX}
-                        value={meanings[index].translationPL}
+                        value={meanings[index].translation?.polish || ''}
                         required
                         placeholder='Tłumaczenie PL...'
                         label='Tłumaczenie PL'
                         onChange={(e) => {
                           const copy = [...meanings];
-                          copy[index].translationPL = e.target.value;
+                          copy[index].translation.polish = e.target.value;
                           setMeanings(copy);
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
                       <TextField
                         fullWidth
                         sx={inputSX}
-                        value={meanings[index].translationEN}
+                        value={meanings[index].translation?.english || ''}
                         placeholder='Tłumaczenie EN...'
                         label='Tłumaczenie EN'
                         onChange={(e) => {
                           const copy = [...meanings];
-                          copy[index].translationEN = e.target.value;
+                          copy[index].translation.english = e.target.value;
                           setMeanings(copy);
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
                       <TextField
                         fullWidth
                         sx={inputSX}
-                        value={meanings[index].translationGE}
+                        value={meanings[index].translation?.german || ''}
                         placeholder='Tłumaczenie GE...'
                         label='Tłumaczenie GE'
                         onChange={(e) => {
                           const copy = [...meanings];
-                          copy[index].translationGE = e.target.value;
+                          copy[index].translation.german = e.target.value;
                           setMeanings(copy);
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
                       <TextField
                         fullWidth
                         sx={inputSX}
-                        value={meanings[index].translationUK}
+                        value={meanings[index].translation?.ukrainian || ''}
                         placeholder='Tłumaczenie UK...'
                         label='Tłumaczenie UK'
                         onChange={(e) => {
                           const copy = [...meanings];
-                          copy[index].translationUK = e.target.value;
-                          setMeanings(copy);
-                        }}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        sx={inputSX}
-                        value={meanings[index].origin}
-                        placeholder='Pochodzenie...'
-                        label='Pochodzenie'
-                        onChange={(e) => {
-                          const copy = [...meanings];
-                          copy[index].origin = e.target.value;
+                          copy[index].translation.ukrainian = e.target.value;
                           setMeanings(copy);
                         }}
                       />
@@ -408,13 +388,20 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                           if (index !== 0) {
                             const copy = meanings.filter((m, i) => i !== index);
                             setMeanings(copy);
-                          } else {
-                            toast.info('Słowo musi mieć przynajmniej jedno znaczenie');
                           }
                         }}
                       >
                         <Remove />
                         Usuń znaczenie
+                      </Button>
+                      <Button
+                        sx={buttonSX}
+                        onClick={() => {
+                          setMeaningIndex(index);
+                          setIsMeaningModalOpen(true);
+                        }}
+                      >
+                        Zcharakretyzuj znaczenie
                       </Button>
                     </Grid>
                   </Grid>
@@ -434,12 +421,19 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
         </main>
         <footer className={styles.footer}>
           <Button sx={buttonSX} onClick={closeHandler}>
-            Zamknij
+            {intl.formatMessage({ id: 'close' })}
           </Button>
           <Button sx={buttonSX} onClick={onSave}>
-            Zapisz
+            {intl.formatMessage({ id: 'save' })}
           </Button>
         </footer>
+        <MeaningModal
+          isOpen={isMeaningModalOpen}
+          save={meaningSaveHandler}
+          setIsOpen={setIsMeaningModalOpen}
+          meaning={meanings[meaningIndex]}
+          meaningListIndex={meaningIndex}
+        />
       </Box>
     </Modal>
   );

@@ -8,7 +8,7 @@ type WordOfADay = {
 
 type Word = {
   base: number;
-  meanings: Array<Partial<Meaning>>;
+  meanings: Array<Meaning>;
   note: string;
   others: Array<{
     entryId: number;
@@ -40,7 +40,7 @@ type GatheredWord = {
       word: string;
     };
   }>;
-  meanings: Array<Partial<Meaning>>;
+  meanings: Array<Meaning>;
   partOfSpeech: PARTS_OF_SPEECH;
   partOfSpeechSubType: SUB_PARTS_OF_SPEECH;
   priority: boolean;
