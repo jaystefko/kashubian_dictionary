@@ -83,31 +83,89 @@ async function getLastAddedWordList() {
 async function getWord(id: number) {
   return axios.post(`${url}graphql`, {
     query: `
-      {
-        findKashubianEntry(id: ${id}) {
-          word,
-          priority,
-          partOfSpeech,
-          partOfSpeechSubType,
-          variation,
-          note,
-          base {
-            id, word
+    {
+      findKashubianEntry(id: ${id}) {
+        word
+        priority
+        partOfSpeech
+        partOfSpeechSubType
+        variation
+        note
+        base {
+          id
+          word
+        }
+        others {
+          id
+          note
+          other {
+            id
+            word
           }
-          others { id, note, other { id, word }},
-          meanings {
-            id,
-            definition,
-            origin,
-            translation {
-              german,
-              english,
-              polish,
-              ukrainian
+        }
+        meanings {
+          id
+          definition
+          origin
+          hyperonym {
+            id
+            definition
+          }
+          antonyms {
+            id
+            antonym {
+              definition
             }
+          }
+          synonyms {
+            id
+            synonym {
+              definition
+            }
+          }
+          quotes {
+            note
+            quote
+          }
+          examples {
+            note
+            example
+          }
+          proverbs {
+            note
+            proverb
+          }
+          phrasalVerbs {
+            note
+            phrasalVerb
+          }
+          translation {
+            german
+            english
+            polish
+            ukrainian
           }
         }
       }
+    }
+    `,
+  });
+}
+
+async function getMeaningList(partial = '', pageLimit = 10) {
+  return axios.post(`${url}graphql`, {
+    query: `
+    {
+      findAllMeanings(
+        page: {start: 0, limit: ${pageLimit}}
+        where: {definition: {LIKE: "${partial}"}}
+      ) {
+        select {
+          id
+          definition
+        }
+      }
+    }
     `,
   });
 }
@@ -138,4 +196,5 @@ export {
   updateWord,
   deleteWord,
   getTranslatedWordListByString,
+  getMeaningList,
 };

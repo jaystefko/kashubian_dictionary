@@ -1,4 +1,4 @@
-import { Meaning, PARTS_OF_SPEECH, SUB_PARTS_OF_SPEECH } from './';
+import { Meaning, PARTS_OF_SPEECH, SUB_PARTS_OF_SPEECH, GatheredMeaning } from './';
 
 type WordOfADay = {
   entryId: number;
@@ -40,7 +40,7 @@ type GatheredWord = {
       word: string;
     };
   }>;
-  meanings: Array<Meaning>;
+  meanings: Array<GatheredMeaning>;
   partOfSpeech: PARTS_OF_SPEECH;
   partOfSpeechSubType: SUB_PARTS_OF_SPEECH;
   priority: boolean;

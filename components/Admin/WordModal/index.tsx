@@ -26,7 +26,7 @@ import {
   variationPerSubPart,
   GatheredWord,
   COLORS,
-  Meaning,
+  GatheredMeaning,
 } from '../../../utils/types';
 import { isEmpty, setter } from '../../../utils/utilities';
 import AC from '../../Autocomplete';
@@ -65,7 +65,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   const [note, setNote] = useState('');
   const [base, setBase] = useState<Option | null>(null);
   const [others, setOthers] = useState<Array<Option | null>>([]);
-  const [meanings, setMeanings] = useState<Array<Meaning>>([{ ...defaultMeaning }]);
+  const [meanings, setMeanings] = useState<Array<GatheredMeaning>>([{ ...defaultMeaning }]);
   const [isVariationModalOpen, setIsVariationModalOpen] = useState(false);
   const [isMeaningModalOpen, setIsMeaningModalOpen] = useState(false);
   const [meaningIndex, setMeaningIndex] = useState(-1);
@@ -134,7 +134,18 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
           ?.map((x) => ({ entryId: x?.id || -1, note: x?.word || '' }))
           .filter((x) => x),
         base: base?.id ? Number(base?.id) : undefined,
-        meanings: meanings,
+        meanings: meanings.map((m) => ({
+          definition: m.definition,
+          translation: m.translation,
+          antonyms: m.antonyms?.filter((a) => a).map((a) => ({ meaningId: a.id })),
+          examples: m.examples,
+          hyperonym: m.hyperonym?.id,
+          origin: m.origin,
+          phrasalVerbs: m.phrasalVerbs,
+          proverbs: m.proverbs,
+          quotes: m.quotes,
+          synonyms: m.synonyms?.filter((s) => s).map((s) => ({ meaningId: s.id })),
+        })),
       };
 
       saveHandler(wordObject, wordId);
@@ -163,7 +174,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     setIsVariationModalOpen(false);
   }
 
-  function meaningSaveHandler(meaning: Meaning, index: number) {
+  function meaningSaveHandler(meaning: GatheredMeaning, index: number) {
     const copy = meanings;
     copy[index] = meaning;
     setMeanings(copy);

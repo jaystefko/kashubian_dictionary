@@ -85,6 +85,15 @@ const AdminScreen: NextPage = () => {
     }
   }
 
+  async function openModalSoundHandler(id: number) {
+    if (id === -1) return;
+    try {
+      alert('Funckcja w trakcie implementacji');
+    } catch (error) {
+      errorHandler(error);
+    }
+  }
+
   async function searchForWords(searchBy: string) {
     try {
       setIsLoading(true);
@@ -149,6 +158,7 @@ const AdminScreen: NextPage = () => {
               data={data}
               deleteHandler={deleteHandler}
               openModalEditHandler={openModalEditHandler}
+              openModalSoundHandler={openModalSoundHandler}
             />
           </article>
         )}

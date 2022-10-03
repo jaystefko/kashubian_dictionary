@@ -1,4 +1,4 @@
-import { Delete, Edit } from '@mui/icons-material';
+import { Delete, Edit, RecordVoiceOver } from '@mui/icons-material';
 import {
   Button,
   Paper,
@@ -22,10 +22,16 @@ import { COLORS, GatheredWord } from '../../../utils/types';
 type AdminTableProps = {
   data: Array<Partial<GatheredWord>>;
   openModalEditHandler: (id: number) => void;
+  openModalSoundHandler: (id: number) => void;
   deleteHandler: (id: number, word: string) => void;
 };
 
-const AdminTable = ({ data, openModalEditHandler, deleteHandler }: AdminTableProps) => {
+const AdminTable = ({
+  data,
+  openModalEditHandler,
+  openModalSoundHandler,
+  deleteHandler,
+}: AdminTableProps) => {
   return (
     <section style={{ width: '60vw', height: '60vh' }}>
       {data.length ? (
@@ -35,6 +41,9 @@ const AdminTable = ({ data, openModalEditHandler, deleteHandler }: AdminTablePro
               <TableHead>
                 <TableRow>
                   <TableCell style={{ color: 'black', background: COLORS.YELLOW }}>Słowo</TableCell>
+                  <TableCell style={{ color: 'black', background: COLORS.YELLOW }}>
+                    Dźwięk
+                  </TableCell>
                   <TableCell align='right' style={{ color: 'black', background: COLORS.YELLOW }}>
                     Edycja
                   </TableCell>
@@ -48,6 +57,14 @@ const AdminTable = ({ data, openModalEditHandler, deleteHandler }: AdminTablePro
                   <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell sx={tableCellSX} component='th' scope='row'>
                       {row.word}
+                    </TableCell>
+                    <TableCell sx={tableCellSX} component='th' scope='row'>
+                      <Button
+                        onClick={openModalSoundHandler.bind(this, row.id || -1)}
+                        sx={buttonSX}
+                      >
+                        <RecordVoiceOver sx={iconSX} />
+                      </Button>
                     </TableCell>
                     <TableCell sx={tableCellSX} align='right'>
                       <Button onClick={openModalEditHandler.bind(this, row.id || -1)} sx={buttonSX}>
