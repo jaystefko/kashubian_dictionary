@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './styles.module.css';
-import { Facebook, Instagram, QuestionMark, Message, Menu as ManuIcon } from '@mui/icons-material';
+import { Facebook, Instagram, QuestionMark, Menu as ManuIcon } from '@mui/icons-material';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useIntl } from 'react-intl';
 import { MouseEvent, useState } from 'react';
@@ -76,7 +76,12 @@ function Header() {
               target='_blank'
               title={intl.formatMessage({ id: 'topMenu.tweeter' })}
             >
-              <Message />
+              <Image
+                src='/images/tweeter.svg'
+                width={24}
+                height={24}
+                alt={intl.formatMessage({ id: 'topMenu.tweeter' })}
+              />
             </a>
           </li>
           <li>
