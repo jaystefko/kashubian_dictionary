@@ -36,7 +36,7 @@ async function getWordListByString(partial: string, pageLimit = 100) {
         select {
           id
           word
-          normalizedWord
+          normalizedWord(orderBy: ASC)
         }
       }
     }
@@ -55,7 +55,7 @@ async function getTranslatedWordListByString(partial: string, pageLimit = 10) {
         select {
           id
           word
-          normalizedWord
+          normalizedWord(orderBy: ASC)
         }
       }
     }
@@ -162,7 +162,7 @@ async function getMeaningList(partial = '', pageLimit = 10) {
       ) {
         select {
           id
-          definition
+          definition(orderBy: ASC)
         }
       }
     }
