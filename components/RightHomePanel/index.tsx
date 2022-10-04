@@ -3,7 +3,7 @@ import { Button, Card, CardContent, Menu, MenuItem, Typography } from '@mui/mate
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { getLastAddedWordList, getWordOfADay } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { WordOfADay } from '../../utils/types';
@@ -11,6 +11,7 @@ import styles from './styles.module.css';
 
 const RightHomePanel = () => {
   const router = useRouter();
+  const intl = useIntl();
   const [wordOfADay, setWordOfADay] = useState<WordOfADay>();
   const [lastWordList, setLastWordList] = useState<Array<{ id: number; word: string }>>([]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -51,7 +52,7 @@ const RightHomePanel = () => {
           onClick={clickHandler}
           endIcon={<KeyboardArrowDown />}
         >
-          <FormattedMessage id='lastAddedWords' />
+          <Typography>{intl.formatMessage({ id: 'lastAddedWords' })}</Typography>
         </Button>
         <Menu
           id='basic-menu'
@@ -78,7 +79,7 @@ const RightHomePanel = () => {
         >
           {lastWordList.map((word, index) => (
             <MenuItem key={index} onClick={navigateTo.bind(this, word.id)}>
-              {word.word}
+              <Typography>{word.word}</Typography>
             </MenuItem>
           ))}
         </Menu>

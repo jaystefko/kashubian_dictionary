@@ -2,6 +2,13 @@ import { createTheme } from '@mui/material/styles';
 import { COLORS } from '../utils/types';
 
 const theme = createTheme({
+  components: {
+    MuiTypography: {
+      defaultProps: {
+        fontFamily: 'Fira Sans, sans-serif',
+      },
+    },
+  },
   palette: {
     primary: {
       main: COLORS.YELLOW,
