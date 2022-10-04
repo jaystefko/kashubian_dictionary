@@ -186,6 +186,18 @@ async function deleteWord(id: number, auth: BasicAuth) {
   return axios.delete(`${url}kashubian-entry/${id}`, getAxiosRequestConfig(auth));
 }
 
+async function getFile(id: number, auth: BasicAuth) {
+  return axios.get(`${url}kashubian-entry/${id}/file`, getAxiosRequestConfig(auth));
+}
+
+async function uploadFile(file: any, id: number, auth: BasicAuth) {
+  return axios.post(`${url}kashubian-entry/${id}/file`, file, getAxiosRequestConfig(auth));
+}
+
+async function deleteFile(id: number, auth: BasicAuth) {
+  return axios.delete(`${url}kashubian-entry/${id}/file`, getAxiosRequestConfig(auth));
+}
+
 export {
   getWordList,
   getWordListByString,
@@ -197,4 +209,7 @@ export {
   deleteWord,
   getTranslatedWordListByString,
   getMeaningList,
+  getFile,
+  uploadFile,
+  deleteFile,
 };

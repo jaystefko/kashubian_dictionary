@@ -211,5 +211,7 @@
   "removePhrasalVerb": "Usuń czasownik frazowy",
   "hyperonym": "Hiperonim",
   "synonyms": "Synonimy",
-  "antonyms": "Antonimy"
+  "antonyms": "Antonimy",
+  "file": "Plik",
+  "deleteFile": "Usuń plik"
 }

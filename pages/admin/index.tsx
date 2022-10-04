@@ -18,6 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import WordModal from '../../components/Admin/WordModal';
 import SearchBar from '../../components/Admin/SearchBar';
 import AdminTable from '../../components/Admin/Table';
+import SoundModal from '../../components/Admin/SoundModal';
 
 const AdminScreen: NextPage = () => {
   const [auth, setAuth] = useState<BasicAuth>();
@@ -27,6 +28,7 @@ const AdminScreen: NextPage = () => {
   const [wordId, setWordId] = useState(-1);
   const [word, setWord] = useState<Partial<GatheredWord>>();
   const [isLoading, setIsLoading] = useState(false);
+  const [isSoundModalOpen, setIsSoundModalOpen] = useState(false);
 
   useEffect(() => {
     let data = localStorage.getItem('auth');
@@ -86,12 +88,8 @@ const AdminScreen: NextPage = () => {
   }
 
   async function openModalSoundHandler(id: number) {
-    if (id === -1) return;
-    try {
-      alert('Funckcja w trakcie implementacji');
-    } catch (error) {
-      errorHandler(error);
-    }
+    setWordId(id);
+    setIsSoundModalOpen(true);
   }
 
   async function searchForWords(searchBy: string) {
@@ -145,6 +143,7 @@ const AdminScreen: NextPage = () => {
         word={word}
         saveHandler={saveHandler}
       />
+      <SoundModal isOpen={isSoundModalOpen} setIsOpen={setIsSoundModalOpen} id={wordId} />
       <div className='whole-page'>
         {isLoading ? (
           <CircularProgress color='warning' />
