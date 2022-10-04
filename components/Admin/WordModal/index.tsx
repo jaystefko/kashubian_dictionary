@@ -65,7 +65,9 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   const [note, setNote] = useState('');
   const [base, setBase] = useState<Option | null>(null);
   const [others, setOthers] = useState<Array<Option | null>>([]);
-  const [meanings, setMeanings] = useState<Array<GatheredMeaning>>([{ ...defaultMeaning }]);
+  const [meanings, setMeanings] = useState<Array<GatheredMeaning>>([
+    { ...defaultMeaning, translation: { ...defaultMeaning.translation } },
+  ]);
   const [isVariationModalOpen, setIsVariationModalOpen] = useState(false);
   const [isMeaningModalOpen, setIsMeaningModalOpen] = useState(false);
   const [meaningIndex, setMeaningIndex] = useState(-1);
@@ -81,7 +83,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
       setNote('');
       setBase(null);
       setOthers([]);
-      setMeanings([{ ...defaultMeaning }]);
+      setMeanings([{ ...defaultMeaning, translation: { ...defaultMeaning.translation } }]);
     }
   }, [isModalOpen]); // eslint-disable-line
 
