@@ -24,8 +24,13 @@ const DictionaryPanel = () => {
     <article className={styles.article}>
       <List>
         {wordList.map((word, index) => (
-          <ListItemButton key={index} component='a' href={`word/${word.id}`}>
-            <ListItemText primary={word.word} />
+          <ListItemButton
+            key={index}
+            component='a'
+            href={`word/${word.id}`}
+            style={{ margin: 0, padding: '0 4px' }}
+          >
+            <ListItemText primary={word.word} style={{ fontSize: 16 }} />
           </ListItemButton>
         ))}
       </List>
