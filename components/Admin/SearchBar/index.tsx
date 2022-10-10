@@ -1,17 +1,15 @@
-import { Add, Search } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import { Button, TextField } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import { buttonSX, iconSX, inputSX } from '../../../styles/sx';
-import { setter } from '../../../utils/utilities';
 
 type SearchBarProps = {
-  setSearch: Dispatch<SetStateAction<string>>;
+  setSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
-  searchForWords: (searchBy: string) => void;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const SearchBar = ({ setSearch, search, searchForWords, setIsModalOpen }: SearchBarProps) => {
+const SearchBar = ({ setSearch, search, setIsModalOpen }: SearchBarProps) => {
   return (
     <section style={{ display: 'flex', margin: '0 0 1rem' }}>
       <TextField
@@ -19,11 +17,8 @@ const SearchBar = ({ setSearch, search, searchForWords, setIsModalOpen }: Search
         value={search}
         label='Wyszukaj'
         placeholder='Wyszukaj...'
-        onChange={setter.bind(this, setSearch)}
+        onChange={setSearch}
       />
-      <Button onClick={searchForWords.bind(this, search)} sx={buttonSX}>
-        <Search sx={iconSX} />
-      </Button>
       <Button onClick={setIsModalOpen.bind(this, true)} sx={buttonSX}>
         <Add sx={iconSX} />
       </Button>

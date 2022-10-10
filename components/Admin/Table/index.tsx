@@ -38,7 +38,7 @@ const AdminTable = ({
         <Paper sx={paperSX}>
           <TableContainer sx={tableContainerSX}>
             <Table sx={tableSX} stickyHeader aria-label='Tablica słów'>
-              <TableHead>
+              <TableHead style={{ height: 30 }}>
                 <TableRow>
                   <TableCell style={{ color: 'black', background: COLORS.YELLOW }}>Słowo</TableCell>
                   <TableCell style={{ color: 'black', background: COLORS.YELLOW }}>

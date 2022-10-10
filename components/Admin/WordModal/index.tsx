@@ -332,6 +332,20 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         }}
                       />
                     </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        sx={inputSX}
+                        value={meanings[index].origin || ''}
+                        placeholder={`${intl.formatMessage({ id: 'origin' })}...`}
+                        label={intl.formatMessage({ id: 'origin' })}
+                        onChange={(e) => {
+                          const copy = [...meanings];
+                          copy[index].origin = e.target.value;
+                          setMeanings(copy);
+                        }}
+                      />
+                    </Grid>
                     <Grid item xs={6}>
                       <TextField
                         fullWidth

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import {
   createWord,
@@ -96,15 +96,12 @@ const AdminScreen: NextPage = () => {
 
   async function searchForWords(searchBy: string) {
     try {
-      setIsLoading(true);
       const response = await getWordListByString(searchBy);
       const newData = response.data?.data?.findAllKashubianEntries?.select || [];
       setData(newData);
       if (!newData.length) toast.info('Nie znaleziono odpowiednich słów');
     } catch (error) {
       errorHandler(error);
-    } finally {
-      setIsLoading(false);
     }
   }
 
@@ -133,6 +130,11 @@ const AdminScreen: NextPage = () => {
     setIsModalOpen(false);
   }
 
+  function setSearchProxy(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearch(e.target.value);
+    searchForWords(e.target.value);
+  }
+
   return (
     <>
       <ToastContainer theme='colored' />
@@ -148,12 +150,7 @@ const AdminScreen: NextPage = () => {
           <CircularProgress color='warning' />
         ) : (
           <article style={{ scrollbarWidth: 'none', width: '60vw' }}>
-            <SearchBar
-              search={search}
-              searchForWords={searchForWords}
-              setIsModalOpen={setIsModalOpen}
-              setSearch={setSearch}
-            />
+            <SearchBar search={search} setIsModalOpen={setIsModalOpen} setSearch={setSearchProxy} />
             <AdminTable
               data={data}
               deleteHandler={deleteHandler}

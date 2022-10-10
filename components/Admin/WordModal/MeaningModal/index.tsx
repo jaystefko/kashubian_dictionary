@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { boxSX, buttonSX, inputSX } from '../../../../styles/sx';
 import { GatheredMeaning } from '../../../../utils/types';
-import { setter } from '../../../../utils/utilities';
 import MAC from '../../../AutocompleteMeaning';
 import styles from '../styles.module.css';
 
@@ -32,7 +31,6 @@ const MeaningModal = ({
   const [antonymList, setAntonymList] = useState<Array<Option | null>>([]);
   const [exampleList, setExampleList] = useState<Array<{ note?: string; example: string }>>([]);
   const [hyperonym, setHyperonym] = useState<Option | null>(null);
-  const [origin, setOrigin] = useState('');
   const [phrasalVerbList, setPhrasalVerbList] = useState<
     Array<{ note?: string; phrasalVerb: string }>
   >([]);
@@ -43,7 +41,6 @@ const MeaningModal = ({
   useEffect(() => {
     if (isOpen && meaning) {
       setExampleList(meaning.examples || []);
-      setOrigin(meaning.origin || '');
       setPhrasalVerbList(meaning.phrasalVerbs || []);
       setProVerbList(meaning.proverbs || []);
       setQuoteList(meaning.quotes || []);
@@ -69,7 +66,7 @@ const MeaningModal = ({
         })),
       examples: exampleList,
       hyperonym: hyperonym || undefined,
-      origin: origin,
+      origin: meaning?.origin,
       proverbs: proVerbList,
       phrasalVerbs: phrasalVerbList,
       quotes: quoteList,
@@ -92,16 +89,6 @@ const MeaningModal = ({
         </header>
         <main className={styles.main}>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                sx={inputSX}
-                value={origin}
-                placeholder={`${intl.formatMessage({ id: 'origin' })}...`}
-                label={intl.formatMessage({ id: 'origin' })}
-                onChange={setter.bind(this, setOrigin)}
-              />
-            </Grid>
             <Grid item xs={12}>
               <MAC
                 isFullWidth
