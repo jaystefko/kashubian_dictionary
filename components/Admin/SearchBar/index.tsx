@@ -1,6 +1,7 @@
 import { Add } from '@mui/icons-material';
 import { Button, TextField } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
+import { useIntl } from 'react-intl';
 import { buttonSX, iconSX, inputSX } from '../../../styles/sx';
 
 type SearchBarProps = {
@@ -10,13 +11,15 @@ type SearchBarProps = {
 };
 
 const SearchBar = ({ setSearch, search, setIsModalOpen }: SearchBarProps) => {
+  const intl = useIntl();
+
   return (
     <section style={{ display: 'flex', margin: '0 0 1rem' }}>
       <TextField
         sx={inputSX}
         value={search}
-        label='Wyszukaj'
-        placeholder='Wyszukaj...'
+        label={intl.formatMessage({ id: 'search' })}
+        placeholder={`${intl.formatMessage({ id: 'search' })}...`}
         onChange={setSearch}
       />
       <Button onClick={setIsModalOpen.bind(this, true)} sx={buttonSX}>

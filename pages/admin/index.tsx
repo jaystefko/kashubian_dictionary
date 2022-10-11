@@ -19,8 +19,10 @@ import WordModal from '../../components/Admin/WordModal';
 import SearchBar from '../../components/Admin/SearchBar';
 import AdminTable from '../../components/Admin/Table';
 import SoundModal from '../../components/Admin/SoundModal';
+import { useIntl } from 'react-intl';
 
 const AdminScreen: NextPage = () => {
+  const intl = useIntl();
   const [auth, setAuth] = useState<BasicAuth>();
   const [search, setSearch] = useState('');
   const [data, setData] = useState<Array<Partial<GatheredWord>>>([]);
@@ -33,8 +35,8 @@ const AdminScreen: NextPage = () => {
   useEffect(() => {
     let data = localStorage.getItem('auth');
     if (!data) {
-      const username = prompt('Fill in your login', '') || '';
-      const password = prompt('Fill in your password', '') || '';
+      const username = prompt(intl.formatMessage({ id: 'fillLogin' }), '') || '';
+      const password = prompt(intl.formatMessage({ id: 'fillPassword' }), '') || '';
       setAuth({ username, password });
     } else {
       setAuth(JSON.parse(data));
@@ -50,25 +52,29 @@ const AdminScreen: NextPage = () => {
         const response = await getWordList();
         setData(response.data?.data?.findAllKashubianEntries?.select || []);
       } catch (error) {
-        errorHandler(error);
+        errorHandler(error, intl);
       } finally {
         setIsLoading(false);
       }
     })();
-  }, [auth]);
+  }, [auth]); // eslint-disable-line
 
   async function deleteHandler(id: number, word: string) {
     if (id === -1) return;
-    if (confirm(`Czy jesteś pewien że chcesz usunąć "${word}"`)) {
+    if (confirm(`${intl.formatMessage({ id: 'deleteAssurement' })} "${word}"`)) {
       try {
         await deleteWord(id, auth!);
-        toast.success(`Słowo "${word}" zostało usunięte`);
+        toast.success(
+          `${intl.formatMessage({ id: 'word' })} "${word}" ${intl.formatMessage({
+            id: 'deleteConfirm',
+          })}`
+        );
         setIsLoading(true);
         const response = await getWordList();
         setData(response.data?.data?.findAllKashubianEntries?.select || []);
         setIsLoading(false);
       } catch (error) {
-        errorHandler(error);
+        errorHandler(error, intl);
       }
     }
   }
@@ -83,7 +89,7 @@ const AdminScreen: NextPage = () => {
       setWord(newWord);
       setIsModalOpen(true);
     } catch (error) {
-      errorHandler(error);
+      errorHandler(error, intl);
     }
   }
 
@@ -97,9 +103,9 @@ const AdminScreen: NextPage = () => {
       const response = await getWordListByString(searchBy);
       const newData = response.data?.data?.findAllKashubianEntries?.select || [];
       setData(newData);
-      if (!newData.length) toast.info('Nie znaleziono odpowiednich słów');
+      if (!newData.length) toast.info(intl.formatMessage({ id: 'noWords' }));
     } catch (error) {
-      errorHandler(error);
+      errorHandler(error, intl);
     }
   }
 
@@ -107,16 +113,16 @@ const AdminScreen: NextPage = () => {
     try {
       if (id === -1) {
         await createWord(word, authorisation!);
-        toast.success('Słowo stworzone');
+        toast.success(intl.formatMessage({ id: 'wordCreated' }));
       } else {
         await updateWord(word, id, authorisation!);
-        toast.success('Słowo zmienione');
+        toast.success(intl.formatMessage({ id: 'wordEdited' }));
       }
       setIsModalOpen(false);
       const response = await getWordList();
       setData(response.data?.data?.findAllKashubianEntries?.select || []);
     } catch (error) {
-      errorHandler(error);
+      errorHandler(error, intl);
     }
   }
 

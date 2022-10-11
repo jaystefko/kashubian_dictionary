@@ -26,10 +26,10 @@ const RightHomePanel = () => {
         );
         setWordOfADay(wordOfADayResponse.data);
       } catch (error) {
-        errorHandler(error);
+        errorHandler(error, intl);
       }
     })();
-  }, []);
+  }, []); // eslint-disable-line
 
   const navigateTo = (id: number) => router.push(`word/${id}`);
 

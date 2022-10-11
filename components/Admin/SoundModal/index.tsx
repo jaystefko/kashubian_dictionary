@@ -58,13 +58,13 @@ const SoundModal = ({ isOpen, setIsOpen, id }: SoundModalProps) => {
         data.append('file', f);
         await uploadFile(data, id, auth!);
       } catch (error) {
-        errorHandler(error);
+        errorHandler(error, intl);
       }
     } else if (!isFilePresent) {
       try {
         await deleteFile(id, auth!);
       } catch (error) {
-        errorHandler(error);
+        errorHandler(error, intl);
       }
     } else {
       setIsOpen(false);

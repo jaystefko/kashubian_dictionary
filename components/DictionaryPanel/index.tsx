@@ -1,10 +1,12 @@
 import { List, ListItemButton, ListItemText } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import { getWordList } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import styles from './styles.module.css';
 
 const DictionaryPanel = () => {
+  const intl = useIntl();
   const [wordList, setWordList] = useState<
     Array<{ id: string; word: string; normalizedWord: string }>
   >([]);
@@ -15,10 +17,10 @@ const DictionaryPanel = () => {
         const response = await getWordList(1000);
         setWordList(response.data?.data?.findAllKashubianEntries?.select || []);
       } catch (error) {
-        errorHandler(error);
+        errorHandler(error, intl);
       }
     })();
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <article className={styles.article}>

@@ -6,6 +6,7 @@ import { LOCALES } from '../../utils/types';
 import Autocomplete from '@mui/material/Autocomplete';
 import { inputSX } from '../../styles/sx';
 import { useRouter } from 'next/router';
+import { useIntl } from 'react-intl';
 
 type Option = {
   id: number;
@@ -33,6 +34,7 @@ const MAC = ({
 }: MACProps) => {
   let { locale } = useRouter();
   if (!locale) locale = LOCALES.pl;
+  const intl = useIntl();
 
   const [isOpen, setIsOpen] = useState(false);
   const [optionList, setOptionList] = useState<Array<Option>>([]);
@@ -45,7 +47,7 @@ const MAC = ({
       const response = await getMeaningList(searchBy, pageLimit);
       setOptionList(response.data?.data?.findAllMeanings?.select || []);
     } catch (error) {
-      errorHandler(error);
+      errorHandler(error, intl);
     } finally {
       setIsLoading(false);
     }

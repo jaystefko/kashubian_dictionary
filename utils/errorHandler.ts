@@ -1,52 +1,53 @@
 import axios from 'axios';
+import { IntlShape } from 'react-intl';
 import { toast } from 'react-toastify';
-import { TOAST_FUNCTIONS } from './types';
 
-function notify(message: string, type: TOAST_FUNCTIONS = TOAST_FUNCTIONS.ERROR) {
-  toast[type](message);
+function logOut() {
+  localStorage.clear();
+  window.location.reload();
 }
 
-function errorHandler(error: unknown) {
+function errorHandler(error: unknown, intl: IntlShape) {
   if (axios.isAxiosError(error)) {
     if (error.response) {
       // ************** got the response from server
       switch (error.response.status) {
         case 0: {
-          notify('Serwer nie daje odpowiedzi. Prosimy spróbować ponownie później.');
+          toast.error(intl.formatMessage({ id: 'error_0' }));
           break;
         }
         case 400: {
-          notify('Niepoprawne zapytanie.');
+          toast.error(intl.formatMessage({ id: 'error_400' }));
           break;
         }
         case 401: {
-          notify('Wyamagane dane logowania.');
+          logOut();
+          toast.error(intl.formatMessage({ id: 'error_401' }));
           break;
         }
         case 403: {
-          notify('Brak autoryzacji.');
+          logOut();
+          toast.error(intl.formatMessage({ id: 'error_403' }));
           break;
         }
         case 404: {
-          notify('Nie odnaleziono zasobu.');
+          toast.error(intl.formatMessage({ id: 'error_404' }));
           break;
         }
         case 500: {
-          notify('Serwer nie odpowiada. Prosimy spróbować później.');
+          toast.error(intl.formatMessage({ id: 'error_500' }));
           break;
         }
         default: {
-          notify(
-            'Przepraszamy, serwis jest chwilowo niedostępny. Prosimy spróbować ponownie później.'
-          );
+          toast.error(intl.formatMessage({ id: 'error_server_responded' }));
         }
       }
     } else if (error.request) {
       // ************** haven't got the response from server
-      notify('Serwer nie odpowiada. Prosimy sprawdzić połączenie z internetem.');
+      toast.error(intl.formatMessage({ id: 'error_server_not_responded' }));
     } else {
       // ************** something went terribly wrong, idk
-      notify('Coś poszło nie tak');
+      toast.error(intl.formatMessage({ id: 'error_other' }));
     }
   } else {
     // #TODO

@@ -1,6 +1,7 @@
 import { FormControlLabel, FormGroup, Switch } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import AC from '../Autocomplete';
 
 type Option = {
@@ -11,6 +12,7 @@ type Option = {
 
 const Search = () => {
   const router = useRouter();
+  const intl = useIntl();
   const [isChecked, setIsChecked] = useState(false);
   const [value, setValue] = useState<Option | null>(null);
 
@@ -24,8 +26,8 @@ const Search = () => {
     <section style={{ width: '100%' }}>
       <AC
         isFullWidth
-        label='Wyszukaj'
-        placeholder='Wyszukaj...'
+        label={intl.formatMessage({ id: 'search' })}
+        placeholder={`${intl.formatMessage({ id: 'search' })}...`}
         onChangeSingle={setValue}
         value={null}
         isKashebian={isChecked}
@@ -39,7 +41,7 @@ const Search = () => {
               onChange={setIsChecked.bind(this, !isChecked)}
             />
           }
-          label='Wyszukaj po kaszubsku'
+          label={intl.formatMessage({ id: 'searchKashebian' })}
         />
       </FormGroup>
     </section>
