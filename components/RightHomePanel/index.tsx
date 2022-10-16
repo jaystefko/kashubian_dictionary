@@ -46,6 +46,8 @@ const RightHomePanel = () => {
       <section>
         <Button
           id='basic-button'
+          variant='outlined'
+          style={{ border: '1px solid var(--link-color)' }}
           aria-controls={Boolean(anchorEl) ? 'basic-menu' : undefined}
           aria-haspopup='true'
           aria-expanded={Boolean(anchorEl) ? 'true' : undefined}
@@ -87,7 +89,11 @@ const RightHomePanel = () => {
       <section>
         {wordOfADay ? (
           <Link href={`word/${wordOfADay?.entryId}`} className={styles.link}>
-            <Card>
+            <Card
+              variant='outlined'
+              elevation={3}
+              style={{ border: '1px solid var(--link-color)' }}
+            >
               <CardContent>
                 <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
                   <FormattedMessage id='wordOfADay' />
