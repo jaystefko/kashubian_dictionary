@@ -6,9 +6,10 @@
 
 .searchContainer {
   display: flex;
-  align-items: center;
   flex-grow: 1;
   max-width: 500px;
+  flex-direction: column;
+  padding-top: 22vh;
 }
 
 @media (max-width: 1200px) {
