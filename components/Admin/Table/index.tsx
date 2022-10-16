@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
+import { useIntl } from 'react-intl';
 import {
   buttonSX,
   iconSX,
@@ -32,23 +33,27 @@ const AdminTable = ({
   openModalSoundHandler,
   deleteHandler,
 }: AdminTableProps) => {
+  const intl = useIntl();
+
   return (
     <section style={{ width: '60vw', height: '60vh' }}>
       {data.length ? (
         <Paper sx={paperSX}>
           <TableContainer sx={tableContainerSX}>
-            <Table sx={tableSX} stickyHeader aria-label='Tablica słów'>
+            <Table sx={tableSX} stickyHeader aria-label={intl.formatMessage({ id: 'wordTable' })}>
               <TableHead style={{ height: 30 }}>
                 <TableRow>
-                  <TableCell style={{ color: 'black', background: COLORS.YELLOW }}>Słowo</TableCell>
                   <TableCell style={{ color: 'black', background: COLORS.YELLOW }}>
-                    Dźwięk
+                    {intl.formatMessage({ id: 'word' })}
+                  </TableCell>
+                  <TableCell style={{ color: 'black', background: COLORS.YELLOW }}>
+                    {intl.formatMessage({ id: 'sound' })}
                   </TableCell>
                   <TableCell align='right' style={{ color: 'black', background: COLORS.YELLOW }}>
-                    Edycja
+                    {intl.formatMessage({ id: 'edit' })}
                   </TableCell>
                   <TableCell align='right' style={{ color: 'black', background: COLORS.YELLOW }}>
-                    Usunięcie
+                    {intl.formatMessage({ id: 'delete' })}
                   </TableCell>
                 </TableRow>
               </TableHead>

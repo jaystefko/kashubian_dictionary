@@ -24,6 +24,22 @@ const boxSX: SxProps = {
   borderRadius: 4,
 };
 
+const smallBoxSX: SxProps = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '40vw',
+  height: '28vh',
+  bgcolor: COLORS.GRAY,
+  color: COLORS.YELLOW,
+  boxShadow: 24,
+  p: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  borderRadius: 4,
+};
+
 const iconSX: SxProps = {
   color: COLORS.YELLOW,
 };
@@ -106,6 +122,7 @@ const tableContainerSX: SxProps = {
 export {
   buttonSX,
   boxSX,
+  smallBoxSX,
   iconSX,
   inputSX,
   tableCellSX,
