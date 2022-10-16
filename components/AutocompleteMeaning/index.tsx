@@ -84,6 +84,7 @@ const MAC = ({
       filterOptions={(options) => options}
       options={optionList}
       loading={isLoading}
+      loadingText={intl.formatMessage({ id: 'loadingText' })}
       renderInput={(params) => (
         <TextField
           {...params}

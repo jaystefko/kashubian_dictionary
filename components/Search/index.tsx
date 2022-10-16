@@ -26,8 +26,8 @@ const Search = () => {
     <section style={{ width: '100%' }}>
       <AC
         isFullWidth
-        label={intl.formatMessage({ id: 'search' })}
-        placeholder={`${intl.formatMessage({ id: 'search' })}...`}
+        label={intl.formatMessage({ id: 'searchMainPage' })}
+        placeholder={`${intl.formatMessage({ id: 'searchMainPage' })}...`}
         onChangeSingle={setValue}
         value={null}
         isKashebian={isChecked}

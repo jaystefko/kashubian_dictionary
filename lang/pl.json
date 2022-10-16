@@ -215,6 +215,7 @@
   "file": "Plik",
   "deleteFile": "Usuń plik",
   "search": "Wyszukaj",
+  "searchMainPage": "Wpisz szukane słowo",
   "wordTable": "Tablica słów",
   "word": "Słowo",
   "sound": "Dźwięk",
@@ -239,5 +240,6 @@
   "error_other": "Coś poszło nie tak",
   "fileUploaded": "Plik zapisano",
   "fileDeleted": "Plik usunięto",
-  "fileTooBig": "Plik jest za duży. Max 512KB"
+  "fileTooBig": "Plik jest za duży. Max 512KB",
+  "loadingText": "Ładowanie"
 }
