@@ -1,11 +1,12 @@
 .article {
   height: calc(100vh - 160px);
   width: 21vw;
-  min-width: 261px;
-  margin: 0 1rem;
+  min-width: 291px;
+  padding: 3rem 9px 3rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .link {

@@ -9,10 +9,12 @@ const HomeScreen: NextPage = () => {
   return (
     <div className={styles.container}>
       <DictionaryPanel />
-      <article className={styles.searchContainer}>
-        <FundInfo />
-        <Search />
-      </article>
+      <div className={styles.searchOuterContainer}>
+        <article className={styles.searchContainer}>
+          <FundInfo />
+          <Search />
+        </article>
+      </div>
       <RightHomePanel />
     </div>
   );
