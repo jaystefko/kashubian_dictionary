@@ -149,7 +149,12 @@ const AdminScreen: NextPage = () => {
         word={word}
         saveHandler={saveHandler}
       />
-      <SoundModal isOpen={isSoundModalOpen} setIsOpen={setIsSoundModalOpen} id={wordId} />
+      <SoundModal
+        isOpen={isSoundModalOpen}
+        setIsOpen={setIsSoundModalOpen}
+        id={wordId}
+        auth={auth!}
+      />
       <div className='whole-page'>
         {isLoading ? (
           <CircularProgress color='warning' />

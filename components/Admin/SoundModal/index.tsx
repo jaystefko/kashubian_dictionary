@@ -1,6 +1,6 @@
 import { Remove } from '@mui/icons-material';
 import { Box, Button, Grid, Input, Modal } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useIntl } from 'react-intl';
 import { smallBoxSX, inputSX } from '../../../styles/sx';
 import { deleteFile, getFile, uploadFile } from '../../../utils/api';
@@ -12,29 +12,19 @@ type SoundModalProps = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   id: number;
+  auth: BasicAuth;
 };
 
-const SoundModal = ({ isOpen, setIsOpen, id }: SoundModalProps) => {
+const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
   const intl = useIntl();
   const [file, setFile] = useState<any>(null);
-  const [auth, setAuth] = useState<BasicAuth>();
   const [key, setKey] = useState(0);
   const [isFilePresent, setIsFilePresent] = useState(false);
-
-  useEffect(() => {
-    let data = localStorage.getItem('auth');
-    if (!data) {
-      const username = prompt('Fill in your login', '') || '';
-      const password = prompt('Fill in your password', '') || '';
-      setAuth({ username, password });
-    } else {
-      setAuth(JSON.parse(data));
-    }
-  }, []);
+  const F = useRef<HTMLInputElement>();
 
   useEffect(() => {
     (async () => {
-      if (!(isOpen && id && auth)) return;
+      if (!(isOpen && id)) return;
 
       try {
         const response = await getFile(id, auth);
@@ -51,11 +41,11 @@ const SoundModal = ({ isOpen, setIsOpen, id }: SoundModalProps) => {
     };
   }, [isOpen, id, auth]); // eslint-disable-line
 
-  async function save(f: any) {
-    if (file) {
+  async function save() {
+    if (F.current?.files?.length) {
       try {
         const data = new FormData();
-        data.append('file', f);
+        data.append('soundFile', F.current?.files[0]);
         await uploadFile(data, id, auth!);
       } catch (error) {
         errorHandler(error, intl);
@@ -87,6 +77,7 @@ const SoundModal = ({ isOpen, setIsOpen, id }: SoundModalProps) => {
             <Grid item xs={10}>
               <Input
                 type='file'
+                inputRef={F}
                 inputProps={{ accept: '.mp3' }}
                 value={file}
                 onChange={(e) => setFile(e.target.value)}
@@ -109,7 +100,7 @@ const SoundModal = ({ isOpen, setIsOpen, id }: SoundModalProps) => {
           <Button onClick={setIsOpen.bind(this, false)}>
             {intl.formatMessage({ id: 'close' })}
           </Button>
-          <Button onClick={save.bind(this, file)}>{intl.formatMessage({ id: 'save' })}</Button>
+          <Button onClick={save}>{intl.formatMessage({ id: 'save' })}</Button>
         </footer>
       </Box>
     </Modal>
