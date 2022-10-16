@@ -2,8 +2,9 @@ import { Remove } from '@mui/icons-material';
 import { Box, Button, Grid, Input, Modal } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
 import { useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { smallBoxSX, inputSX } from '../../../styles/sx';
-import { deleteFile, getFile, uploadFile } from '../../../utils/api';
+import { deleteFile, getFile, uploadFile } from '../../../utils/api'; // getFile
 import errorHandler from '../../../utils/errorHandler';
 import { BasicAuth } from '../../../utils/types';
 import styles from '../WordModal/styles.module.css';
@@ -28,8 +29,17 @@ const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
 
       try {
         const response = await getFile(id, auth);
-        setFile(response.data);
-        setKey(key + 1);
+        const data = new Blob([response.data], { type: 'audio/mp3' });
+        const file = new File([data], 'audio.mp3', {
+          type: 'audio/mp3',
+          lastModified: new Date().getTime(),
+        });
+        const container = new DataTransfer();
+        container.items.add(file);
+        if (F.current?.files) {
+          F.current.files = container.files;
+          setFile(F.current.value);
+        }
         setIsFilePresent(true);
       } catch (error) {
         setIsFilePresent(false);
@@ -47,12 +57,16 @@ const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
         const data = new FormData();
         data.append('soundFile', F.current?.files[0]);
         await uploadFile(data, id, auth!);
+        toast.success(intl.formatMessage({ id: 'fileUploaded' }));
+        setIsOpen(false);
       } catch (error) {
         errorHandler(error, intl);
       }
-    } else if (!isFilePresent) {
+    } else if (isFilePresent && !file) {
       try {
         await deleteFile(id, auth!);
+        toast.success(intl.formatMessage({ id: 'fileDeleted' }));
+        setIsOpen(false);
       } catch (error) {
         errorHandler(error, intl);
       }
@@ -80,7 +94,17 @@ const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
                 inputRef={F}
                 inputProps={{ accept: '.mp3' }}
                 value={file}
-                onChange={(e) => setFile(e.target.value)}
+                onChange={(e) => {
+                  const target = e.target as HTMLInputElement;
+                  if (target.files?.length) {
+                    if (target.files[0].size > 512000) {
+                      toast.error(intl.formatMessage({ id: 'fileTooBig' }));
+                      deleteF();
+                    } else {
+                      setFile(target.value);
+                    }
+                  }
+                }}
                 key={key}
                 sx={inputSX}
               />
