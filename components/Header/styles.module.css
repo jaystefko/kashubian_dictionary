@@ -76,4 +76,8 @@
   .desktopContainer {
     display: none;
   }
+
+  .header {
+    background-color: var(--link-color);
+  }
 }

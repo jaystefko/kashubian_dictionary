@@ -101,7 +101,7 @@ function Header() {
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
         >
-          <ManuIcon />
+          <ManuIcon style={{ color: 'black' }} />
         </Button>
         <Menu
           id='basic-menu'
