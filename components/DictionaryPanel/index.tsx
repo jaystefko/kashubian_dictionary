@@ -23,7 +23,7 @@ const DictionaryPanel = () => {
   }, []); // eslint-disable-line
 
   return (
-    <article className={styles.article}>
+    <article className={styles.dictionaryPanel}>
       <List>
         {wordList.map((word, index) => (
           <ListItemButton

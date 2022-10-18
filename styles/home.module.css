@@ -6,21 +6,23 @@
 
 .searchContainer {
   display: flex;
-  flex-grow: 1;
-  max-width: 500px;
   flex-direction: column;
-  padding-top: 22vh;
 }
 
 .searchOuterContainer {
   display: flex;
-  flex-grow: 1;
   justify-content: center;
 }
 
 @media (max-width: 1200px) {
   .container {
     justify-content: center;
+    flex-direction: column;
+  }
+
+  .searchContainer {
+    padding-top: 2rem;
+    max-width: 500px;
   }
 }
 
@@ -33,5 +35,12 @@
 @media (min-width: 1200px) {
   .searchOuterContainer {
     padding-left: 63px;
+    flex-grow: 1;
+  }
+
+  .searchContainer {
+    flex-grow: 1;
+    max-width: 500px;
+    padding-top: 22vh;
   }
 }

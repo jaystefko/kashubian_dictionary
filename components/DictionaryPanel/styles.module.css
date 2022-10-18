@@ -1,20 +1,20 @@
-.article {
+.dictionaryPanel {
   height: calc(100vh - 160px);
   width: 237px;
   overflow-y: auto;
 }
 
-.article::-webkit-scrollbar {
+.dictionaryPanel::-webkit-scrollbar {
   width: 0.4rem;
 }
 
-.article::-webkit-scrollbar-thumb {
+.dictionaryPanel::-webkit-scrollbar-thumb {
   background: var(--font-color);
   border-radius: 2px;
 }
 
 @media (max-width: 1200px) {
-  .article {
+  .dictionaryPanel {
     display: none;
   }
 }
