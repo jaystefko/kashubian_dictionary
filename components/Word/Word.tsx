@@ -10,7 +10,7 @@ type Props = {
 const WordScreen = ({ word }: Props) => {
   const intl = useIntl();
 
-  // style={{ scrollbarWidth: 'none', width: '60vw' }}>
+  // console.log(intl.locale, intl.defaultLocale);
 
   return (
     <article className={styles.wordContainer}>
@@ -25,14 +25,30 @@ const WordScreen = ({ word }: Props) => {
               {intl.formatMessage({ id: `PARTS_OF_SPEECH.${word.partOfSpeech}` })}
             </span>
           </li>
-          <li className={styles.listItem}>
-            <span className={styles.property}>
-              {intl.formatMessage({ id: `SUB_PARTS_OF_SPEECH` })}
-            </span>
+          {word.partOfSpeechSubType === word.partOfSpeech ? (
+            ''
+          ) : (
+            <li className={styles.listItem}>
+              <span className={styles.property}>
+                {intl.formatMessage({ id: `SUB_PARTS_OF_SPEECH` })}
+              </span>
+              <span className={styles.content}>
+                {intl.formatMessage({ id: `SUB_PARTS_OF_SPEECH.${word.partOfSpeechSubType}` })}
+              </span>
+            </li>
+          )}
+          {/* <li className={styles.listItem}>
+            <span className={styles.property}>{intl.formatMessage({ id: 'meanings' })}</span>
             <span className={styles.content}>
-              {intl.formatMessage({ id: `SUB_PARTS_OF_SPEECH.${word.partOfSpeechSubType}` })}
+              {word.meanings!.map((m, index) => (
+                <div key={index}>
+                  <span>{`${intl.formatMessage({ id: 'definition' })}: ${m.definition}`}</span>
+                  <span>{`${intl.formatMessage({ id: 'definition' })}: ${m.definition}`}</span>
+                  {m.origin ? <p>{`${intl.formatMessage({ id: 'origin' })}: ${m.origin}`}</p> : ''}
+                </div>
+              ))}
             </span>
-          </li>
+          </li> */}
           {word.base ? (
             <li className={styles.listItem}>
               <span className={styles.property}>{intl.formatMessage({ id: 'word.base' })}</span>
@@ -53,6 +69,14 @@ const WordScreen = ({ word }: Props) => {
                   </Link>
                 ))}
               </span>
+            </li>
+          ) : (
+            ''
+          )}
+          {word.note ? (
+            <li className={styles.listItem}>
+              <span className={styles.property}>{intl.formatMessage({ id: 'note' })}</span>
+              <span className={styles.content}>{word.note}</span>
             </li>
           ) : (
             ''
