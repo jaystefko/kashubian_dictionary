@@ -1,0 +1,46 @@
+.word {
+  font-size: 2.5rem;
+}
+
+.wordContainer {
+  width: 90%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  border-top: 2px solid var(--link-color);
+  font-size: 1.1rem;
+  padding: 0.5rem;
+}
+
+.property {
+  width: 40%;
+  font-weight: bold;
+  display: flex;
+}
+
+.content {
+  width: 60%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 1200px) {
+  .content {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 550px) {
+  .content {
+    justify-content: end;
+  }
+}
