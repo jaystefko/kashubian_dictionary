@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { BasicAuth, Word } from './types';
 
-const url = 'https://kashubian-dic.herokuapp.com/';
+const url = 'http://vps-d3e5606a.vps.ovh.net:8888/';
 
 function getAxiosRequestConfig(auth: BasicAuth): AxiosRequestConfig {
   return {
