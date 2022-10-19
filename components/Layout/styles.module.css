@@ -1,4 +1,10 @@
 .main {
+  min-height: calc(100vh - 160px);
   background: url('/images/background-griffon.png') center center no-repeat var(--background-color);
-  height: calc(100vh - 160px);
+}
+
+@media (min-width: 550px) {
+  .main {
+    height: calc(100vh - 160px);
+  }
 }

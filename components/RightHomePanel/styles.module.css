@@ -1,6 +1,4 @@
 .article {
-  height: calc(100vh - 160px);
-  width: 21vw;
   width: 291px;
   padding: 3rem 9px 3rem 0;
   display: flex;
@@ -19,6 +17,12 @@
     padding: 0;
     gap: 1rem;
     justify-content: flex-start;
-    margin: 3rem 5% 0;
+    margin: 3rem 5%;
+  }
+}
+
+@media (min-width: 550px) {
+  .article {
+    height: calc(100vh - 160px);
   }
 }
