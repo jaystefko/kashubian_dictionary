@@ -55,7 +55,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   const intl = useIntl();
   const [header, setHeader] = useState('');
   const [wordString, setWordString] = useState('');
-  const [priority, setPriority] = useState(true);
+  const [priority, setPriority] = useState(false);
   const [partOfSpeech, setPartOfSpeech] = useState('');
   const [subPartOfSpeech, setSubPartOfSpeech] = useState('');
   const [subPartOfSpeechOptionList, setSubPartOfSpeechOptionList] = useState<
@@ -76,7 +76,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
     if (!isModalOpen) {
       setHeader(intl.formatMessage({ id: 'addWord' }));
       setWordString('');
-      setPriority(true);
+      setPriority(false);
       setPartOfSpeech('');
       setSubPartOfSpeech('');
       setVariations(null);
