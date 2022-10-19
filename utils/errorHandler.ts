@@ -23,7 +23,7 @@ function transpileErrorName(name: string, intl: IntlShape) {
     .replaceAll(/[\[\]\.]/g, ' ')
     .split(' ')
     .filter((a) => a)
-    .map((a) => (isNaN(Number(a)) ? Number(a) + 1 : intl.formatMessage({ id: a })))
+    .map((a) => (isNaN(a as any) ? intl.formatMessage({ id: a }) : Number(a) + 1))
     .join(' ');
 }
 
