@@ -1,4 +1,4 @@
-const defaultMeaning = {
+const getDefaultMeaning = () => ({
   translation: {
     english: '',
     german: '',
@@ -14,6 +14,6 @@ const defaultMeaning = {
   proverbs: undefined,
   quotes: undefined,
   synonyms: undefined,
-};
+});
 
-export default defaultMeaning;
+export default getDefaultMeaning;

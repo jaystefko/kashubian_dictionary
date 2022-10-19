@@ -30,7 +30,7 @@ import {
 } from '../../../utils/types';
 import { isEmpty, setter } from '../../../utils/utilities';
 import AC from '../../Autocomplete';
-import defaultMeaning from './meaning';
+import getDefaultMeaning from './meaning';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import styles from './styles.module.css';
@@ -65,9 +65,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
   const [note, setNote] = useState('');
   const [base, setBase] = useState<Option | null>(null);
   const [others, setOthers] = useState<Array<Option | null>>([]);
-  const [meanings, setMeanings] = useState<Array<GatheredMeaning>>([
-    { ...defaultMeaning, translation: { ...defaultMeaning.translation } },
-  ]);
+  const [meanings, setMeanings] = useState<Array<GatheredMeaning>>([getDefaultMeaning()]);
   const [isVariationModalOpen, setIsVariationModalOpen] = useState(false);
   const [isMeaningModalOpen, setIsMeaningModalOpen] = useState(false);
   const [meaningIndex, setMeaningIndex] = useState(-1);
@@ -83,7 +81,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
       setNote('');
       setBase(null);
       setOthers([]);
-      setMeanings([{ ...defaultMeaning, translation: { ...defaultMeaning.translation } }]);
+      setMeanings([getDefaultMeaning()]);
     }
   }, [isModalOpen]); // eslint-disable-line
 
@@ -433,7 +431,9 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               <Button
                 sx={buttonSX}
                 onClick={() => {
-                  setMeanings([...meanings, { ...defaultMeaning }]);
+                  const copy = [...meanings];
+                  copy.push(getDefaultMeaning());
+                  setMeanings(copy);
                 }}
               >
                 <Add /> {intl.formatMessage({ id: 'addMeaning' })}
