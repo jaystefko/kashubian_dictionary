@@ -2,9 +2,35 @@ import axios from 'axios';
 import { IntlShape } from 'react-intl';
 import { toast } from 'react-toastify';
 
+type ErrorDataItem = {
+  message: string;
+  name: string;
+};
+
+type ErrorData = {
+  fieldErrors: Array<ErrorDataItem>;
+  objectErrors: Array<ErrorDataItem>;
+  paramErrors: Array<ErrorDataItem>;
+};
+
 function logOut() {
   localStorage.clear();
   window.location.reload();
+}
+
+function transpileErrorName(name: string, intl: IntlShape) {
+  return name
+    .replaceAll(/[\[\]\.]/g, ' ')
+    .split(' ')
+    .filter((a) => a)
+    .map((a) => (isNaN(Number(a)) ? Number(a) + 1 : intl.formatMessage({ id: a })))
+    .join(' ');
+}
+
+function notify400Error(data: Array<ErrorDataItem>, intl: IntlShape) {
+  data.forEach((e) => {
+    toast.error(`${intl.formatMessage({ id: e.message })}: ${transpileErrorName(e.name, intl)}`);
+  });
 }
 
 function errorHandler(error: unknown, intl: IntlShape) {
@@ -17,7 +43,14 @@ function errorHandler(error: unknown, intl: IntlShape) {
           break;
         }
         case 400: {
-          toast.error(intl.formatMessage({ id: 'error_400' }));
+          const data = error.response.data as ErrorData;
+          if (data && data.fieldErrors && data.objectErrors && data.paramErrors) {
+            notify400Error(data.fieldErrors, intl);
+            notify400Error(data.objectErrors, intl);
+            notify400Error(data.paramErrors, intl);
+          } else {
+            toast.error(intl.formatMessage({ id: 'error_400' }));
+          }
           break;
         }
         case 401: {
