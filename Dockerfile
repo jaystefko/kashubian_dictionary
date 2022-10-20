@@ -5,6 +5,6 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install --silent
 COPY . ./
-ENTRYPOINT ["npm", "run", "build"]
-ENTRYPOINT ["npm", "run", "start"]
+CMD ["npm", "run", "build"]
+CMD ["npm", "run", "start"]
 EXPOSE 3000
