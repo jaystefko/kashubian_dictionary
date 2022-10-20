@@ -124,32 +124,35 @@ function Header() {
           <MenuItem onClick={handleClose}>
             <Link href='/comments'>{intl.formatMessage({ id: 'topMenu.comments' })}</Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <a
-              href='https://www.facebook.com/Sloworz'
-              rel='external nofollow noreferrer'
-              target='_blank'
-            >
-              {intl.formatMessage({ id: 'topMenu.fb' })}
-            </a>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <a
-              href='https://www.instagram.com/polsko_kaszebsczi_sloworz'
-              rel='external nofollow noreferrer'
-              target='_blank'
-            >
-              {intl.formatMessage({ id: 'topMenu.instagram' })}
-            </a>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <a
-              href='https://twitter.com/kaszubskieslowa'
-              rel='external nofollow noreferrer'
-              target='_blank'
-            >
-              {intl.formatMessage({ id: 'topMenu.tweeter' })}
-            </a>
+          <MenuItem>
+            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+              <a
+                href='https://www.facebook.com/Sloworz'
+                rel='external nofollow noreferrer'
+                target='_blank'
+              >
+                <Facebook />
+              </a>
+              <a
+                href='https://www.instagram.com/polsko_kaszebsczi_sloworz'
+                rel='external nofollow noreferrer'
+                target='_blank'
+              >
+                <Instagram />
+              </a>
+              <a
+                href='https://twitter.com/kaszubskieslowa'
+                rel='external nofollow noreferrer'
+                target='_blank'
+              >
+                <Image
+                  src='/images/tweeter.svg'
+                  width={24}
+                  height={24}
+                  alt={intl.formatMessage({ id: 'topMenu.tweeter' })}
+                />
+              </a>
+            </div>
           </MenuItem>
         </Menu>
       </div>
