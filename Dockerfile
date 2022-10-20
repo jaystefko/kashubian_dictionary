@@ -5,7 +5,6 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install --silent
 COPY . ./
-RUN npm run build
-RUN apk --no-cache add curl
+ENTRYPOINT ["npm", "run", "build"]
 ENTRYPOINT ["npm", "run", "start"]
 EXPOSE 3000
