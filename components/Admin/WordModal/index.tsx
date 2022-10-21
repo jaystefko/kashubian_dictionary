@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { boxSX, buttonSX, checkboxSX, inputSX } from '../../../styles/sx';
+import { boxSX, inputSX } from '../../../styles/sx';
 import {
   PARTS_OF_SPEECH,
   SUB_PARTS_OF_SPEECH,
@@ -25,7 +25,6 @@ import {
   subPartPerPart,
   variationPerSubPart,
   GatheredWord,
-  COLORS,
   GatheredMeaning,
 } from '../../../utils/types';
 import { isEmpty, setter } from '../../../utils/utilities';
@@ -208,11 +207,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               <FormGroup>
                 <FormControlLabel
                   control={
-                    <Checkbox
-                      sx={checkboxSX}
-                      checked={priority}
-                      onChange={setPriority.bind(this, !priority)}
-                    />
+                    <Checkbox checked={priority} onChange={setPriority.bind(this, !priority)} />
                   }
                   label={intl.formatMessage({ id: 'isPriority' })}
                 />
@@ -304,14 +299,10 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               <h2>{intl.formatMessage({ id: 'meanings' })}</h2>
 
               {meanings.map((m, index) => (
-                <Paper
-                  elevation={3}
-                  key={index}
-                  sx={{ background: 'transparent', margin: '2rem 0' }}
-                >
-                  <Grid container spacing={2}>
+                <Paper elevation={3} key={index} sx={{ height: 'auto !important' }}>
+                  <Grid container spacing={2} xs={12} padding='0 1rem 1rem'>
                     <Grid item xs={12}>
-                      <p style={{ margin: '0 1rem', color: COLORS.YELLOW, fontWeight: 'bold' }}>
+                      <p className={styles.meaningNumber}>
                         {intl.formatMessage({ id: 'meaning' })} {index + 1}
                       </p>
                     </Grid>
@@ -404,7 +395,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                     <Grid item xs={12}>
                       <Button
                         disabled={index === 0}
-                        sx={buttonSX}
                         onClick={() => {
                           if (index !== 0) {
                             const copy = meanings.filter((m, i) => i !== index);
@@ -415,7 +405,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         <Remove /> {intl.formatMessage({ id: 'deleteMeaning' })}
                       </Button>
                       <Button
-                        sx={buttonSX}
                         onClick={() => {
                           setMeaningIndex(index);
                           setIsMeaningModalOpen(true);
@@ -429,12 +418,12 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               ))}
 
               <Button
-                sx={buttonSX}
                 onClick={() => {
                   const copy = [...meanings];
                   copy.push(getDefaultMeaning());
                   setMeanings(copy);
                 }}
+                style={{ marginTop: '1rem' }}
               >
                 <Add /> {intl.formatMessage({ id: 'addMeaning' })}
               </Button>
@@ -442,12 +431,8 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
           </Grid>
         </main>
         <footer className={styles.footer}>
-          <Button sx={buttonSX} onClick={closeHandler}>
-            {intl.formatMessage({ id: 'close' })}
-          </Button>
-          <Button sx={buttonSX} onClick={onSave}>
-            {intl.formatMessage({ id: 'save' })}
-          </Button>
+          <Button onClick={closeHandler}>{intl.formatMessage({ id: 'close' })}</Button>
+          <Button onClick={onSave}>{intl.formatMessage({ id: 'save' })}</Button>
         </footer>
         <MeaningModal
           isOpen={isMeaningModalOpen}

@@ -2,7 +2,7 @@ import { Add, Remove } from '@mui/icons-material';
 import { Box, Button, Grid, Modal, Paper, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { boxSX, buttonSX, inputSX } from '../../../../styles/sx';
+import { boxSX, inputSX } from '../../../../styles/sx';
 import { GatheredMeaning } from '../../../../utils/types';
 import MAC from '../../../AutocompleteMeaning';
 import styles from '../styles.module.css';
@@ -119,7 +119,7 @@ const MeaningModal = ({
               />
             </Grid>
             <Grid item xs={12}>
-              <Paper elevation={3} sx={{ background: 'transparent', margin: '0.5rem 0' }}>
+              <Paper elevation={3} sx={{ margin: '0.5rem 0' }}>
                 <Grid item xs={12}>
                   <h3 style={{ margin: 0, padding: '1rem 0 0 1rem' }}>
                     {intl.formatMessage({ id: 'quotes' })}
@@ -164,7 +164,6 @@ const MeaningModal = ({
                     </Grid>
                     <Grid item xs={2}>
                       <Button
-                        sx={buttonSX}
                         title={intl.formatMessage({ id: 'removeQuote' })}
                         onClick={() => {
                           const copy = quoteList.filter((qq, i) => i !== index);
@@ -178,7 +177,6 @@ const MeaningModal = ({
                 ))}
                 <Grid item xs={12} spacing={2}>
                   <Button
-                    sx={buttonSX}
                     style={{ margin: '1rem 0 0.5rem 0.5rem' }}
                     onClick={() => {
                       setQuoteList([...quoteList, { note: '', quote: '' }]);
@@ -236,7 +234,6 @@ const MeaningModal = ({
                     </Grid>
                     <Grid item xs={2}>
                       <Button
-                        sx={buttonSX}
                         title={intl.formatMessage({ id: 'removeExample' })}
                         onClick={() => {
                           const copy = exampleList.filter((ee, i) => i !== index);
@@ -250,7 +247,6 @@ const MeaningModal = ({
                 ))}
                 <Grid item xs={12} spacing={2}>
                   <Button
-                    sx={buttonSX}
                     style={{ margin: '1rem 0 0.5rem 0.5rem' }}
                     onClick={() => {
                       setExampleList([...exampleList, { note: '', example: '' }]);
@@ -308,7 +304,6 @@ const MeaningModal = ({
                     </Grid>
                     <Grid item xs={2}>
                       <Button
-                        sx={buttonSX}
                         title={intl.formatMessage({ id: 'removeProverb' })}
                         onClick={() => {
                           const copy = proVerbList.filter((pp, i) => i !== index);
@@ -322,7 +317,6 @@ const MeaningModal = ({
                 ))}
                 <Grid item xs={12} spacing={2}>
                   <Button
-                    sx={buttonSX}
                     style={{ margin: '1rem 0 0.5rem 0.5rem' }}
                     onClick={() => {
                       setProVerbList([...proVerbList, { note: '', proverb: '' }]);
@@ -380,7 +374,6 @@ const MeaningModal = ({
                     </Grid>
                     <Grid item xs={2}>
                       <Button
-                        sx={buttonSX}
                         title={intl.formatMessage({ id: 'removePhrasalVerb' })}
                         onClick={() => {
                           const copy = phrasalVerbList.filter((pp, i) => i !== index);
@@ -394,7 +387,6 @@ const MeaningModal = ({
                 ))}
                 <Grid item xs={12} spacing={2}>
                   <Button
-                    sx={buttonSX}
                     style={{ margin: '1rem 0 0.5rem 0.5rem' }}
                     onClick={() => {
                       setPhrasalVerbList([...phrasalVerbList, { note: '', phrasalVerb: '' }]);

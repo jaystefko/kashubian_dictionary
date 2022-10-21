@@ -31,6 +31,7 @@ const Search = () => {
         onChangeSingle={setValue}
         value={null}
         isKashebian={isChecked}
+        isColorFlipped
       />
       <FormGroup>
         <FormControlLabel

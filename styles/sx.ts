@@ -1,13 +1,6 @@
 import { SxProps } from '@mui/material';
 import { COLORS } from '../utils/types';
 
-const buttonSX: SxProps = {
-  color: COLORS.YELLOW,
-  ':hover': {
-    backgroundColor: COLORS.BLACK01,
-  },
-};
-
 const boxSX: SxProps = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -38,17 +31,6 @@ const smallBoxSX: SxProps = {
   display: 'flex',
   flexDirection: 'column',
   borderRadius: 4,
-};
-
-const iconSX: SxProps = {
-  color: COLORS.YELLOW,
-};
-
-const checkboxSX: SxProps = {
-  fill: COLORS.YELLOW,
-  ' *': {
-    fill: COLORS.YELLOW,
-  },
 };
 
 const inputSX: SxProps = {
@@ -89,46 +71,4 @@ const inputSX: SxProps = {
   },
 };
 
-const tableCellSX: SxProps = {
-  color: COLORS.YELLOW,
-  borderColor: COLORS.BLACK03,
-};
-
-const tableHeaderCellSX: SxProps = {
-  backgroundColor: COLORS.YELLOW,
-  borderColor: COLORS.YELLOW,
-};
-
-const tableSX: SxProps = {
-  background: 'transparent',
-  height: '100%',
-};
-
-const paperSX: SxProps = {
-  height: '100%',
-  background: 'transparent',
-  overflowY: 'hidden',
-};
-
-const tableContainerSX: SxProps = {
-  '::-webkit-scrollbar': {
-    display: 'none',
-  },
-  height: '100%',
-  scrollbarWidth: 'none',
-  '-ms-overflow-style': 'none',
-};
-
-export {
-  buttonSX,
-  boxSX,
-  smallBoxSX,
-  iconSX,
-  inputSX,
-  tableCellSX,
-  tableHeaderCellSX,
-  tableSX,
-  paperSX,
-  checkboxSX,
-  tableContainerSX,
-};
+export { boxSX, smallBoxSX, inputSX };

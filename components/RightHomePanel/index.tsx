@@ -45,7 +45,7 @@ const RightHomePanel = () => {
     <article className={styles.article}>
       <section>
         <Button
-          id='basic-button'
+          id='last-added-word-list'
           variant='outlined'
           style={{ border: '1px solid var(--link-color)' }}
           aria-controls={Boolean(anchorEl) ? 'basic-menu' : undefined}
@@ -62,7 +62,7 @@ const RightHomePanel = () => {
           open={Boolean(anchorEl)}
           onClose={closeHandler}
           MenuListProps={{
-            'aria-labelledby': 'basic-button',
+            'aria-labelledby': 'last-added-word-list',
           }}
           anchorOrigin={{
             vertical: 'bottom',

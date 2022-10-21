@@ -23,6 +23,7 @@ type ACProps = {
   onChangeMultiple?: Dispatch<SetStateAction<Array<Option | null>>>;
   value: any;
   isKashebian?: boolean;
+  isColorFlipped?: boolean;
 };
 
 const AC = ({
@@ -34,6 +35,7 @@ const AC = ({
   onChangeMultiple,
   value,
   isKashebian = true,
+  isColorFlipped,
 }: ACProps) => {
   let { locale } = useRouter();
   if (!locale) locale = LOCALES.pl;
@@ -107,7 +109,7 @@ const AC = ({
       renderInput={(params) => (
         <TextField
           {...params}
-          sx={inputSX}
+          sx={isColorFlipped ? undefined : inputSX}
           fullWidth={isFullWidth}
           placeholder={placeholder}
           label={label}

@@ -1,4 +1,5 @@
-import { List, ListItemButton, ListItemText } from '@mui/material';
+import { List, ListItem } from '@mui/material';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { getWordList } from '../../utils/api';
@@ -26,14 +27,9 @@ const DictionaryPanel = () => {
     <article className={styles.dictionaryPanel}>
       <List>
         {wordList.map((word, index) => (
-          <ListItemButton
-            key={index}
-            component='a'
-            href={`word/${word.id}`}
-            style={{ margin: 0, padding: '0 4px' }}
-          >
-            <ListItemText primary={word.word} style={{ fontSize: 16 }} />
-          </ListItemButton>
+          <ListItem key={index}>
+            <Link href={`word/${word.id}`}>{word.word}</Link>
+          </ListItem>
         ))}
       </List>
     </article>

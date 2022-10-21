@@ -22,6 +22,7 @@ function Header() {
       <Link href='/'>
         {/* 453px width; 172px height in original image */}
         <Image
+          style={{ width: 237, height: 90 }}
           src='/images/logo.png'
           height={90}
           width={237}
@@ -95,7 +96,7 @@ function Header() {
       </div>
       <div className={styles.mobileContainer}>
         <Button
-          id='basic-button'
+          id='menu-button'
           aria-controls={open ? 'basic-menu' : undefined}
           aria-haspopup='true'
           aria-expanded={open ? 'true' : undefined}
@@ -109,7 +110,7 @@ function Header() {
           open={open}
           onClose={handleClose}
           MenuListProps={{
-            'aria-labelledby': 'basic-button',
+            'aria-labelledby': 'menu-button',
           }}
         >
           <MenuItem onClick={handleClose}>
@@ -146,6 +147,7 @@ function Header() {
                 target='_blank'
               >
                 <Image
+                  style={{ width: 24, height: 24 }}
                   src='/images/tweeter.svg'
                   width={24}
                   height={24}

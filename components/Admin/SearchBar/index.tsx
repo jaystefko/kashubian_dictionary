@@ -2,7 +2,7 @@ import { Add } from '@mui/icons-material';
 import { Button, TextField } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import { useIntl } from 'react-intl';
-import { buttonSX, iconSX, inputSX } from '../../../styles/sx';
+import { inputSX } from '../../../styles/sx';
 
 type SearchBarProps = {
   setSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -22,8 +22,8 @@ const SearchBar = ({ setSearch, search, setIsModalOpen }: SearchBarProps) => {
         placeholder={`${intl.formatMessage({ id: 'search' })}...`}
         onChange={setSearch}
       />
-      <Button onClick={setIsModalOpen.bind(this, true)} sx={buttonSX}>
-        <Add sx={iconSX} />
+      <Button onClick={setIsModalOpen.bind(this, true)}>
+        <Add />
       </Button>
     </section>
   );
