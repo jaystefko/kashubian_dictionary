@@ -23,7 +23,8 @@
   transition: all 0.5s ease;
 }
 
-.footerList > li:hover {
+.footerList > li:hover,
+.footerList > li:active {
   filter: grayscale(0);
   opacity: 1;
 }
