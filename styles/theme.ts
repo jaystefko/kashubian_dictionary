@@ -19,7 +19,6 @@ const theme = createTheme({
       defaultProps: {
         style: {
           backgroundColor: COLORS.GRAY,
-          borderColor: COLORS.YELLOW,
         },
       },
     },
