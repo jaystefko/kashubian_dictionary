@@ -19,9 +19,11 @@
 
 .footerList > li {
   filter: grayscale(1);
+  opacity: 0.5;
   transition: all 0.5s ease;
 }
 
 .footerList > li:hover {
   filter: grayscale(0);
+  opacity: 1;
 }
