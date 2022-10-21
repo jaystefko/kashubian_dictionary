@@ -22,7 +22,6 @@ function Header() {
       <Link href='/'>
         {/* 453px width; 172px height in original image */}
         <Image
-          style={{ width: 237, height: 90 }}
           src='/images/logo.png'
           height={90}
           width={237}
@@ -147,7 +146,6 @@ function Header() {
                 target='_blank'
               >
                 <Image
-                  style={{ width: 24, height: 24 }}
                   src='/images/tweeter.svg'
                   width={24}
                   height={24}

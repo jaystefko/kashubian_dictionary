@@ -273,5 +273,8 @@
   "HYPERONIM_IDS_REPEATED_IN_MEANINGS": "HIPERONIM POWTÓRZONY W ZNACZENIU",
   "others": "Słowo powiązane",
   "entryId": "",
-  "meaningId": ""
+  "meaningId": "",
+  "sponsor.kashebianFoundation": "Fundacja Kaszuby",
+  "sponsor.countyChojnice": "Powiat Chojnicki",
+  "sponsor.museumWejherowo": "Muzeum Wejherowo"
 }

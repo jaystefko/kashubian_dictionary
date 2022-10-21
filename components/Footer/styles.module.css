@@ -2,4 +2,26 @@
   display: flex;
   justify-content: center;
   height: 70px;
+  padding: 5px 0;
+}
+
+.footerList {
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-content: center;
+}
+
+.footerList > li {
+  filter: grayscale(1);
+  transition: all 0.5s ease;
+}
+
+.footerList > li:hover {
+  filter: grayscale(0);
 }
