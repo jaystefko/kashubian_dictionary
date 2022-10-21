@@ -51,9 +51,11 @@ const WordScreen = ({ word }: Props) => {
           </li> */}
           {word.base ? (
             <li className={styles.listItem}>
-              <span className={styles.property}>{intl.formatMessage({ id: 'word.base' })}</span>
+              <span className={styles.property}>{intl.formatMessage({ id: `word.base` })}</span>
               <span className={styles.content}>
-                <Link href={`/word/${word.base.id}`}>{word.base.word}</Link>
+                <Link href={`/word/${word.base.id}`}>
+                  <span>{word.base.word}</span>
+                </Link>
               </span>
             </li>
           ) : (
@@ -61,11 +63,11 @@ const WordScreen = ({ word }: Props) => {
           )}
           {word.others?.length ? (
             <li className={styles.listItem}>
-              <span className={styles.property}>{intl.formatMessage({ id: 'word.others' })}</span>
+              <span className={styles.property}>{intl.formatMessage({ id: `word.others` })}</span>
               <span className={styles.content}>
                 {word.others.map((o, index) => (
                   <Link key={index} href={`/word/${o.other.id}`}>
-                    {`${o.other.word}${index === word.others!.length - 1 ? '' : ','}`}
+                    <span>{`${o.other.word}${index === word.others!.length - 1 ? '' : ','}`}</span>
                   </Link>
                 ))}
               </span>
@@ -75,7 +77,7 @@ const WordScreen = ({ word }: Props) => {
           )}
           {word.note ? (
             <li className={styles.listItem}>
-              <span className={styles.property}>{intl.formatMessage({ id: 'note' })}</span>
+              <span className={styles.property}>{intl.formatMessage({ id: `note` })}</span>
               <span className={styles.content}>{word.note}</span>
             </li>
           ) : (

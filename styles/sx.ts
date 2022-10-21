@@ -33,42 +33,4 @@ const smallBoxSX: SxProps = {
   borderRadius: 4,
 };
 
-const inputSX: SxProps = {
-  color: `${COLORS.YELLOW} !important`,
-  '::placeholder': {
-    color: COLORS.YELLOW,
-  },
-  '::-webkit-input-placeholder': {
-    color: COLORS.YELLOW,
-  },
-  '::-ms-input-placeholder': {
-    color: COLORS.YELLOW,
-  },
-  '::-moz-placeholder': {
-    color: COLORS.YELLOW,
-  },
-  '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
-    borderColor: `${COLORS.YELLOW} !important`,
-    color: `${COLORS.YELLOW} !important`,
-  },
-  ':disabled': {
-    color: `${COLORS.DISABLED_YELLOW} !important`,
-  },
-  ' *': {
-    color: `${COLORS.YELLOW} !important`,
-    '::-webkit-input-placeholder': {
-      color: COLORS.YELLOW,
-    },
-    '::-ms-input-placeholder': {
-      color: COLORS.YELLOW,
-    },
-    '::-moz-placeholder': {
-      color: COLORS.YELLOW,
-    },
-    ':disabled': {
-      color: `${COLORS.DISABLED_YELLOW} !important`,
-    },
-  },
-};
-
-export { boxSX, smallBoxSX, inputSX };
+export { boxSX, smallBoxSX };

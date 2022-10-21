@@ -3,7 +3,7 @@ import { Box, Button, Grid, Input, Modal } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
 import { useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-import { smallBoxSX, inputSX } from '../../../styles/sx';
+import { smallBoxSX } from '../../../styles/sx';
 import { deleteFile, getFile, uploadFile } from '../../../utils/api'; // getFile
 import errorHandler from '../../../utils/errorHandler';
 import { BasicAuth } from '../../../utils/types';
@@ -106,7 +106,6 @@ const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
                   }
                 }}
                 key={key}
-                sx={inputSX}
               />
             </Grid>
             <Grid item xs={2}>

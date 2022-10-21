@@ -4,7 +4,6 @@ import { getTranslatedWordListByString, getWordList, getWordListByString } from 
 import errorHandler from '../../utils/errorHandler';
 import { LOCALES, Word } from '../../utils/types';
 import Autocomplete from '@mui/material/Autocomplete';
-import { inputSX } from '../../styles/sx';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 
@@ -35,8 +34,8 @@ const AC = ({
   onChangeMultiple,
   value,
   isKashebian = true,
-  isColorFlipped,
-}: ACProps) => {
+}: // isColorFlipped,
+ACProps) => {
   let { locale } = useRouter();
   if (!locale) locale = LOCALES.pl;
   const intl = useIntl();
@@ -109,7 +108,7 @@ const AC = ({
       renderInput={(params) => (
         <TextField
           {...params}
-          sx={isColorFlipped ? undefined : inputSX}
+          // sx={}
           fullWidth={isFullWidth}
           placeholder={placeholder}
           label={label}

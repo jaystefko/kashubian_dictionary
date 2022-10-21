@@ -4,7 +4,6 @@ import { getMeaningList } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { LOCALES } from '../../utils/types';
 import Autocomplete from '@mui/material/Autocomplete';
-import { inputSX } from '../../styles/sx';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 
@@ -88,7 +87,6 @@ const MAC = ({
       renderInput={(params) => (
         <TextField
           {...params}
-          sx={inputSX}
           fullWidth={isFullWidth}
           placeholder={placeholder}
           label={label}

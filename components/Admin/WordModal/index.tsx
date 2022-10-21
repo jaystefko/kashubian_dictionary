@@ -1,4 +1,4 @@
-import { Add, Remove } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { boxSX, inputSX } from '../../../styles/sx';
+import { boxSX } from '../../../styles/sx';
 import {
   PARTS_OF_SPEECH,
   SUB_PARTS_OF_SPEECH,
@@ -195,7 +195,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <TextField
-                sx={inputSX}
                 value={wordString}
                 placeholder={`${intl.formatMessage({ id: 'word.kashebian' })}...`}
                 label={intl.formatMessage({ id: 'word.kashebian' })}
@@ -220,7 +219,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                 </InputLabel>
                 <Select
                   labelId='partOfSpeech'
-                  sx={inputSX}
                   value={partOfSpeech}
                   label={intl.formatMessage({ id: 'partOfSpeech' })}
                   required
@@ -243,7 +241,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                 </InputLabel>
                 <Select
                   labelId='subPartOfSpeech'
-                  sx={inputSX}
                   value={subPartOfSpeech}
                   disabled={!subPartOfSpeechOptionList.length}
                   required
@@ -269,7 +266,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                sx={inputSX}
                 value={note}
                 placeholder={`${intl.formatMessage({ id: 'note' })}...`}
                 label={intl.formatMessage({ id: 'note' })}
@@ -309,7 +305,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                     <Grid item xs={12}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={meanings[index].definition}
                         required
                         placeholder={`${intl.formatMessage({ id: 'definition' })}...`}
@@ -324,7 +319,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                     <Grid item xs={12}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={meanings[index].origin || ''}
                         placeholder={`${intl.formatMessage({ id: 'origin' })}...`}
                         label={intl.formatMessage({ id: 'origin' })}
@@ -338,7 +332,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                     <Grid item xs={6}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={meanings[index].translation?.polish || ''}
                         required
                         placeholder={`${intl.formatMessage({ id: 'translation.polish' })}...`}
@@ -353,7 +346,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                     <Grid item xs={6}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={meanings[index].translation?.english || ''}
                         placeholder={`${intl.formatMessage({ id: 'translation.english' })}...`}
                         label={intl.formatMessage({ id: 'translation.english' })}
@@ -367,7 +359,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                     <Grid item xs={6}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={meanings[index].translation?.german || ''}
                         placeholder={`${intl.formatMessage({ id: 'translation.german' })}...`}
                         label={intl.formatMessage({ id: 'translation.german' })}
@@ -381,7 +372,6 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                     <Grid item xs={6}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={meanings[index].translation?.ukrainian || ''}
                         placeholder={`${intl.formatMessage({ id: 'translation.ukrainian' })}...`}
                         label={intl.formatMessage({ id: 'translation.ukrainian' })}
@@ -402,7 +392,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                           }
                         }}
                       >
-                        <Remove /> {intl.formatMessage({ id: 'deleteMeaning' })}
+                        {intl.formatMessage({ id: 'deleteMeaning' })}
                       </Button>
                       <Button
                         onClick={() => {

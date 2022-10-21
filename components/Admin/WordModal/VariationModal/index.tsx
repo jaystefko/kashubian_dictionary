@@ -1,7 +1,7 @@
 import { Box, Button, Grid, MenuItem, Modal, Select, TextField } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
-import { boxSX, inputSX } from '../../../../styles/sx';
+import { boxSX } from '../../../../styles/sx';
 import styles from '../styles.module.css';
 
 type VariationModalProps = {
@@ -36,7 +36,6 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
                     <Grid item xs={12} key={index}>
                       <Select
                         fullWidth
-                        sx={inputSX}
                         // @ts-ignore
                         value={v[key]}
                         label={intl.formatMessage({ id: key })}
@@ -58,7 +57,6 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
                   <Grid item xs={12} key={index}>
                     <TextField
                       fullWidth
-                      sx={inputSX}
                       // @ts-ignore
                       value={v[key]}
                       placeholder={`${intl.formatMessage({ id: key })}...`}
@@ -83,7 +81,6 @@ const VariationModal = ({ isOpen, setIsOpen, variation, save }: VariationModalPr
                     <Grid item xs={6} key={`${index}.${i}`}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         // @ts-ignore
                         value={v[key][k]}
                         placeholder={`${intl.formatMessage({ id: k })}...`}

@@ -2,32 +2,17 @@ import { createTheme } from '@mui/material/styles';
 import { COLORS } from '../utils/types';
 
 const theme = createTheme({
+  typography: {
+    allVariants: {
+      fontFamily: 'Fira Sans, sans-serif',
+    },
+  },
   components: {
-    MuiTypography: {
-      defaultProps: {
-        fontFamily: 'Fira Sans, sans-serif',
-      },
-    },
-    MuiCheckbox: {
-      defaultProps: {
-        color: 'primary',
-      },
-    },
-    MuiButton: {
-      defaultProps: {
-        color: 'primary',
-      },
-    },
-    MuiButtonBase: {
-      defaultProps: {
-        style: {
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
           color: COLORS.YELLOW,
         },
-      },
-    },
-    MuiIcon: {
-      defaultProps: {
-        color: 'primary',
       },
     },
     MuiAutocomplete: {
@@ -47,19 +32,6 @@ const theme = createTheme({
           scrollbarWidth: 'none',
         },
       },
-    },
-    MuiInput: {
-      defaultProps: {
-        color: 'primary',
-      },
-      // variants: [
-      //   {
-      //     props: { variant: 'normal' },
-      //     style: {
-      //       color: COLORS.YELLOW,
-      //     },
-      //   },
-      // ],
     },
     MuiTable: {
       defaultProps: {

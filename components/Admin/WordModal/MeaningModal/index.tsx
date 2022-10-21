@@ -2,7 +2,7 @@ import { Add, Remove } from '@mui/icons-material';
 import { Box, Button, Grid, Modal, Paper, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { boxSX, inputSX } from '../../../../styles/sx';
+import { boxSX } from '../../../../styles/sx';
 import { GatheredMeaning } from '../../../../utils/types';
 import MAC from '../../../AutocompleteMeaning';
 import styles from '../styles.module.css';
@@ -137,7 +137,6 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={q.quote}
                         placeholder={`${intl.formatMessage({ id: 'quote' })}...`}
                         label={intl.formatMessage({ id: 'quote' })}
@@ -151,7 +150,6 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={q.note}
                         placeholder={`${intl.formatMessage({ id: 'note' })}...`}
                         label={intl.formatMessage({ id: 'note' })}
@@ -207,7 +205,6 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={e.example}
                         placeholder={`${intl.formatMessage({ id: 'example' })}...`}
                         label={intl.formatMessage({ id: 'example' })}
@@ -221,7 +218,6 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={e.note}
                         placeholder={`${intl.formatMessage({ id: 'note' })}...`}
                         label={intl.formatMessage({ id: 'note' })}
@@ -277,7 +273,6 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={p.proverb}
                         placeholder={`${intl.formatMessage({ id: 'proverb' })}...`}
                         label={intl.formatMessage({ id: 'proverb' })}
@@ -291,7 +286,6 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={p.note}
                         placeholder={`${intl.formatMessage({ id: 'note' })}...`}
                         label={intl.formatMessage({ id: 'note' })}
@@ -347,7 +341,6 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={p.phrasalVerb}
                         placeholder={`${intl.formatMessage({ id: 'phrasalVerb' })}...`}
                         label={intl.formatMessage({ id: 'phrasalVerb' })}
@@ -361,7 +354,6 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        sx={inputSX}
                         value={p.note}
                         placeholder={`${intl.formatMessage({ id: 'note' })}...`}
                         label={intl.formatMessage({ id: 'note' })}

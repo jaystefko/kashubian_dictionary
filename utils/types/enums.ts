@@ -1,6 +1,5 @@
 enum COLORS {
   YELLOW = '#fdcd01',
-  DISABLED_YELLOW = 'orange',
   GRAY = '#404040',
   BLACK01 = 'rgba(0, 0, 0, 0.1)',
   BLACK03 = 'rgba(0, 0, 0, 0.3)',

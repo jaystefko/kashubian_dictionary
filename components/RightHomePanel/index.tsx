@@ -1,5 +1,5 @@
 import { KeyboardArrowDown } from '@mui/icons-material';
-import { Button, Card, CardContent, Menu, MenuItem, Typography } from '@mui/material';
+import { Button, Card, CardContent, Menu, MenuItem } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -54,7 +54,7 @@ const RightHomePanel = () => {
           onClick={clickHandler}
           endIcon={<KeyboardArrowDown />}
         >
-          <Typography>{intl.formatMessage({ id: 'lastAddedWords' })}</Typography>
+          {intl.formatMessage({ id: 'lastAddedWords' })}
         </Button>
         <Menu
           id='basic-menu'
@@ -81,7 +81,7 @@ const RightHomePanel = () => {
         >
           {lastWordList.map((word, index) => (
             <MenuItem key={index} onClick={navigateTo.bind(this, word.id)}>
-              <Typography>{word.word}</Typography>
+              {word.word}
             </MenuItem>
           ))}
         </Menu>
@@ -95,13 +95,13 @@ const RightHomePanel = () => {
               style={{ border: '1px solid var(--link-color)' }}
             >
               <CardContent>
-                <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
+                <p style={{ fontSize: 14 }}>
                   <FormattedMessage id='wordOfADay' />
-                </Typography>
-                <Typography variant='h5' component='div'>
-                  {wordOfADay?.word}
-                </Typography>
-                <Typography variant='body2'>{wordOfADay?.definitions[0] || ''}</Typography>
+                </p>
+
+                <h5>{wordOfADay?.word}</h5>
+
+                <span>{wordOfADay?.definitions[0] || ''}</span>
               </CardContent>
             </Card>
           </Link>
