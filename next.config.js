@@ -3,12 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ['pl', 'ka', 'en', 'de', 'uk'],
+    locales: ['pl', 'csb', 'en', 'de', 'uk'],
     defaultLocale: 'pl',
+    localeDetection: true,
   },
   env: {
     API_URL: process.env.API_URL || 'https://kashubian-dic.herokuapp.com/',
-  }
+  },
 };
 
 module.exports = nextConfig;

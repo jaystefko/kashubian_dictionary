@@ -6,8 +6,8 @@ import Head from 'next/head';
 import { IntlProvider } from 'react-intl';
 
 import pl from '../lang/pl.json';
-import ka from '../lang/pl.json';
-import en from '../lang/pl.json';
+import csb from '../lang/pl.json';
+import en from '../lang/en.json';
 import de from '../lang/pl.json';
 import uk from '../lang/pl.json';
 
@@ -15,7 +15,7 @@ import { LOCALES } from '../utils/types';
 
 const messages = {
   pl,
-  ka,
+  csb,
   en,
   de,
   uk,

@@ -2,9 +2,7 @@ import { CircularProgress, TextField } from '@mui/material';
 import { Dispatch, Fragment, SetStateAction, useState } from 'react';
 import { getMeaningList } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
-import { LOCALES } from '../../utils/types';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 
 type Option = {
@@ -31,8 +29,6 @@ const MAC = ({
   onChangeMultiple,
   value,
 }: MACProps) => {
-  let { locale } = useRouter();
-  if (!locale) locale = LOCALES.pl;
   const intl = useIntl();
 
   const [isOpen, setIsOpen] = useState(false);

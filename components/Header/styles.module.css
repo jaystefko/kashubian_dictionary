@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   height: 100%;
-  padding: 0 1rem;
+  padding: 0 0.6rem;
 }
 
 .navList > li > a:hover {
@@ -52,9 +52,8 @@
 }
 
 .icon {
-  width: 90px;
+  width: 45px;
   height: 90px;
-  font-size: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,6 +67,16 @@
 
 .mobileContainer {
   display: none;
+}
+
+@media screen and (min-width: 1500px) {
+  .icon {
+    width: 70px;
+  }
+
+  .navList > li > a {
+    padding: 0 1rem;
+  }
 }
 
 @media screen and (max-width: 1200px) {

@@ -12,7 +12,7 @@ export const getSearchBy = (locale: LOCALES) => {
       return 'normalisedGerman';
     case LOCALES.en:
       return 'normalisedEnglish';
-    case LOCALES.ka:
+    case LOCALES.csb:
       return 'normalizedWord';
     case LOCALES.uk:
       return 'normalizedUkrainian';

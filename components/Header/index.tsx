@@ -47,6 +47,66 @@ function Header() {
         </ul>
         <ul className={styles.iconList}>
           <li>
+            <Link href='' locale='pl'>
+              <a className={styles.icon}>
+                <Image
+                  src='/images/pl.svg'
+                  width={24}
+                  height={24}
+                  alt={intl.formatMessage({ id: 'polish' })}
+                />
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href='translate/csb'>
+              <a className={styles.icon}>
+                <Image
+                  src='/images/csb.svg'
+                  width={24}
+                  height={24}
+                  alt={intl.formatMessage({ id: 'kashebian' })}
+                />
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href='' locale='en'>
+              <a className={styles.icon}>
+                <Image
+                  src='/images/gb.svg'
+                  width={24}
+                  height={24}
+                  alt={intl.formatMessage({ id: 'english' })}
+                />
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href='translate/de'>
+              <a className={styles.icon}>
+                <Image
+                  src='/images/de.svg'
+                  width={24}
+                  height={24}
+                  alt={intl.formatMessage({ id: 'german' })}
+                />
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href='translate/uk'>
+              <a className={styles.icon}>
+                <Image
+                  src='/images/uk.svg'
+                  width={24}
+                  height={24}
+                  alt={intl.formatMessage({ id: 'ukrainian' })}
+                />
+              </a>
+            </Link>
+          </li>
+          <li>
             <a
               className={styles.icon}
               href='https://www.facebook.com/Sloworz'

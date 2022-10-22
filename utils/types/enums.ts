@@ -50,7 +50,7 @@ enum SUB_PARTS_OF_SPEECH {
 
 enum LOCALES {
   pl = 'pl',
-  ka = 'ka',
+  csb = 'csb',
   en = 'en',
   de = 'de',
   uk = 'uk',
