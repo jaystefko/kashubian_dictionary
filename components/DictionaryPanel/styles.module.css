@@ -4,15 +4,6 @@
   overflow-y: auto;
 }
 
-.dictionaryPanel::-webkit-scrollbar {
-  width: 0.4rem;
-}
-
-.dictionaryPanel::-webkit-scrollbar-thumb {
-  background: var(--font-color);
-  border-radius: 2px;
-}
-
 .dictionaryPanel li {
   margin: 0;
   padding: 0 4px;

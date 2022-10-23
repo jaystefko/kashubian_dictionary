@@ -22,6 +22,15 @@ body {
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--font-color);
+  border-radius: 2px;
+}
+
 a {
   color: var(--link-color);
   text-decoration: none;
