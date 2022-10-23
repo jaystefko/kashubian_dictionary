@@ -51,20 +51,20 @@ function Header() {
               <a className={styles.icon}>
                 <Image
                   src='/images/pl.svg'
-                  width={24}
-                  height={24}
+                  width={40}
+                  height={40}
                   alt={intl.formatMessage({ id: 'polish' })}
                 />
               </a>
             </Link>
           </li>
           <li>
-            <Link href='translate/csb'>
+            <Link href='/translate'>
               <a className={styles.icon}>
                 <Image
                   src='/images/csb.svg'
-                  width={24}
-                  height={24}
+                  width={40}
+                  height={40}
                   alt={intl.formatMessage({ id: 'kashebian' })}
                 />
               </a>
@@ -75,32 +75,32 @@ function Header() {
               <a className={styles.icon}>
                 <Image
                   src='/images/gb.svg'
-                  width={24}
-                  height={24}
+                  width={40}
+                  height={40}
                   alt={intl.formatMessage({ id: 'english' })}
                 />
               </a>
             </Link>
           </li>
           <li>
-            <Link href='translate/de'>
+            <Link href='/translate'>
               <a className={styles.icon}>
                 <Image
                   src='/images/de.svg'
-                  width={24}
-                  height={24}
+                  width={40}
+                  height={40}
                   alt={intl.formatMessage({ id: 'german' })}
                 />
               </a>
             </Link>
           </li>
           <li>
-            <Link href='translate/uk'>
+            <Link href='/translate'>
               <a className={styles.icon}>
                 <Image
                   src='/images/uk.svg'
-                  width={24}
-                  height={24}
+                  width={40}
+                  height={40}
                   alt={intl.formatMessage({ id: 'ukrainian' })}
                 />
               </a>
