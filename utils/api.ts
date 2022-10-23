@@ -110,17 +110,31 @@ async function getWord(id: number) {
           hyperonym {
             id
             definition
+            kashubianEntry {
+              id
+              word
+            }
           }
           antonyms {
             id
             antonym {
+              id
               definition
+              kashubianEntry {
+                id
+                word
+              }
             }
           }
           synonyms {
             id
             synonym {
+              id
               definition
+              kashubianEntry {
+                id
+                word
+              }
             }
           }
           quotes {

@@ -42,16 +42,28 @@ interface GatheredMeaning extends MeaningOG {
     id: number;
     antonym: {
       definition: string;
+      kashubianEntry?: {
+        id: number;
+        word: string;
+      };
     };
   }>;
   hyperonym?: {
     id: number;
     definition: string;
+    kashubianEntry?: {
+      id: number;
+      word: string;
+    };
   };
   synonyms?: Array<{
     id: number;
     synonym: {
       definition: string;
+      kashubianEntry?: {
+        id: number;
+        word: string;
+      };
     };
   }>;
 }
