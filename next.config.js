@@ -5,7 +5,7 @@ const nextConfig = {
   i18n: {
     locales: ['pl', 'csb', 'en', 'de', 'uk'],
     defaultLocale: 'pl',
-    localeDetection: true,
+    localeDetection: false,
   },
   env: {
     API_URL: process.env.API_URL || 'https://kashubian-dic.herokuapp.com/',

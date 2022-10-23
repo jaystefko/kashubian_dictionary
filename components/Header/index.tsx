@@ -5,6 +5,7 @@ import { Facebook, Instagram, QuestionMark, Menu as ManuIcon } from '@mui/icons-
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useIntl } from 'react-intl';
 import { MouseEvent, useState } from 'react';
+import cookie from 'react-cookies';
 
 function Header() {
   const intl = useIntl();
@@ -15,6 +16,10 @@ function Header() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const changeLanguage = (locale: string) => {
+    cookie.save('NEXT_LOCALE', locale, { path: '/' });
   };
 
   return (
@@ -47,7 +52,7 @@ function Header() {
         </ul>
         <ul className={styles.iconList}>
           <li>
-            <Link href='' locale='pl'>
+            <Link href='' locale='pl' onClick={() => changeLanguage('pl')}>
               <a className={styles.icon}>
                 <Image
                   src='/images/pl.svg'
@@ -71,7 +76,7 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link href='' locale='en'>
+            <Link href='' locale='en' onClick={() => changeLanguage('en')}>
               <a className={styles.icon}>
                 <Image
                   src='/images/gb.svg'
