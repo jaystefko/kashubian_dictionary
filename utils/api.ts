@@ -104,7 +104,7 @@ async function getWord(id: number) {
           }
         }
         meanings {
-          id
+          id(orderBy: ASC)
           definition
           origin
           hyperonym {
