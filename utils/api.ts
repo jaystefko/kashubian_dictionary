@@ -149,9 +149,9 @@ async function getWord(id: number) {
             note
             proverb
           }
-          phrasalVerbs {
+          idioms {
             note
-            phrasalVerb
+            idiom
           }
           translation {
             german

@@ -11,9 +11,9 @@ interface MeaningOG {
     example: string;
     note?: string;
   }>;
-  phrasalVerbs?: Array<{
+  idioms?: Array<{
     note?: string;
-    phrasalVerb: string;
+    idiom: string;
   }>;
   proverbs?: Array<{
     note?: string;

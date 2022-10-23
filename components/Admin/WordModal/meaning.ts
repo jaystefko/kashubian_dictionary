@@ -10,7 +10,7 @@ const getDefaultMeaning = () => ({
   examples: undefined,
   hyperonym: undefined,
   origin: undefined,
-  phrasalVerbs: undefined,
+  idioms: undefined,
   proverbs: undefined,
   quotes: undefined,
   synonyms: undefined,

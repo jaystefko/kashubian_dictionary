@@ -31,9 +31,7 @@ const MeaningModal = ({
   const [antonymList, setAntonymList] = useState<Array<Option | null>>([]);
   const [exampleList, setExampleList] = useState<Array<{ note?: string; example: string }>>([]);
   const [hyperonym, setHyperonym] = useState<Option | null>(null);
-  const [phrasalVerbList, setPhrasalVerbList] = useState<
-    Array<{ note?: string; phrasalVerb: string }>
-  >([]);
+  const [idiomList, setIdiomList] = useState<Array<{ note?: string; idiom: string }>>([]);
   const [proVerbList, setProVerbList] = useState<Array<{ note?: string; proverb: string }>>([]);
   const [quoteList, setQuoteList] = useState<Array<{ note?: string; quote: string }>>([]);
   const [synonymList, setSynonymList] = useState<Array<Option | null>>([]);
@@ -41,7 +39,7 @@ const MeaningModal = ({
   useEffect(() => {
     if (isOpen && meaning) {
       setExampleList(meaning.examples || []);
-      setPhrasalVerbList(meaning.phrasalVerbs || []);
+      setIdiomList(meaning.idioms || []);
       setProVerbList(meaning.proverbs || []);
       setQuoteList(meaning.quotes || []);
       setSynonymList(
@@ -68,7 +66,7 @@ const MeaningModal = ({
       hyperonym: hyperonym || undefined,
       origin: meaning?.origin,
       proverbs: proVerbList,
-      phrasalVerbs: phrasalVerbList,
+      idioms: idiomList,
       quotes: quoteList,
       synonyms: synonymList
         .filter((s) => s)
@@ -326,10 +324,10 @@ const MeaningModal = ({
               <Paper elevation={3} sx={{ background: 'transparent', margin: '0.5rem 0' }}>
                 <Grid item xs={12}>
                   <h3 style={{ margin: 0, padding: '1rem 0 0 1rem' }}>
-                    {intl.formatMessage({ id: 'phrasalVerbs' })}
+                    {intl.formatMessage({ id: 'idioms' })}
                   </h3>
                 </Grid>
-                {phrasalVerbList.map((p, index) => (
+                {idiomList.map((p, index) => (
                   <Grid
                     container
                     xs={12}
@@ -341,13 +339,13 @@ const MeaningModal = ({
                     <Grid item xs={5}>
                       <TextField
                         fullWidth
-                        value={p.phrasalVerb}
-                        placeholder={`${intl.formatMessage({ id: 'phrasalVerb' })}...`}
-                        label={intl.formatMessage({ id: 'phrasalVerb' })}
+                        value={p.idiom}
+                        placeholder={`${intl.formatMessage({ id: 'idiom' })}...`}
+                        label={intl.formatMessage({ id: 'idiom' })}
                         onChange={(e) => {
-                          const copy = [...phrasalVerbList];
-                          copy[index].phrasalVerb = e.target.value;
-                          setPhrasalVerbList(copy);
+                          const copy = [...idiomList];
+                          copy[index].idiom = e.target.value;
+                          setIdiomList(copy);
                         }}
                       />
                     </Grid>
@@ -358,18 +356,18 @@ const MeaningModal = ({
                         placeholder={`${intl.formatMessage({ id: 'note' })}...`}
                         label={intl.formatMessage({ id: 'note' })}
                         onChange={(e) => {
-                          const copy = [...phrasalVerbList];
+                          const copy = [...idiomList];
                           copy[index].note = e.target.value;
-                          setPhrasalVerbList(copy);
+                          setIdiomList(copy);
                         }}
                       />
                     </Grid>
                     <Grid item xs={2}>
                       <Button
-                        title={intl.formatMessage({ id: 'removePhrasalVerb' })}
+                        title={intl.formatMessage({ id: 'removeidiom' })}
                         onClick={() => {
-                          const copy = phrasalVerbList.filter((pp, i) => i !== index);
-                          setPhrasalVerbList(copy);
+                          const copy = idiomList.filter((pp, i) => i !== index);
+                          setIdiomList(copy);
                         }}
                       >
                         <Remove />
@@ -381,10 +379,10 @@ const MeaningModal = ({
                   <Button
                     style={{ margin: '1rem 0 0.5rem 0.5rem' }}
                     onClick={() => {
-                      setPhrasalVerbList([...phrasalVerbList, { note: '', phrasalVerb: '' }]);
+                      setIdiomList([...idiomList, { note: '', idiom: '' }]);
                     }}
                   >
-                    <Add /> {intl.formatMessage({ id: 'addPhrasalVerb' })}
+                    <Add /> {intl.formatMessage({ id: 'addidiom' })}
                   </Button>
                 </Grid>
               </Paper>

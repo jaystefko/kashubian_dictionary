@@ -20,8 +20,8 @@ const WordScreen = ({ word }: Props) => {
   const exampleList = word.meanings!.map(
     (meaning) => meaning.examples?.map((e) => e.example).join(', ') || ''
   );
-  const phrasalVerbList = word.meanings!.map(
-    (meaning) => meaning.phrasalVerbs?.map((p) => p.phrasalVerb).join(', ') || ''
+  const idiomList = word.meanings!.map(
+    (meaning) => meaning.idioms?.map((p) => p.idiom).join(', ') || ''
   );
   const proVerbList = word.meanings!.map(
     (meaning) => meaning.proverbs?.map((p) => p.proverb).join(', ') || ''
@@ -29,6 +29,25 @@ const WordScreen = ({ word }: Props) => {
   const quoteList = word.meanings!.map(
     (meaning) => meaning.quotes?.map((q) => q.quote).join(', ') || ''
   );
+  const hyperonymList = word
+    .meanings!.map((meaning) => meaning.hyperonym?.kashubianEntry)
+    .filter((h) => h);
+  const antonymList = word
+    .meanings!.map(
+      (meaning) =>
+        meaning.antonyms
+          ?.filter((a) => a.antonym.kashubianEntry)
+          .map((a) => a.antonym.kashubianEntry) || []
+    )
+    .flat();
+  const synonymList = word
+    .meanings!.map(
+      (meaning) =>
+        meaning.synonyms
+          ?.filter((s) => s.synonym.kashubianEntry)
+          .map((s) => s.synonym.kashubianEntry) || []
+    )
+    .flat();
 
   return (
     <article className={styles.wordContainer}>
@@ -81,8 +100,8 @@ const WordScreen = ({ word }: Props) => {
             content={exampleList.join(', ')}
           />
           <ListItem
-            property={intl.formatMessage({ id: `phrasalVerbs` })}
-            content={phrasalVerbList.join(', ')}
+            property={intl.formatMessage({ id: `idioms` })}
+            content={idiomList.join(', ')}
           />
           <ListItem
             property={intl.formatMessage({ id: `proverbs` })}
@@ -109,14 +128,68 @@ const WordScreen = ({ word }: Props) => {
           <ListItem
             property={intl.formatMessage({ id: `word.others` })}
             content={
-              word.others?.length ? (
+              word?.others?.length ? (
                 <>
-                  {word.others.map((o, index) => (
+                  {word?.others?.map((o, index) => (
                     <Link key={index} href={`/word/${o.other.id}`}>
                       <a>
                         <span>{`${o.other.word}${
                           index === word.others!.length - 1 ? '' : ','
                         }`}</span>
+                      </a>
+                    </Link>
+                  ))}
+                </>
+              ) : (
+                ''
+              )
+            }
+          />
+          <ListItem
+            property={intl.formatMessage({ id: `hyperonyms` })}
+            content={
+              hyperonymList.length ? (
+                <>
+                  {hyperonymList.map((h, index) => (
+                    <Link key={index} href={`/word/${h?.id}`}>
+                      <a>
+                        <span>{`${h?.word}${index === hyperonymList.length - 1 ? '' : ','}`}</span>
+                      </a>
+                    </Link>
+                  ))}
+                </>
+              ) : (
+                ''
+              )
+            }
+          />
+          <ListItem
+            property={intl.formatMessage({ id: `synonyms` })}
+            content={
+              synonymList.length ? (
+                <>
+                  {synonymList.map((s, index) => (
+                    <Link key={index} href={`/word/${s?.id}`}>
+                      <a>
+                        <span>{`${s?.word}${index === synonymList.length - 1 ? '' : ','}`}</span>
+                      </a>
+                    </Link>
+                  ))}
+                </>
+              ) : (
+                ''
+              )
+            }
+          />
+          <ListItem
+            property={intl.formatMessage({ id: `antonyms` })}
+            content={
+              antonymList.length ? (
+                <>
+                  {antonymList.map((a, index) => (
+                    <Link key={index} href={`/word/${a?.id}`}>
+                      <a>
+                        <span>{`${a?.word}${index === antonymList!.length - 1 ? '' : ','}`}</span>
                       </a>
                     </Link>
                   ))}

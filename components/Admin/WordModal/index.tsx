@@ -140,7 +140,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
           examples: m.examples,
           hyperonym: m.hyperonym?.id,
           origin: m.origin,
-          phrasalVerbs: m.phrasalVerbs,
+          idioms: m.idioms,
           proverbs: m.proverbs,
           quotes: m.quotes,
           synonyms: m.synonyms?.filter((s) => s).map((s) => ({ meaningId: s.id })),
