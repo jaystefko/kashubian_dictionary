@@ -25,7 +25,6 @@ function Header() {
   return (
     <header className={styles.header}>
       <Link href='/'>
-        {/* 453px width; 172px height in original image */}
         <Image
           src='/images/logo.png'
           height={90}
