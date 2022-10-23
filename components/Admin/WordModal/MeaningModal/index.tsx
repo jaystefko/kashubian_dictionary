@@ -382,7 +382,7 @@ const MeaningModal = ({
                       setIdiomList([...idiomList, { note: '', idiom: '' }]);
                     }}
                   >
-                    <Add /> {intl.formatMessage({ id: 'addidiom' })}
+                    <Add /> {intl.formatMessage({ id: 'addIdiom' })}
                   </Button>
                 </Grid>
               </Paper>
