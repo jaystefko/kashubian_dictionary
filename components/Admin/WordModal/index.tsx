@@ -433,6 +433,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
         />
         <VariationModal
           isOpen={isVariationModalOpen}
+          partOfSpeechSubType={subPartOfSpeech as SUB_PARTS_OF_SPEECH}
           save={variationSaveHandler}
           setIsOpen={setIsVariationModalOpen}
           variation={variations}
