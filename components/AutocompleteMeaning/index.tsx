@@ -1,9 +1,10 @@
-import { CircularProgress, TextField } from '@mui/material';
+import { CircularProgress, Paper, TextField } from '@mui/material';
 import { Dispatch, Fragment, SetStateAction, useState } from 'react';
 import { getMeaningList } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useIntl } from 'react-intl';
+import { COLORS } from '../../utils/types';
 
 type Option = {
   id: number;
@@ -80,6 +81,9 @@ const MAC = ({
       options={optionList}
       loading={isLoading}
       loadingText={intl.formatMessage({ id: 'loadingText' })}
+      PaperComponent={(props) => (
+        <Paper {...props} sx={{ backgroundColor: `${COLORS.BACKGROUND_FEATURED} !important` }} />
+      )}
       renderInput={(params) => (
         <TextField
           {...params}

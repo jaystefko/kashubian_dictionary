@@ -162,6 +162,7 @@ function Header() {
       <div className={styles.mobileContainer}>
         <Button
           id='menu-button'
+          variant='text'
           style={{ backgroundColor: COLORS.YELLOW }}
           aria-controls={open ? 'basic-menu' : undefined}
           aria-haspopup='true'

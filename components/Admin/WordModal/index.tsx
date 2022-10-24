@@ -295,7 +295,11 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
               <h2>{intl.formatMessage({ id: 'meanings' })}</h2>
 
               {meanings.map((m, index) => (
-                <Paper elevation={3} key={index} sx={{ height: 'auto !important' }}>
+                <Paper
+                  elevation={3}
+                  key={index}
+                  sx={{ height: 'auto !important', marginBottom: '1rem' }}
+                >
                   <Grid container spacing={2} xs={12} padding='0 1rem 1rem'>
                     <Grid item xs={12}>
                       <p className={styles.meaningNumber}>
@@ -382,7 +386,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} style={{ display: 'flex', gap: '1rem' }}>
                       <Button
                         disabled={index === 0}
                         onClick={() => {

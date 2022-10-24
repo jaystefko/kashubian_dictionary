@@ -1,8 +1,8 @@
-import { CircularProgress, TextField } from '@mui/material';
+import { CircularProgress, Paper, TextField } from '@mui/material';
 import { Dispatch, Fragment, SetStateAction, useState } from 'react';
 import { getTranslatedWordListByString, getWordList, getWordListByString } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
-import { Word } from '../../utils/types';
+import { COLORS, Word } from '../../utils/types';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useIntl } from 'react-intl';
 
@@ -100,6 +100,9 @@ const AC = ({
       options={optionList}
       loading={isLoading}
       loadingText={intl.formatMessage({ id: 'loadingText' })}
+      PaperComponent={(props) => (
+        <Paper {...props} sx={{ backgroundColor: `${COLORS.BACKGROUND_FEATURED} !important` }} />
+      )}
       renderInput={(params) => (
         <TextField
           {...params}

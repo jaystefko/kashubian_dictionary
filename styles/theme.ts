@@ -30,6 +30,14 @@ const theme = createTheme({
     },
     MuiButton: {
       defaultProps: {
+        variant: 'outlined',
+        style: {
+          backgroundColor: COLORS.BACKGROUND_FEATURED,
+        },
+      },
+    },
+    MuiList: {
+      defaultProps: {
         style: {
           backgroundColor: COLORS.BACKGROUND_FEATURED,
         },
