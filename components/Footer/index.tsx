@@ -17,8 +17,8 @@ function Footer() {
           >
             <Image
               src='/images/logo-kaszuby-foundation.png'
-              height={60}
-              width={200}
+              height={50}
+              width={167}
               alt={intl.formatMessage({ id: 'sponsor.kashebianFoundation' })}
               role='link'
               title={intl.formatMessage({ id: 'sponsor.kashebianFoundation' })}
@@ -34,8 +34,8 @@ function Footer() {
           >
             <Image
               src='/images/herb_powiat_chojnicki.png'
-              height={60}
-              width={47}
+              height={50}
+              width={39}
               alt={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
               role='link'
               title={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
@@ -51,8 +51,8 @@ function Footer() {
           >
             <Image
               src='/images/logo_MPiMK-P.png'
-              height={60}
-              width={76}
+              height={50}
+              width={63}
               alt={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
               role='link'
               title={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
