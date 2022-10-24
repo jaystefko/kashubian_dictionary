@@ -118,7 +118,7 @@ const AdminScreen: NextPage = () => {
         await updateWord(word, id, authorisation!);
         toast.success(intl.formatMessage({ id: 'wordEdited' }));
       }
-      setIsModalOpen(false);
+      closeHandler();
       const response = await getWordList();
       setData(response.data?.data?.findAllKashubianEntries?.select || []);
     } catch (error) {
@@ -126,12 +126,16 @@ const AdminScreen: NextPage = () => {
     }
   }
 
-  function closeHandler() {
+  function closeHandler(isEditModal = true) {
     if (wordId !== -1) {
       setWord(undefined);
       setWordId(-1);
     }
-    setIsModalOpen(false);
+    if (isEditModal) {
+      setIsModalOpen(false);
+    } else {
+      setIsSoundModalOpen(false);
+    }
   }
 
   function setSearchProxy(e: React.ChangeEvent<HTMLInputElement>) {
@@ -145,13 +149,12 @@ const AdminScreen: NextPage = () => {
       <WordModal
         isModalOpen={isModalOpen}
         closeHandler={closeHandler}
-        wordId={wordId}
         word={word}
         saveHandler={saveHandler}
       />
       <SoundModal
         isOpen={isSoundModalOpen}
-        setIsOpen={setIsSoundModalOpen}
+        closeHandler={closeHandler.bind(this, false)}
         id={wordId}
         auth={auth!}
       />

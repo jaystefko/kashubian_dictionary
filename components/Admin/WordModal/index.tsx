@@ -38,10 +38,9 @@ import MeaningModal from './MeaningModal';
 
 type WordModalProps = {
   isModalOpen: boolean;
-  wordId: number;
   closeHandler: () => void;
   word?: Partial<GatheredWord>;
-  saveHandler: (word: Partial<Word>, id: number) => void;
+  saveHandler: (word: Partial<Word>) => void;
 };
 
 type Option = {
@@ -50,7 +49,7 @@ type Option = {
   normalizedWord: string;
 };
 
-const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: WordModalProps) => {
+const WordModal = ({ isModalOpen, closeHandler, word, saveHandler }: WordModalProps) => {
   const intl = useIntl();
   const [header, setHeader] = useState('');
   const [wordString, setWordString] = useState('');
@@ -147,7 +146,7 @@ const WordModal = ({ isModalOpen, wordId, closeHandler, word, saveHandler }: Wor
         })),
       };
 
-      saveHandler(wordObject, wordId);
+      saveHandler(wordObject);
     } catch (error) {
       toast.error(intl.formatMessage({ id: 'error.invalidVariationFormat' }));
       return;

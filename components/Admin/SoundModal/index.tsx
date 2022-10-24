@@ -11,12 +11,12 @@ import styles from '../WordModal/styles.module.css';
 
 type SoundModalProps = {
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
+  closeHandler: () => void;
   id: number;
   auth: BasicAuth;
 };
 
-const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
+const SoundModal = ({ isOpen, closeHandler, id, auth }: SoundModalProps) => {
   const intl = useIntl();
   const [file, setFile] = useState<any>(null);
   const [key, setKey] = useState(0);
@@ -58,7 +58,7 @@ const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
         data.append('soundFile', F.current?.files[0]);
         await uploadFile(data, id, auth!);
         toast.success(intl.formatMessage({ id: 'fileUploaded' }));
-        setIsOpen(false);
+        closeHandler();
       } catch (error) {
         errorHandler(error, intl);
       }
@@ -66,12 +66,12 @@ const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
       try {
         await deleteFile(id, auth!);
         toast.success(intl.formatMessage({ id: 'fileDeleted' }));
-        setIsOpen(false);
+        closeHandler();
       } catch (error) {
         errorHandler(error, intl);
       }
     } else {
-      setIsOpen(false);
+      closeHandler();
     }
   }
 
@@ -120,9 +120,7 @@ const SoundModal = ({ isOpen, setIsOpen, id, auth }: SoundModalProps) => {
           </Grid>
         </main>
         <footer className={styles.footer}>
-          <Button onClick={setIsOpen.bind(this, false)}>
-            {intl.formatMessage({ id: 'close' })}
-          </Button>
+          <Button onClick={closeHandler}>{intl.formatMessage({ id: 'close' })}</Button>
           <Button onClick={save}>{intl.formatMessage({ id: 'save' })}</Button>
         </footer>
       </Box>
