@@ -31,7 +31,7 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--font);
+  background: var(--link);
   border-radius: 2px;
 }
 
