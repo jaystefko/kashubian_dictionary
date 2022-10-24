@@ -6,20 +6,49 @@ import { Button, Menu, MenuItem } from '@mui/material';
 import { useIntl } from 'react-intl';
 import { MouseEvent, useState } from 'react';
 import cookie from 'react-cookies';
-import { COLORS } from '../../utils/types';
+import { COLORS, LOCALES } from '../../utils/types';
 
 function Header() {
   const intl = useIntl();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+  const [anchorMenuEl, setAnchorMenuEl] = useState<null | HTMLElement>(null);
+  const [anchorLanguageEl, setAnchorLanguageEl] = useState<null | HTMLElement>(null);
+  const [lngImgPath, setLngImgPath] = useState('/images/pl.svg');
+  const [lngImgLabel, setLngImgLabel] = useState(intl.formatMessage({ id: 'polish' }));
+  const openMenu = Boolean(anchorMenuEl);
+  const openLanguage = Boolean(anchorLanguageEl);
+  const handleClick = (isMenu = true, event: MouseEvent<HTMLButtonElement>) => {
+    if (isMenu) {
+      setAnchorMenuEl(event.currentTarget);
+    } else {
+      setAnchorLanguageEl(event.currentTarget);
+    }
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClose = (isMenu = true) => {
+    if (isMenu) {
+      setAnchorMenuEl(null);
+    } else {
+      setAnchorLanguageEl(null);
+    }
   };
 
-  const changeLanguage = (locale: string) => {
+  function getLabelFromLocale(locale: LOCALES) {
+    switch (locale) {
+      case LOCALES.csb:
+        return 'kashebian';
+      case LOCALES.de:
+        return 'german';
+      case LOCALES.en:
+        return 'english';
+      case LOCALES.pl:
+        return 'polish';
+      case LOCALES.uk:
+        return 'ukrainian';
+    }
+  }
+
+  const changeLanguage = (locale: LOCALES) => {
+    setLngImgPath(`/images/${locale}.svg`);
+    setLngImgLabel(intl.formatMessage({ id: getLabelFromLocale(locale) }));
     cookie.save('NEXT_LOCALE', locale, { path: '/' });
   };
 
@@ -52,10 +81,10 @@ function Header() {
         </ul>
         <ul className={styles.iconList}>
           <li>
-            <Link href='' locale='pl' onClick={() => changeLanguage('pl')}>
+            <Link href='' locale={LOCALES.pl} onClick={() => changeLanguage(LOCALES.pl)}>
               <a className={styles.icon}>
                 <Image
-                  src='/images/pl.svg'
+                  src={lngImgPath}
                   width={40}
                   height={40}
                   alt={intl.formatMessage({ id: 'polish' })}
@@ -77,7 +106,7 @@ function Header() {
           </li>
           <li>
             <Link href='/translate'>
-              {/* locale='en' onClick={() => changeLanguage('en')} */}
+              {/* locale={LOCALES.en} onClick={() => changeLanguage(LOCALES.en)} */}
               <a className={styles.icon}>
                 <Image
                   src='/images/gb.svg'
@@ -161,35 +190,118 @@ function Header() {
       </div>
       <div className={styles.mobileContainer}>
         <Button
+          id='language-button'
+          variant='text'
+          style={{ backgroundColor: COLORS.YELLOW }}
+          aria-controls={openMenu ? 'language-menu' : undefined}
+          aria-haspopup='true'
+          aria-expanded={openMenu ? 'true' : undefined}
+          onClick={(e) => handleClick(true, e)}
+        >
+          <Image src='/images/pl.svg' width={40} height={40} alt={lngImgLabel} />
+        </Button>
+        <Menu
+          id='language-menu'
+          anchorEl={anchorMenuEl}
+          open={openMenu}
+          onClose={() => handleClose(true)}
+          MenuListProps={{
+            'aria-labelledby': 'language-button',
+          }}
+        >
+          <MenuItem onClick={() => handleClose(true)}>
+            <Link href='' locale={LOCALES.pl} onClick={() => changeLanguage(LOCALES.pl)}>
+              <a>
+                <Image
+                  src='/images/pl.svg'
+                  width={40}
+                  height={40}
+                  alt={intl.formatMessage({ id: 'polish' })}
+                />
+              </a>
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={() => handleClose(true)}>
+            <Link href='/translate'>
+              <a>
+                <Image
+                  src='/images/csb.svg'
+                  width={40}
+                  height={40}
+                  alt={intl.formatMessage({ id: 'kashebian' })}
+                />
+              </a>
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={() => handleClose(true)}>
+            <Link href='/translate'>
+              {/* locale='en' onClick={() => changeLanguage('en')} */}
+              <a>
+                <Image
+                  src='/images/gb.svg'
+                  width={40}
+                  height={40}
+                  alt={intl.formatMessage({ id: 'english' })}
+                />
+              </a>
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={() => handleClose(true)}>
+            <Link href='/translate'>
+              <a>
+                <Image
+                  src='/images/de.svg'
+                  width={40}
+                  height={40}
+                  alt={intl.formatMessage({ id: 'german' })}
+                />
+              </a>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href='/translate'>
+              <a>
+                <Image
+                  src='/images/uk.svg'
+                  width={40}
+                  height={40}
+                  alt={intl.formatMessage({ id: 'ukrainian' })}
+                />
+              </a>
+            </Link>
+          </MenuItem>
+        </Menu>
+
+        <Button
           id='menu-button'
           variant='text'
           style={{ backgroundColor: COLORS.YELLOW }}
-          aria-controls={open ? 'basic-menu' : undefined}
+          aria-controls={openLanguage ? 'app-menu' : undefined}
           aria-haspopup='true'
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
+          aria-expanded={openLanguage ? 'true' : undefined}
+          onClick={(e) => handleClick(false, e)}
         >
           <ManuIcon style={{ color: 'black' }} />
         </Button>
         <Menu
-          id='basic-menu'
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
+          id='app-menu'
+          anchorEl={anchorLanguageEl}
+          open={openLanguage}
+          onClose={() => handleClose(false)}
           MenuListProps={{
             'aria-labelledby': 'menu-button',
           }}
         >
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={() => handleClose(false)}>
             <Link href='/about'>{intl.formatMessage({ id: 'topMenu.about' })}</Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={() => handleClose(false)}>
             <Link href='/foundation'>{intl.formatMessage({ id: 'topMenu.foundation' })}</Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={() => handleClose(false)}>
             <Link href='/lessons'>{intl.formatMessage({ id: 'topMenu.lessons' })}</Link>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={() => handleClose(false)}>
             <Link href='/comments'>{intl.formatMessage({ id: 'topMenu.comments' })}</Link>
           </MenuItem>
           <MenuItem>
