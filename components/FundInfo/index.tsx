@@ -5,12 +5,7 @@ function FundInfo() {
         Tu powstaje słownik języka kaszubskiego. Możesz pomóc w jego powstaniu. Wystarczy wejść na
         stronę:
         <br />
-        <a
-          style={{ color: 'white' }}
-          href='https://zrzutka.pl/5xw6zz'
-          rel='external nofollow noreferrer'
-          target='_blank'
-        >
+        <a href='https://zrzutka.pl/5xw6zz' rel='external nofollow noreferrer' target='_blank'>
           https://zrzutka.pl/5xw6zz
         </a>
       </p>

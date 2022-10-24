@@ -31,17 +31,10 @@ const Search = () => {
         onChangeSingle={setValue}
         value={null}
         isKashebian={isChecked}
-        isColorFlipped
       />
       <FormGroup>
         <FormControlLabel
-          control={
-            <Switch
-              checked={isChecked}
-              color='warning'
-              onChange={setIsChecked.bind(this, !isChecked)}
-            />
-          }
+          control={<Switch checked={isChecked} onChange={setIsChecked.bind(this, !isChecked)} />}
           label={intl.formatMessage({ id: 'searchKashebian' })}
         />
       </FormGroup>

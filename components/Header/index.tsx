@@ -6,6 +6,7 @@ import { Button, Menu, MenuItem } from '@mui/material';
 import { useIntl } from 'react-intl';
 import { MouseEvent, useState } from 'react';
 import cookie from 'react-cookies';
+import { COLORS } from '../../utils/types';
 
 function Header() {
   const intl = useIntl();
@@ -161,6 +162,7 @@ function Header() {
       <div className={styles.mobileContainer}>
         <Button
           id='menu-button'
+          style={{ backgroundColor: COLORS.YELLOW }}
           aria-controls={open ? 'basic-menu' : undefined}
           aria-haspopup='true'
           aria-expanded={open ? 'true' : undefined}

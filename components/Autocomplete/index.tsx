@@ -2,7 +2,7 @@ import { CircularProgress, TextField } from '@mui/material';
 import { Dispatch, Fragment, SetStateAction, useState } from 'react';
 import { getTranslatedWordListByString, getWordList, getWordListByString } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
-import { COLORS, Word } from '../../utils/types';
+import { Word } from '../../utils/types';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useIntl } from 'react-intl';
 
@@ -21,7 +21,6 @@ type ACProps = {
   onChangeMultiple?: Dispatch<SetStateAction<Array<Option | null>>>;
   value: any;
   isKashebian?: boolean;
-  isColorFlipped?: boolean;
 };
 
 const AC = ({
@@ -33,7 +32,6 @@ const AC = ({
   onChangeMultiple,
   value,
   isKashebian = true,
-  isColorFlipped,
 }: ACProps) => {
   const intl = useIntl();
 
@@ -102,15 +100,6 @@ const AC = ({
       options={optionList}
       loading={isLoading}
       loadingText={intl.formatMessage({ id: 'loadingText' })}
-      sx={
-        isColorFlipped
-          ? {
-              ':focus-within': {
-                '& fieldset': { borderColor: 'white !important' },
-              },
-            }
-          : undefined
-      }
       renderInput={(params) => (
         <TextField
           {...params}
@@ -118,21 +107,6 @@ const AC = ({
           placeholder={placeholder}
           label={label}
           value={search}
-          sx={
-            isColorFlipped
-              ? {
-                  '& fieldset': {
-                    borderColor: COLORS.YELLOW,
-                  },
-                  ':hover': {
-                    '& fieldset': { borderColor: 'white !important' },
-                  },
-                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                    borderColor: 'white !important',
-                  },
-                }
-              : undefined
-          }
           InputProps={{
             ...params.InputProps,
             endAdornment: (

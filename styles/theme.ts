@@ -21,11 +21,17 @@ const theme = createTheme({
         },
       },
     },
-    MuiAutocomplete: {
+    MuiInputBase: {
       defaultProps: {
         style: {
           backgroundColor: COLORS.BACKGROUND_FEATURED,
-          // borderColor: COLORS.BLACK_03,
+        },
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        style: {
+          backgroundColor: COLORS.BACKGROUND_FEATURED,
         },
       },
     },
@@ -36,6 +42,13 @@ const theme = createTheme({
           background: COLORS.BACKGROUND,
           overflowY: 'hidden',
           scrollbarWidth: 'none',
+        },
+      },
+    },
+    MuiPopper: {
+      defaultProps: {
+        style: {
+          backgroundColor: COLORS.BACKGROUND_FEATURED,
         },
       },
     },
@@ -86,25 +99,7 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: COLORS.YELLOW,
-      contrastText: 'white',
-    },
-    secondary: {
-      main: COLORS.BACKGROUND,
-      contrastText: 'black',
-    },
-    background: {
-      default: 'transparent',
-      paper: COLORS.BACKGROUND,
-    },
-    text: {
-      primary: COLORS.YELLOW,
-      secondary: '#ffbf00',
-      disabled: 'lightgray',
-    },
-    warning: {
-      main: COLORS.YELLOW,
-      contrastText: 'white',
+      main: COLORS.LINK,
     },
   },
 });

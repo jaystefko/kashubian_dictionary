@@ -47,7 +47,6 @@ const RightHomePanel = () => {
         <Button
           id='last-added-word-list'
           variant='outlined'
-          style={{ border: '1px solid var(--link-color)' }}
           aria-controls={Boolean(anchorEl) ? 'basic-menu' : undefined}
           aria-haspopup='true'
           aria-expanded={Boolean(anchorEl) ? 'true' : undefined}
