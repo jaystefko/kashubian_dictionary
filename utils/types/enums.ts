@@ -1,13 +1,12 @@
 enum COLORS {
   YELLOW = '#fdcd01',
-  GRAY = '#404040',
-  BLACK03 = 'rgba(0, 0, 0, 0.3)',
-}
-
-enum TOAST_FUNCTIONS {
-  ERROR = 'error',
-  INFO = 'info',
-  WARN = 'warn',
+  FONT = 'black',
+  LINK = '#444',
+  LINK_HOVER = 'black',
+  BACKGROUND = '#d9d9d9',
+  BACKGROUND_FEATURED = 'white',
+  BLACK_01 = 'rgba(0, 0, 0, 0.1)',
+  BLACK_03 = 'rgba(0, 0, 0, 0.3)',
 }
 
 enum PARTS_OF_SPEECH {
@@ -56,4 +55,4 @@ enum LOCALES {
   uk = 'uk',
 }
 
-export { COLORS, PARTS_OF_SPEECH, SUB_PARTS_OF_SPEECH, TOAST_FUNCTIONS, LOCALES };
+export { COLORS, PARTS_OF_SPEECH, SUB_PARTS_OF_SPEECH, LOCALES };

@@ -8,6 +8,7 @@
   font-size: 1.2rem;
   box-sizing: border-box;
   overflow: hidden;
+  background-color: var(--background-featured);
 }
 
 .desktopContainer {
@@ -40,7 +41,11 @@
 }
 
 .navList > li > a:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--black-01);
+}
+
+.navList > li > a:hover {
+  background-color: var(--black-01);
 }
 
 .iconList {
@@ -60,9 +65,13 @@
   text-align: center;
 }
 
+.iconList > .iconContainer > .icon:hover * {
+  filter: brightness(0);
+}
+
 .icon:hover,
 .icon:active {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--black-01);
 }
 
 .mobileContainer {
@@ -89,6 +98,6 @@
   }
 
   .header {
-    background-color: var(--link-color);
+    background-color: var(--yellow);
   }
 }

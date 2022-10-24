@@ -2,6 +2,7 @@
   height: calc(100vh - 160px);
   width: 237px;
   overflow-y: auto;
+  background-color: var(--background-featured);
 }
 
 .dictionaryPanel li {
@@ -14,8 +15,8 @@
   width: 100%;
 }
 
-.dictionaryPanel a:hover {
-  color: white;
+.dictionaryPanel li:hover {
+  background-color: var(--black-01);
 }
 
 @media (max-width: 1200px) {

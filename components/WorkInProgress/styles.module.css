@@ -7,8 +7,8 @@
 }
 
 .box {
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--font-color);
+  background-color: var(--black-03);
+  border: 1px solid var(--font);
   border-radius: 0.5em;
   padding: 0.5rem 1rem;
   height: fit-content;
@@ -17,4 +17,5 @@
 
 .header {
   margin: 0.5rem 0;
+  color: var(--yellow);
 }

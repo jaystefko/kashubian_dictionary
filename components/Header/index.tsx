@@ -75,7 +75,8 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link href='' locale='en' onClick={() => changeLanguage('en')}>
+            <Link href='/translate'>
+              {/* locale='en' onClick={() => changeLanguage('en')} */}
               <a className={styles.icon}>
                 <Image
                   src='/images/gb.svg'
@@ -110,7 +111,7 @@ function Header() {
               </a>
             </Link>
           </li>
-          <li>
+          <li className={styles.iconContainer}>
             <a
               className={styles.icon}
               href='https://www.facebook.com/Sloworz'
@@ -121,7 +122,7 @@ function Header() {
               <Facebook />
             </a>
           </li>
-          <li>
+          <li className={styles.iconContainer}>
             <a
               className={styles.icon}
               href='https://www.instagram.com/polsko_kaszebsczi_sloworz'
@@ -132,7 +133,7 @@ function Header() {
               <Instagram />
             </a>
           </li>
-          <li>
+          <li className={styles.iconContainer}>
             <a
               className={styles.icon}
               href='https://twitter.com/kaszubskieslowa'
@@ -148,7 +149,7 @@ function Header() {
               />
             </a>
           </li>
-          <li>
+          <li className={styles.iconContainer}>
             <Link href='/howTo'>
               <a className={styles.icon} title={intl.formatMessage({ id: 'topMenu.howTo' })}>
                 <QuestionMark />

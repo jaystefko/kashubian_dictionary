@@ -1,10 +1,14 @@
 :root {
-  --background-color: #404040;
-  --font-color: #fdcd01;
-  --link-color: #fdcd01;
-
-  --max-width-tablet: 750px;
-  --max-width-mobile: 500px;
+  --yellow: #fdcd01;
+  --font: black;
+  --link: #444;
+  --link-hover: black;
+  --background: #d9d9d9;
+  --background-featured: white;
+  --max-width-tablet: 1200px;
+  --max-width-mobile: 550px;
+  --black-01: rgba(0, 0, 0, 0.1);
+  --black-03: rgba(0, 0, 0, 0.3);
 }
 
 html,
@@ -14,8 +18,8 @@ body {
   font-family: 'Fira Sans', sans-serif;
   line-height: 1.6;
   font-size: 18px;
-  color: var(--font-color);
-  background-color: var(--background-color);
+  color: var(--font);
+  background-color: var(--background);
 }
 
 * {
@@ -27,20 +31,19 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--font-color);
+  background: var(--font);
   border-radius: 2px;
 }
 
 a {
-  color: var(--link-color);
+  color: var(--link);
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  text-decoration: none;
   outline: 0;
-  color: white;
+  color: var(--link-hover);
 }
 
 img {

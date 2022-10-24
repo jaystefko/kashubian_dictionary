@@ -14,14 +14,18 @@ const theme = createTheme({
     MuiSvgIcon: {
       styleOverrides: {
         root: {
-          color: COLORS.YELLOW,
+          color: COLORS.LINK,
+          ':hover': {
+            color: COLORS.LINK_HOVER,
+          },
         },
       },
     },
     MuiAutocomplete: {
       defaultProps: {
         style: {
-          backgroundColor: COLORS.GRAY,
+          backgroundColor: COLORS.BACKGROUND_FEATURED,
+          // borderColor: COLORS.BLACK_03,
         },
       },
     },
@@ -29,7 +33,7 @@ const theme = createTheme({
       defaultProps: {
         style: {
           height: '100%',
-          background: COLORS.GRAY,
+          background: COLORS.BACKGROUND,
           overflowY: 'hidden',
           scrollbarWidth: 'none',
         },
@@ -73,8 +77,8 @@ const theme = createTheme({
         {
           props: { variant: 'body' },
           style: {
-            color: COLORS.YELLOW,
-            borderColor: COLORS.BLACK03,
+            color: COLORS.FONT,
+            borderColor: COLORS.BLACK_03,
           },
         },
       ],
@@ -86,12 +90,12 @@ const theme = createTheme({
       contrastText: 'white',
     },
     secondary: {
-      main: COLORS.GRAY,
+      main: COLORS.BACKGROUND,
       contrastText: 'black',
     },
     background: {
       default: 'transparent',
-      paper: COLORS.GRAY,
+      paper: COLORS.BACKGROUND,
     },
     text: {
       primary: COLORS.YELLOW,

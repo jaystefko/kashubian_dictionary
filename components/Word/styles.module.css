@@ -24,7 +24,7 @@
 
 .listItem {
   display: flex;
-  border-top: 2px solid var(--link-color);
+  border-top: 2px solid var(--link);
   font-size: 1.1rem;
   padding: 0.5rem;
 }
