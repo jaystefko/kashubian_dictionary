@@ -6,6 +6,9 @@ const theme = createTheme({
     allVariants: {
       fontFamily: 'Fira Sans, sans-serif',
     },
+    button: {
+      textTransform: 'none',
+    },
   },
   components: {
     MuiSvgIcon: {
