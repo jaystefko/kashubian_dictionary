@@ -1,0 +1,32 @@
+.word {
+  font-size: 2.5rem;
+}
+
+.wordContainer {
+  width: 90%;
+  height: 100%;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.wordContainer > main {
+  overflow: auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1rem 0 0 0;
+  padding: 0;
+}
+
+.list > li:hover {
+  background-color: var(--black-01);
+}
+
+.list > li > a {
+  display: flex;
+  padding: 1rem 0;
+}

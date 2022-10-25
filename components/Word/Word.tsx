@@ -1,4 +1,4 @@
-import { GatheredWord, LOCALES } from '../../utils/types';
+import { GatheredMeaning, GatheredWord, LOCALES } from '../../utils/types';
 import { useIntl } from 'react-intl';
 import styles from './styles.module.css';
 import Link from 'next/link';
@@ -7,48 +7,23 @@ import { getTranslationByLocale } from '../../utils/utilities';
 
 type Props = {
   word: Partial<GatheredWord>;
+  meaning: Partial<GatheredMeaning>;
 };
 
-const WordScreen = ({ word }: Props) => {
+const WordScreen = ({ word, meaning }: Props) => {
   const intl = useIntl();
   const translationPath = getTranslationByLocale(intl.locale as LOCALES);
 
-  const translation = word
-    .meanings!.map((meaning) => meaning.translation[translationPath])
-    .filter((x) => x);
-  const definitionList = word.meanings!.map((meaning) => meaning.definition);
-  const originList = word.meanings!.map((meaning) => meaning.origin).filter((o) => o);
-  const exampleList = word.meanings!.map(
-    (meaning) => meaning.examples?.map((e) => e.example).join(', ') || ''
-  );
-  const idiomList = word.meanings!.map(
-    (meaning) => meaning.idioms?.map((p) => p.idiom).join(', ') || ''
-  );
-  const proVerbList = word.meanings!.map(
-    (meaning) => meaning.proverbs?.map((p) => p.proverb).join(', ') || ''
-  );
-  const quoteList = word.meanings!.map(
-    (meaning) => meaning.quotes?.map((q) => q.quote).join(', ') || ''
-  );
-  const hyperonymList = word
-    .meanings!.map((meaning) => meaning.hyperonym?.kashubianEntry)
-    .filter((h) => h);
-  const antonymList = word
-    .meanings!.map(
-      (meaning) =>
-        meaning.antonyms
-          ?.filter((a) => a.antonym.kashubianEntry)
-          .map((a) => a.antonym.kashubianEntry) || []
-    )
-    .flat();
-  const synonymList = word
-    .meanings!.map(
-      (meaning) =>
-        meaning.synonyms
-          ?.filter((s) => s.synonym.kashubianEntry)
-          .map((s) => s.synonym.kashubianEntry) || []
-    )
-    .flat();
+  const translation = meaning.translation![translationPath];
+  const definition = meaning.definition;
+  const origin = meaning.origin;
+  const exampleList = meaning.examples?.map((e) => e.example).join(', ');
+  const idiomList = meaning.idioms?.map((p) => p.idiom).join(', ');
+  const proVerbList = meaning.proverbs?.map((p) => p.proverb).join(', ');
+  const quoteList = meaning.quotes?.map((q) => q.quote).join(', ');
+  const hyperonym = meaning.hyperonym?.kashubianEntry;
+  const antonymList = meaning.antonyms?.map((a) => a.antonym.kashubianEntry) || [];
+  const synonymList = meaning.synonyms?.map((s) => s.synonym.kashubianEntry) || [];
 
   return (
     <article className={styles.wordContainer}>
@@ -59,12 +34,9 @@ const WordScreen = ({ word }: Props) => {
         <ul className={styles.list}>
           <ListItem
             property={intl.formatMessage({ id: `language.${translationPath}` })}
-            content={translation.join(', ')}
+            content={translation}
           />
-          <ListItem
-            property={intl.formatMessage({ id: `definition` })}
-            content={definitionList.join(', ')}
-          />
+          <ListItem property={intl.formatMessage({ id: `definition` })} content={definition} />
           <ListItem
             property={intl.formatMessage({ id: `PARTS_OF_SPEECH` })}
             content={intl.formatMessage({ id: `PARTS_OF_SPEECH.${word.partOfSpeech}` })}
@@ -80,26 +52,11 @@ const WordScreen = ({ word }: Props) => {
             }
           />
           {/* *** VARIATION #TODO *** */}
-          <ListItem
-            property={intl.formatMessage({ id: `origin` })}
-            content={originList.join(', ')}
-          />
-          <ListItem
-            property={intl.formatMessage({ id: `examples` })}
-            content={exampleList.join(', ')}
-          />
-          <ListItem
-            property={intl.formatMessage({ id: `idioms` })}
-            content={idiomList.join(', ')}
-          />
-          <ListItem
-            property={intl.formatMessage({ id: `proverbs` })}
-            content={proVerbList.join(', ')}
-          />
-          <ListItem
-            property={intl.formatMessage({ id: `quotes` })}
-            content={quoteList.join(', ')}
-          />
+          <ListItem property={intl.formatMessage({ id: `origin` })} content={origin} />
+          <ListItem property={intl.formatMessage({ id: `example` })} content={exampleList} />
+          <ListItem property={intl.formatMessage({ id: `idiom` })} content={idiomList} />
+          <ListItem property={intl.formatMessage({ id: `proverb` })} content={proVerbList} />
+          <ListItem property={intl.formatMessage({ id: `quote` })} content={quoteList} />
           <ListItem
             property={intl.formatMessage({ id: `word.base` })}
             content={
@@ -137,16 +94,10 @@ const WordScreen = ({ word }: Props) => {
           <ListItem
             property={intl.formatMessage({ id: `hyperonyms` })}
             content={
-              hyperonymList.length ? (
-                <>
-                  {hyperonymList.map((h, index) => (
-                    <Link key={index} href={`/word/${h?.id}`}>
-                      <a>
-                        <span>{`${h?.word}${index === hyperonymList.length - 1 ? '' : ','}`}</span>
-                      </a>
-                    </Link>
-                  ))}
-                </>
+              hyperonym ? (
+                <Link href={`/word/${hyperonym.id}`}>
+                  <a>{hyperonym.word}</a>
+                </Link>
               ) : (
                 ''
               )

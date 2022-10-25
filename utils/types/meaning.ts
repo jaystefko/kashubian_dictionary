@@ -68,4 +68,15 @@ interface GatheredMeaning extends MeaningOG {
   }>;
 }
 
-export type { Meaning, GatheredMeaning };
+interface MeaningSimplified {
+  id: number;
+  definition: string;
+  translation: {
+    english?: string;
+    german?: string;
+    polish: string;
+    ukrainian?: string;
+  };
+}
+
+export type { Meaning, GatheredMeaning, MeaningSimplified };

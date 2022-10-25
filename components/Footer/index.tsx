@@ -27,7 +27,7 @@ function Footer() {
         </li>
         <li>
           <a
-            href='https://www.facebook.com/PowiatChojnicki/'
+            href='https://www.powiat.chojnice.pl/asp/Informacje%2CStrona_glowna%2C92'
             rel='external nofollow noreferrer'
             target='_blank'
             title={intl.formatMessage({ id: 'sponsor.countyChojnice' })}

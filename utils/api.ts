@@ -85,8 +85,10 @@ async function getWordMeaningListSimplified(id: number) {
     query: `
       {
         findKashubianEntry(id: ${id}) {
+          word,
           meanings {
             id,
+            definition,
             translation {
               polish,
               english,
