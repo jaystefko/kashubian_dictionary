@@ -9,6 +9,7 @@
   box-sizing: border-box;
   overflow: hidden;
   background-color: var(--background-featured);
+  z-index: 2;
 }
 
 .desktopContainer {

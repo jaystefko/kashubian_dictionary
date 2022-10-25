@@ -21,7 +21,7 @@
   }
 }
 
-@media (min-width: 550px) {
+@media (min-width: 1200px) {
   .article {
     height: calc(100vh - 160px);
   }
