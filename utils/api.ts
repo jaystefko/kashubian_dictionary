@@ -80,6 +80,106 @@ async function getLastAddedWordList() {
   });
 }
 
+async function getWordMeaningListSimplified(id: number) {
+  return axios.post(`${url}graphql`, {
+    query: `
+      {
+        findKashubianEntry(id: ${id}) {
+          meanings {
+            id,
+            translation {
+              polish,
+              english,
+              ukrainian,
+              german
+            }
+          }
+        }
+      }
+    `,
+  });
+}
+
+async function getWordSimplified(id: number) {
+  return axios.post(`${url}graphql`, {
+    query: `
+    {
+      findKashubianEntry(id: ${id}) {
+        word
+        priority
+        partOfSpeech
+        partOfSpeechSubType
+        variation
+        note
+        base {
+          id
+          word
+        }
+        others {
+          other {
+            id
+            word
+          }
+        }
+      }
+    }
+    `,
+  });
+}
+
+async function getMeaning(id: number) {
+  return axios.post(`${url}graphql`, {
+    query: `
+    {
+      findMeaning(id: ${id}) {
+        definition
+        origin
+        hyperonym {
+          kashubianEntry {
+            id
+            word
+          }
+        }
+        antonyms {
+          antonym {
+            kashubianEntry {
+              id
+              word
+            }
+          }
+        }
+        synonyms {
+          synonym {
+            kashubianEntry {
+              id
+              word
+            }
+          }
+        }
+        quotes {
+          quote
+        }
+        examples {
+          example
+        }
+        proverbs {
+          proverb
+        }
+        idioms {
+          idiom
+        }
+        translation {
+          german
+          english
+          polish
+          ukrainian
+        }
+      }
+    }
+    `,
+  });
+}
+
 async function getWord(id: number) {
   return axios.post(`${url}graphql`, {
     query: `
@@ -217,6 +317,9 @@ export {
   getWordListByString,
   getLastAddedWordList,
   getWord,
+  getWordSimplified,
+  getWordMeaningListSimplified,
+  getMeaning,
   getWordOfADay,
   createWord,
   updateWord,

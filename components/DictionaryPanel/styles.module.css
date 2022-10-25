@@ -3,6 +3,7 @@
   width: 237px;
   overflow-y: auto;
   background-color: var(--background-featured);
+  border-bottom: 1px solid var(--background);
 }
 
 .dictionaryPanel li {

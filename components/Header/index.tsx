@@ -149,7 +149,7 @@ function Header() {
               target='_blank'
               title={intl.formatMessage({ id: 'topMenu.fb' })}
             >
-              <Facebook />
+              <Facebook sx={{ color: '#4267B2' }} />
             </a>
           </li>
           <li className={styles.iconContainer}>
@@ -160,7 +160,7 @@ function Header() {
               target='_blank'
               title={intl.formatMessage({ id: 'topMenu.instagram' })}
             >
-              <Instagram />
+              <Instagram sx={{ color: '#833AB4' }} />
             </a>
           </li>
           <li className={styles.iconContainer}>
@@ -311,14 +311,14 @@ function Header() {
                 rel='external nofollow noreferrer'
                 target='_blank'
               >
-                <Facebook />
+                <Facebook sx={{ color: '#4267B2' }} />
               </a>
               <a
                 href='https://www.instagram.com/polsko_kaszebsczi_sloworz'
                 rel='external nofollow noreferrer'
                 target='_blank'
               >
-                <Instagram />
+                <Instagram sx={{ color: '#833AB4' }} />
               </a>
               <a
                 href='https://twitter.com/kaszubskieslowa'
