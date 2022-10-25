@@ -4,14 +4,16 @@ import styles from './styles.module.css';
 import Link from 'next/link';
 import ListItem from './ListItem';
 import { getTranslationByLocale } from '../../utils/utilities';
+import { url } from '../../utils/api';
 
 type Props = {
   word: Partial<GatheredWord>;
+  wordId: string;
   meaning: Partial<GatheredMeaning>;
-  audioStream?: string;
+  isAudioPresent: boolean;
 };
 
-const WordScreen = ({ word, meaning, audioStream }: Props) => {
+const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
   const intl = useIntl();
   const translationPath = getTranslationByLocale(intl.locale as LOCALES);
 
@@ -144,12 +146,10 @@ const WordScreen = ({ word, meaning, audioStream }: Props) => {
           <ListItem
             property={intl.formatMessage({ id: `sound` })}
             content={
-              audioStream ? (
+              isAudioPresent ? (
                 <audio
                   controls
-                  src={`data:audio/mp3;base64,${window.btoa(
-                    unescape(encodeURIComponent(audioStream))
-                  )}`}
+                  src={`${url}kashubian-entry/${wordId}/file`}
                   controlsList='noplaybackrate nodownload nofullscreen'
                 />
               ) : (

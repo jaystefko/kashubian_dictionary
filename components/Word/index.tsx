@@ -17,7 +17,7 @@ export default function WordScreenWrapper() {
   const [isLoading, setIsLoading] = useState(true);
   const [word, setWord] = useState<Partial<GatheredWord> | null>(null);
   const [meaning, setMeaning] = useState<Partial<GatheredMeaning> | null>(null);
-  const [audioStream, setAudioStream] = useState<string>();
+  const [isAudioPresent, setIsAudioPresent] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -40,8 +40,8 @@ export default function WordScreenWrapper() {
     (async () => {
       if (wordId) {
         try {
-          const response = await getFile(Number(wordId));
-          setAudioStream(response.data);
+          await getFile(Number(wordId));
+          setIsAudioPresent(true);
         } catch (error) {}
       }
     })();
@@ -52,7 +52,7 @@ export default function WordScreenWrapper() {
       {isLoading ? (
         <CircularProgress sx={{ color: COLORS.YELLOW }} />
       ) : word && meaning ? (
-        <WordScreen word={word} meaning={meaning} audioStream={audioStream} />
+        <WordScreen wordId={wordId} word={word} meaning={meaning} isAudioPresent={isAudioPresent} />
       ) : (
         <WorkInProgress is404 />
       )}
