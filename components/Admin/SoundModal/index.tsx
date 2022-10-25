@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { smallBoxSX } from '../../../styles/sx';
-import { deleteFile, getFile, uploadFile } from '../../../utils/api'; // getFile
+import { deleteFile, getFile, uploadFile } from '../../../utils/api';
 import errorHandler from '../../../utils/errorHandler';
 import { BasicAuth } from '../../../utils/types';
 import styles from '../WordModal/styles.module.css';
@@ -28,7 +28,7 @@ const SoundModal = ({ isOpen, closeHandler, id, auth }: SoundModalProps) => {
       if (!(isOpen && id)) return;
 
       try {
-        const response = await getFile(id, auth);
+        const response = await getFile(id);
         const data = new Blob([response.data], { type: 'audio/mp3' });
         const file = new File([data], 'audio.mp3', {
           type: 'audio/mp3',
@@ -49,7 +49,7 @@ const SoundModal = ({ isOpen, closeHandler, id, auth }: SoundModalProps) => {
     return () => {
       setFile(null);
     };
-  }, [isOpen, id, auth]); // eslint-disable-line
+  }, [isOpen, id]); // eslint-disable-line
 
   async function save() {
     if (F.current?.files?.length) {

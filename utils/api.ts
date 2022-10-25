@@ -302,8 +302,8 @@ async function deleteWord(id: number, auth: BasicAuth) {
   return axios.delete(`${url}kashubian-entry/${id}`, getAxiosRequestConfig(auth));
 }
 
-async function getFile(id: number, auth: BasicAuth) {
-  return axios.get(`${url}kashubian-entry/${id}/file`, getAxiosRequestConfig(auth));
+async function getFile(id: number) {
+  return axios.get(`${url}kashubian-entry/${id}/file`);
 }
 
 async function uploadFile(file: any, id: number, auth: BasicAuth) {

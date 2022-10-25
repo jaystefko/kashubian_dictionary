@@ -8,9 +8,10 @@ import { getTranslationByLocale } from '../../utils/utilities';
 type Props = {
   word: Partial<GatheredWord>;
   meaning: Partial<GatheredMeaning>;
+  audioStream?: string;
 };
 
-const WordScreen = ({ word, meaning }: Props) => {
+const WordScreen = ({ word, meaning, audioStream }: Props) => {
   const intl = useIntl();
   const translationPath = getTranslationByLocale(intl.locale as LOCALES);
 
@@ -140,6 +141,22 @@ const WordScreen = ({ word, meaning }: Props) => {
             }
           />
           <ListItem property={intl.formatMessage({ id: `note` })} content={word.note} />
+          <ListItem
+            property={intl.formatMessage({ id: `sound` })}
+            content={
+              audioStream ? (
+                <audio
+                  controls
+                  src={`data:audio/mp3;base64,${window.btoa(
+                    unescape(encodeURIComponent(audioStream))
+                  )}`}
+                  controlsList='noplaybackrate nodownload nofullscreen'
+                />
+              ) : (
+                ''
+              )
+            }
+          />
         </ul>
       </main>
     </article>

@@ -2,7 +2,7 @@ import { CircularProgress } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { getMeaning, getWordSimplified } from '../../utils/api';
+import { getMeaning, getWordSimplified, getFile } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { COLORS, GatheredMeaning, GatheredWord } from '../../utils/types';
 import WorkInProgress from '../WorkInProgress';
@@ -17,6 +17,7 @@ export default function WordScreenWrapper() {
   const [isLoading, setIsLoading] = useState(true);
   const [word, setWord] = useState<Partial<GatheredWord> | null>(null);
   const [meaning, setMeaning] = useState<Partial<GatheredMeaning> | null>(null);
+  const [audioStream, setAudioStream] = useState<string>();
 
   useEffect(() => {
     (async () => {
@@ -35,12 +36,23 @@ export default function WordScreenWrapper() {
     })();
   }, [wordId, meaningId]); // eslint-disable-line
 
+  useEffect(() => {
+    (async () => {
+      if (wordId) {
+        try {
+          const response = await getFile(Number(wordId));
+          setAudioStream(response.data);
+        } catch (error) {}
+      }
+    })();
+  }, [wordId]); // eslint-disable-line
+
   return (
     <div className='whole-page'>
       {isLoading ? (
         <CircularProgress sx={{ color: COLORS.YELLOW }} />
       ) : word && meaning ? (
-        <WordScreen word={word} meaning={meaning} />
+        <WordScreen word={word} meaning={meaning} audioStream={audioStream} />
       ) : (
         <WorkInProgress is404 />
       )}

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './styles.module.css';
-import { Facebook, Instagram, QuestionMark, Menu as ManuIcon } from '@mui/icons-material';
+import { QuestionMark, Menu as ManuIcon } from '@mui/icons-material';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useIntl } from 'react-intl';
 import { MouseEvent, useState } from 'react';
@@ -85,8 +85,8 @@ function Header() {
               <a className={styles.icon}>
                 <Image
                   src={lngImgPath}
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'polish' })}
                 />
               </a>
@@ -97,8 +97,8 @@ function Header() {
               <a className={styles.icon}>
                 <Image
                   src='/images/csb.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'kashebian' })}
                 />
               </a>
@@ -110,8 +110,8 @@ function Header() {
               <a className={styles.icon}>
                 <Image
                   src='/images/gb.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'english' })}
                 />
               </a>
@@ -122,8 +122,8 @@ function Header() {
               <a className={styles.icon}>
                 <Image
                   src='/images/de.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'german' })}
                 />
               </a>
@@ -134,8 +134,8 @@ function Header() {
               <a className={styles.icon}>
                 <Image
                   src='/images/uk.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'ukrainian' })}
                 />
               </a>
@@ -149,7 +149,12 @@ function Header() {
               target='_blank'
               title={intl.formatMessage({ id: 'topMenu.fb' })}
             >
-              <Facebook sx={{ color: '#4267B2' }} />
+              <Image
+                src='/images/FB.svg'
+                width={24}
+                height={24}
+                alt={intl.formatMessage({ id: 'topMenu.fb' })}
+              />
             </a>
           </li>
           <li className={styles.iconContainer}>
@@ -160,7 +165,12 @@ function Header() {
               target='_blank'
               title={intl.formatMessage({ id: 'topMenu.instagram' })}
             >
-              <Instagram sx={{ color: '#833AB4' }} />
+              <Image
+                src='/images/INST.svg'
+                width={24}
+                height={24}
+                alt={intl.formatMessage({ id: 'topMenu.instagram' })}
+              />
             </a>
           </li>
           <li className={styles.iconContainer}>
@@ -172,7 +182,7 @@ function Header() {
               title={intl.formatMessage({ id: 'topMenu.tweeter' })}
             >
               <Image
-                src='/images/tweeter.svg'
+                src='/images/TT.svg'
                 width={24}
                 height={24}
                 alt={intl.formatMessage({ id: 'topMenu.tweeter' })}
@@ -198,7 +208,7 @@ function Header() {
           aria-expanded={openMenu ? 'true' : undefined}
           onClick={(e) => handleClick(true, e)}
         >
-          <Image src='/images/pl.svg' width={40} height={40} alt={lngImgLabel} />
+          <Image src='/images/pl.svg' width={24} height={24} alt={lngImgLabel} />
         </Button>
         <Menu
           id='language-menu'
@@ -214,8 +224,8 @@ function Header() {
               <a>
                 <Image
                   src='/images/pl.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'polish' })}
                 />
               </a>
@@ -226,8 +236,8 @@ function Header() {
               <a>
                 <Image
                   src='/images/csb.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'kashebian' })}
                 />
               </a>
@@ -239,8 +249,8 @@ function Header() {
               <a>
                 <Image
                   src='/images/gb.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'english' })}
                 />
               </a>
@@ -251,8 +261,8 @@ function Header() {
               <a>
                 <Image
                   src='/images/de.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'german' })}
                 />
               </a>
@@ -263,8 +273,8 @@ function Header() {
               <a>
                 <Image
                   src='/images/uk.svg'
-                  width={40}
-                  height={40}
+                  width={24}
+                  height={24}
                   alt={intl.formatMessage({ id: 'ukrainian' })}
                 />
               </a>
@@ -311,14 +321,24 @@ function Header() {
                 rel='external nofollow noreferrer'
                 target='_blank'
               >
-                <Facebook sx={{ color: '#4267B2' }} />
+                <Image
+                  src='/images/FB.svg'
+                  width={24}
+                  height={24}
+                  alt={intl.formatMessage({ id: 'topMenu.fb' })}
+                />
               </a>
               <a
                 href='https://www.instagram.com/polsko_kaszebsczi_sloworz'
                 rel='external nofollow noreferrer'
                 target='_blank'
               >
-                <Instagram sx={{ color: '#833AB4' }} />
+                <Image
+                  src='/images/INST.svg'
+                  width={24}
+                  height={24}
+                  alt={intl.formatMessage({ id: 'topMenu.instagram' })}
+                />
               </a>
               <a
                 href='https://twitter.com/kaszubskieslowa'
@@ -326,7 +346,7 @@ function Header() {
                 target='_blank'
               >
                 <Image
-                  src='/images/tweeter.svg'
+                  src='/images/TT.svg'
                   width={24}
                   height={24}
                   alt={intl.formatMessage({ id: 'topMenu.tweeter' })}
