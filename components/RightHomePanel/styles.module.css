@@ -11,6 +11,35 @@
   cursor: pointer;
 }
 
+.woadHeader {
+  margin: 1rem 0 0 0;
+  padding: 0 0.5rem;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 0.7;
+  text-align: right;
+  color: gray;
+}
+
+.woadContainer {
+  background-color: var(--background-featured);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.woadLink {
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  margin-bottom: 0.3rem;
+}
+
+.woadText {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
 @media (max-width: 1200px) {
   .article {
     width: 90%;

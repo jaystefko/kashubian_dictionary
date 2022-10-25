@@ -1,9 +1,9 @@
 import { KeyboardArrowDown } from '@mui/icons-material';
-import { Button, Card, CardContent, Menu, MenuItem } from '@mui/material';
+import { Button, Menu, MenuItem } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { getLastAddedWordList, getWordOfADay } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { WordOfADay } from '../../utils/types';
@@ -19,11 +19,20 @@ const RightHomePanel = () => {
   useEffect(() => {
     (async () => {
       try {
-        const wordOfADayResponse = await getWordOfADay();
         const lastAddedWordListResponse = await getLastAddedWordList();
         setLastWordList(
           lastAddedWordListResponse.data?.data?.findAllKashubianEntries?.select || []
         );
+      } catch (error) {
+        errorHandler(error, intl);
+      }
+    })();
+  }, []); // eslint-disable-line
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const wordOfADayResponse = await getWordOfADay();
         setWordOfADay(wordOfADayResponse.data);
       } catch (error) {
         errorHandler(error, intl);
@@ -47,7 +56,7 @@ const RightHomePanel = () => {
         <Button
           id='last-added-word-list'
           variant='outlined'
-          aria-controls={Boolean(anchorEl) ? 'basic-menu' : undefined}
+          aria-controls={Boolean(anchorEl) ? 'last-added-word-menu' : undefined}
           aria-haspopup='true'
           aria-expanded={Boolean(anchorEl) ? 'true' : undefined}
           onClick={clickHandler}
@@ -56,7 +65,7 @@ const RightHomePanel = () => {
           {intl.formatMessage({ id: 'lastAddedWords' })}
         </Button>
         <Menu
-          id='basic-menu'
+          id='last-added-word-menu'
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={closeHandler}
@@ -87,23 +96,15 @@ const RightHomePanel = () => {
       </section>
       <section>
         {wordOfADay ? (
-          <Link href={`word/${wordOfADay?.entryId}`} className={styles.link}>
-            <Card
-              variant='outlined'
-              elevation={3}
-              style={{ border: '1px solid var(--link-color)' }}
-            >
-              <CardContent>
-                <p style={{ fontSize: 14 }}>
-                  <FormattedMessage id='wordOfADay' />
-                </p>
-
-                <h5>{wordOfADay?.word}</h5>
-
-                <span>{wordOfADay?.definitions[0] || ''}</span>
-              </CardContent>
-            </Card>
-          </Link>
+          <>
+            <h2 className={styles.woadHeader}>{intl.formatMessage({ id: 'wordOfADay' })}</h2>
+            <article className={styles.woadContainer}>
+              <Link href={`word/${wordOfADay?.entryId}`}>
+                <a className={styles.woadLink}>{wordOfADay.word}</a>
+              </Link>
+              <p className={styles.woadText}>{wordOfADay?.definitions[0] || ''}</p>
+            </article>
+          </>
         ) : (
           ''
         )}
