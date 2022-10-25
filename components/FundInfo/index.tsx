@@ -1,7 +1,9 @@
+import styles from './styles.module.css';
+
 function FundInfo() {
   return (
     <section style={{ textAlign: 'center' }}>
-      <p>
+      <p className={styles.fundInfo}>
         Tu powstaje słownik języka kaszubskiego. Możesz pomóc w jego powstaniu. Wystarczy wejść na
         stronę:
         <br />
