@@ -21,6 +21,19 @@ export const getSearchBy = (locale: LOCALES) => {
   }
 };
 
+export const getTranslationByLocale = (locale: LOCALES) => {
+  switch (locale) {
+    case LOCALES.de:
+      return 'german';
+    case LOCALES.en:
+      return 'english';
+    case LOCALES.uk:
+      return 'ukrainian';
+    default:
+      return 'polish';
+  }
+};
+
 export function isEmpty(object: Object) {
   return Object.keys(object).length === 0;
 }

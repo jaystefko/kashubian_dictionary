@@ -1,8 +1,9 @@
-import { GatheredWord } from '../../utils/types';
+import { GatheredWord, LOCALES } from '../../utils/types';
 import { useIntl } from 'react-intl';
 import styles from './styles.module.css';
 import Link from 'next/link';
 import ListItem from './ListItem';
+import { getTranslationByLocale } from '../../utils/utilities';
 
 type Props = {
   word: Partial<GatheredWord>;
@@ -10,11 +11,11 @@ type Props = {
 
 const WordScreen = ({ word }: Props) => {
   const intl = useIntl();
+  const translationPath = getTranslationByLocale(intl.locale as LOCALES);
 
-  const pl = word.meanings!.map((meaning) => meaning.translation.polish);
-  const en = word.meanings!.map((meaning) => meaning.translation.english).filter((m) => m);
-  const de = word.meanings!.map((meaning) => meaning.translation.german).filter((m) => m);
-  const uk = word.meanings!.map((meaning) => meaning.translation.ukrainian).filter((m) => m);
+  const translation = word
+    .meanings!.map((meaning) => meaning.translation[translationPath])
+    .filter((x) => x);
   const definitionList = word.meanings!.map((meaning) => meaning.definition);
   const originList = word.meanings!.map((meaning) => meaning.origin).filter((o) => o);
   const exampleList = word.meanings!.map(
@@ -57,20 +58,8 @@ const WordScreen = ({ word }: Props) => {
       <main>
         <ul className={styles.list}>
           <ListItem
-            property={intl.formatMessage({ id: `language.polish` })}
-            content={pl.join(', ')}
-          />
-          <ListItem
-            property={intl.formatMessage({ id: `language.english` })}
-            content={en.join(', ')}
-          />
-          <ListItem
-            property={intl.formatMessage({ id: `language.german` })}
-            content={de.join(', ')}
-          />
-          <ListItem
-            property={intl.formatMessage({ id: `language.ukrainian` })}
-            content={uk.join(', ')}
+            property={intl.formatMessage({ id: `language.${translationPath}` })}
+            content={translation.join(', ')}
           />
           <ListItem
             property={intl.formatMessage({ id: `definition` })}
