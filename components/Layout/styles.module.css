@@ -1,6 +1,6 @@
 .main {
   min-height: calc(100vh - 160px);
-  background: url('/images/background-griffon.png') center center no-repeat var(--background);
+  background: url('/images/gryf.svg') center center no-repeat var(--background);
 }
 
 @media (min-width: 550px) {
