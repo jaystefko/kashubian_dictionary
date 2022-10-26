@@ -71,6 +71,10 @@
   background-color: var(--black-01);
 }
 
+.filterableLi:hover {
+  filter: brightness(0);
+}
+
 .mobileContainer {
   display: none;
 }

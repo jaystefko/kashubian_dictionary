@@ -189,7 +189,7 @@ function Header() {
               />
             </a>
           </li>
-          <li className={styles.iconContainer}>
+          <li className={`${styles.iconContainer} ${styles.filterableLi}`}>
             <Link href='/howTo'>
               <a className={styles.icon} title={intl.formatMessage({ id: 'topMenu.howTo' })}>
                 <QuestionMark />
