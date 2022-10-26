@@ -22,12 +22,11 @@ import {
   PARTS_OF_SPEECH,
   SUB_PARTS_OF_SPEECH,
   Word,
-  subPartPerPart,
-  variationPerSubPart,
   GatheredWord,
   GatheredMeaning,
+  Variation,
 } from '../../../utils/types';
-import { isEmpty, setter } from '../../../utils/utilities';
+import { isEmpty, setter, getSubPartList, getVariationPerSubPart } from '../../../utils/utilities';
 import AC from '../../Autocomplete';
 import getDefaultMeaning from './meaning';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -35,6 +34,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import styles from './styles.module.css';
 import VariationModal from './VariationModal';
 import MeaningModal from './MeaningModal';
+import getVariation from './variation';
 
 type WordModalProps = {
   isModalOpen: boolean;
@@ -97,7 +97,14 @@ const WordModal = ({ isModalOpen, closeHandler, word, saveHandler }: WordModalPr
     setPriority(Boolean(word.priority));
     setPartOfSpeech(word.partOfSpeech!);
     setSubPartOfSpeech(word.partOfSpeechSubType!);
-    setVariations(word.variation && !isEmpty(word.variation) ? word.variation : null);
+    setVariations(
+      word.variation && !isEmpty(word.variation)
+        ? getVariation(
+            word.variation,
+            getVariationPerSubPart(word.partOfSpeechSubType!) as Variation
+          )
+        : null
+    );
     setNote(word?.note || '');
     setBase(word?.base || null);
     setOthers(otherList || []);
@@ -154,11 +161,11 @@ const WordModal = ({ isModalOpen, closeHandler, word, saveHandler }: WordModalPr
   }
 
   function setSPOSOptionList(pos: PARTS_OF_SPEECH, isVariationsIncluded = true) {
-    const optionList = subPartPerPart[pos];
+    const optionList = getSubPartList(pos);
 
     if (optionList.length === 1) {
       setSubPartOfSpeech(optionList[0]);
-      if (isVariationsIncluded) setVariations(variationPerSubPart[optionList[0]]);
+      if (isVariationsIncluded) setVariations(getVariationPerSubPart(optionList[0]));
     } else if (isVariationsIncluded) {
       setVariations(null);
       setSubPartOfSpeech('');
@@ -245,7 +252,7 @@ const WordModal = ({ isModalOpen, closeHandler, word, saveHandler }: WordModalPr
                   required
                   label={intl.formatMessage({ id: 'subPartOfSpeech' })}
                   onChange={(e) => {
-                    setVariations(variationPerSubPart[e.target.value as SUB_PARTS_OF_SPEECH]);
+                    setVariations(getVariationPerSubPart(e.target.value as SUB_PARTS_OF_SPEECH));
                     setSubPartOfSpeech(e.target.value as SUB_PARTS_OF_SPEECH);
                   }}
                 >

@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { LOCALES } from './types';
+import { LOCALES } from '../types';
 
 export const setter = (
   set: Dispatch<SetStateAction<string>>,
