@@ -20,10 +20,10 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
   const translation = meaning.translation![translationPath];
   const definition = meaning.definition;
   const origin = meaning.origin;
-  const exampleList = meaning.examples?.map((e) => e.example).join(', ');
-  const idiomList = meaning.idioms?.map((p) => p.idiom).join(', ');
-  const proVerbList = meaning.proverbs?.map((p) => p.proverb).join(', ');
-  const quoteList = meaning.quotes?.map((q) => q.quote).join(', ');
+  const exampleList = meaning.examples?.map((e) => e.example);
+  const idiomList = meaning.idioms?.map((p) => p.idiom);
+  const proVerbList = meaning.proverbs?.map((p) => p.proverb);
+  const quoteList = meaning.quotes?.map((q) => q.quote);
   const hyperonym = meaning.hyperonym?.kashubianEntry;
   const antonymList = meaning.antonyms?.map((a) => a.antonym.kashubianEntry) || [];
   const synonymList = meaning.synonyms?.map((s) => s.synonym.kashubianEntry) || [];
@@ -56,10 +56,62 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
           />
           {/* *** VARIATION #TODO *** */}
           <ListItem property={intl.formatMessage({ id: `origin` })} content={origin} />
-          <ListItem property={intl.formatMessage({ id: `example` })} content={exampleList} />
-          <ListItem property={intl.formatMessage({ id: `idiom` })} content={idiomList} />
-          <ListItem property={intl.formatMessage({ id: `proverb` })} content={proVerbList} />
-          <ListItem property={intl.formatMessage({ id: `quote` })} content={quoteList} />
+          <ListItem
+            property={intl.formatMessage({ id: `example` })}
+            content={
+              exampleList?.length ? (
+                <>
+                  {exampleList?.map((element, index) => (
+                    <span key={index}>{element}</span>
+                  ))}
+                </>
+              ) : (
+                ''
+              )
+            }
+          />
+          <ListItem
+            property={intl.formatMessage({ id: `idiom` })}
+            content={
+              idiomList?.length ? (
+                <>
+                  {idiomList?.map((element, index) => (
+                    <span key={index}>{element}</span>
+                  ))}
+                </>
+              ) : (
+                ''
+              )
+            }
+          />
+          <ListItem
+            property={intl.formatMessage({ id: `proverb` })}
+            content={
+              proVerbList?.length ? (
+                <>
+                  {proVerbList?.map((element, index) => (
+                    <span key={index}>{element}</span>
+                  ))}
+                </>
+              ) : (
+                ''
+              )
+            }
+          />
+          <ListItem
+            property={intl.formatMessage({ id: `quote` })}
+            content={
+              quoteList?.length ? (
+                <>
+                  {quoteList?.map((element, index) => (
+                    <span key={index}>{element}</span>
+                  ))}
+                </>
+              ) : (
+                ''
+              )
+            }
+          />
           <ListItem
             property={intl.formatMessage({ id: `word.base` })}
             content={
@@ -82,9 +134,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                   {word?.others?.map((o, index) => (
                     <Link key={index} href={`/word/${o.other.id}`}>
                       <a>
-                        <span>{`${o.other.word}${
-                          index === word.others!.length - 1 ? '' : ','
-                        }`}</span>
+                        <span>{o.other.word}</span>
                       </a>
                     </Link>
                   ))}
@@ -114,7 +164,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                   {synonymList.map((s, index) => (
                     <Link key={index} href={`/word/${s?.id}`}>
                       <a>
-                        <span>{`${s?.word}${index === synonymList.length - 1 ? '' : ','}`}</span>
+                        <span>{s?.word}</span>
                       </a>
                     </Link>
                   ))}
@@ -132,7 +182,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                   {antonymList.map((a, index) => (
                     <Link key={index} href={`/word/${a?.id}`}>
                       <a>
-                        <span>{`${a?.word}${index === antonymList!.length - 1 ? '' : ','}`}</span>
+                        <span>{a?.word}</span>
                       </a>
                     </Link>
                   ))}

@@ -38,17 +38,20 @@
 .content {
   width: 60%;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  height: 100%;
 }
 
 @media (max-width: 1200px) {
   .content {
     justify-content: center;
+    text-align: center;
   }
 }
 
 @media (max-width: 550px) {
   .content {
     justify-content: end;
+    text-align: end;
   }
 }
