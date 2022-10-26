@@ -142,14 +142,14 @@ const WordModal = ({ isModalOpen, closeHandler, word, saveHandler }: WordModalPr
         meanings: meanings.map((m) => ({
           definition: m.definition,
           translation: m.translation,
-          antonyms: m.antonyms?.filter((a) => a).map((a) => ({ meaningId: a.id })),
+          antonyms: m.antonyms?.filter((a) => a).map((a) => ({ meaningId: a.antonym.id })),
           examples: m.examples,
           hyperonym: m.hyperonym?.id,
           origin: m.origin,
           idioms: m.idioms,
           proverbs: m.proverbs,
           quotes: m.quotes,
-          synonyms: m.synonyms?.filter((s) => s).map((s) => ({ meaningId: s.id })),
+          synonyms: m.synonyms?.filter((s) => s).map((s) => ({ meaningId: s.synonym.id })),
         })),
       };
 

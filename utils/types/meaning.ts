@@ -41,6 +41,7 @@ interface GatheredMeaning extends MeaningOG {
   antonyms?: Array<{
     id: number;
     antonym: {
+      id: number;
       definition: string;
       kashubianEntry?: {
         id: number;
@@ -59,6 +60,7 @@ interface GatheredMeaning extends MeaningOG {
   synonyms?: Array<{
     id: number;
     synonym: {
+      id: number;
       definition: string;
       kashubianEntry?: {
         id: number;

@@ -20,6 +20,8 @@ function logOut() {
 
 function transpileErrorName(name: string, intl: IntlShape) {
   return name
+    .replaceAll('meaningId', '')
+    .replaceAll('entryId', '')
     .replaceAll(/[\[\]\.]/g, ' ')
     .split(' ')
     .filter((a) => a)

@@ -43,10 +43,10 @@ const MeaningModal = ({
       setProVerbList(meaning.proverbs || []);
       setQuoteList(meaning.quotes || []);
       setSynonymList(
-        meaning.synonyms?.map((s) => ({ id: s.id, definition: s.synonym.definition })) || []
+        meaning.synonyms?.map((s) => ({ id: s.synonym.id, definition: s.synonym.definition })) || []
       );
       setAntonymList(
-        meaning.antonyms?.map((a) => ({ id: a.id, definition: a.antonym.definition })) || []
+        meaning.antonyms?.map((a) => ({ id: a.antonym.id, definition: a.antonym.definition })) || []
       );
       setHyperonym(meaning.hyperonym || null);
     }
@@ -60,7 +60,7 @@ const MeaningModal = ({
         .filter((a) => a)
         .map((a) => ({
           id: a!.id,
-          antonym: { definition: a!.definition },
+          antonym: { id: a?.id!, definition: a!.definition },
         })),
       examples: exampleList,
       hyperonym: hyperonym || undefined,
@@ -72,7 +72,7 @@ const MeaningModal = ({
         .filter((s) => s)
         .map((s) => ({
           id: s!.id,
-          synonym: { definition: s!.definition },
+          synonym: { id: s?.id!, definition: s!.definition },
         })),
     };
 
