@@ -62,8 +62,12 @@ function DisplayTable(data: Record<string, string>, paramName: string, spos: SUB
           <TableHead>
             <TableRow>
               <TableCell></TableCell>
-              <TableCell colSpan={3}>{intl.formatMessage({ id: 'singular' })}</TableCell>
-              <TableCell colSpan={2}>{intl.formatMessage({ id: 'multiple' })}</TableCell>
+              <TableCell colSpan={3} sx={{ textAlign: 'center' }}>
+                {intl.formatMessage({ id: 'singular' })}
+              </TableCell>
+              <TableCell colSpan={2} sx={{ textAlign: 'center' }}>
+                {intl.formatMessage({ id: 'multiple' })}
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell></TableCell>
@@ -181,8 +185,12 @@ function DisplayTable(data: Record<string, string>, paramName: string, spos: SUB
           <TableHead>
             <TableRow>
               <TableCell></TableCell>
-              <TableCell colSpan={3}>{intl.formatMessage({ id: 'singular' })}</TableCell>
-              <TableCell colSpan={2}>{intl.formatMessage({ id: 'multiple' })}</TableCell>
+              <TableCell colSpan={3} sx={{ textAlign: 'center' }}>
+                {intl.formatMessage({ id: 'singular' })}
+              </TableCell>
+              <TableCell colSpan={2} sx={{ textAlign: 'center' }}>
+                {intl.formatMessage({ id: 'multiple' })}
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell></TableCell>
@@ -252,8 +260,12 @@ function DisplayTable(data: Record<string, string>, paramName: string, spos: SUB
           <TableHead>
             <TableRow>
               <TableCell></TableCell>
-              <TableCell colSpan={3}>{intl.formatMessage({ id: 'singular' })}</TableCell>
-              <TableCell colSpan={2}>{intl.formatMessage({ id: 'multiple' })}</TableCell>
+              <TableCell colSpan={3} sx={{ textAlign: 'center' }}>
+                {intl.formatMessage({ id: 'singular' })}
+              </TableCell>
+              <TableCell colSpan={2} sx={{ textAlign: 'center' }}>
+                {intl.formatMessage({ id: 'multiple' })}
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell></TableCell>
