@@ -8,7 +8,7 @@ const WorkInProgress = ({ is404 = false }) => {
   const main = intl.formatMessage({ id: `wip.${is404 ? '404' : 'not404'}.message` });
 
   return (
-    <div className={styles.wholePage}>
+    <div className='whole-page'>
       <article className={styles.box}>
         <header>
           <h1 className={styles.header}>{header}</h1>

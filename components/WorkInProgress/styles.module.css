@@ -1,11 +1,3 @@
-.wholePage {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .box {
   background-color: var(--black-03);
   border: 1px solid var(--font);
@@ -18,4 +10,16 @@
 .header {
   margin: 0.5rem 0;
   color: var(--yellow);
+}
+
+@media screen and (max-width: 1200px) {
+  .box {
+    max-width: 60vw;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .box {
+    max-width: 90vw;
+  }
 }
