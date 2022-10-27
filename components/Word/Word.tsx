@@ -118,7 +118,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
               word.base ? (
                 <Link href={`/word/${word.base.id}`}>
                   <a>
-                    <span>{word.base.word}</span>
+                    <b>{word.base.word}</b>
                   </a>
                 </Link>
               ) : (
@@ -134,7 +134,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                   {word?.others?.map((o, index) => (
                     <Link key={index} href={`/word/${o.other.id}`}>
                       <a>
-                        <span>{o.other.word}</span>
+                        <b>{o.other.word}</b>
                       </a>
                     </Link>
                   ))}
@@ -149,7 +149,9 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
             content={
               hyperonym ? (
                 <Link href={`/word/${hyperonym.id}`}>
-                  <a>{hyperonym.word}</a>
+                  <a>
+                    <b>{hyperonym.word}</b>
+                  </a>
                 </Link>
               ) : (
                 ''
@@ -164,7 +166,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                   {synonymList.map((s, index) => (
                     <Link key={index} href={`/word/${s?.id}`}>
                       <a>
-                        <span>{s?.word}</span>
+                        <b>{s?.word}</b>
                       </a>
                     </Link>
                   ))}
@@ -182,7 +184,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                   {antonymList.map((a, index) => (
                     <Link key={index} href={`/word/${a?.id}`}>
                       <a>
-                        <span>{a?.word}</span>
+                        <b>{a?.word}</b>
                       </a>
                     </Link>
                   ))}

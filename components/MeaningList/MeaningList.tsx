@@ -27,7 +27,10 @@ function MeaningList({ word, data, wordId }: Props) {
           {data.map((meaning, index) => (
             <li key={index}>
               <Link href={`/word/${wordId}/meaning/${meaning.id}`}>
-                <a>{`${meaning.translation[translatePath]} ~ ${meaning.definition}`}</a>
+                <a>
+                  <b>{meaning.translation[translatePath]}</b>
+                  {` ~ ${meaning.definition}`}
+                </a>
               </Link>
             </li>
           ))}

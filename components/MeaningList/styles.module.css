@@ -30,3 +30,7 @@
   display: flex;
   padding: 1rem 0;
 }
+
+.list > li > a > b {
+  padding-right: 0.3rem;
+}
