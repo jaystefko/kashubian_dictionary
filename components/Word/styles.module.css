@@ -47,11 +47,29 @@
     justify-content: center;
     text-align: center;
   }
+
+  .listItem.variation {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .property.variation {
+    width: 100%;
+  }
+
+  .content.variation {
+    width: auto;
+  }
 }
 
 @media (max-width: 550px) {
   .content {
     justify-content: end;
     text-align: end;
+  }
+
+  .listItem.variation {
+    flex-direction: column;
+    align-items: unset;
   }
 }

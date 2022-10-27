@@ -1,4 +1,4 @@
-import { GatheredMeaning, GatheredWord, LOCALES } from '../../utils/types';
+import { GatheredMeaning, GatheredWord, LOCALES, SUB_PARTS_OF_SPEECH } from '../../utils/types';
 import { useIntl } from 'react-intl';
 import styles from './styles.module.css';
 import Link from 'next/link';
@@ -70,7 +70,11 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                   })
             }
           />
-          <ListItem property={intl.formatMessage({ id: `variation` })} content={variationDisplay} />
+          <ListItem
+            property={intl.formatMessage({ id: `variation` })}
+            content={variationDisplay}
+            isVariation={word.partOfSpeechSubType! !== SUB_PARTS_OF_SPEECH.ADVERB}
+          />
           <ListItem property={intl.formatMessage({ id: `origin` })} content={origin} />
           <ListItem
             property={intl.formatMessage({ id: `example` })}
