@@ -100,6 +100,19 @@ export async function getWordSimplified(id: number) {
     `,
   });
 }
+
+export async function getWordCount() {
+  return axios.post(`${url}graphql`, {
+    query: `
+    {
+      findAllKashubianEntries {
+        total
+      }
+    }
+    `,
+  });
+}
+
 export async function getWord(id: number) {
   return axios.post(`${url}graphql`, {
     query: `

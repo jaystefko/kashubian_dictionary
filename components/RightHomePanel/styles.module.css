@@ -5,6 +5,7 @@
   flex-direction: column-reverse;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .link {
@@ -46,6 +47,13 @@
   font-size: 0.875rem;
 }
 
+.wordCount {
+  position: absolute;
+  bottom: 0;
+  right: 0.5rem;
+  font-size: 14px;
+}
+
 @media (max-width: 1200px) {
   .article {
     width: 90%;
@@ -53,6 +61,10 @@
     gap: 1rem;
     justify-content: flex-start;
     margin: 3rem 5%;
+  }
+
+  .wordCount {
+    display: none;
   }
 }
 

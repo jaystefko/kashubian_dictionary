@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { getLastAddedWordList, getWordOfADay } from '../../utils/api';
+import { getLastAddedWordList, getWordCount, getWordOfADay } from '../../utils/api';
 import errorHandler from '../../utils/errorHandler';
 import { WordOfADay } from '../../utils/types';
 import styles from './styles.module.css';
@@ -15,6 +15,18 @@ const RightHomePanel = () => {
   const [wordOfADay, setWordOfADay] = useState<WordOfADay>();
   const [lastWordList, setLastWordList] = useState<Array<{ id: number; word: string }>>([]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [wordCount, setWordCount] = useState(0);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await getWordCount();
+        setWordCount(response.data?.data?.findAllKashubianEntries?.total || 0);
+      } catch (error) {
+        errorHandler(error, intl);
+      }
+    })();
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     (async () => {
@@ -109,6 +121,13 @@ const RightHomePanel = () => {
           ''
         )}
       </section>
+      {wordCount > 0 ? (
+        <span className={styles.wordCount}>{`${intl.formatMessage({
+          id: 'wordCount',
+        })}: ${wordCount}`}</span>
+      ) : (
+        ''
+      )}
     </article>
   );
 };
