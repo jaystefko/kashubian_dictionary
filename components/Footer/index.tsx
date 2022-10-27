@@ -30,46 +30,50 @@ function Footer() {
       <section className={styles.sponsorContainer}>
         <div className={styles.sponsorInfo}>{intl.formatMessage({ id: 'sponsors' })}:</div>
         <ul className={styles.footerList}>
-          <a
-            href='https://www.powiat.chojnice.pl/asp/Informacje%2CStrona_glowna%2C92'
-            rel='external nofollow noreferrer'
-            className={styles.footerLink}
-            target='_blank'
-            title={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
-          >
-            <Image
-              priority={false}
-              src='/images/herb_powiat_chojnicki.png'
-              height={40}
-              width={31}
-              alt={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
-              role='link'
+          <li>
+            <a
+              href='https://www.powiat.chojnice.pl/asp/Informacje%2CStrona_glowna%2C92'
+              rel='external nofollow noreferrer'
+              className={styles.footerLink}
+              target='_blank'
               title={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
-            />
-            <span className={styles.footerLinkText}>
-              {intl.formatMessage({ id: 'sponsor.countyChojnice' })}
-            </span>
-          </a>
-          <a
-            href='https://www.muzeum.wejherowo.pl/'
-            rel='external nofollow noreferrer'
-            className={styles.footerLink}
-            target='_blank'
-            title={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
-          >
-            <Image
-              priority={false}
-              src='/images/logo_MPiMK-P.png'
-              height={40}
-              width={50}
-              alt={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
-              role='link'
+            >
+              <Image
+                priority={false}
+                src='/images/herb_powiat_chojnicki.png'
+                height={40}
+                width={31}
+                alt={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
+                role='link'
+                title={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
+              />
+              <span className={styles.footerLinkText}>
+                {intl.formatMessage({ id: 'sponsor.countyChojnice' })}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              href='https://www.muzeum.wejherowo.pl/'
+              rel='external nofollow noreferrer'
+              className={styles.footerLink}
+              target='_blank'
               title={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
-            />
-            <span className={styles.footerLinkText}>
-              {intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
-            </span>
-          </a>
+            >
+              <Image
+                priority={false}
+                src='/images/logo_MPiMK-P.png'
+                height={40}
+                width={50}
+                alt={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
+                role='link'
+                title={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
+              />
+              <span className={styles.footerLinkText}>
+                {intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
+              </span>
+            </a>
+          </li>
         </ul>
       </section>
     </footer>
