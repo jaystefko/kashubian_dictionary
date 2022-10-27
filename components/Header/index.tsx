@@ -56,6 +56,7 @@ function Header() {
     <header className={styles.header}>
       <Link href='/'>
         <Image
+          priority={false}
           src='/images/logo.png'
           height={90}
           width={237}
@@ -84,6 +85,7 @@ function Header() {
             <Link href='' locale={LOCALES.pl} onClick={() => changeLanguage(LOCALES.pl)}>
               <a className={styles.icon}>
                 <Image
+                  priority={false}
                   src={lngImgPath}
                   width={24}
                   height={24}
@@ -96,6 +98,7 @@ function Header() {
             <Link href='/translate'>
               <a className={styles.icon}>
                 <Image
+                  priority={false}
                   src='/images/csb.svg'
                   width={24}
                   height={24}
@@ -109,6 +112,7 @@ function Header() {
               {/* locale={LOCALES.en} onClick={() => changeLanguage(LOCALES.en)} */}
               <a className={styles.icon}>
                 <Image
+                  priority={false}
                   src='/images/gb.svg'
                   width={24}
                   height={24}
@@ -121,6 +125,7 @@ function Header() {
             <Link href='/translate'>
               <a className={styles.icon}>
                 <Image
+                  priority={false}
                   src='/images/de.svg'
                   width={24}
                   height={24}
@@ -133,6 +138,7 @@ function Header() {
             <Link href='/translate'>
               <a className={styles.icon}>
                 <Image
+                  priority={false}
                   src='/images/uk.svg'
                   width={24}
                   height={24}
@@ -150,6 +156,7 @@ function Header() {
               title={intl.formatMessage({ id: 'topMenu.fb' })}
             >
               <Image
+                priority={false}
                 src='/images/FB.svg'
                 width={24}
                 height={24}
@@ -166,6 +173,7 @@ function Header() {
               title={intl.formatMessage({ id: 'topMenu.instagram' })}
             >
               <Image
+                priority={false}
                 src='/images/INST.svg'
                 width={24}
                 height={24}
@@ -182,6 +190,7 @@ function Header() {
               title={intl.formatMessage({ id: 'topMenu.tweeter' })}
             >
               <Image
+                priority={false}
                 src='/images/TT.svg'
                 width={24}
                 height={24}
@@ -208,7 +217,7 @@ function Header() {
           aria-expanded={openMenu ? 'true' : undefined}
           onClick={(e) => handleClick(true, e)}
         >
-          <Image src='/images/pl.svg' width={24} height={24} alt={lngImgLabel} />
+          <Image priority={false} src='/images/pl.svg' width={24} height={24} alt={lngImgLabel} />
         </Button>
         <Menu
           id='language-menu'
@@ -223,6 +232,7 @@ function Header() {
             <Link href='' locale={LOCALES.pl} onClick={() => changeLanguage(LOCALES.pl)}>
               <a>
                 <Image
+                  priority={false}
                   src='/images/pl.svg'
                   width={24}
                   height={24}
@@ -235,6 +245,7 @@ function Header() {
             <Link href='/translate'>
               <a>
                 <Image
+                  priority={false}
                   src='/images/csb.svg'
                   width={24}
                   height={24}
@@ -248,6 +259,7 @@ function Header() {
               {/* locale='en' onClick={() => changeLanguage('en')} */}
               <a>
                 <Image
+                  priority={false}
                   src='/images/gb.svg'
                   width={24}
                   height={24}
@@ -260,6 +272,7 @@ function Header() {
             <Link href='/translate'>
               <a>
                 <Image
+                  priority={false}
                   src='/images/de.svg'
                   width={24}
                   height={24}
@@ -272,6 +285,7 @@ function Header() {
             <Link href='/translate'>
               <a>
                 <Image
+                  priority={false}
                   src='/images/uk.svg'
                   width={24}
                   height={24}
@@ -322,6 +336,7 @@ function Header() {
                 target='_blank'
               >
                 <Image
+                  priority={false}
                   src='/images/FB.svg'
                   width={24}
                   height={24}
@@ -334,6 +349,7 @@ function Header() {
                 target='_blank'
               >
                 <Image
+                  priority={false}
                   src='/images/INST.svg'
                   width={24}
                   height={24}
@@ -346,6 +362,7 @@ function Header() {
                 target='_blank'
               >
                 <Image
+                  priority={false}
                   src='/images/TT.svg'
                   width={24}
                   height={24}

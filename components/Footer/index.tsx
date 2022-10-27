@@ -15,6 +15,7 @@ function Footer() {
         title={intl.formatMessage({ id: 'sponsor.kashebianFoundation' })}
       >
         <Image
+          priority={false}
           src='/images/logo-kaszuby-foundation.png'
           height={40}
           width={133}
@@ -37,6 +38,7 @@ function Footer() {
             title={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
           >
             <Image
+              priority={false}
               src='/images/herb_powiat_chojnicki.png'
               height={40}
               width={31}
@@ -56,6 +58,7 @@ function Footer() {
             title={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
           >
             <Image
+              priority={false}
               src='/images/logo_MPiMK-P.png'
               height={40}
               width={50}
