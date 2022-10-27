@@ -4,18 +4,12 @@
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
 }
 
 .link {
   cursor: pointer;
-}
-
-.woadSection {
-  width: 231px;
-  display: flex;
-  flex-direction: column;
 }
 
 .woadHeader {
@@ -49,7 +43,7 @@
 
 .wordCount {
   position: absolute;
-  bottom: 0;
+  bottom: 0.2rem;
   right: 0.5rem;
   font-size: 14px;
 }

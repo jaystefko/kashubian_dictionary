@@ -106,7 +106,7 @@ const RightHomePanel = () => {
           ))}
         </Menu>
       </section>
-      <section className={styles.woadSection}>
+      <section>
         {wordOfADay ? (
           <>
             <h2 className={styles.woadHeader}>{intl.formatMessage({ id: 'wordOfADay' })}</h2>

@@ -134,7 +134,7 @@ function Header() {
               </a>
             </Link>
           </li>
-          <li>
+          <li style={{ marginRight: '0.9rem' }}>
             <Link href='/translate'>
               <a className={styles.icon}>
                 <Image

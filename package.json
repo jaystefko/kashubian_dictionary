@@ -19,7 +19,8 @@
     "react-cookies": "^0.1.1",
     "react-dom": "18.2.0",
     "react-intl": "^6.1.1",
-    "react-toastify": "^9.0.8"
+    "react-toastify": "^9.0.8",
+    "sharp": "^0.31.1"
   },
   "devDependencies": {
     "@types/node": "18.6.3",
