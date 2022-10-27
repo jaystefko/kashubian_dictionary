@@ -61,14 +61,14 @@
   .wordCount {
     display: none;
   }
+
+  .woadHeader {
+    margin: 0;
+  }
 }
 
 @media (min-width: 1200px) {
   .article {
     height: calc(100vh - 160px);
-  }
-
-  .woadHeader {
-    margin: 0;
   }
 }
