@@ -282,5 +282,19 @@
   "sponsor.museumWejherowo": "Muzeum Wejherowo",
   "sponsors": "Partnerzy projektu",
   "multipleMeanings": "Hasło ma wiele znaczeń, wybierz to, które Cię interesuje",
-  "wordCount": "Liczba słów"
+  "wordCount": "Liczba słów",
+  "singular": "Liczba pojedyncza",
+  "multiple": "Liczba mnoga",
+  "short.masculine": "r. męski",
+  "short.feminine": "r. żeński",
+  "shortneuter": "r. nijaki",
+  "short.masculinePersonal": "r. męskoosobowy",
+  "short.nonMasculinePersonal": "r. niemęskoosobowy",
+  "short.nominative": "M.",
+  "short.genitive": "D.",
+  "short.dative": "C.",
+  "short.accusative": "B.",
+  "short.instrumental": "N.",
+  "short.locative": "Msc.",
+  "short.vocative": "W."
 }

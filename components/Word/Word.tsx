@@ -7,6 +7,7 @@ import { getTranslationByLocale } from '../../utils/utilities';
 import { url } from '../../utils/api';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import displayVariation from './displayVariation';
 
 type Props = {
   word: Partial<GatheredWord>;
@@ -31,6 +32,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
   const hyperonym = meaning.hyperonym?.kashubianEntry;
   const antonymList = meaning.antonyms?.map((a) => a.antonym.kashubianEntry) || [];
   const synonymList = meaning.synonyms?.map((s) => s.synonym.kashubianEntry) || [];
+  const variationDisplay = displayVariation(word.partOfSpeechSubType!, word.variation);
 
   useEffect(() => {
     router.beforePopState(() => {
@@ -68,7 +70,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                   })
             }
           />
-          {/* *** VARIATION #TODO *** */}
+          <ListItem property={intl.formatMessage({ id: `variation` })} content={variationDisplay} />
           <ListItem property={intl.formatMessage({ id: `origin` })} content={origin} />
           <ListItem
             property={intl.formatMessage({ id: `example` })}

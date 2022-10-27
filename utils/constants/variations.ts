@@ -1,43 +1,27 @@
 import {
-  activeAdjectivalParticipleVariations,
-  adjectivePronounVariation,
-  adjectiveVariation,
-  archaicPastVariations,
-  conditionalModeVariations,
   descriptivePresentVariations,
-  futureComplexVariationsFirst,
-  futureComplexVariationsSecond,
-  futureSimpleVariations,
   gerundiumVariations,
-  imperativeModeVariations,
-  nounPronounVariation,
   nounVariation,
   numeralVariation,
-  passiveAdjectiveParticipleVariationsFirst,
-  passiveAdjectiveParticipleVariationsSecond,
-  pastSecondVariations,
   pastVariations,
-  prePastFirstVariations,
-  prePastSecondVariations,
-  prePastThirdVariations,
   presentVariations,
 } from './tables';
 
 export const getConjugationVartation = () => ({
   presentVariations: { ...presentVariations },
   pastVariations: { ...pastVariations },
-  archaicPastVariations: { ...archaicPastVariations },
+  archaicPastVariations: { ...pastVariations },
   descriptivePresentVariations: { ...descriptivePresentVariations },
-  pastSecondVariations: { ...pastSecondVariations },
-  prePastFirstVariations: { ...prePastFirstVariations },
-  prePastSecondVariations: { ...prePastSecondVariations },
-  prePastThirdVariations: { ...prePastThirdVariations },
+  pastSecondVariations: { ...pastVariations },
+  prePastFirstVariations: { ...pastVariations },
+  prePastSecondVariations: { ...pastVariations },
+  prePastThirdVariations: { ...pastVariations },
   prePastImpersonal: '',
-  futureSimpleVariations: { ...futureSimpleVariations },
-  futureComplexVariationsFirst: { ...futureComplexVariationsFirst },
-  futureComplexVariationsSecond: { ...futureComplexVariationsSecond },
-  imperativeModeVariations: { ...imperativeModeVariations },
-  conditionalModeVariations: { ...conditionalModeVariations },
+  futureSimpleVariations: { ...descriptivePresentVariations },
+  futureComplexVariationsFirst: { ...pastVariations },
+  futureComplexVariationsSecond: { ...pastVariations },
+  imperativeModeVariations: { ...presentVariations },
+  conditionalModeVariations: { ...pastVariations },
   conditionalModeImpersonal: '',
   infinitive: '',
   aspectEquivalent: '',
@@ -47,11 +31,11 @@ export const getConjugationVartation = () => ({
   gerundiumGrammaticalType: 'PERFECT',
   gerundiumVariations: { ...gerundiumVariations },
   activeAdjectivalParticiple: '',
-  activeAdjectivalParticipleVariations: { ...activeAdjectivalParticipleVariations },
+  activeAdjectivalParticipleVariations: { ...numeralVariation },
   passiveAdjectiveParticipleFirst: '',
-  passiveAdjectiveParticipleVariationsFirst: { ...passiveAdjectiveParticipleVariationsFirst },
+  passiveAdjectiveParticipleVariationsFirst: { ...numeralVariation },
   passiveAdjectiveParticipleSecond: '',
-  passiveAdjectiveParticipleVariationsSecond: { ...passiveAdjectiveParticipleVariationsSecond },
+  passiveAdjectiveParticipleVariationsSecond: { ...numeralVariation },
 });
 
 export const getAdverbVariation = () => ({
@@ -61,11 +45,11 @@ export const getAdverbVariation = () => ({
 });
 
 export const getAdjectivePronounVariation = () => ({
-  adjectivePronounVariation: { ...adjectivePronounVariation },
+  adjectivePronounVariation: { ...numeralVariation },
 });
 
 export const getNounPronounVariation = () => ({
-  nounPronounVariation: { ...nounPronounVariation },
+  nounPronounVariation: { ...nounVariation },
 });
 
 export const getNounVariation = () => ({
@@ -81,7 +65,7 @@ export const getNumeralVariation = () => ({
 });
 
 export const getAdjectiveVariation = () => ({
-  adjectiveVariation: { ...adjectiveVariation },
+  adjectiveVariation: { ...numeralVariation },
   inAssemblies: '',
   base: '',
   comparative: '',
