@@ -25,6 +25,7 @@ type GatheredWord = {
   id: number;
   note: string;
   word: string;
+  meaningsCount: number;
   normalizedWord: string;
   variation: any;
   base: {

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import ListItem from './ListItem';
 import { getTranslationByLocale } from '../../utils/utilities';
 import { url } from '../../utils/api';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 type Props = {
   word: Partial<GatheredWord>;
@@ -15,8 +17,10 @@ type Props = {
 
 const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
   const intl = useIntl();
+  const router = useRouter();
   const translationPath = getTranslationByLocale(intl.locale as LOCALES);
 
+  const meaningsCount = word.meaningsCount || 1;
   const translation = meaning.translation![translationPath];
   const definition = meaning.definition;
   const origin = meaning.origin;
@@ -27,6 +31,16 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
   const hyperonym = meaning.hyperonym?.kashubianEntry;
   const antonymList = meaning.antonyms?.map((a) => a.antonym.kashubianEntry) || [];
   const synonymList = meaning.synonyms?.map((s) => s.synonym.kashubianEntry) || [];
+
+  useEffect(() => {
+    router.beforePopState(() => {
+      if (meaningsCount === 1) {
+        window.location.href = '/';
+        return false;
+      }
+      return true;
+    });
+  }, []); // eslint-disable-line
 
   return (
     <article className={styles.wordContainer}>

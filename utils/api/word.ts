@@ -79,6 +79,7 @@ export async function getWordSimplified(id: number) {
     {
       findKashubianEntry(id: ${id}) {
         word
+        meaningsCount
         priority
         partOfSpeech
         partOfSpeechSubType
