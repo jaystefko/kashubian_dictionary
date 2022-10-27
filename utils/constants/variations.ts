@@ -1,6 +1,5 @@
 import {
   descriptivePresentVariations,
-  gerundiumVariations,
   nounVariation,
   numeralVariation,
   pastVariations,
@@ -29,7 +28,7 @@ export const getConjugationVartation = () => ({
   priorAdverbialParticiple: '',
   gerundium: '',
   gerundiumGrammaticalType: 'PERFECT',
-  gerundiumVariations: { ...gerundiumVariations },
+  gerundiumVariations: { ...nounVariation },
   activeAdjectivalParticiple: '',
   activeAdjectivalParticipleVariations: { ...numeralVariation },
   passiveAdjectiveParticipleFirst: '',

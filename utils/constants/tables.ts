@@ -61,32 +61,15 @@ export const descriptivePresentVariations = {
   secondPersonMasculine: '',
   secondPersonFeminine: '',
   secondPersonNeuter: '',
+  secondPersonPluralMasculineFirst: '',
+  secondPersonNonMasculineFirst: '',
   secondPersonPluralMasculineSecond: '',
   secondPersonNonMasculineSecond: '',
   thirdPersonMasculine: '',
   thirdPersonFeminine: '',
   thirdPersonSingular: '',
-  secondPersonPluralMasculineFirst: '',
-  secondPersonNonMasculineFirst: '',
   thirdPersonPluralMasculine: '',
   thirdPersonNonMasculine: '',
-};
-
-export const gerundiumVariations = {
-  nominative: '',
-  genitive: '',
-  dative: '',
-  accusative: '',
-  instrumental: '',
-  locative: '',
-  vocative: '',
-  nominativePlural: '',
-  genitivePlural: '',
-  dativePlural: '',
-  accusativePlural: '',
-  instrumentalPlural: '',
-  locativePlural: '',
-  vocativePlural: '',
 };
 
 export const numeralVariation = {
