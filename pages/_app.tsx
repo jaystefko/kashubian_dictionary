@@ -32,12 +32,14 @@ function App({ Component, pageProps }: AppProps) {
         <title>Sloworz - Słownik języka kaszubskiego</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         <link rel='icon' href='/favicon.ico' />
+        <link rel='apple-touch-icon' href='/favicon.ico' />
         <link rel='manifest' href='/manifest.json' />
         <meta name='author' content='JStefko Jakub Stefko' />
         <meta name='description' content='Sloworz - internetowy słownik języka kaszubskiego' />
         <meta property='og:image' content='/favicon.ico' />
         <meta name='og:title' content='Sloworz - Słownik języka kaszubskiego' />
         <meta name='twitter:card' content='summary_large_image' />
+        <meta name='theme-color' content='#fdcd01' />
       </Head>
       <Layout>
         <Component {...pageProps} />

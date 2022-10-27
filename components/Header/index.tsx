@@ -302,10 +302,12 @@ function Header() {
           style={{ backgroundColor: COLORS.YELLOW }}
           aria-controls={openLanguage ? 'app-menu' : undefined}
           aria-haspopup='true'
+          title='Menu'
+          aria-label='Menu'
           aria-expanded={openLanguage ? 'true' : undefined}
           onClick={(e) => handleClick(false, e)}
         >
-          <ManuIcon style={{ color: 'black' }} />
+          <ManuIcon style={{ color: 'black' }} titleAccess='Menu' role='img' />
         </Button>
         <Menu
           id='app-menu'

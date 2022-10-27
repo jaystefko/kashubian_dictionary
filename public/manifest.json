@@ -1,39 +1,28 @@
 {
-  "action": "",
-  "author": "JStefko Jakub Stefko",
-  "background": "#ffffff",
-  "browser_action": "",
-  "browser_specific_settings": "",
-  "chrome_settings_override": "",
-  "chrome_url_overrides": "",
-  "commands": "",
-  "content_security_policy": "",
-  "default_locale": "",
-  "description": "Sloworz - internetowy słownik języka kaszubskiego. Jedyny taki słownik w internecie.",
-  "developer": "",
-  "devtools_page": "",
-  "dictionaries": "",
-  "externally_connectable": "",
-  "homepage_url": ".",
-  "icons": [],
-  "incognito": "",
-  "manifest_version": "3",
   "name": "Sloworz - internetowy słownik języka kaszubskiego",
-  "offline_enabled": "",
-  "omnibox": "",
-  "optional_permissions": "",
-  "options_page": "",
-  "options_ui": "",
-  "page_action": "",
-  "permissions": "",
-  "protocol_headers": "",
   "short_name": "Sloworz",
-  "sidebar_action": "",
-  "storage": "",
-  "theme": "",
-  "theme_experiment": "",
-  "user_scripts": "",
-  "version": "1",
-  "version_name": "",
-  "web_accessible_resources": ""
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#d9d9d945",
+  "theme_color": "#fdcd01",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }
