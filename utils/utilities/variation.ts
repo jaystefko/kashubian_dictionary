@@ -54,8 +54,8 @@ export const getSubPartList = (pos: PARTS_OF_SPEECH) => {
     case PARTS_OF_SPEECH.INTERJECTION: {
       return [SUB_PARTS_OF_SPEECH.INTERJECTION];
     }
-    case PARTS_OF_SPEECH.PARTICIPLE: {
-      return [SUB_PARTS_OF_SPEECH.PARTICIPLE];
+    case PARTS_OF_SPEECH.PARTICLE: {
+      return [SUB_PARTS_OF_SPEECH.PARTICLE];
     }
   }
 };
