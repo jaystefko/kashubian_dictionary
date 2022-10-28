@@ -1,12 +1,11 @@
 .dictionaryPanel {
   height: calc(100vh - 160px);
   width: 237px;
-  overflow-y: auto;
   background-color: var(--background-featured);
   border-bottom: 1px solid var(--background);
 }
 
-.dictionaryPanel li {
+.dictionaryPanel .li {
   margin: 0;
   padding: 0 4px;
 }
@@ -16,7 +15,7 @@
   width: 100%;
 }
 
-.dictionaryPanel li:hover {
+.dictionaryPanel .li:hover {
   background-color: var(--black-01);
 }
 

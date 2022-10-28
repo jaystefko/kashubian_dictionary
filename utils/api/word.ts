@@ -2,11 +2,11 @@ import axios from 'axios';
 import { getAxiosRequestConfig, url } from '.';
 import { BasicAuth, Word } from '../types';
 
-export async function getWordList(pageLimit = 100) {
+export async function getWordList(pageLimit = 100, start = 0) {
   return axios.post(`${url}graphql`, {
     query: `
       {
-        findAllKashubianEntries(page: { start: 0, limit: ${pageLimit} }) {
+        findAllKashubianEntries(page: { start: ${start}, limit: ${pageLimit} }) {
           select {
             id,
             word,
