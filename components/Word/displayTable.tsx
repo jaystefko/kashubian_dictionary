@@ -6,6 +6,8 @@ function DisplayTable(data: Record<string, string>, paramName: string, spos: SUB
   const intl = useIntl();
 
   switch (paramName) {
+    case 'gerundiumVariations':
+    case 'nounPronounVariation':
     case 'nounVariation': {
       return (
         <Table>
@@ -56,6 +58,11 @@ function DisplayTable(data: Record<string, string>, paramName: string, spos: SUB
         </Table>
       );
     }
+    case 'activeAdjectivalParticipleVariations':
+    case 'passiveAdjectiveParticipleVariationsFirst':
+    case 'passiveAdjectiveParticipleVariationsSecond':
+    case 'adjectivePronounVariation':
+    case 'adjectiveVariation':
     case 'numeralVariation': {
       return (
         <Table>
@@ -139,6 +146,7 @@ function DisplayTable(data: Record<string, string>, paramName: string, spos: SUB
         </Table>
       );
     }
+    case 'imperativeModeVariations':
     case 'presentVariations': {
       return (
         <Table>
@@ -179,6 +187,14 @@ function DisplayTable(data: Record<string, string>, paramName: string, spos: SUB
         </Table>
       );
     }
+    case 'archaicPastVariations':
+    case 'pastSecondVariations':
+    case 'prePastFirstVariations':
+    case 'prePastSecondVariations':
+    case 'prePastThirdVariations':
+    case 'futureComplexVariationsFirst':
+    case 'futureComplexVariationsSecond':
+    case 'conditionalModeVariations':
     case 'pastVariations': {
       return (
         <Table>
@@ -254,6 +270,7 @@ function DisplayTable(data: Record<string, string>, paramName: string, spos: SUB
         </Table>
       );
     }
+    case 'futureSimpleVariations':
     case 'descriptivePresentVariations': {
       return (
         <Table>
