@@ -85,11 +85,11 @@ const RightHomePanel = () => {
             'aria-labelledby': 'last-added-word-list',
           }}
           anchorOrigin={{
-            vertical: 'bottom',
+            vertical: 'top',
             horizontal: 'right',
           }}
           transformOrigin={{
-            vertical: 'top',
+            vertical: 'bottom',
             horizontal: 'right',
           }}
           PaperProps={{
