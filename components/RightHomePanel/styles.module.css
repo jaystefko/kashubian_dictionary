@@ -39,6 +39,11 @@
 .woadText {
   margin: 0;
   font-size: 0.875rem;
+  max-height: 125px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .wordCount {
