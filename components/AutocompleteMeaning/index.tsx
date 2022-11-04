@@ -71,7 +71,7 @@ const MAC = ({
       }}
       value={value}
       isOptionEqualToValue={(option, value) => option?.id === value?.id}
-      getOptionLabel={(option) => option?.definition || ''}
+      getOptionLabel={(option) => option?.kashubianEntry?.word || ''}
       onInputChange={(e, value) => {
         e?.preventDefault();
         setSearch(value);

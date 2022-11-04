@@ -64,7 +64,9 @@ export async function getMeaningList(partial = '', pageLimit = 10) {
       ) {
         select {
           id
-          definition(orderBy: ASC)
+          kashubianEntry {
+            word
+          }
         }
       }
     }
