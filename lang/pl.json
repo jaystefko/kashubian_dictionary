@@ -297,5 +297,10 @@
   "short.instrumental": "N.",
   "short.locative": "Msc.",
   "short.vocative": "W.",
-  "noMoreWords": "Koniec słów"
+  "noMoreWords": "Koniec słów",
+  "send": "Wyślij",
+  "subject": "Temat",
+  "contactEmail": "Twój email",
+  "content": "Wiadomość",
+  "mail_send": "Mail został wysłany"
 }

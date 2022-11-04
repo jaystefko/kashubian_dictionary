@@ -12,3 +12,4 @@ export function getAxiosRequestConfig(auth: BasicAuth): AxiosRequestConfig {
 export * from './meaning';
 export * from './word';
 export * from './file';
+export * from './email';

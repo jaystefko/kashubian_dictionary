@@ -3,3 +3,4 @@ export * from './enums';
 export * from './meaning';
 export * from './variation';
 export * from './word';
+export * from './email';
