@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
@@ -33,11 +33,11 @@ const Comments = () => {
     <div className='whole-page'>
       <article className={styles.box}>
         <header>
-          <h1 className={styles.header}>{intl.formatMessage({ id: 'topMenu.comments' })}</h1>
+          <h1>{intl.formatMessage({ id: 'topMenu.comments' })}</h1>
         </header>
         <main>
-          <Grid container gap={1} justifyContent='space-between'>
-            <Grid item xs={5}>
+          <div className={styles.formContainer}>
+            <div className={styles.topLine}>
               <TextField
                 fullWidth
                 value={subject}
@@ -46,8 +46,6 @@ const Comments = () => {
                 onChange={(e) => setSubject(e.target.value)}
                 required
               />
-            </Grid>
-            <Grid item xs={5}>
               <TextField
                 fullWidth
                 type='email'
@@ -57,20 +55,18 @@ const Comments = () => {
                 onChange={(e) => setContactEmail(e.target.value)}
                 required
               />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                value={content}
-                placeholder={`${intl.formatMessage({ id: 'content' })}...`}
-                label={intl.formatMessage({ id: 'content' })}
-                onChange={(e) => setContent(e.target.value)}
-                required
-                multiline
-                rows={4}
-              />
-            </Grid>
-          </Grid>
+            </div>
+            <TextField
+              fullWidth
+              value={content}
+              placeholder={`${intl.formatMessage({ id: 'content' })}...`}
+              label={intl.formatMessage({ id: 'content' })}
+              onChange={(e) => setContent(e.target.value)}
+              required
+              multiline
+              rows={4}
+            />
+          </div>
         </main>
         <footer className={styles.mailFooter}>
           <Button
