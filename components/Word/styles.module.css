@@ -42,40 +42,64 @@
   height: 100%;
 }
 
-@media (max-width: 1200px) {
-  .content {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .listItem.variation {
+@media (max-width: 1350px) {
+  .listItem.biggerContent.variation {
     flex-direction: column;
-    align-items: flex-end;
+    align-items: unset;
   }
 
-  .property.variation {
+  .property.biggerContent.variation {
     width: 100%;
     text-align: right;
   }
 
-  .content.variation {
+  .content.biggerContent.variation {
+    width: auto;
+    text-align: end;
+  }
+}
+
+@media (max-width: 1200px) {
+  .content {
+    justify-content: end;
+    text-align: end;
+  }
+
+  .listItem.biggerContent {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .property.biggerContent {
+    width: 100%;
+    text-align: right;
+  }
+
+  .content.biggerContent {
     width: auto;
     text-align: end;
   }
 }
 
 @media (max-width: 550px) {
-  .content {
-    justify-content: end;
-    text-align: end;
+  .word {
+    font-size: 2rem;
   }
 
-  .listItem.variation {
+  .property {
+    font-size: 0.9rem;
+  }
+
+  .content {
+    font-size: 0.9rem;
+  }
+
+  .listItem.biggerContent {
     flex-direction: column;
     align-items: unset;
   }
 
-  .content.variation {
+  .content.biggerContent {
     text-align: start;
   }
 }

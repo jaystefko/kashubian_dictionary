@@ -58,7 +58,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
           <ListItem
             property={intl.formatMessage({ id: `definition` })}
             content={definition}
-            isVariation
+            isBiggerContent
           />
           <ListItem
             property={intl.formatMessage({ id: `PARTS_OF_SPEECH` })}
@@ -77,9 +77,14 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
           <ListItem
             property={intl.formatMessage({ id: `variation` })}
             content={variationDisplay}
+            isBiggerContent={word.partOfSpeechSubType! !== SUB_PARTS_OF_SPEECH.ADVERB}
             isVariation={word.partOfSpeechSubType! !== SUB_PARTS_OF_SPEECH.ADVERB}
           />
-          <ListItem property={intl.formatMessage({ id: `origin` })} content={origin} />
+          <ListItem
+            property={intl.formatMessage({ id: `origin` })}
+            content={origin}
+            isBiggerContent
+          />
           <ListItem
             property={intl.formatMessage({ id: `example` })}
             content={
@@ -93,7 +98,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                 ''
               )
             }
-            isVariation
+            isBiggerContent
           />
           <ListItem
             property={intl.formatMessage({ id: `idiom` })}
@@ -108,7 +113,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                 ''
               )
             }
-            isVariation
+            isBiggerContent
           />
           <ListItem
             property={intl.formatMessage({ id: `proverb` })}
@@ -123,7 +128,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                 ''
               )
             }
-            isVariation
+            isBiggerContent
           />
           <ListItem
             property={intl.formatMessage({ id: `quote` })}
@@ -138,7 +143,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                 ''
               )
             }
-            isVariation
+            isBiggerContent
           />
           <ListItem
             property={intl.formatMessage({ id: `word.base` })}
@@ -222,7 +227,11 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
               )
             }
           />
-          <ListItem property={intl.formatMessage({ id: `note` })} content={word.note} isVariation />
+          <ListItem
+            property={intl.formatMessage({ id: `note` })}
+            content={word.note}
+            isBiggerContent
+          />
           <ListItem
             property={intl.formatMessage({ id: `sound` })}
             content={
@@ -236,7 +245,7 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
                 ''
               )
             }
-            isVariation
+            isBiggerContent
           />
         </ul>
       </main>

@@ -93,6 +93,7 @@ const theme = createTheme({
             fontWeight: 'bold',
             background: COLORS.YELLOW,
             border: 'none',
+            whiteSpace: 'nowrap',
           },
         },
         {
