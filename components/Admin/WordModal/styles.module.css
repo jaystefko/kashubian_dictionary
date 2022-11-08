@@ -1,24 +1,24 @@
 .header {
-  padding: 0 1rem;
+	padding: 0 1rem;
 }
 
 .main {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  flex-grow: 1;
-  overflow: auto;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	flex-grow: 1;
+	overflow: auto;
 }
 
 .footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
 }
 
 .meaningNumber {
-  padding: 1rem 1rem 0;
-  margin: 0;
-  color: var(--font);
-  font-weight: bold;
+	padding: 1rem 1rem 0;
+	margin: 0;
+	color: var(--font);
+	font-weight: bold;
 }

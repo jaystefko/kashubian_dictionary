@@ -1,3 +1,3 @@
-import DictionaryPanel from './DictionaryPanel';
+import DictionaryPanel from './DictionaryPanel'
 
-export default DictionaryPanel;
+export default DictionaryPanel

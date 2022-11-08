@@ -1,26 +1,26 @@
 .mailFooter {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1rem;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 1rem;
 }
 
 .formContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .topLine {
-  display: flex;
-  gap: 1rem;
+	display: flex;
+	gap: 1rem;
 }
 
 @media screen and (max-width: 600px) {
-  .topLine {
-    flex-direction: column;
-  }
+	.topLine {
+		flex-direction: column;
+	}
 
-  .box {
-    width: 90vw;
-  }
+	.box {
+		width: 90vw;
+	}
 }

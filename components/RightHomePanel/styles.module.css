@@ -1,79 +1,79 @@
 .article {
-  width: 291px;
-  padding: 3rem 9px 3rem 0;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+	width: 291px;
+	padding: 3rem 9px 3rem 0;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-between;
+	align-items: flex-end;
+	position: relative;
 }
 
 .link {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .woadHeader {
-  margin: 1rem 0 0 0;
-  padding: 0 0.5rem;
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: normal;
-  line-height: 0.7;
-  text-align: right;
-  color: gray;
+	margin: 1rem 0 0 0;
+	padding: 0 0.5rem;
+	font-size: 2rem;
+	font-style: italic;
+	font-weight: normal;
+	line-height: 0.7;
+	text-align: right;
+	color: gray;
 }
 
 .woadContainer {
-  background-color: var(--background-featured);
-  padding: 1rem;
-  border-radius: 5px;
+	background-color: var(--background-featured);
+	padding: 1rem;
+	border-radius: 5px;
 }
 
 .woadLink {
-  font-size: 1.4rem;
-  font-weight: 600;
-  display: flex;
-  margin-bottom: 0.3rem;
+	font-size: 1.4rem;
+	font-weight: 600;
+	display: flex;
+	margin-bottom: 0.3rem;
 }
 
 .woadText {
-  margin: 0;
-  font-size: 0.875rem;
-  max-height: 125px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+	margin: 0;
+	font-size: 0.875rem;
+	max-height: 125px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 
 .wordCount {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  font-size: 14px;
+	position: absolute;
+	bottom: 0.5rem;
+	right: 0.5rem;
+	font-size: 14px;
 }
 
 @media (max-width: 1200px) {
-  .article {
-    width: 90%;
-    padding: 0;
-    gap: 1rem;
-    justify-content: flex-start;
-    margin: 3rem 5%;
-    align-items: center;
-  }
+	.article {
+		width: 90%;
+		padding: 0;
+		gap: 1rem;
+		justify-content: flex-start;
+		margin: 3rem 5%;
+		align-items: center;
+	}
 
-  .wordCount {
-    display: none;
-  }
+	.wordCount {
+		display: none;
+	}
 
-  .woadHeader {
-    margin: 0;
-  }
+	.woadHeader {
+		margin: 0;
+	}
 }
 
 @media (min-width: 1200px) {
-  .article {
-    height: calc(100vh - 160px);
-  }
+	.article {
+		height: calc(100vh - 160px);
+	}
 }

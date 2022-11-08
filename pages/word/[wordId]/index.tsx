@@ -1,3 +1,3 @@
-import MeaningListWrapper from '../../../components/MeaningList';
+import MeaningListWrapper from '../../../components/MeaningList'
 
-export default MeaningListWrapper;
+export default MeaningListWrapper

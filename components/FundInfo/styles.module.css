@@ -1,13 +1,13 @@
 @media (max-width: 1200px) {
-  .fundInfo {
-    margin: 0 3rem 1rem;
-    font-size: 0.9rem;
-  }
+	.fundInfo {
+		margin: 0 3rem 1rem;
+		font-size: 0.9rem;
+	}
 }
 
 @media (max-width: 550px) {
-  .fundInfo {
-    margin: 0 1rem 1rem;
-    font-size: 0.9rem;
-  }
+	.fundInfo {
+		margin: 0 1rem 1rem;
+		font-size: 0.9rem;
+	}
 }

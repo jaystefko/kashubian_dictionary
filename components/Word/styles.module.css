@@ -1,105 +1,105 @@
 .word {
-  font-size: 2.5rem;
+	font-size: 2.5rem;
 }
 
 .wordContainer {
-  width: 90%;
-  height: 100%;
-  padding-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
+	width: 90%;
+	height: 100%;
+	padding-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
 }
 
 .wordContainer > main {
-  overflow: auto;
+	overflow: auto;
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 .listItem {
-  display: flex;
-  border-top: 2px solid var(--link);
-  font-size: 1.1rem;
-  padding: 0.5rem;
+	display: flex;
+	border-top: 2px solid var(--link);
+	font-size: 1.1rem;
+	padding: 0.5rem;
 }
 
 .property {
-  width: 40%;
-  font-weight: bold;
-  display: flex;
+	width: 40%;
+	font-weight: bold;
+	display: flex;
 }
 
 .content {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
 @media (max-width: 1350px) {
-  .listItem.biggerContent.variation {
-    flex-direction: column;
-    align-items: unset;
-  }
+	.listItem.biggerContent.variation {
+		flex-direction: column;
+		align-items: unset;
+	}
 
-  .property.biggerContent.variation {
-    width: 100%;
-    text-align: right;
-  }
+	.property.biggerContent.variation {
+		width: 100%;
+		text-align: right;
+	}
 
-  .content.biggerContent.variation {
-    width: auto;
-    text-align: end;
-  }
+	.content.biggerContent.variation {
+		width: auto;
+		text-align: end;
+	}
 }
 
 @media (max-width: 1200px) {
-  .content {
-    justify-content: end;
-    text-align: end;
-  }
+	.content {
+		justify-content: end;
+		text-align: end;
+	}
 
-  .listItem.biggerContent {
-    flex-direction: column;
-    align-items: flex-end;
-  }
+	.listItem.biggerContent {
+		flex-direction: column;
+		align-items: flex-end;
+	}
 
-  .property.biggerContent {
-    width: 100%;
-    text-align: right;
-  }
+	.property.biggerContent {
+		width: 100%;
+		text-align: right;
+	}
 
-  .content.biggerContent {
-    width: auto;
-    text-align: end;
-  }
+	.content.biggerContent {
+		width: auto;
+		text-align: end;
+	}
 }
 
 @media (max-width: 550px) {
-  .word {
-    font-size: 2rem;
-  }
+	.word {
+		font-size: 2rem;
+	}
 
-  .property {
-    font-size: 0.9rem;
-  }
+	.property {
+		font-size: 0.9rem;
+	}
 
-  .content {
-    font-size: 0.9rem;
-  }
+	.content {
+		font-size: 0.9rem;
+	}
 
-  .listItem.biggerContent {
-    flex-direction: column;
-    align-items: unset;
-  }
+	.listItem.biggerContent {
+		flex-direction: column;
+		align-items: unset;
+	}
 
-  .content.biggerContent {
-    text-align: start;
-  }
+	.content.biggerContent {
+		text-align: start;
+	}
 }

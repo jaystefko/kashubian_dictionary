@@ -1,3 +1,3 @@
-import WordScreenWrapper from '../../../../../components/Word';
+import WordScreenWrapper from '../../../../../components/Word'
 
-export default WordScreenWrapper;
+export default WordScreenWrapper

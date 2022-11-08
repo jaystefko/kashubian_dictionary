@@ -1,72 +1,72 @@
 import {
-  descriptivePresentVariations,
-  nounVariation,
-  numeralVariation,
-  pastVariations,
-  presentVariations,
-} from './tables';
+	descriptivePresentVariations,
+	nounVariation,
+	numeralVariation,
+	pastVariations,
+	presentVariations,
+} from './tables'
 
 export const getConjugationVartation = () => ({
-  presentVariations: { ...presentVariations },
-  pastVariations: { ...pastVariations },
-  archaicPastVariations: { ...pastVariations },
-  descriptivePresentVariations: { ...descriptivePresentVariations },
-  pastSecondVariations: { ...pastVariations },
-  prePastFirstVariations: { ...pastVariations },
-  prePastSecondVariations: { ...pastVariations },
-  prePastThirdVariations: { ...pastVariations },
-  prePastImpersonal: '',
-  futureSimpleVariations: { ...descriptivePresentVariations },
-  futureComplexVariationsFirst: { ...pastVariations },
-  futureComplexVariationsSecond: { ...pastVariations },
-  imperativeModeVariations: { ...presentVariations },
-  conditionalModeVariations: { ...pastVariations },
-  conditionalModeImpersonal: '',
-  infinitive: '',
-  aspectEquivalent: '',
-  contemporaryAdverbialParticiple: '',
-  priorAdverbialParticiple: '',
-  gerundium: '',
-  gerundiumGrammaticalType: 'PERFECT',
-  gerundiumVariations: { ...nounVariation },
-  activeAdjectivalParticiple: '',
-  activeAdjectivalParticipleVariations: { ...numeralVariation },
-  passiveAdjectiveParticipleFirst: '',
-  passiveAdjectiveParticipleVariationsFirst: { ...numeralVariation },
-  passiveAdjectiveParticipleSecond: '',
-  passiveAdjectiveParticipleVariationsSecond: { ...numeralVariation },
-});
+	presentVariations: { ...presentVariations },
+	pastVariations: { ...pastVariations },
+	archaicPastVariations: { ...pastVariations },
+	descriptivePresentVariations: { ...descriptivePresentVariations },
+	pastSecondVariations: { ...pastVariations },
+	prePastFirstVariations: { ...pastVariations },
+	prePastSecondVariations: { ...pastVariations },
+	prePastThirdVariations: { ...pastVariations },
+	prePastImpersonal: '',
+	futureSimpleVariations: { ...descriptivePresentVariations },
+	futureComplexVariationsFirst: { ...pastVariations },
+	futureComplexVariationsSecond: { ...pastVariations },
+	imperativeModeVariations: { ...presentVariations },
+	conditionalModeVariations: { ...pastVariations },
+	conditionalModeImpersonal: '',
+	infinitive: '',
+	aspectEquivalent: '',
+	contemporaryAdverbialParticiple: '',
+	priorAdverbialParticiple: '',
+	gerundium: '',
+	gerundiumGrammaticalType: 'PERFECT',
+	gerundiumVariations: { ...nounVariation },
+	activeAdjectivalParticiple: '',
+	activeAdjectivalParticipleVariations: { ...numeralVariation },
+	passiveAdjectiveParticipleFirst: '',
+	passiveAdjectiveParticipleVariationsFirst: { ...numeralVariation },
+	passiveAdjectiveParticipleSecond: '',
+	passiveAdjectiveParticipleVariationsSecond: { ...numeralVariation },
+})
 
 export const getAdverbVariation = () => ({
-  base: '',
-  comparative: '',
-  superlative: '',
-});
+	base: '',
+	comparative: '',
+	superlative: '',
+})
 
 export const getAdjectivePronounVariation = () => ({
-  adjectivePronounVariation: { ...numeralVariation },
-});
+	adjectivePronounVariation: { ...numeralVariation },
+})
 
 export const getNounPronounVariation = () => ({
-  nounPronounVariation: { ...nounVariation },
-});
+	nounPronounVariation: { ...nounVariation },
+})
 
 export const getNounVariation = () => ({
-  nounVariation: { ...nounVariation },
-});
+	nounVariation: { ...nounVariation },
+})
 
 export const getNumeralVariation = () => ({
-  numeralVariation: { ...numeralVariation },
-  inAssemblies: '',
-  base: '',
-  comparative: '',
-  superlative: '',
-});
+	numeralVariation: { ...numeralVariation },
+	inAssemblies: '',
+	base: '',
+	comparative: '',
+	superlative: '',
+})
 
 export const getAdjectiveVariation = () => ({
-  adjectiveVariation: { ...numeralVariation },
-  inAssemblies: '',
-  base: '',
-  comparative: '',
-  superlative: '',
-});
+	adjectiveVariation: { ...numeralVariation },
+	inAssemblies: '',
+	base: '',
+	comparative: '',
+	superlative: '',
+})

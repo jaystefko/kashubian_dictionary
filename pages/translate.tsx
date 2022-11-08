@@ -1,8 +1,8 @@
-import type { NextPage } from 'next';
-import WorkInProgress from '../components/WorkInProgress';
+import type { NextPage } from 'next'
+import WorkInProgress from '../components/WorkInProgress'
 
 const TranslateScreen: NextPage = () => {
-  return <WorkInProgress />;
-};
+	return <WorkInProgress />
+}
 
-export default TranslateScreen;
+export default TranslateScreen

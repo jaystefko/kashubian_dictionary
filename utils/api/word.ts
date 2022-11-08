@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { getAxiosRequestConfig, url } from '.';
-import { BasicAuth, Word } from '../types';
+import axios from 'axios'
+import { getAxiosRequestConfig, url } from '.'
+import { BasicAuth, Word } from '../types'
 
 export async function getWordList(pageLimit = 100, start = 0) {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
       {
         findAllKashubianEntries(page: { start: ${start}, limit: ${pageLimit} }) {
           select {
@@ -15,12 +15,12 @@ export async function getWordList(pageLimit = 100, start = 0) {
         }
       }
     `,
-  });
+	})
 }
 
 export async function getWordListByString(partial: string, pageLimit = 100) {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
     {
       findAllKashubianEntries(
         page: {start: 0, limit: ${pageLimit}}
@@ -34,12 +34,15 @@ export async function getWordListByString(partial: string, pageLimit = 100) {
       }
     }
     `,
-  });
+	})
 }
 
-export async function getTranslatedWordListByString(partial: string, pageLimit = 10) {
-  return axios.post(`${url}graphql`, {
-    query: `
+export async function getTranslatedWordListByString(
+	partial: string,
+	pageLimit = 10
+) {
+	return axios.post(`${url}graphql`, {
+		query: `
     {
       findAllKashubianEntries(
         page: {start: 0, limit: ${pageLimit}}
@@ -53,12 +56,12 @@ export async function getTranslatedWordListByString(partial: string, pageLimit =
       }
     }
     `,
-  });
+	})
 }
 
 export async function getLastAddedWordList() {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
       {
         findAllKashubianEntries(page: { start: 0, limit: 5 }) {
           total,
@@ -70,12 +73,12 @@ export async function getLastAddedWordList() {
         }
       }
     `,
-  });
+	})
 }
 
 export async function getWordSimplified(id: number) {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
     {
       findKashubianEntry(id: ${id}) {
         word
@@ -98,24 +101,24 @@ export async function getWordSimplified(id: number) {
       }
     }
     `,
-  });
+	})
 }
 
 export async function getWordCount() {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
     {
       findAllKashubianEntries {
         total
       }
     }
     `,
-  });
+	})
 }
 
 export async function getWord(id: number) {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
     {
       findKashubianEntry(id: ${id}) {
         word
@@ -196,21 +199,32 @@ export async function getWord(id: number) {
       }
     }
     `,
-  });
+	})
 }
 
 export async function getWordOfADay() {
-  return axios.get(`${url}custom-query/word-of-the-day`);
+	return axios.get(`${url}custom-query/word-of-the-day`)
 }
 
 export async function createWord(word: Partial<Word>, auth: BasicAuth) {
-  return axios.post(`${url}kashubian-entry`, word, getAxiosRequestConfig(auth));
+	return axios.post(`${url}kashubian-entry`, word, getAxiosRequestConfig(auth))
 }
 
-export async function updateWord(word: Partial<Word>, id: number, auth: BasicAuth) {
-  return axios.put(`${url}kashubian-entry/${id}`, word, getAxiosRequestConfig(auth));
+export async function updateWord(
+	word: Partial<Word>,
+	id: number,
+	auth: BasicAuth
+) {
+	return axios.put(
+		`${url}kashubian-entry/${id}`,
+		word,
+		getAxiosRequestConfig(auth)
+	)
 }
 
 export async function deleteWord(id: number, auth: BasicAuth) {
-  return axios.delete(`${url}kashubian-entry/${id}`, getAxiosRequestConfig(auth));
+	return axios.delete(
+		`${url}kashubian-entry/${id}`,
+		getAxiosRequestConfig(auth)
+	)
 }

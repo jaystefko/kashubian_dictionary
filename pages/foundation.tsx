@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import WorkInProgress from '../components/WorkInProgress'
 
 const FoundationScreen: NextPage = () => {
-  return <WorkInProgress />
+	return <WorkInProgress />
 }
 
 export default FoundationScreen

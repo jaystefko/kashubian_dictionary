@@ -1,104 +1,104 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  height: 90px;
-  position: sticky;
-  width: 100%;
-  top: 0;
-  font-size: 1.2rem;
-  box-sizing: border-box;
-  overflow: hidden;
-  background-color: var(--background-featured);
-  z-index: 2;
+	display: flex;
+	justify-content: space-between;
+	height: 90px;
+	position: sticky;
+	width: 100%;
+	top: 0;
+	font-size: 1.2rem;
+	box-sizing: border-box;
+	overflow: hidden;
+	background-color: var(--background-featured);
+	z-index: 2;
 }
 
 .desktopContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
+	display: flex;
+	justify-content: space-between;
+	flex-grow: 1;
 }
 
 .header img {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .navList {
-  list-style-type: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  height: 100%;
+	list-style-type: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
 
 .navList > li {
-  height: 100%;
+	height: 100%;
 }
 
 .navList > li > a {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 0.6rem;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 0.6rem;
 }
 
 .navList > li > a:hover {
-  background-color: var(--black-01);
+	background-color: var(--black-01);
 }
 
 .navList > li > a:hover {
-  background-color: var(--black-01);
+	background-color: var(--black-01);
 }
 
 .iconList {
-  max-height: 100%;
-  margin: 0;
-  list-style-type: none;
-  padding: 0;
-  display: flex;
+	max-height: 100%;
+	margin: 0;
+	list-style-type: none;
+	padding: 0;
+	display: flex;
 }
 
 .icon {
-  width: 45px;
-  height: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+	width: 45px;
+	height: 90px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
 .icon:hover,
 .icon:active {
-  background-color: var(--black-01);
+	background-color: var(--black-01);
 }
 
 .filterableLi:hover {
-  filter: brightness(0);
+	filter: brightness(0);
 }
 
 .mobileContainer {
-  display: none;
+	display: none;
 }
 
 @media screen and (min-width: 1500px) {
-  .icon {
-    width: 70px;
-  }
+	.icon {
+		width: 70px;
+	}
 
-  .navList > li > a {
-    padding: 0 1rem;
-  }
+	.navList > li > a {
+		padding: 0 1rem;
+	}
 }
 
 @media screen and (max-width: 1200px) {
-  .mobileContainer {
-    display: flex;
-  }
+	.mobileContainer {
+		display: flex;
+	}
 
-  .desktopContainer {
-    display: none;
-  }
+	.desktopContainer {
+		display: none;
+	}
 
-  .header {
-    background-color: var(--yellow);
-  }
+	.header {
+		background-color: var(--yellow);
+	}
 }

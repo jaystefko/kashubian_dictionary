@@ -1,2 +1,2 @@
-export * from './variations';
-export * from './tables';
+export * from './variations'
+export * from './tables'

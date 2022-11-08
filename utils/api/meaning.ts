@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { url } from '.';
+import axios from 'axios'
+import { url } from '.'
 
 export async function getMeaning(id: number) {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
     {
       findMeaning(id: ${id}) {
         definition
@@ -51,12 +51,12 @@ export async function getMeaning(id: number) {
       }
     }
     `,
-  });
+	})
 }
 
 export async function getMeaningList(partial = '', pageLimit = 10) {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
     {
       findAllMeanings(
         page: {start: 0, limit: ${pageLimit}}
@@ -71,12 +71,12 @@ export async function getMeaningList(partial = '', pageLimit = 10) {
       }
     }
     `,
-  });
+	})
 }
 
 export async function getWordMeaningListSimplified(id: number) {
-  return axios.post(`${url}graphql`, {
-    query: `
+	return axios.post(`${url}graphql`, {
+		query: `
       {
         findKashubianEntry(id: ${id}) {
           word,
@@ -93,5 +93,5 @@ export async function getWordMeaningListSimplified(id: number) {
         }
       }
     `,
-  });
+	})
 }

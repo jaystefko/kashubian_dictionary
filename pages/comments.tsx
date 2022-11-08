@@ -1,8 +1,8 @@
-import type { NextPage } from 'next';
-import Comments from '../components/Comments';
+import type { NextPage } from 'next'
+import Comments from '../components/Comments'
 
 const CommentsScreen: NextPage = () => {
-  return <Comments />;
-};
+	return <Comments />
+}
 
-export default CommentsScreen;
+export default CommentsScreen

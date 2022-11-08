@@ -1,28 +1,28 @@
 {
-  "name": "Sloworz - internetowy słownik języka kaszubskiego",
-  "short_name": "Sloworz",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#d9d9d945",
-  "theme_color": "#fdcd01",
-  "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "/favicon.ico",
-      "type": "image/png",
-      "sizes": "144x144"
-    },
-    {
-      "src": "/favicon.ico",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/favicon.ico",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ]
+	"name": "Sloworz - internetowy słownik języka kaszubskiego",
+	"short_name": "Sloworz",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#d9d9d945",
+	"theme_color": "#fdcd01",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "/favicon.ico",
+			"type": "image/png",
+			"sizes": "144x144"
+		},
+		{
+			"src": "/favicon.ico",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "/favicon.ico",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	]
 }
