@@ -16,7 +16,7 @@ function Header() {
 	)
 	const [lngImgPath, setLngImgPath] = useState('/images/pl.svg')
 	const [lngImgLabel, setLngImgLabel] = useState(
-		intl.formatMessage({ id: 'polish' })
+		intl.formatMessage({ id: 'language.polish' })
 	)
 	const openMenu = Boolean(anchorMenuEl)
 	const openLanguage = Boolean(anchorLanguageEl)
@@ -38,15 +38,15 @@ function Header() {
 	function getLabelFromLocale(locale: LOCALES) {
 		switch (locale) {
 			case LOCALES.csb:
-				return 'kashebian'
+				return 'language.kashebian'
 			case LOCALES.de:
-				return 'german'
+				return 'language.german'
 			case LOCALES.en:
-				return 'english'
+				return 'language.english'
 			case LOCALES.pl:
-				return 'polish'
+				return 'language.polish'
 			case LOCALES.uk:
-				return 'ukrainian'
+				return 'language.ukrainian'
 		}
 	}
 
@@ -94,30 +94,32 @@ function Header() {
 				</ul>
 				<ul className={styles.iconList}>
 					<li>
-						<Link
-							href=''
-							locale={LOCALES.pl}
-							onClick={() => changeLanguage(LOCALES.pl)}>
-							<a className={styles.icon}>
+						<Link href='' locale={LOCALES.pl}>
+							<a
+								title={intl.formatMessage({ id: 'language.polish' })}
+								className={styles.icon}
+								onClick={() => changeLanguage(LOCALES.pl)}>
 								<Image
 									priority={false}
 									src={lngImgPath}
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'polish' })}
+									alt={intl.formatMessage({ id: 'language.polish' })}
 								/>
 							</a>
 						</Link>
 					</li>
 					<li>
 						<Link href='/translate'>
-							<a className={styles.icon}>
+							<a
+								title={intl.formatMessage({ id: 'language.kashebian' })}
+								className={styles.icon}>
 								<Image
 									priority={false}
 									src='/images/csb.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'kashebian' })}
+									alt={intl.formatMessage({ id: 'language.kashebian' })}
 								/>
 							</a>
 						</Link>
@@ -125,26 +127,30 @@ function Header() {
 					<li>
 						<Link href='/translate'>
 							{/* locale={LOCALES.en} onClick={() => changeLanguage(LOCALES.en)} */}
-							<a className={styles.icon}>
+							<a
+								title={intl.formatMessage({ id: 'language.english' })}
+								className={styles.icon}>
 								<Image
 									priority={false}
 									src='/images/gb.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'english' })}
+									alt={intl.formatMessage({ id: 'language.english' })}
 								/>
 							</a>
 						</Link>
 					</li>
 					<li>
 						<Link href='/translate'>
-							<a className={styles.icon}>
+							<a
+								title={intl.formatMessage({ id: 'language.german' })}
+								className={styles.icon}>
 								<Image
 									priority={false}
 									src='/images/de.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'german' })}
+									alt={intl.formatMessage({ id: 'language.german' })}
 								/>
 							</a>
 						</Link>
@@ -157,7 +163,7 @@ function Header() {
 									src='/images/uk.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'ukrainian' })}
+									alt={intl.formatMessage({ id: 'language.ukrainian' })}
 								/>
 							</a>
 						</Link>
@@ -247,17 +253,14 @@ function Header() {
 						'aria-labelledby': 'language-button',
 					}}>
 					<MenuItem onClick={() => handleClose(true)}>
-						<Link
-							href=''
-							locale={LOCALES.pl}
-							onClick={() => changeLanguage(LOCALES.pl)}>
-							<a>
+						<Link href='' locale={LOCALES.pl}>
+							<a onClick={() => changeLanguage(LOCALES.pl)}>
 								<Image
 									priority={false}
 									src='/images/pl.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'polish' })}
+									alt={intl.formatMessage({ id: 'language.polish' })}
 								/>
 							</a>
 						</Link>
@@ -270,7 +273,7 @@ function Header() {
 									src='/images/csb.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'kashebian' })}
+									alt={intl.formatMessage({ id: 'language.kashebian' })}
 								/>
 							</a>
 						</Link>
@@ -284,7 +287,7 @@ function Header() {
 									src='/images/gb.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'english' })}
+									alt={intl.formatMessage({ id: 'language.english' })}
 								/>
 							</a>
 						</Link>
@@ -297,7 +300,7 @@ function Header() {
 									src='/images/de.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'german' })}
+									alt={intl.formatMessage({ id: 'language.german' })}
 								/>
 							</a>
 						</Link>
@@ -310,7 +313,7 @@ function Header() {
 									src='/images/uk.svg'
 									width={24}
 									height={24}
-									alt={intl.formatMessage({ id: 'ukrainian' })}
+									alt={intl.formatMessage({ id: 'language.ukrainian' })}
 								/>
 							</a>
 						</Link>
