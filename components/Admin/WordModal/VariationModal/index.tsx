@@ -97,10 +97,10 @@ const VariationModal = ({
 												value={v[key][k]}
 												placeholder={`${intl.formatMessage({ id: k })}...`}
 												label={intl.formatMessage({ id: k })}
-												// @ts-ignore
 												onChange={e =>
 													setV({
 														...v,
+														// @ts-ignore
 														[key]: { ...v[key], [k]: e.target.value },
 													})
 												}
