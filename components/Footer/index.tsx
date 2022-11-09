@@ -40,7 +40,7 @@ function Footer() {
 							title={intl.formatMessage({ id: 'sponsor.countyChojnice' })}>
 							<Image
 								priority={false}
-								src='/images/herb_powiat_chojnicki.png'
+								src='/images/herb_powiat_chojnicki.svg'
 								height={40}
 								width={31}
 								alt={intl.formatMessage({ id: 'sponsor.countyChojnice' })}
@@ -61,7 +61,7 @@ function Footer() {
 							title={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}>
 							<Image
 								priority={false}
-								src='/images/logo_MPiMK-P.png'
+								src='/images/logo_MPiMK-P.svg'
 								height={40}
 								width={50}
 								alt={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}

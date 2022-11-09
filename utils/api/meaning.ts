@@ -60,7 +60,7 @@ export async function getMeaningList(partial = '', pageLimit = 10) {
     {
       findAllMeanings(
         page: {start: 0, limit: ${pageLimit}}
-        where: {definition: {LIKE: "${partial}"}}
+        where: {kashubianEntry: { normalizedWord: {BY_NORMALIZED: "${partial}"} }}
       ) {
         select {
           id
