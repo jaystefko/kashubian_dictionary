@@ -35,7 +35,7 @@ import {
 import AC from '../../Autocomplete'
 import getDefaultMeaning from './meaning'
 import { FormattedMessage, useIntl } from 'react-intl'
-
+import { getWordExistsByString } from '../../../utils/api'
 import styles from './styles.module.css'
 import VariationModal from './VariationModal'
 import MeaningModal from './MeaningModal'
@@ -80,6 +80,16 @@ const WordModal = ({
 	const [isMeaningModalOpen, setIsMeaningModalOpen] = useState(false)
 	const [meaningIndex, setMeaningIndex] = useState(-1)
 
+	const [wordError, setWordError] = useState(false)
+
+	async function verifyWordExist() {
+		if (!wordString) setWordError(true)
+		else {
+			const response = await getWordExistsByString(wordString)
+			setWordError(response.data?.data?.findAllKashubianEntries?.total > 0)
+		}
+	}
+
 	useEffect(() => {
 		if (!isModalOpen) {
 			setHeader(intl.formatMessage({ id: 'addWord' }))
@@ -92,6 +102,7 @@ const WordModal = ({
 			setBase(null)
 			setOthers([])
 			setMeanings([getDefaultMeaning()])
+			setWordError(false)
 		}
 	}, [isModalOpen]) // eslint-disable-line
 
@@ -131,6 +142,9 @@ const WordModal = ({
 			)
 			if (!wordString) {
 				toast.error(intl.formatMessage({ id: 'error.noKashebianWord' }))
+				return
+			} else if (wordError) {
+				toast.error(intl.formatMessage({ id: 'error.wordExists' }))
 				return
 			}
 			if (!(partOfSpeech && subPartOfSpeech)) {
@@ -229,6 +243,8 @@ const WordModal = ({
 								})}...`}
 								label={intl.formatMessage({ id: 'word.kashebian' })}
 								onChange={setter.bind(this, setWordString)}
+								error={wordError}
+								onBlur={verifyWordExist}
 								required
 							/>
 						</Grid>
@@ -338,7 +354,7 @@ const WordModal = ({
 									elevation={3}
 									key={index}
 									sx={{ height: 'auto !important', marginBottom: '1rem' }}>
-									<Grid container spacing={2} xs={12} padding='0 1rem 1rem'>
+									<Grid container spacing={2} padding='0 1rem 1rem'>
 										<Grid item xs={12}>
 											<p className={styles.meaningNumber}>
 												{intl.formatMessage({ id: 'meaning' })} {index + 1}

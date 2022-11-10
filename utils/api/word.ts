@@ -116,6 +116,21 @@ export async function getWordCount() {
 	})
 }
 
+export function getWordExistsByString(word: string) {
+	return axios.post(`${url}graphql`, {
+		query: `
+    {
+      findAllKashubianEntries(
+        page: {start: 0, limit: 1}
+        where: {word: {EQ: "${word}"}}
+      ) {
+        total
+      }
+    }
+    `,
+	})
+}
+
 export async function getWord(id: number) {
 	return axios.post(`${url}graphql`, {
 		query: `

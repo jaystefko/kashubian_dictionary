@@ -197,6 +197,7 @@
 	"error.noKashebianWord": "Proszę podać słowo kaszubskie",
 	"error.noPartSubPart": "Proszę wpisać część i pod część mowy",
 	"error.meaningLength": "Słowo musi posiadać przynajmniej 1 znaczenie z wypełnioną definicją i tłumaczeniem PL",
+	"error.wordExists": "Słowo już istnieje",
 	"addWord": "Dodaj słowo",
 	"editWord": "Edytuj słowo",
 	"meaning": "Znaczenie",
