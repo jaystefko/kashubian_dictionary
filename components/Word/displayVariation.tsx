@@ -38,6 +38,7 @@ function DisplayVariation(spos: SUB_PARTS_OF_SPEECH, variation?: Variation) {
 					<span>{`${intl.formatMessage({ id: property })}: ${value}`}</span>
 				)
 			} else {
+				response.push(<h4>{intl.formatMessage({ id: property })}</h4>)
 				response.push(
 					DisplayTable(
 						variation[property] as Record<string, string>,
