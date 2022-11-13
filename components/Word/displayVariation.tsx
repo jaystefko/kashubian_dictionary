@@ -1,5 +1,6 @@
 import { useIntl } from 'react-intl'
 import { SUB_PARTS_OF_SPEECH, Variation } from '../../utils/types'
+import { getVariationPerSubPart } from '../../utils/utilities'
 import DisplayTable from './displayTable'
 
 const getValue = (obj: Record<string, string>) =>
@@ -21,22 +22,34 @@ function DisplayVariation(spos: SUB_PARTS_OF_SPEECH, variation?: Variation) {
 
 	if (!values.length) return ''
 
-	const responseList = values.map(property => {
-		if (typeof variation[property] === 'string')
-			return (
-				<span>
-					{intl.formatMessage({ id: property })}:{' '}
-					{variation[property] as string}
-				</span>
-			)
-		return DisplayTable(
-			variation[property] as Record<string, string>,
-			property,
-			spos
-		)
+	const defaultVariation = getVariationPerSubPart(spos)
+
+	if (!defaultVariation) return ''
+
+	const response: Array<JSX.Element> = []
+
+	Object.keys(defaultVariation).forEach(property => {
+		if (values.indexOf(property) !== -1) {
+			if (typeof variation[property] === 'string') {
+				let value = variation[property] as string
+				if (value === 'IMPERFECTIVE' || value === 'PERFECT')
+					value = intl.formatMessage({ id: value })
+				response.push(
+					<span>{`${intl.formatMessage({ id: property })}: ${value}`}</span>
+				)
+			} else {
+				response.push(
+					DisplayTable(
+						variation[property] as Record<string, string>,
+						property,
+						spos
+					)
+				)
+			}
+		}
 	})
 
-	return <>{responseList}</>
+	return <>{response}</>
 }
 
 export default DisplayVariation
