@@ -18,12 +18,16 @@ export async function getWordList(pageLimit = 100, start = 0) {
 	})
 }
 
-export async function getWordListByString(partial: string, pageLimit = 100) {
+export async function getWordListByString(
+	partial: string,
+	pageLimit = 100,
+	start = 0
+) {
 	return axios.post(`${url}graphql`, {
 		query: `
     {
       findAllKashubianEntries(
-        page: {start: 0, limit: ${pageLimit}}
+        page: {start: ${start}, limit: ${pageLimit}}
         where: {normalizedWord: {BY_NORMALIZED: "${partial}"}}
       ) {
         select {

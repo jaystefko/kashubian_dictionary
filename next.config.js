@@ -8,7 +8,7 @@ const nextConfig = {
 		localeDetection: false,
 	},
 	env: {
-		API_URL: process.env.API_URL || 'https://kashubian-dic.herokuapp.com/',
+		API_URL: process.env.API_URL || 'http://217.182.79.144:8888/',
 	},
 }
 
