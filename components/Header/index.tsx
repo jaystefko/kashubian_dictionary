@@ -61,7 +61,7 @@ function Header() {
 			<Link href='/'>
 				<Image
 					priority={false}
-					src='/images/logo.png'
+					src='/images/logo.svg'
 					height={90}
 					width={237}
 					alt='Logo'
@@ -101,7 +101,7 @@ function Header() {
 								onClick={() => changeLanguage(LOCALES.pl)}>
 								<Image
 									priority={false}
-									src={lngImgPath}
+									src='/images/pl.svg'
 									width={24}
 									height={24}
 									alt={intl.formatMessage({ id: 'language.polish' })}
@@ -110,10 +110,11 @@ function Header() {
 						</Link>
 					</li>
 					<li>
-						<Link href='/translate'>
+						<Link href='' locale={LOCALES.csb}>
 							<a
 								title={intl.formatMessage({ id: 'language.kashebian' })}
-								className={styles.icon}>
+								className={styles.icon}
+								onClick={() => changeLanguage(LOCALES.csb)}>
 								<Image
 									priority={false}
 									src='/images/csb.svg'
@@ -125,8 +126,7 @@ function Header() {
 						</Link>
 					</li>
 					<li>
-						<Link href='/translate'>
-							{/* locale={LOCALES.en} onClick={() => changeLanguage(LOCALES.en)} */}
+						<Link href='/translate-en'>
 							<a
 								title={intl.formatMessage({ id: 'language.english' })}
 								className={styles.icon}>
@@ -141,7 +141,7 @@ function Header() {
 						</Link>
 					</li>
 					<li>
-						<Link href='/translate'>
+						<Link href='/translate-de'>
 							<a
 								title={intl.formatMessage({ id: 'language.german' })}
 								className={styles.icon}>
@@ -156,7 +156,7 @@ function Header() {
 						</Link>
 					</li>
 					<li style={{ marginRight: '0.9rem' }}>
-						<Link href='/translate'>
+						<Link href='/translate-uk'>
 							<a className={styles.icon}>
 								<Image
 									priority={false}
@@ -238,7 +238,7 @@ function Header() {
 					onClick={e => handleClick(true, e)}>
 					<Image
 						priority={false}
-						src='/images/pl.svg'
+						src={lngImgPath}
 						width={24}
 						height={24}
 						alt={lngImgLabel}
@@ -266,8 +266,8 @@ function Header() {
 						</Link>
 					</MenuItem>
 					<MenuItem onClick={() => handleClose(true)}>
-						<Link href='/translate'>
-							<a>
+						<Link href='' locale={LOCALES.csb}>
+							<a onClick={() => changeLanguage(LOCALES.csb)}>
 								<Image
 									priority={false}
 									src='/images/csb.svg'
@@ -279,8 +279,7 @@ function Header() {
 						</Link>
 					</MenuItem>
 					<MenuItem onClick={() => handleClose(true)}>
-						<Link href='/translate'>
-							{/* locale='en' onClick={() => changeLanguage('en')} */}
+						<Link href='/translate-en'>
 							<a>
 								<Image
 									priority={false}
@@ -293,7 +292,7 @@ function Header() {
 						</Link>
 					</MenuItem>
 					<MenuItem onClick={() => handleClose(true)}>
-						<Link href='/translate'>
+						<Link href='/translate-de'>
 							<a>
 								<Image
 									priority={false}
@@ -306,7 +305,7 @@ function Header() {
 						</Link>
 					</MenuItem>
 					<MenuItem>
-						<Link href='/translate'>
+						<Link href='/translate-uk'>
 							<a>
 								<Image
 									priority={false}
