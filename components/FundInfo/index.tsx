@@ -8,10 +8,10 @@ function FundInfo() {
 				Wystarczy wejść na stronę:
 				<br />
 				<a
-					href='https://zrzutka.pl/5xw6zz'
+					href='https://zrzutka.pl/nvtf5r'
 					rel='external nofollow noreferrer'
 					target='_blank'>
-					https://zrzutka.pl/5xw6zz
+					https://zrzutka.pl/nvtf5r
 				</a>
 			</p>
 		</section>
