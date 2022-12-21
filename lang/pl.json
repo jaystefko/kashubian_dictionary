@@ -304,5 +304,8 @@
 	"subject": "Temat",
 	"contactEmail": "Twój email",
 	"content": "Wiadomość",
-	"mail_send": "Mail został wysłany"
+	"mail_send": "Mail został wysłany",
+	"main_page_text.first": "Możesz pomóc w rozwoju słownika.",
+	"main_page_text.second": "Wystarczy wejść na stronę: ",
+	"main_page_text.third": "Wielkie dzięki za waszą pomoc!"
 }
