@@ -15,6 +15,10 @@
 	gap: 1rem;
 }
 
+.box {
+	width: 60vw;
+}
+
 @media screen and (max-width: 600px) {
 	.topLine {
 		flex-direction: column;

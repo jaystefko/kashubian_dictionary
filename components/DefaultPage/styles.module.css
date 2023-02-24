@@ -1,0 +1,17 @@
+.box {
+	width: 60vw;
+	margin: 2rem 0 4rem;
+}
+
+.footer {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+	.box {
+		width: 90vw;
+		margin: 0 0 2rem;
+	}
+}
