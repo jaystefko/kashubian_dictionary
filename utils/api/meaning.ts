@@ -63,7 +63,7 @@ export async function getMeaningList(partial = '', pageLimit = 10) {
         where: {kashubianEntry: { normalizedWord: {BY_NORMALIZED: "${partial}"} }}
       ) {
         select {
-          id
+          id(orderBy: ASC),
           kashubianEntry {
             word
           }
