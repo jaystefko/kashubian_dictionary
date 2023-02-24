@@ -2,6 +2,7 @@ import {
 	GatheredMeaning,
 	GatheredWord,
 	LOCALES,
+	PARTS_OF_SPEECH,
 	SUB_PARTS_OF_SPEECH,
 } from '../../utils/types'
 import { useIntl } from 'react-intl'
@@ -74,26 +75,34 @@ const WordScreen = ({ word, meaning, isAudioPresent, wordId }: Props) => {
 							id: `PARTS_OF_SPEECH.${word.partOfSpeech}`,
 						})}
 					/>
-					<ListItem
-						property={intl.formatMessage({ id: `SUB_PARTS_OF_SPEECH` })}
-						content={
-							word.partOfSpeechSubType === word.partOfSpeech
-								? ''
-								: intl.formatMessage({
-										id: `SUB_PARTS_OF_SPEECH.${word.partOfSpeechSubType}`,
-								  })
-						}
-					/>
-					<ListItem
-						property={intl.formatMessage({ id: `variation` })}
-						content={variationDisplay}
-						isBiggerContent={
-							word.partOfSpeechSubType! !== SUB_PARTS_OF_SPEECH.ADVERB
-						}
-						isVariation={
-							word.partOfSpeechSubType! !== SUB_PARTS_OF_SPEECH.ADVERB
-						}
-					/>
+					{word.partOfSpeech === PARTS_OF_SPEECH.VERB ? (
+						''
+					) : (
+						<ListItem
+							property={intl.formatMessage({ id: `SUB_PARTS_OF_SPEECH` })}
+							content={
+								word.partOfSpeechSubType === word.partOfSpeech
+									? ''
+									: intl.formatMessage({
+											id: `SUB_PARTS_OF_SPEECH.${word.partOfSpeechSubType}`,
+									  })
+							}
+						/>
+					)}
+					{word.partOfSpeech === PARTS_OF_SPEECH.VERB ? (
+						''
+					) : (
+						<ListItem
+							property={intl.formatMessage({ id: `variation` })}
+							content={variationDisplay}
+							isBiggerContent={
+								word.partOfSpeechSubType! !== SUB_PARTS_OF_SPEECH.ADVERB
+							}
+							isVariation={
+								word.partOfSpeechSubType! !== SUB_PARTS_OF_SPEECH.ADVERB
+							}
+						/>
+					)}
 					<ListItem
 						property={intl.formatMessage({ id: `origin` })}
 						content={origin}

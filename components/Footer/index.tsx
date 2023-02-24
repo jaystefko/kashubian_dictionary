@@ -33,6 +33,31 @@ function Footer() {
 				<ul className={styles.footerList}>
 					<li>
 						<a
+							href='https://pomorskie.eu'
+							rel='external nofollow noreferrer'
+							className={styles.footerLink}
+							target='_blank'
+							title={intl.formatMessage({
+								id: 'sponsor.pomorskieVoivodeship',
+							})}>
+							<Image
+								priority={false}
+								src='/images/pomorskie.svg'
+								height={40}
+								width={31}
+								alt={intl.formatMessage({ id: 'sponsor.pomorskieVoivodeship' })}
+								role='link'
+								title={intl.formatMessage({
+									id: 'sponsor.pomorskieVoivodeship',
+								})}
+							/>
+							<span className={styles.footerLinkText}>
+								{intl.formatMessage({ id: 'sponsor.pomorskieVoivodeship' })}
+							</span>
+						</a>
+					</li>
+					<li>
+						<a
 							href='https://www.powiat.chojnice.pl/asp/Informacje%2CStrona_glowna%2C92'
 							rel='external nofollow noreferrer'
 							className={styles.footerLink}
