@@ -81,7 +81,7 @@ export async function getWordMeaningListSimplified(id: number) {
         findKashubianEntry(id: ${id}) {
           word,
           meanings {
-            id,
+            id(orderBy: ASC),
             definition,
             translation {
               polish,
