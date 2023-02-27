@@ -61,7 +61,7 @@ function Header() {
 			<Link href='/'>
 				<Image
 					priority={false}
-					src='/images/logo.svg'
+					src='/images/logo.png'
 					height={90}
 					width={266}
 					alt='Logo'
