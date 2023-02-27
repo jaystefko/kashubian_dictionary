@@ -15,7 +15,7 @@ function Footer() {
 				title={intl.formatMessage({ id: 'sponsor.kashebianFoundation' })}>
 				<Image
 					priority={false}
-					src='/images/logo-kaszuby-foundation.png'
+					src='/images/logo-kaszuby-foundation.svg'
 					height={40}
 					width={133}
 					alt={intl.formatMessage({ id: 'sponsor.kashebianFoundation' })}

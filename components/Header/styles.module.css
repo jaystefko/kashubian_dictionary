@@ -5,7 +5,7 @@
 	position: sticky;
 	width: 100%;
 	top: 0;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	box-sizing: border-box;
 	overflow: hidden;
 	background-color: var(--background-featured);
@@ -57,6 +57,18 @@
 	display: flex;
 }
 
+.iconList .li:nth-child(5),
+.iconList .li:nth-child(8) {
+	background-color: red;
+}
+
+.break {
+	height: 50px;
+	border: 1px solid lightgray;
+	display: flex;
+	margin: 20px 0.3rem;
+}
+
 .icon {
 	width: 45px;
 	height: 90px;
@@ -80,6 +92,10 @@
 }
 
 @media screen and (min-width: 1500px) {
+	.header {
+		font-size: 1.2rem;
+	}
+
 	.icon {
 		width: 70px;
 	}

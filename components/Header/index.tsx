@@ -63,7 +63,7 @@ function Header() {
 					priority={false}
 					src='/images/logo.svg'
 					height={90}
-					width={237}
+					width={266}
 					alt='Logo'
 					role='link'
 					title={intl.formatMessage({ id: 'topMenu.startPage' })}
@@ -155,7 +155,7 @@ function Header() {
 							</a>
 						</Link>
 					</li>
-					<li style={{ marginRight: '0.9rem' }}>
+					<li>
 						<Link href='/translate-uk'>
 							<a className={styles.icon}>
 								<Image
@@ -167,6 +167,9 @@ function Header() {
 								/>
 							</a>
 						</Link>
+					</li>
+					<li>
+						<span className={styles.break} />
 					</li>
 					<li className={styles.iconContainer}>
 						<a
@@ -215,6 +218,9 @@ function Header() {
 								alt={intl.formatMessage({ id: 'topMenu.tweeter' })}
 							/>
 						</a>
+					</li>
+					<li>
+						<span className={styles.break} />
 					</li>
 					<li className={`${styles.iconContainer} ${styles.filterableLi}`}>
 						<Link href='/howTo'>

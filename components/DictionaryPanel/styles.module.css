@@ -1,6 +1,6 @@
 .dictionaryPanel {
 	height: calc(100vh - 160px);
-	width: 237px;
+	width: 266px;
 	background-color: var(--background-featured);
 	border-bottom: 1px solid var(--background);
 }
@@ -14,6 +14,7 @@
 	font-size: 16px;
 	width: 100%;
 	display: flex;
+	padding-left: 10px;
 }
 
 .dictionaryPanel .li:hover {
