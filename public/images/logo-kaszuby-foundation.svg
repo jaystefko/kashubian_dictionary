@@ -1,22 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 27.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1"
-	 id="svg842" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 554 200.5"
-	 style="enable-background:new 0 0 554 200.5;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFCC00;}
-	.st1{font-family:'SukhumvitSet-Text';}
-	.st2{font-size:93.427px;}
-	.st3{font-family:'SukhumvitSet-Bold';}
-	.st4{font-size:95.7682px;}
-	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#FFCC00;}
-	.st6{fill-rule:evenodd;clip-rule:evenodd;}
-</style>
-<g id="g866" transform="matrix(0.10405058,0,0,0.10405058,-15.989664,-5.7604649)">
-	<text id="FUNDACJA" transform="matrix(9.8098 0 0 9.6107 869.4788 937.723)" class="st0 st1 st2">FUNDACJA</text>
-	<text id="KASZUBY" transform="matrix(10.7478 0 0 9.6107 874.0307 1701.6869)" class="st3 st4">KASZUBY</text>
-	<path id="Prostokąt_1" class="st5" d="M413.2,1025.8h337.6v678.5H413.2V1025.8z"/>
-	<path id="Prostokąt_1-2" class="st6" d="M413.2,333.2h337.6v692.6H413.2V333.2z"/>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="692.27441"
+   height="200"
+   viewBox="0 0 692.27441 200"
+   version="1.1"
+   id="svg841"
+   sodipodi:docname="Logo_FK.svg"
+   shape-rendering="crispEdges"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
+  <metadata
+     id="metadata845">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1680"
+     inkscape:window-height="922"
+     id="namedview843"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="false"
+     showborder="false"
+     inkscape:zoom="0.41806002"
+     inkscape:cx="137.80959"
+     inkscape:cy="-81.161391"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg841" />
+  <defs
+     id="defs835">
+    <style
+       id="style833">
+      .cls-1, .cls-2 {
+        font-size: 300px;
+      }
+
+      .cls-1, .cls-3 {
+        fill: #fc0;
+      }
+
+      .cls-1 {
+        font-family: SukhumvitSet-Text, &quot;Sukhumvit Set&quot;;
+      }
+
+      .cls-2, .cls-4 {
+        fill: #200;
+      }
+
+      .cls-2 {
+        font-family: &quot;Sukhumvit Set&quot;;
+        font-weight: 700;
+      }
+
+      .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g
+     id="g851"
+     transform="matrix(0.14406311,0,0,0.14406311,-22.138466,-7.975377)">
+    <text
+       id="FUNDACJA"
+       class="cls-1"
+       transform="matrix(3.055,0,0,2.993,609.995,668.626)">FUNDACJA</text>
+    <text
+       id="KASZUBY"
+       class="cls-2"
+       transform="matrix(3.431,0,0,3.068,614.545,1432.596)">KASZUBY</text>
+    <path
+       id="Prostokąt_1"
+       data-name="Prostokąt 1"
+       class="cls-3"
+       d="m 153.672,756.7 h 337.56 v 678.49 h -337.56 z" />
+    <path
+       id="Prostokąt_1-2"
+       data-name="Prostokąt 1"
+       class="cls-4"
+       d="m 153.672,64.063 h 337.56 V 756.7 h -337.56 z" />
+  </g>
 </svg>
