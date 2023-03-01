@@ -63,8 +63,8 @@ const AC = ({
 				)
 			} else {
 				response = searchBy
-					? await getWordListByString(searchBy, pageLimit)
-					: await getWordList(pageLimit)
+					? await getWordListByString(searchBy, pageLimit, 0, true)
+					: await getWordList(pageLimit, 0, true)
 				setOptionList(
 					response.data?.data?.findAllKashubianEntries?.select || []
 				)

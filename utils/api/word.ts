@@ -2,7 +2,11 @@ import axios from 'axios'
 import { getAxiosRequestConfig, url } from '.'
 import { BasicAuth, Word } from '../types'
 
-export async function getWordList(pageLimit = 100, start = 0) {
+export async function getWordList(
+	pageLimit = 100,
+	start = 0,
+	isLengthSorted = false
+) {
 	return axios.post(`${url}graphql`, {
 		query: `
       {
@@ -10,7 +14,7 @@ export async function getWordList(pageLimit = 100, start = 0) {
           select {
             id,
             word,
-            normalizedWord(orderBy: ASC),
+            normalizedWord(orderBy: ${isLengthSorted ? 'LENGTH_ASC' : 'ASC'}),
           }
         }
       }
@@ -21,7 +25,8 @@ export async function getWordList(pageLimit = 100, start = 0) {
 export async function getWordListByString(
 	partial: string,
 	pageLimit = 100,
-	start = 0
+	start = 0,
+	isLengthSorted = false
 ) {
 	return axios.post(`${url}graphql`, {
 		query: `
@@ -33,7 +38,7 @@ export async function getWordListByString(
         select {
           id
           word
-          normalizedWord(orderBy: ASC)
+          normalizedWord(orderBy: ${isLengthSorted ? 'LENGTH_ASC' : 'ASC'})
         }
       }
     }
@@ -55,7 +60,7 @@ export async function getTranslatedWordListByString(
         select {
           id
           word
-          normalizedWord(orderBy: ASC)
+          normalizedWord(orderBy: LENGTH_ASC)
         }
       }
     }
