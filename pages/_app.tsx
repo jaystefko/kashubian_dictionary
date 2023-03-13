@@ -43,7 +43,9 @@ function App({ Component, pageProps }: AppProps) {
 				<meta property='og:image' content='/favicon.ico' />
 				<meta name='og:title' content='Sloworz - Słownik języka kaszubskiego' />
 				<meta name='twitter:card' content='summary_large_image' />
+				<meta name='robots' content='max-snippet:0' />
 				<meta name='theme-color' content='#fdcd01' />
+				<meta name='twitter:image' content='/images/twitterCard.jpg' />
 			</Head>
 			<Layout>
 				<Component {...pageProps} />
