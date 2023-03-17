@@ -54,8 +54,6 @@ function App({ Component, pageProps }: AppProps) {
 					property='og:image:alt'
 					content='Sloworz - Słownik języka kaszubskiego'
 				/>
-				<meta property='og:image:width' content='2200' />
-				<meta property='og:image:height' content='1342' />
 
 				<meta name='twitter:card' content='summary_large_image' />
 				<meta name='twitter:site' content='@sloworz_org' />
