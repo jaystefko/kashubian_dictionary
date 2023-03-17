@@ -45,7 +45,10 @@ function App({ Component, pageProps }: AppProps) {
 				<meta name='twitter:card' content='summary_large_image' />
 				<meta name='robots' content='max-snippet:0' />
 				<meta name='theme-color' content='#fdcd01' />
-				<meta name='twitter:image' content='/images/twitterCard.jpg' />
+				<meta
+					name='twitter:image'
+					content='https://sloworz.org/images/twitterCard.jpg'
+				/>
 			</Head>
 			<Layout>
 				<Component {...pageProps} />
