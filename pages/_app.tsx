@@ -40,15 +40,26 @@ function App({ Component, pageProps }: AppProps) {
 					name='description'
 					content='Sloworz - internetowy słownik języka kaszubskiego'
 				/>
-				<meta property='og:image' content='/favicon.ico' />
-				<meta name='og:title' content='Sloworz - Słownik języka kaszubskiego' />
-				<meta name='twitter:card' content='summary_large_image' />
+
 				<meta name='robots' content='max-snippet:0' />
 				<meta name='theme-color' content='#fdcd01' />
+
+				<meta name='og:title' content='Sloworz - Słownik języka kaszubskiego' />
 				<meta
-					name='twitter:image'
+					property='og:image'
 					content='https://sloworz.org/images/twitterCard.jpg'
 				/>
+				<meta property='og:site_name' content='Sloworz' />
+				<meta
+					property='og:image:alt'
+					content='Sloworz - Słownik języka kaszubskiego'
+				/>
+				<meta property='og:image:width' content='2200' />
+				<meta property='og:image:height' content='1342' />
+
+				<meta name='twitter:card' content='summary_large_image' />
+				<meta name='twitter:site' content='@sloworz_org' />
+				<meta name='twitter:creator' content='@sloworz_org' />
 			</Head>
 			<Layout>
 				<Component {...pageProps} />
