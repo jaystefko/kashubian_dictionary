@@ -47,7 +47,7 @@ function App({ Component, pageProps }: AppProps) {
 				<meta name='og:title' content='Sloworz - Słownik języka kaszubskiego' />
 				<meta
 					property='og:image'
-					content='https://sloworz.org/images/twitterCard.jpg'
+					content='https://kashubian-dictionary.vercel.app/images/twitterCard.jpg'
 				/>
 				<meta property='og:site_name' content='Sloworz' />
 				<meta
