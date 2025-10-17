@@ -170,6 +170,7 @@
 	"topMenu.tweeter": "Twitter",
 	"topMenu.howTo": "Zasadë serwisu",
 	"topMenu.startPage": "Przédnô strona",
+	"topMenu.museum": "MPiMKP w Wejherowie",
 	"variation": "Òdmiana",
 	"save": "Zapiszë",
 	"close": "Zamknij",
@@ -312,6 +313,7 @@
 	"main_page_text.second": "Sygnie weńc na stronã: ",
 	"main_page_text.third": "Dzãkùjemë baro za wają pòmòc!",
 	"about.paragraph.first": "Ùdba na Internetowi Słowôrz Kaszëbsczégò Jãzëka przëszła nama do głowë w 2020 rokù, równak dosc wiele czasu ùszło, nigle më zaczãlë jã zjiscëwac. Òb zymk 2022 rokù më ju sã òstro wzalë za robòtã kòl twòrzeniô słowarza. Më wiedzelë, do czegò chcemë duńc, jak słowôrz mô wëzdrzec, co bãdze mógł w nim nalezc. Pò òbgôdanim tegò wszëtczégò më naczãlë szëkac infòrmatików, chtërny gò zrobią. I tedë sã òkôzało, że to nie je taczé prosté zadanié. Serce słowarza to fòrmùlôrz, w jaczim sã wpisëje dóné. Òn mùszi òbjëmac wszëtczé fòrmë, ôrtë, lëczbë, òdmianë, czasë, itd., tej bëło nót przëszëkòwac taczi fòrmùlôrz, w chtërnym są sta pòlów do wëfùlowaniô. A jesz òn bë miôł bëc klôr, letczi do zrozmieniô, cobë sã na nim dobrze prôcowało. Dosc długò më ni mòglë nalezc taczich wëkònôwców infòrmaticzny starnë słowarza, jaczi bë rozmielë so z tim wszëtczim dac radã, w kùńcu nama sã ùdało zacząc wespółprôcã z programistama z Pòznania - brzôd jich robòtë je przed Wama.",
+	"about.paragraph.first.additional": "----------------------------------------",
 	"about.paragraph.second.before_link": "Më mómë swiądã, że słowôrz, chtëren twòrzimë dlô Waji i chtëren Wama chcemë dac w jak nôbëlniészim sztôłce, brëkùje jesz wiele prôcë - jesz tësący gòdzyn, dlôte są pòtrzébny lëdze, jaczi sã bãdą zajimac tą robòtą. Żebë to sã mògło stac, żebë pòwstôł całowny słowôrz, mùszi miec pieniãdze. Kòżden i kòżdô z Waji mòże pòmòc w rozwiju słowarza òprzez dëtkòwi darënk, dosc je weńc na starnã",
 	"about.paragraph.second.after_link": "i przekazac dôr, przëdô sã nama kòżdi złoti. Mòżesz to zrobic rôz, a mòżesz téż - co miesąc. Dzãkùjemë za kòżdą wpłatã, za kòżden jeden dëtk. Mómë téż nôdzejã, że w twòrzenim słowarza pòmògą samòrządë i pòdjimiznë z Kaszëb, wszëtcë, chtërnym zanôlégô na tim, cobë kaszëbsczi jãzëk żił i sã rozwijôł.",
 	"about.paragraph.third": "Żelë môta jaczé ùdbë, doradë, spòstrzeżenia tikającé sã słowarza abò żelë chceta sã włãczëc w jegò pòwstôwanié, to piszta do naji òprzez fòrmùlôrz na pòdstarnie „Zabéduj pòzmianë”.",
@@ -321,5 +323,10 @@
 	"lessons.paragraph.second.after_link": "i przekazac dôr, przëdô sã nama kòżdi złoti. Mòżesz to zrobic rôz, a mòżesz téż - co miesąc. Dzãkùjemë za kòżdą wpłatã, za kòżden jeden dëtk.",
 	"foundation.paragraph.first.first": "Më jesmë z Kaszëbsczi i dlô Kaszëbsczi!",
 	"foundation.paragraph.first.second": "Jesteśmy z Kaszub i dla Kaszub!",
-	"foundation.paragraph.second": "Fùndacjô Kaszëbskô mô za swój cél rozszérzwianié kaszëbsczégò jãzëka, kaszëbsczi kùlturë i tradicji, a téż dzejanié na rzecz promòwaniô w Pòlsce i za grańcą wërobinów i pòdjimiznów, co pòchôdają z Kaszëb. Fùndacjô Kaszëbskô je ùdbòdôwcą i gwôscëcelã Internetowégò Słowarza Kaszëbsczégò Jãzëka. Wiãcy wiadłów ò Fùndacji Kaszëbskô mòże nalezc na starnie"
+	"foundation.paragraph.second": "Fùndacjô Kaszëbskô mô za swój cél rozszérzwianié kaszëbsczégò jãzëka, kaszëbsczi kùlturë i tradicji, a téż dzejanié na rzecz promòwaniô w Pòlsce i za grańcą wërobinów i pòdjimiznów, co pòchôdają z Kaszëb. Fùndacjô Kaszëbskô je ùdbòdôwcą i gwôscëcelã Internetowégò Słowarza Kaszëbsczégò Jãzëka. Wiãcy wiadłów ò Fùndacji Kaszëbskô mòże nalezc na starnie",
+	"museum.paragraph.first": "----------------------------------------",
+	"museum.paragraph.second": "----------------------------------------",
+	"museum.paragraph.third": "----------------------------------------",
+	"museum.paragraph.fourth": "----------------------------------------",
+	"museum.paragraph.fifth": "----------------------------------------"
 }

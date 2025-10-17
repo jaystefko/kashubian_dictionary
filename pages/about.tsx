@@ -12,6 +12,9 @@ const AboutScreen: NextPage = () => {
 				<div>
 					<p>{intl.formatMessage({ id: 'about.paragraph.first' })}</p>
 					<p>
+						{intl.formatMessage({ id: 'about.paragraph.first.additional' })}
+					</p>
+					<p>
 						<span>
 							{`${intl.formatMessage({
 								id: 'about.paragraph.second.before_link',

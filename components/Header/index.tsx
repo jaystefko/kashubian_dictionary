@@ -82,6 +82,11 @@ function Header() {
 						</Link>
 					</li>
 					<li>
+						<Link href='/museum'>
+							{intl.formatMessage({ id: 'topMenu.museum' })}
+						</Link>
+					</li>
+					<li>
 						<Link href='/lessons'>
 							{intl.formatMessage({ id: 'topMenu.lessons' })}
 						</Link>
