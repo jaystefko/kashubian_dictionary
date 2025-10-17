@@ -18,10 +18,10 @@ const AboutScreen: NextPage = () => {
 							})} `}
 						</span>
 						<a
-							href='https://zrzutka.pl/nvtf5r'
+							href='https://zrzutka.pl/mretr4'
 							rel='external nofollow noreferrer'
 							target='_blank'>
-							https://zrzutka.pl/nvtf5r
+							https://zrzutka.pl/mretr4
 						</a>
 						<span>
 							{` ${intl.formatMessage({
