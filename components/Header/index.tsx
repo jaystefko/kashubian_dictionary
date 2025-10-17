@@ -361,6 +361,11 @@ function Header() {
 						</Link>
 					</MenuItem>
 					<MenuItem onClick={() => handleClose(false)}>
+						<Link href='/museum'>
+							{intl.formatMessage({ id: 'topMenu.museum' })}
+						</Link>
+					</MenuItem>
+					<MenuItem onClick={() => handleClose(false)}>
 						<Link href='/lessons'>
 							{intl.formatMessage({ id: 'topMenu.lessons' })}
 						</Link>
