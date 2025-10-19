@@ -82,6 +82,11 @@ function Header() {
 						</Link>
 					</li>
 					<li>
+						<Link href='/museum'>
+							{intl.formatMessage({ id: 'topMenu.museum' })}
+						</Link>
+					</li>
+					<li>
 						<Link href='/lessons'>
 							{intl.formatMessage({ id: 'topMenu.lessons' })}
 						</Link>
@@ -353,6 +358,11 @@ function Header() {
 					<MenuItem onClick={() => handleClose(false)}>
 						<Link href='/foundation'>
 							{intl.formatMessage({ id: 'topMenu.foundation' })}
+						</Link>
+					</MenuItem>
+					<MenuItem onClick={() => handleClose(false)}>
+						<Link href='/museum'>
+							{intl.formatMessage({ id: 'topMenu.museum' })}
 						</Link>
 					</MenuItem>
 					<MenuItem onClick={() => handleClose(false)}>

@@ -20,10 +20,10 @@ const WorkInProgress = ({ is404 = false }) => {
 					</span>
 					<br />
 					<a
-						href='https://zrzutka.pl/nvtf5r'
+						href='https://zrzutka.pl/mretr4'
 						rel='external nofollow noreferrer'
 						target='_blank'>
-						https://zrzutka.pl/nvtf5r
+						https://zrzutka.pl/mretr4
 					</a>
 				</p>
 			)
@@ -39,10 +39,10 @@ const WorkInProgress = ({ is404 = false }) => {
 					</span>
 					<br />
 					<a
-						href='https://zrzutka.pl/nvtf5r'
+						href='https://zrzutka.pl/mretr4'
 						rel='external nofollow noreferrer'
 						target='_blank'>
-						https://zrzutka.pl/nvtf5r
+						https://zrzutka.pl/mretr4
 					</a>
 				</p>
 			)
@@ -58,10 +58,10 @@ const WorkInProgress = ({ is404 = false }) => {
 					</span>
 					<br />
 					<a
-						href='https://zrzutka.pl/nvtf5r'
+						href='https://zrzutka.pl/mretr4'
 						rel='external nofollow noreferrer'
 						target='_blank'>
-						https://zrzutka.pl/nvtf5r
+						https://zrzutka.pl/mretr4
 					</a>
 				</p>
 			)

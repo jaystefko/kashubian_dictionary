@@ -12,16 +12,19 @@ const AboutScreen: NextPage = () => {
 				<div>
 					<p>{intl.formatMessage({ id: 'about.paragraph.first' })}</p>
 					<p>
+						{intl.formatMessage({ id: 'about.paragraph.first.additional' })}
+					</p>
+					<p>
 						<span>
 							{`${intl.formatMessage({
 								id: 'about.paragraph.second.before_link',
 							})} `}
 						</span>
 						<a
-							href='https://zrzutka.pl/nvtf5r'
+							href='https://zrzutka.pl/mretr4'
 							rel='external nofollow noreferrer'
 							target='_blank'>
-							https://zrzutka.pl/nvtf5r
+							https://zrzutka.pl/mretr4
 						</a>
 						<span>
 							{` ${intl.formatMessage({
