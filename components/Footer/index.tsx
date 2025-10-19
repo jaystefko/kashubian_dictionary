@@ -7,7 +7,7 @@ function Footer() {
 
 	return (
 		<footer className={styles.footer}>
-			<section>
+			<section className={styles.sponsorContainer}>
 				<ul className={styles.footerList}>
 					<li>
 						<a
@@ -19,8 +19,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/logo-kaszuby-foundation.png'
-								height={40}
-								width={133}
+								height={60}
+								width={160}
 								alt={intl.formatMessage({ id: 'sponsor.kashebianFoundation' })}
 								role='link'
 								title={intl.formatMessage({
@@ -43,8 +43,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/logo_MPiMK-P.svg'
-								height={40}
-								width={50}
+								height={60}
+								width={60}
 								alt={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
 								role='link'
 								title={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
@@ -73,8 +73,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/pomorskie.svg'
-								height={40}
-								width={31}
+								height={60}
+								width={40}
 								alt={intl.formatMessage({ id: 'sponsor.pomorskieVoivodeship' })}
 								role='link'
 								title={intl.formatMessage({
@@ -96,8 +96,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/Szemud-cropped.svg'
-								height={40}
-								width={70}
+								height={60}
+								width={60}
 								alt={intl.formatMessage({ id: 'sponsor.szemud' })}
 								role='link'
 								title={intl.formatMessage({ id: 'sponsor.szemud' })}
@@ -117,7 +117,7 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/Kartuzy-cropped.svg'
-								height={40}
+								height={60}
 								width={70}
 								alt={intl.formatMessage({ id: 'sponsor.kartuzy' })}
 								role='link'
@@ -138,8 +138,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/Dziemiany-cropped.svg'
-								height={40}
-								width={70}
+								height={60}
+								width={40}
 								alt={intl.formatMessage({ id: 'sponsor.dziemiany' })}
 								role='link'
 								title={intl.formatMessage({ id: 'sponsor.dziemiany' })}
@@ -159,7 +159,7 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/Wladyslawowo-cropped.svg'
-								height={40}
+								height={60}
 								width={70}
 								alt={intl.formatMessage({ id: 'sponsor.wladyslawowo' })}
 								role='link'
