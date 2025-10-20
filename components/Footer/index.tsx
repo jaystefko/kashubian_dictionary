@@ -19,8 +19,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/logo-kaszuby-foundation.png'
-								height={60}
-								width={160}
+								height={50}
+								width={166}
 								alt={intl.formatMessage({ id: 'sponsor.kashebianFoundation' })}
 								role='link'
 								title={intl.formatMessage({
@@ -43,8 +43,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/logo_MPiMK-P.svg'
-								height={60}
-								width={60}
+								height={50}
+								width={50}
 								alt={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
 								role='link'
 								title={intl.formatMessage({ id: 'sponsor.museumWejherowo' })}
@@ -73,7 +73,7 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/pomorskie.svg'
-								height={60}
+								height={50}
 								width={40}
 								alt={intl.formatMessage({ id: 'sponsor.pomorskieVoivodeship' })}
 								role='link'
@@ -96,8 +96,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/Szemud-cropped.svg'
-								height={60}
-								width={60}
+								height={50}
+								width={50}
 								alt={intl.formatMessage({ id: 'sponsor.szemud' })}
 								role='link'
 								title={intl.formatMessage({ id: 'sponsor.szemud' })}
@@ -117,8 +117,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/Kartuzy-cropped.svg'
-								height={60}
-								width={70}
+								height={50}
+								width={60}
 								alt={intl.formatMessage({ id: 'sponsor.kartuzy' })}
 								role='link'
 								title={intl.formatMessage({ id: 'sponsor.kartuzy' })}
@@ -138,7 +138,7 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/Dziemiany-cropped.svg'
-								height={60}
+								height={50}
 								width={40}
 								alt={intl.formatMessage({ id: 'sponsor.dziemiany' })}
 								role='link'
@@ -159,8 +159,8 @@ function Footer() {
 							<Image
 								priority={false}
 								src='/images/Wladyslawowo-cropped.svg'
-								height={60}
-								width={70}
+								height={50}
+								width={60}
 								alt={intl.formatMessage({ id: 'sponsor.wladyslawowo' })}
 								role='link'
 								title={intl.formatMessage({ id: 'sponsor.wladyslawowo' })}
