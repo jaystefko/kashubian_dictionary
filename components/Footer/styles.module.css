@@ -44,14 +44,14 @@
 	align-items: flex-start;
 }
 
-@media screen and (min-width: 551px) and (max-width: 650px) {
+/* @media screen and (min-width: 551px) and (max-width: 650px) {
 	.sponsorInfo {
 		font-size: 16px;
 		width: 65px;
 	}
-}
+} */
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 890px) {
 	.copyrightLink {
 		align-items: center;
 	}
