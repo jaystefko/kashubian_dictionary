@@ -170,6 +170,27 @@ function Footer() {
 							</span>
 						</a>
 					</li>
+					<li>
+						<a
+							href='https://miasto.reda.pl'
+							rel='external nofollow noreferrer'
+							className={styles.footerLink}
+							target='_blank'
+							title={intl.formatMessage({ id: 'sponsor.reda' })}>
+							<Image
+								priority={false}
+								src='/images/REDA.svg'
+								height={50}
+								width={92}
+								alt={intl.formatMessage({ id: 'sponsor.reda' })}
+								role='link'
+								title={intl.formatMessage({ id: 'sponsor.reda' })}
+							/>
+							<span className={styles.footerLinkText}>
+								{intl.formatMessage({ id: 'sponsor.reda' })}
+							</span>
+						</a>
+					</li>
 				</ul>
 			</section>
 		</footer>
